@@ -11,7 +11,6 @@ import UIKit
 
 public class Toolkit {
     
-    
     // MARK:
     // MARK: Strings
     // MARK:
