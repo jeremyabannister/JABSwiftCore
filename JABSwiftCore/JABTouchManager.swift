@@ -34,7 +34,6 @@ public class JABTouchManager: NSObject, UIGestureRecognizerDelegate {
     
     
     public init(newTouchDomain: UIView) {
-        
         touchDomain = newTouchDomain
         super.init()
         
@@ -42,6 +41,9 @@ public class JABTouchManager: NSObject, UIGestureRecognizerDelegate {
         touchRecognizer?.delegate = self
         touchRecognizer?.minimumPressDuration = 0.0001
         touchRecognizer?.allowableMovement = 1000000
+        if touchRecognizer != nil {
+            touchDomain.addGestureRecognizer(touchRecognizer!)
+        }
     }
     
     
@@ -64,7 +66,7 @@ public class JABTouchManager: NSObject, UIGestureRecognizerDelegate {
                     previousDeltaX = 0.0
                     previousDeltaY = 0.0
                     
-                    verifiedDelegate.touchDidBegin(locationInTouchDomain)
+                    verifiedDelegate.touchDidBegin(location, locationInView: locationInTouchDomain)
                     
                 } else {
                     
@@ -76,7 +78,7 @@ public class JABTouchManager: NSObject, UIGestureRecognizerDelegate {
                     
                     if gestureRecognizer.state == UIGestureRecognizerState.Changed {
                         
-                        verifiedDelegate.touchDidChange(locationInTouchDomain, xDistance: xDistanceMoved, yDistance: yDistanceMoved, methodCallNumber: methodCallNumber)
+                        verifiedDelegate.touchDidChange(location, locationInView: locationInTouchDomain, xDistance: xDistanceMoved, yDistance: yDistanceMoved, methodCallNumber: methodCallNumber)
                         
                         previousDeltaX = deltaX
                         previousDeltaY = deltaY
@@ -86,11 +88,11 @@ public class JABTouchManager: NSObject, UIGestureRecognizerDelegate {
                         
                         if gestureRecognizer.state == UIGestureRecognizerState.Ended {
                             
-                            verifiedDelegate.touchDidEnd(locationInTouchDomain, xDistance: xDistanceMoved, yDistance: yDistanceMoved, methodCallNumber: methodCallNumber)
+                            verifiedDelegate.touchDidEnd(location, locationInView: locationInTouchDomain, xDistance: xDistanceMoved, yDistance: yDistanceMoved, methodCallNumber: methodCallNumber)
                             
                         } else if gestureRecognizer.state == UIGestureRecognizerState.Cancelled {
                             
-                            verifiedDelegate.touchDidCancel(locationInTouchDomain, xDistance: xDistanceMoved, yDistance: yDistanceMoved, methodCallNumber: methodCallNumber)
+                            verifiedDelegate.touchDidCancel(location, locationInView: locationInTouchDomain, xDistance: xDistanceMoved, yDistance: yDistanceMoved, methodCallNumber: methodCallNumber)
                             
                         }
                         
@@ -153,9 +155,9 @@ public protocol JABTouchManagerDelegate {
     
     var blockingViews: [UIView] { get }
     
-    func touchDidBegin (location:CGPoint)
-    func touchDidChange (location:CGPoint, xDistance:CGFloat, yDistance:CGFloat, methodCallNumber:Int)
-    func touchDidEnd (location:CGPoint, xDistance:CGFloat, yDistance:CGFloat, methodCallNumber:Int)
-    func touchDidCancel (location:CGPoint, xDistance:CGFloat, yDistance:CGFloat, methodCallNumber:Int)
+    func touchDidBegin (locationOnScreen:CGPoint, locationInView:CGPoint)
+    func touchDidChange (locationOnScreen:CGPoint, locationInView:CGPoint, xDistance:CGFloat, yDistance:CGFloat, methodCallNumber:Int)
+    func touchDidEnd (locationOnScreen:CGPoint, locationInView:CGPoint, xDistance:CGFloat, yDistance:CGFloat, methodCallNumber:Int)
+    func touchDidCancel (locationOnScreen:CGPoint, locationInView:CGPoint, xDistance:CGFloat, yDistance:CGFloat, methodCallNumber:Int)
     
 }

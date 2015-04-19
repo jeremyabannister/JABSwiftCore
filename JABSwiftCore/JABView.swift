@@ -40,10 +40,12 @@ public class JABView: UIView {
     
     public init () {
         super.init(frame:CGRectZero)
+        
+        addAllUI()
     }
     
     required public init(coder aDecoder: NSCoder) {
-        super.init(frame:CGRectZero)
+        super.init(coder: aDecoder)
     }
     
     
@@ -51,11 +53,7 @@ public class JABView: UIView {
     // MARK: UI
     // MARK:
     
-    public func configureAllUI () {
-        
-    }
-    
-    public func positionAllUI () {
+    public func addAllUI () {
         
     }
     

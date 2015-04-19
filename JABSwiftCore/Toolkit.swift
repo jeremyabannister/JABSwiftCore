@@ -26,6 +26,10 @@ public class Toolkit {
         return head.uppercaseString + decapitatedWord
     }
     
+    public static func testFunction () {
+        println("Sup")
+    }
+    
     
     
     // MARK:
@@ -202,11 +206,7 @@ public extension UIView {
     
     
     
-    
-    
-    
-    
-    
+
     
     
     
@@ -228,6 +228,23 @@ public extension UIView {
             
         }
     }
+    
+    
+    
+    
+    
+    
+    
+    public var opacity: Float {
+        get {
+            return layer.opacity
+        }
+        set {
+            layer.opacity = newValue
+        }
+    }
+    
+    
 }
 
 
@@ -322,6 +339,12 @@ public extension CGRect {
             
         }
     }
+    
+    
+    
+    
+    
+    
     
 }
 

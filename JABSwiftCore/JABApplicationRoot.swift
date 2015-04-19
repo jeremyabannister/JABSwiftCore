@@ -9,4 +9,29 @@
 public class JABApplicationRoot: JABView {
     
     
+    
+    // **********************************************************************************************************************
+    
+    
+    // MARK:
+    // MARK: Methods
+    // MARK:
+    
+    // MARK:
+    // MARK: Init
+    // MARK:
+    
+    public override init () {
+        super.init()
+        
+        JABGlobalVariables.staticOnScreenView = self
+        JABGlobalVariables.staticOnScreenViewIsSet = true
+        
+    }
+    
+    required public init(coder aDecoder: NSCoder) {
+        super.init()
+    }
+    
+    
 }
