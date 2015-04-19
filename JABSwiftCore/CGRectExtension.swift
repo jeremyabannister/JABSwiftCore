@@ -78,6 +78,45 @@ public extension CGRect {
     
     
     
+    public var left: CGFloat {
+        get {
+            
+            return x
+            
+        }
+    }
+    
+    
+    
+    public var right: CGFloat {
+        get {
+            
+            return x + width
+            
+        }
+    }
+    
+    public var top: CGFloat {
+        get {
+            
+            return y
+            
+        }
+    }
+    
+    
+    
+    public var bottom: CGFloat {
+        get {
+            
+            return y + height
+            
+        }
+    }
+    
+    
+    
+    
     
     
     
@@ -103,6 +142,29 @@ public extension CGRect {
     
     
     
+    
+    
+    public func containsPoint(point: CGPoint) -> Bool {
+        
+        if ( point.x < x ) {
+            return false
+        }
+        
+        if ( point.y < y ) {
+            return false
+        }
+        
+        if ( point.x > right ) {
+            return false
+        }
+        
+        if ( point.y > bottom ) {
+            return false
+        }
+        
+        return true
+        
+    }
     
     
     

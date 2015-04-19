@@ -24,9 +24,6 @@ public class JABApplicationRoot: JABView {
     public override init () {
         super.init()
         
-        JABGlobalVariables.staticOnScreenView = self
-        JABGlobalVariables.staticOnScreenViewIsSet = true
-        
     }
     
     required public init(coder aDecoder: NSCoder) {

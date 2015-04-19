@@ -23,6 +23,11 @@ public class JABTouchableView: JABView, JABTouchManagerDelegate {
     // MARK:
     public var touchManager: JABTouchManager?
     public var blockingViews: [UIView] = []
+    public var parentView: UIView? {
+        didSet {
+            touchManager?.parentView = parentView
+        }
+    }
     
     
     
@@ -55,6 +60,7 @@ public class JABTouchableView: JABView, JABTouchManagerDelegate {
     public func createTouchRecognitionSystem () {
         touchManager = JABTouchManager(newTouchDomain: self)
         touchManager?.delegate = self
+        touchManager?.parentView = parentView
         userInteractionEnabled = true
         
     }
@@ -81,20 +87,20 @@ public class JABTouchableView: JABView, JABTouchManagerDelegate {
     // MARK:
     
     // MARK: Touch Manager
-    public func touchDidBegin(locationOnScreen:CGPoint, locationInView:CGPoint) {
-        delegate?.touchableViewTouchDidBegin(self, locationOnScreen: locationOnScreen, locationInView: locationInView)
+    public func touchDidBegin(locationInParentView:CGPoint?, locationInView:CGPoint) {
+        delegate?.touchableViewTouchDidBegin(self, locationInParentView: locationInParentView, locationInView: locationInView)
     }
     
-    public func touchDidChange(locationOnScreen:CGPoint, locationInView:CGPoint, xDistance: CGFloat, yDistance: CGFloat, methodCallNumber: Int) {
-        delegate?.touchableViewTouchDidChange(self, locationOnScreen: locationOnScreen, locationInView: locationInView, xDistance: xDistance, yDistance: yDistance, methodCallNumber: methodCallNumber)
+    public func touchDidChange(locationInParentView:CGPoint?, locationInView:CGPoint, xDistance: CGFloat, yDistance: CGFloat, methodCallNumber: Int) {
+        delegate?.touchableViewTouchDidChange(self, locationInParentView: locationInParentView, locationInView: locationInView, xDistance: xDistance, yDistance: yDistance, methodCallNumber: methodCallNumber)
     }
     
-    public func touchDidEnd(locationOnScreen:CGPoint, locationInView:CGPoint, xDistance: CGFloat, yDistance: CGFloat, methodCallNumber: Int) {
-        delegate?.touchableViewTouchDidEnd(self, locationOnScreen: locationOnScreen, locationInView: locationInView, xDistance: xDistance, yDistance: yDistance, methodCallNumber: methodCallNumber)
+    public func touchDidEnd(locationInParentView:CGPoint?, locationInView:CGPoint, xDistance: CGFloat, yDistance: CGFloat, methodCallNumber: Int) {
+        delegate?.touchableViewTouchDidEnd(self, locationInParentView: locationInParentView, locationInView: locationInView, xDistance: xDistance, yDistance: yDistance, methodCallNumber: methodCallNumber)
     }
     
-    public func touchDidCancel(locationOnScreen:CGPoint, locationInView:CGPoint, xDistance: CGFloat, yDistance: CGFloat, methodCallNumber: Int) {
-        delegate?.touchableViewTouchDidCancel(self, locationOnScreen: locationOnScreen, locationInView: locationInView, xDistance: xDistance, yDistance: yDistance, methodCallNumber: methodCallNumber)
+    public func touchDidCancel(locationInParentView:CGPoint?, locationInView:CGPoint, xDistance: CGFloat, yDistance: CGFloat, methodCallNumber: Int) {
+        delegate?.touchableViewTouchDidCancel(self, locationInParentView: locationInParentView, locationInView: locationInView, xDistance: xDistance, yDistance: yDistance, methodCallNumber: methodCallNumber)
     }
     
     
@@ -108,10 +114,10 @@ public class JABTouchableView: JABView, JABTouchManagerDelegate {
 
 public protocol JABTouchableViewDelegate {
     
-    func touchableViewTouchDidBegin(touchableView: JABTouchableView, locationOnScreen:CGPoint, locationInView:CGPoint)
-    func touchableViewTouchDidChange(touchableView: JABTouchableView, locationOnScreen:CGPoint, locationInView:CGPoint, xDistance: CGFloat, yDistance: CGFloat, methodCallNumber: Int)
-    func touchableViewTouchDidEnd(touchableView: JABTouchableView, locationOnScreen:CGPoint, locationInView:CGPoint, xDistance: CGFloat, yDistance: CGFloat, methodCallNumber: Int)
-    func touchableViewTouchDidCancel(touchableView: JABTouchableView, locationOnScreen:CGPoint, locationInView:CGPoint, xDistance: CGFloat, yDistance: CGFloat, methodCallNumber: Int)
+    func touchableViewTouchDidBegin(touchableView: JABTouchableView, locationInParentView:CGPoint?, locationInView:CGPoint)
+    func touchableViewTouchDidChange(touchableView: JABTouchableView, locationInParentView:CGPoint?, locationInView:CGPoint, xDistance: CGFloat, yDistance: CGFloat, methodCallNumber: Int)
+    func touchableViewTouchDidEnd(touchableView: JABTouchableView, locationInParentView:CGPoint?, locationInView:CGPoint, xDistance: CGFloat, yDistance: CGFloat, methodCallNumber: Int)
+    func touchableViewTouchDidCancel(touchableView: JABTouchableView, locationInParentView:CGPoint?, locationInView:CGPoint, xDistance: CGFloat, yDistance: CGFloat, methodCallNumber: Int)
     
     
 }

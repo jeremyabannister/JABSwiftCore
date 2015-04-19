@@ -21,7 +21,7 @@ public class JABButton: JABTouchableView {
     // MARK:
     
     // MARK: State
-//    public var delegate: JABButtonDelegate?
+    public var buttonDelegate: JABButtonDelegate?
     public var type = JABButtonType.Image
     public var pressed = false
     
@@ -173,7 +173,7 @@ public class JABButton: JABTouchableView {
         newFrame.size.width = width - 2*horizontalContentInset
         newFrame.size.height = height - 2*verticalContentInset
         
-        imageView.frame = frame
+        imageView.frame = newFrame
         
     }
     
@@ -189,7 +189,6 @@ public class JABButton: JABTouchableView {
     }
     
     func positionTextLabel () {
-        
         var newFrame = CGRectZero
         
         newFrame.origin.x = horizontalContentInset
@@ -198,7 +197,7 @@ public class JABButton: JABTouchableView {
         newFrame.size.width = width - 2*horizontalContentInset
         newFrame.size.height = height - 2*verticalContentInset
         
-        textLabel.frame = frame
+        textLabel.frame = newFrame
         
     }
     
@@ -211,25 +210,57 @@ public class JABButton: JABTouchableView {
     // MARK:
     
     // MARK: Touch Manager
-    override public func touchDidBegin(locationOnScreen: CGPoint, locationInView: CGPoint) {
+    override public func touchDidBegin(locationInParentView: CGPoint?, locationInView: CGPoint) {
         
         pressed = true
         updateAllUI()
-//        delegate?.buttonWasTouched(self)
+        buttonDelegate?.buttonWasTouched(self)
         
     }
     
-    override public func touchDidChange(locationOnScreen: CGPoint, locationInView: CGPoint, xDistance: CGFloat, yDistance: CGFloat, methodCallNumber: Int) {
+    override public func touchDidChange(locationInParentView: CGPoint?, locationInView: CGPoint, xDistance: CGFloat, yDistance: CGFloat, methodCallNumber: Int) {
         
+        if relativeFrame.contains(locationInView) {
+            
+            pressed = true
+            
+        } else {
+            
+            pressed = false
+            
+        }
         
+        buttonDelegate?.buttonTouchLocationChanged(self, locationInParentView: locationInParentView, locationInButton: locationInView)
+        
+        updateAllUI()
         
     }
     
-    override public func touchDidEnd(locationOnScreen: CGPoint, locationInView: CGPoint, xDistance: CGFloat, yDistance: CGFloat, methodCallNumber: Int) {
+    override public func touchDidEnd(locationInParentView: CGPoint?, locationInView: CGPoint, xDistance: CGFloat, yDistance: CGFloat, methodCallNumber: Int) {
+        
+        if relativeFrame.contains(locationInView) {
+            
+            pressed = true
+            
+        } else {
+            
+            pressed = false
+            
+        }
+        
+        buttonDelegate?.buttonTouchEnded(self, locationInParentView: locationInParentView, locationInButton: locationInView, pressed: pressed)
+        
+        pressed = false
+        
+        updateAllUI()
         
     }
     
-    override public func touchDidCancel(locationOnScreen: CGPoint, locationInView: CGPoint, xDistance: CGFloat, yDistance: CGFloat, methodCallNumber: Int) {
+    override public func touchDidCancel(locationInParentView: CGPoint?, locationInView: CGPoint, xDistance: CGFloat, yDistance: CGFloat, methodCallNumber: Int) {
+        
+        buttonDelegate?.buttonTouchEnded(self, locationInParentView: locationInParentView, locationInButton: locationInView, pressed: false)
+        pressed = false
+        updateAllUI()
         
     }
     
@@ -239,10 +270,10 @@ public class JABButton: JABTouchableView {
 
 
 
-public protocol JABButtonDelegate: JABTouchableViewDelegate {
+public protocol JABButtonDelegate {
     
     func buttonWasTouched(button: JABButton)
-    func buttonTouchLocationChanged(button: JABButton, locationOnScreen: CGPoint, locationInButton: CGPoint)
-    func buttonTouchEnded(button: JABButton, locationOnScreen: CGPoint, locationInButton: CGPoint, pressed: Bool)
+    func buttonTouchLocationChanged(button: JABButton, locationInParentView: CGPoint?, locationInButton: CGPoint)
+    func buttonTouchEnded(button: JABButton, locationInParentView: CGPoint?, locationInButton: CGPoint, pressed: Bool)
     
 }

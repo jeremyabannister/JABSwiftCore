@@ -19,6 +19,7 @@ public class JABTouchManager: NSObject, UIGestureRecognizerDelegate {
     var delegate: JABTouchManagerDelegate?
     
     // MARK: Touch
+    public var parentView: UIView?
     public var touchDomain: UIView
     var touchRecognizer: UILongPressGestureRecognizer?
     
@@ -53,59 +54,56 @@ public class JABTouchManager: NSObject, UIGestureRecognizerDelegate {
         
         if let verifiedDelegate = delegate {
             
-            if JABGlobalVariables.staticOnScreenViewIsSet {
+            let location = gestureRecognizer.locationInView(parentView)
+            println(location)
+            println("parent view is \(parentView)")
+            let locationInTouchDomain = gestureRecognizer.locationInView(touchDomain)
+            
+            methodCallNumber++
+            
+            if gestureRecognizer.state == UIGestureRecognizerState.Began {
                 
-                let location = gestureRecognizer.locationInView(JABGlobalVariables.staticOnScreenView)
-                let locationInTouchDomain = gestureRecognizer.locationInView(touchDomain)
+                initialTouchLocation = location
+                previousDeltaX = 0.0
+                previousDeltaY = 0.0
                 
-                methodCallNumber++
+                verifiedDelegate.touchDidBegin(location, locationInView: locationInTouchDomain)
                 
-                if gestureRecognizer.state == UIGestureRecognizerState.Began {
+            } else {
+                
+                deltaX = location.x - initialTouchLocation.x
+                deltaY = location.y - initialTouchLocation.y
+                
+                var xDistanceMoved = deltaX - previousDeltaX
+                var yDistanceMoved = deltaY - previousDeltaY
+                
+                if gestureRecognizer.state == UIGestureRecognizerState.Changed {
                     
-                    initialTouchLocation = location
-                    previousDeltaX = 0.0
-                    previousDeltaY = 0.0
+                    verifiedDelegate.touchDidChange(location, locationInView: locationInTouchDomain, xDistance: xDistanceMoved, yDistance: yDistanceMoved, methodCallNumber: methodCallNumber)
                     
-                    verifiedDelegate.touchDidBegin(location, locationInView: locationInTouchDomain)
+                    previousDeltaX = deltaX
+                    previousDeltaY = deltaY
+                    
                     
                 } else {
                     
-                    deltaX = location.x - initialTouchLocation.x
-                    deltaY = location.y - initialTouchLocation.y
-                    
-                    var xDistanceMoved = deltaX - previousDeltaX
-                    var yDistanceMoved = deltaY - previousDeltaY
-                    
-                    if gestureRecognizer.state == UIGestureRecognizerState.Changed {
+                    if gestureRecognizer.state == UIGestureRecognizerState.Ended {
                         
-                        verifiedDelegate.touchDidChange(location, locationInView: locationInTouchDomain, xDistance: xDistanceMoved, yDistance: yDistanceMoved, methodCallNumber: methodCallNumber)
+                        verifiedDelegate.touchDidEnd(location, locationInView: locationInTouchDomain, xDistance: xDistanceMoved, yDistance: yDistanceMoved, methodCallNumber: methodCallNumber)
                         
-                        previousDeltaX = deltaX
-                        previousDeltaY = deltaY
+                    } else if gestureRecognizer.state == UIGestureRecognizerState.Cancelled {
                         
-                        
-                    } else {
-                        
-                        if gestureRecognizer.state == UIGestureRecognizerState.Ended {
-                            
-                            verifiedDelegate.touchDidEnd(location, locationInView: locationInTouchDomain, xDistance: xDistanceMoved, yDistance: yDistanceMoved, methodCallNumber: methodCallNumber)
-                            
-                        } else if gestureRecognizer.state == UIGestureRecognizerState.Cancelled {
-                            
-                            verifiedDelegate.touchDidCancel(location, locationInView: locationInTouchDomain, xDistance: xDistanceMoved, yDistance: yDistanceMoved, methodCallNumber: methodCallNumber)
-                            
-                        }
-                        
-                        
-                        methodCallNumber = 0
-                        previousDeltaX = 0
-                        previousDeltaY = 0
-                        
+                        verifiedDelegate.touchDidCancel(location, locationInView: locationInTouchDomain, xDistance: xDistanceMoved, yDistance: yDistanceMoved, methodCallNumber: methodCallNumber)
                         
                     }
+                    
+                    
+                    methodCallNumber = 0
+                    previousDeltaX = 0
+                    previousDeltaY = 0
+                    
+                    
                 }
-            } else {
-                println("staticOnScreenViewIsSet is false. Remember to set the staticOnScreenView as well as the corresponding boolean named staticOnScreenViewIsSet.")
             }
             
         }
@@ -155,9 +153,9 @@ public protocol JABTouchManagerDelegate {
     
     var blockingViews: [UIView] { get }
     
-    func touchDidBegin (locationOnScreen:CGPoint, locationInView:CGPoint)
-    func touchDidChange (locationOnScreen:CGPoint, locationInView:CGPoint, xDistance:CGFloat, yDistance:CGFloat, methodCallNumber:Int)
-    func touchDidEnd (locationOnScreen:CGPoint, locationInView:CGPoint, xDistance:CGFloat, yDistance:CGFloat, methodCallNumber:Int)
-    func touchDidCancel (locationOnScreen:CGPoint, locationInView:CGPoint, xDistance:CGFloat, yDistance:CGFloat, methodCallNumber:Int)
+    func touchDidBegin (locationInParentView:CGPoint?, locationInView:CGPoint)
+    func touchDidChange (locationInParentView:CGPoint?, locationInView:CGPoint, xDistance:CGFloat, yDistance:CGFloat, methodCallNumber:Int)
+    func touchDidEnd (locationInParentView:CGPoint?, locationInView:CGPoint, xDistance:CGFloat, yDistance:CGFloat, methodCallNumber:Int)
+    func touchDidCancel (locationInParentView:CGPoint?, locationInView:CGPoint, xDistance:CGFloat, yDistance:CGFloat, methodCallNumber:Int)
     
 }
