@@ -8,7 +8,7 @@
 
 import UIKit
 
-enum JABButtonType {
+public enum JABButtonType {
     case Image
     case Text
 }
@@ -21,15 +21,26 @@ public class JABButton: JABTouchableView {
     // MARK:
     
     // MARK: State
-    var type = JABButtonType.Image
-    var pressed = false
+//    public var delegate: JABButtonDelegate?
+    public var type = JABButtonType.Image
+    public var pressed = false
     
-    var image = UIImage()
+    public var dimmedBackgroundColor: UIColor?
+    override public var backgroundColor: UIColor? {
+        didSet {
+            if dimmedBackgroundColor == nil {
+                dimmedBackgroundColor = backgroundColor?.dim(70)
+            }
+        }
+    }
     
-    var text = ""
-    var textAlignment = NSTextAlignment.Center
-    var textColor = UIColor.blackColor()
-    var font = UIFont(name: "HelveticaNeue-Medium", size: 12)
+    public var image = UIImage()
+    public var pressedImage = UIImage()
+    
+    public var text = ""
+    public var textAlignment = NSTextAlignment.Center
+    public var textColor = UIColor.blackColor()
+    public var font = UIFont(name: "HelveticaNeue-Medium", size: 12)
     
     
     // MARK: UI
@@ -38,10 +49,10 @@ public class JABButton: JABTouchableView {
     
     
     // MARK: Parameters
-    var horizontalContentInset: CGFloat = 0.0
-    var verticalContentInset: CGFloat = 0.0
+    public var horizontalContentInset: CGFloat = 0.0
+    public var verticalContentInset: CGFloat = 0.0
     
-    var dimsWhenPressed = false
+    public var dimsWhenPressed = false
     
     
     
@@ -85,6 +96,8 @@ public class JABButton: JABTouchableView {
     
     override public func updateAllUI() {
         
+        configureBackground()
+        
         configureImageView()
         positionImageView()
         
@@ -105,10 +118,33 @@ public class JABButton: JABTouchableView {
     
     
     
+    // MARK: Background
+    func configureBackground () {
+        
+        if dimsWhenPressed {
+            if pressed {
+                
+            }
+        }
+        
+    }
+    
+    
+    
     // MARK: Image View
     func configureImageView () {
         
-        imageView.image = image
+        
+        if pressed {
+            
+            imageView.image = pressedImage
+            
+        } else {
+            
+            imageView.image = image
+            
+        }
+        
         
         
         switch type {
@@ -179,10 +215,13 @@ public class JABButton: JABTouchableView {
         
         pressed = true
         updateAllUI()
+//        delegate?.buttonWasTouched(self)
         
     }
     
     override public func touchDidChange(locationOnScreen: CGPoint, locationInView: CGPoint, xDistance: CGFloat, yDistance: CGFloat, methodCallNumber: Int) {
+        
+        
         
     }
     
@@ -195,5 +234,15 @@ public class JABButton: JABTouchableView {
     }
     
     
+    
+}
+
+
+
+public protocol JABButtonDelegate: JABTouchableViewDelegate {
+    
+    func buttonWasTouched(button: JABButton)
+    func buttonTouchLocationChanged(button: JABButton, locationOnScreen: CGPoint, locationInButton: CGPoint)
+    func buttonTouchEnded(button: JABButton, locationOnScreen: CGPoint, locationInButton: CGPoint, pressed: Bool)
     
 }

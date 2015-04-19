@@ -17,6 +17,9 @@
 		875444DC1AE1D05800659E6B /* JABTouchManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 875444DB1AE1D05800659E6B /* JABTouchManager.swift */; };
 		875444DE1AE1D05E00659E6B /* JABButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 875444DD1AE1D05E00659E6B /* JABButton.swift */; };
 		875444E01AE1D06500659E6B /* JABApplicationRoot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 875444DF1AE1D06500659E6B /* JABApplicationRoot.swift */; };
+		87F4FD3E1AE421A300953E38 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F4FD3D1AE421A300953E38 /* UIViewExtension.swift */; };
+		87F4FD411AE421ED00953E38 /* CGRectExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F4FD401AE421ED00953E38 /* CGRectExtension.swift */; };
+		87F4FD431AE4222A00953E38 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F4FD421AE4222A00953E38 /* UIColorExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,6 +46,9 @@
 		875444DB1AE1D05800659E6B /* JABTouchManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JABTouchManager.swift; sourceTree = "<group>"; };
 		875444DD1AE1D05E00659E6B /* JABButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JABButton.swift; sourceTree = "<group>"; };
 		875444DF1AE1D06500659E6B /* JABApplicationRoot.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JABApplicationRoot.swift; sourceTree = "<group>"; };
+		87F4FD3D1AE421A300953E38 /* UIViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
+		87F4FD401AE421ED00953E38 /* CGRectExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CGRectExtension.swift; sourceTree = "<group>"; };
+		87F4FD421AE4222A00953E38 /* UIColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,7 +92,7 @@
 			isa = PBXGroup;
 			children = (
 				875444BA1AE1D01C00659E6B /* JABSwiftCore.h */,
-				875444D51AE1D03000659E6B /* Widely Distributed */,
+				875444D51AE1D03000659E6B /* General */,
 				875444D81AE1D04000659E6B /* JABView */,
 				875444B81AE1D01C00659E6B /* Supporting Files */,
 			);
@@ -118,13 +124,14 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		875444D51AE1D03000659E6B /* Widely Distributed */ = {
+		875444D51AE1D03000659E6B /* General */ = {
 			isa = PBXGroup;
 			children = (
 				875444D11AE1D02C00659E6B /* Toolkit.swift */,
 				875444D21AE1D02C00659E6B /* JABGlobalVariables.swift */,
+				87F4FD3F1AE421B100953E38 /* Class Extensions */,
 			);
-			name = "Widely Distributed";
+			name = General;
 			sourceTree = "<group>";
 		};
 		875444D81AE1D04000659E6B /* JABView */ = {
@@ -193,6 +200,16 @@
 				875444DF1AE1D06500659E6B /* JABApplicationRoot.swift */,
 			);
 			name = "Application Root";
+			sourceTree = "<group>";
+		};
+		87F4FD3F1AE421B100953E38 /* Class Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				87F4FD3D1AE421A300953E38 /* UIViewExtension.swift */,
+				87F4FD401AE421ED00953E38 /* CGRectExtension.swift */,
+				87F4FD421AE4222A00953E38 /* UIColorExtension.swift */,
+			);
+			name = "Class Extensions";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -308,6 +325,9 @@
 				875444E01AE1D06500659E6B /* JABApplicationRoot.swift in Sources */,
 				875444D31AE1D02C00659E6B /* Toolkit.swift in Sources */,
 				875444D71AE1D03E00659E6B /* JABView.swift in Sources */,
+				87F4FD411AE421ED00953E38 /* CGRectExtension.swift in Sources */,
+				87F4FD431AE4222A00953E38 /* UIColorExtension.swift in Sources */,
+				87F4FD3E1AE421A300953E38 /* UIViewExtension.swift in Sources */,
 				875444DE1AE1D05E00659E6B /* JABButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -502,6 +522,7 @@
 				875444CD1AE1D01C00659E6B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		875444CE1AE1D01C00659E6B /* Build configuration list for PBXNativeTarget "JABSwiftCoreTests" */ = {
 			isa = XCConfigurationList;
@@ -510,6 +531,7 @@
 				875444D01AE1D01C00659E6B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
