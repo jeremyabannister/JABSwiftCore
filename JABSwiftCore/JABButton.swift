@@ -21,22 +21,34 @@ public class JABButton: JABTouchableView {
     // MARK:
     
     // MARK: State
+    // Button
     public var buttonDelegate: JABButtonDelegate?
     public var type = JABButtonType.Image
     public var pressed = false
+    public var dimmed = false
     
-    public var dimmedBackgroundColor: UIColor?
+    // Background Color
     override public var backgroundColor: UIColor? {
         didSet {
-            if dimmedBackgroundColor == nil {
-                dimmedBackgroundColor = backgroundColor?.dim(70)
+            if !dimmed {
+                undimmedBackgroundColor = backgroundColor
             }
         }
     }
+    public var undimmedBackgroundColor: UIColor? {
+        didSet {
+            if dimmedBackgroundColor == nil {
+                dimmedBackgroundColor = undimmedBackgroundColor?.dim(70)
+            }
+        }
+    }
+    public var dimmedBackgroundColor: UIColor?
     
-    public var image = UIImage()
-    public var pressedImage = UIImage()
+    // Image
+    public var image: UIImage?
+    public var pressedImage: UIImage?
     
+    // Text
     public var text = ""
     public var textAlignment = NSTextAlignment.Center
     public var textColor = UIColor.blackColor()
@@ -123,7 +135,15 @@ public class JABButton: JABTouchableView {
         
         if dimsWhenPressed {
             if pressed {
-                
+                if !dimmed {
+                    dimmed = true
+                    backgroundColor = dimmedBackgroundColor
+                }
+            } else {
+                if dimmed {
+                    dimmed = false
+                    backgroundColor = undimmedBackgroundColor
+                }
             }
         }
         
@@ -230,8 +250,6 @@ public class JABButton: JABTouchableView {
             
         }
         
-        buttonDelegate?.buttonTouchLocationChanged(self, locationInParentView: locationInParentView, locationInButton: locationInView)
-        
         updateAllUI()
         
     }
@@ -248,7 +266,7 @@ public class JABButton: JABTouchableView {
             
         }
         
-        buttonDelegate?.buttonTouchEnded(self, locationInParentView: locationInParentView, locationInButton: locationInView, pressed: pressed)
+        buttonDelegate?.buttonWasUntouched(self, triggered: pressed)
         
         pressed = false
         
@@ -258,7 +276,7 @@ public class JABButton: JABTouchableView {
     
     override public func touchDidCancel(locationInParentView: CGPoint?, locationInView: CGPoint, xDistance: CGFloat, yDistance: CGFloat, methodCallNumber: Int) {
         
-        buttonDelegate?.buttonTouchEnded(self, locationInParentView: locationInParentView, locationInButton: locationInView, pressed: false)
+        buttonDelegate?.buttonWasUntouched(self, triggered: false)
         pressed = false
         updateAllUI()
         
@@ -273,7 +291,6 @@ public class JABButton: JABTouchableView {
 public protocol JABButtonDelegate {
     
     func buttonWasTouched(button: JABButton)
-    func buttonTouchLocationChanged(button: JABButton, locationInParentView: CGPoint?, locationInButton: CGPoint)
-    func buttonTouchEnded(button: JABButton, locationInParentView: CGPoint?, locationInButton: CGPoint, pressed: Bool)
+    func buttonWasUntouched(button: JABButton, triggered: Bool)
     
 }

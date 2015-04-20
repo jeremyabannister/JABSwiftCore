@@ -169,6 +169,8 @@ public extension UIView {
     
     
     
+    // Layer
+    
     public var opacity: Float {
         get {
             return layer.opacity
@@ -178,5 +180,67 @@ public extension UIView {
         }
     }
     
+    public var cornerRadius: CGFloat {
+        get {
+            return layer.cornerRadius
+        }
+        set {
+            layer.cornerRadius = newValue
+        }
+    }
+    
+    public var masksToBounds: Bool {
+        get {
+            return layer.masksToBounds
+        }
+        set {
+            layer.masksToBounds = newValue
+        }
+    }
+    
+    public var shadowOpacity: Float {
+        get {
+            return layer.shadowOpacity
+        }
+        set {
+            layer.shadowOpacity = newValue
+        }
+    }
+    
+    public var shadowRadius: CGFloat {
+        get {
+            return layer.shadowRadius
+        }
+        set {
+            layer.shadowRadius = newValue
+        }
+    }
+    
+    public var shadowOffset: CGSize {
+        get {
+            return layer.shadowOffset
+        }
+        set {
+            layer.shadowOffset = newValue
+        }
+    }
+    
+    public var shadowColor: CGColor {
+        get {
+            return layer.shadowColor
+        }
+        set {
+            layer.shadowColor = newValue
+        }
+    }
+    
+    public var shadowPath: CGPath {
+        get {
+            return layer.shadowPath
+        }
+        set {
+            layer.shadowPath = newValue
+        }
+    }
     
 }
