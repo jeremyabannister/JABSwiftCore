@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import QuartzCore
 
 public class JABTouchManager: NSObject, UIGestureRecognizerDelegate {
     
@@ -18,13 +19,17 @@ public class JABTouchManager: NSObject, UIGestureRecognizerDelegate {
     // MARK: Delegate
     var delegate: JABTouchManagerDelegate?
     
-    // MARK: Touch
+    // MARK: State
     public var parentView: UIView?
     public var touchDomain: UIView
+    
     var touchRecognizer: UILongPressGestureRecognizer?
     
-    var initialTouchLocation = CGPoint(x: 0, y: 0)
-    
+    var initialTouchLocation = CGPoint() // Stores location from touchDidBegin
+    var mostRecentTouchLocation = CGPoint() // Does not ever store end location, only intermediate locations
+    var mostRecentTouchTime: NSTimeInterval = 0
+    var xVelocityHistory: [CGFloat] = []
+    var yVelocityHistory: [CGFloat] = []
     var deltaX: CGFloat = 0.0
     var deltaY: CGFloat = 0.0
     var previousDeltaX: CGFloat = 0.0
@@ -54,20 +59,27 @@ public class JABTouchManager: NSObject, UIGestureRecognizerDelegate {
         
         if let verifiedDelegate = delegate {
             
-            let location = gestureRecognizer.locationInView(parentView)
-            println(location)
-            println("parent view is \(parentView)")
-            let locationInTouchDomain = gestureRecognizer.locationInView(touchDomain)
+            let location = gestureRecognizer.locationInView(touchDomain) // Get the location in the associated TouchableView
+            let locationInParentView = gestureRecognizer.locationInView(parentView) // Get location in parent view
+            var xVelocity: CGFloat = 0.0
+            var yVelocity: CGFloat = 0.0
+            
+            var instantaneousXVelocity: CGFloat = 0.0
+            var instantaneousYVelocity: CGFloat = 0.0
+            
+            let velocityAverageCount = 4
+            
             
             methodCallNumber++
             
             if gestureRecognizer.state == UIGestureRecognizerState.Began {
                 
                 initialTouchLocation = location
+                mostRecentTouchLocation = location
                 previousDeltaX = 0.0
                 previousDeltaY = 0.0
                 
-                verifiedDelegate.touchDidBegin(location, locationInView: locationInTouchDomain)
+                verifiedDelegate.touchDidBegin(location, locationInParentView: locationInParentView)
                 
             } else {
                 
@@ -77,23 +89,129 @@ public class JABTouchManager: NSObject, UIGestureRecognizerDelegate {
                 var xDistanceMoved = deltaX - previousDeltaX
                 var yDistanceMoved = deltaY - previousDeltaY
                 
+                println("xDistance is \(xDistanceMoved) location.x = \(location.x)")
+                
                 if gestureRecognizer.state == UIGestureRecognizerState.Changed {
                     
-                    verifiedDelegate.touchDidChange(location, locationInView: locationInTouchDomain, xDistance: xDistanceMoved, yDistance: yDistanceMoved, methodCallNumber: methodCallNumber)
+                    let xDisplacement = location.x - mostRecentTouchLocation.x
+                    let yDisplacement = location.y - mostRecentTouchLocation.y
+                    let timeInterval = CGFloat(CACurrentMediaTime() - mostRecentTouchTime)
+                    
+                    instantaneousXVelocity = xDisplacement/timeInterval
+                    instantaneousYVelocity = yDisplacement/timeInterval
+                    
+                    xVelocityHistory.append(instantaneousXVelocity)
+                    yVelocityHistory.append(instantaneousYVelocity)
+                    
+                    var count = 0
+                    for v in xVelocityHistory {
+                        if count < velocityAverageCount {
+                            xVelocity += v
+                        }
+                        count++
+                    }
+                    
+                    count = 0
+                    for v in yVelocityHistory {
+                        if count < velocityAverageCount {
+                            yVelocity += v
+                        }
+                        count++
+                    }
+                    
+                    xVelocity = xVelocity/CGFloat(velocityAverageCount)
+                    yVelocity = yVelocity/CGFloat(velocityAverageCount)
+                    
+                    
+                    verifiedDelegate.touchDidChange(location, locationInParentView: locationInParentView, xDistance: xDistanceMoved, yDistance: yDistanceMoved, xVelocity: xVelocity, yVelocity: yVelocity, methodCallNumber: methodCallNumber)
                     
                     previousDeltaX = deltaX
                     previousDeltaY = deltaY
+                    
+                    mostRecentTouchLocation = location
+                    mostRecentTouchTime = CACurrentMediaTime()
                     
                     
                 } else {
                     
                     if gestureRecognizer.state == UIGestureRecognizerState.Ended {
                         
-                        verifiedDelegate.touchDidEnd(location, locationInView: locationInTouchDomain, xDistance: xDistanceMoved, yDistance: yDistanceMoved, methodCallNumber: methodCallNumber)
+                        let xDisplacement = location.x - mostRecentTouchLocation.x
+                        let yDisplacement = location.y - mostRecentTouchLocation.y
+                        let timeInterval = CGFloat(CACurrentMediaTime() - mostRecentTouchTime)
+                        
+                        instantaneousXVelocity = xDisplacement/timeInterval
+                        instantaneousYVelocity = yDisplacement/timeInterval
+                        
+                        // Record the velocity
+                        xVelocityHistory.append(instantaneousXVelocity)
+                        yVelocityHistory.append(instantaneousYVelocity)
+                        
+                        // Average recent velocities for return value
+                        var count = 0
+                        for v in xVelocityHistory {
+                            if count < velocityAverageCount {
+                                xVelocity += v
+                            }
+                            count++
+                        }
+                        
+                        count = 0
+                        for v in yVelocityHistory {
+                            if count < velocityAverageCount {
+                                yVelocity += v
+                            }
+                            count++
+                        }
+                        
+                        xVelocity = xVelocity/CGFloat(velocityAverageCount)
+                        yVelocity = yVelocity/CGFloat(velocityAverageCount)
+                        
+                        
+                        verifiedDelegate.touchDidEnd(location, locationInParentView: locationInParentView, xDistance: xDistanceMoved, yDistance: yDistanceMoved, xVelocity: xVelocity, yVelocity: yVelocity, methodCallNumber: methodCallNumber)
+                        
+                        mostRecentTouchLocation = CGPoint()
+                        xVelocityHistory = []
+                        yVelocityHistory = []
                         
                     } else if gestureRecognizer.state == UIGestureRecognizerState.Cancelled {
                         
-                        verifiedDelegate.touchDidCancel(location, locationInView: locationInTouchDomain, xDistance: xDistanceMoved, yDistance: yDistanceMoved, methodCallNumber: methodCallNumber)
+                        let xDisplacement = location.x - mostRecentTouchLocation.x
+                        let yDisplacement = location.y - mostRecentTouchLocation.y
+                        let timeInterval = CGFloat(CACurrentMediaTime() - mostRecentTouchTime)
+                        
+                        instantaneousXVelocity = xDisplacement/timeInterval
+                        instantaneousYVelocity = yDisplacement/timeInterval
+                        
+                        // Record the velocity
+                        xVelocityHistory.append(instantaneousXVelocity)
+                        yVelocityHistory.append(instantaneousYVelocity)
+                        
+                        // Average recent velocities for return value
+                        var count = 0
+                        for v in xVelocityHistory {
+                            if count < velocityAverageCount {
+                                println("adding")
+                                xVelocity += v
+                            }
+                            count++
+                        }
+                        
+                        count = 0
+                        for v in yVelocityHistory {
+                            if count < velocityAverageCount {
+                                yVelocity += v
+                            }
+                            count++
+                        }
+                        
+                        xVelocity = xVelocity/CGFloat(velocityAverageCount)
+                        yVelocity = yVelocity/CGFloat(velocityAverageCount)
+                        
+                        
+                        verifiedDelegate.touchDidCancel(location, locationInParentView: locationInParentView, xDistance: xDistanceMoved, yDistance: yDistanceMoved, xVelocity: xVelocity, yVelocity: yVelocity, methodCallNumber: methodCallNumber)
+                        
+                        mostRecentTouchLocation = CGPoint()
                         
                     }
                     
@@ -153,9 +271,9 @@ public protocol JABTouchManagerDelegate {
     
     var blockingViews: [UIView] { get }
     
-    func touchDidBegin (locationInParentView:CGPoint?, locationInView:CGPoint)
-    func touchDidChange (locationInParentView:CGPoint?, locationInView:CGPoint, xDistance:CGFloat, yDistance:CGFloat, methodCallNumber:Int)
-    func touchDidEnd (locationInParentView:CGPoint?, locationInView:CGPoint, xDistance:CGFloat, yDistance:CGFloat, methodCallNumber:Int)
-    func touchDidCancel (locationInParentView:CGPoint?, locationInView:CGPoint, xDistance:CGFloat, yDistance:CGFloat, methodCallNumber:Int)
+    func touchDidBegin (locationInView:CGPoint, locationInParentView:CGPoint?)
+    func touchDidChange (locationInView:CGPoint, locationInParentView:CGPoint?, xDistance:CGFloat, yDistance:CGFloat, xVelocity:CGFloat, yVelocity:CGFloat, methodCallNumber:Int)
+    func touchDidEnd (locationInView:CGPoint, locationInParentView:CGPoint?, xDistance:CGFloat, yDistance:CGFloat, xVelocity:CGFloat, yVelocity:CGFloat, methodCallNumber:Int)
+    func touchDidCancel (locationInView:CGPoint, locationInParentView:CGPoint?, xDistance:CGFloat, yDistance:CGFloat, xVelocity:CGFloat, yVelocity:CGFloat, methodCallNumber:Int)
     
 }

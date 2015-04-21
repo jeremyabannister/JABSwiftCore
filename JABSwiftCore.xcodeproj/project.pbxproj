@@ -17,6 +17,7 @@
 		875444DC1AE1D05800659E6B /* JABTouchManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 875444DB1AE1D05800659E6B /* JABTouchManager.swift */; };
 		875444DE1AE1D05E00659E6B /* JABButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 875444DD1AE1D05E00659E6B /* JABButton.swift */; };
 		875444E01AE1D06500659E6B /* JABApplicationRoot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 875444DF1AE1D06500659E6B /* JABApplicationRoot.swift */; };
+		87EE71A91AE562EF00526770 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87EE71A81AE562EF00526770 /* QuartzCore.framework */; };
 		87F4FD3E1AE421A300953E38 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F4FD3D1AE421A300953E38 /* UIViewExtension.swift */; };
 		87F4FD411AE421ED00953E38 /* CGRectExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F4FD401AE421ED00953E38 /* CGRectExtension.swift */; };
 		87F4FD431AE4222A00953E38 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F4FD421AE4222A00953E38 /* UIColorExtension.swift */; };
@@ -46,6 +47,7 @@
 		875444DB1AE1D05800659E6B /* JABTouchManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JABTouchManager.swift; sourceTree = "<group>"; };
 		875444DD1AE1D05E00659E6B /* JABButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JABButton.swift; sourceTree = "<group>"; };
 		875444DF1AE1D06500659E6B /* JABApplicationRoot.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JABApplicationRoot.swift; sourceTree = "<group>"; };
+		87EE71A81AE562EF00526770 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		87F4FD3D1AE421A300953E38 /* UIViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		87F4FD401AE421ED00953E38 /* CGRectExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CGRectExtension.swift; sourceTree = "<group>"; };
 		87F4FD421AE4222A00953E38 /* UIColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
@@ -56,6 +58,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				87EE71A91AE562EF00526770 /* QuartzCore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -73,6 +76,7 @@
 		875444AB1AE1D01C00659E6B = {
 			isa = PBXGroup;
 			children = (
+				87EE71A81AE562EF00526770 /* QuartzCore.framework */,
 				875444B71AE1D01C00659E6B /* JABSwiftCore */,
 				875444C41AE1D01C00659E6B /* JABSwiftCoreTests */,
 				875444B61AE1D01C00659E6B /* Products */,

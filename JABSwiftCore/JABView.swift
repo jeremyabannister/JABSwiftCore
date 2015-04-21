@@ -61,5 +61,11 @@ public class JABView: UIView {
         
     }
     
+    public func animatedUpdate (duration: NSTimeInterval = 0.3) {
+        UIView.animateWithDuration(duration, animations: { () -> Void in
+            self.updateAllUI()
+        })
+    }
+    
     
 }
