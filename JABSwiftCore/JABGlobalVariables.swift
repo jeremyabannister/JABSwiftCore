@@ -12,6 +12,7 @@ public class JABGlobalVariables: NSObject {
     
     public static var staticOnScreenViewIsSet = false
     public static var staticOnScreenView: UIView?
+    public static var backPanTouchThreshold: CGFloat = 25
     
     
 }
