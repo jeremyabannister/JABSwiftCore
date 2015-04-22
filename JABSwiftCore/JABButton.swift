@@ -22,7 +22,7 @@ public class JABButton: JABTouchableView {
     
     // MARK: State
     // Button
-    public var buttonDelegate: JABButtonDelegate?
+    public var buttonDelegate: JABButtonDelegate? // The receiver of notifications from button
     public var type = JABButtonType.Image
     public var pressed = false
     public var dimmed = false
@@ -155,7 +155,9 @@ public class JABButton: JABTouchableView {
         
         if pressed {
             
-            imageView.image = pressedImage
+            if let verifiedPressedImage = pressedImage {
+                imageView.image = verifiedPressedImage
+            }
             
         } else {
             

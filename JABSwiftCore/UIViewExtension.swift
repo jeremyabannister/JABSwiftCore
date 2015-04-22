@@ -243,4 +243,56 @@ public extension UIView {
         }
     }
     
+    
+    
+    public func printFrame(tag: NSString = "") {
+        if tag == "" {
+            println(frame)
+        } else {
+            println("\(tag) : \(frame)")
+        }
+    }
+    
+    
+    public func red () {
+        backgroundColor = UIColor.redColor()
+    }
+    
+    public func blue () {
+        backgroundColor = UIColor.blueColor()
+    }
+    
+    public func green () {
+        backgroundColor = UIColor.greenColor()
+    }
+    
+    public func yellow () {
+        backgroundColor = UIColor.yellowColor()
+    }
+    
+    public func purple () {
+        backgroundColor = UIColor.purpleColor()
+    }
+    
+    public func cyan () {
+        backgroundColor = UIColor.cyanColor()
+    }
+    
+    public func white () {
+        backgroundColor = UIColor.whiteColor()
+    }
+    
+    public func black () {
+        backgroundColor = UIColor.blackColor()
+    }
+    
+    public func lightGray () {
+        backgroundColor = UIColor.lightGrayColor()
+    }
+    
+    public func darkGray () {
+        backgroundColor = UIColor.darkGrayColor()
+    }
+    
+    
 }
