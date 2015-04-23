@@ -61,10 +61,20 @@ public class JABView: UIView {
         
     }
     
-    public func animatedUpdate (duration: NSTimeInterval = 0.3) {
+    public func animatedUpdate () {
+        animatedUpdate(0.3)
+    }
+    
+    public func animatedUpdate (duration: NSTimeInterval) {
+        animatedUpdate(duration: duration, completion: { (Bool) -> () in
+            
+        })
+    }
+    
+    public func animatedUpdate (duration: NSTimeInterval = 0.3, completion: (Bool) -> Void) {
         UIView.animateWithDuration(duration, animations: { () -> Void in
             self.updateAllUI()
-        })
+        }, completion: completion)
     }
     
     

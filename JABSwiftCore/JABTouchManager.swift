@@ -58,11 +58,11 @@ public class JABTouchManager: NSObject, UIGestureRecognizerDelegate {
     
     public func touchDetected(gestureRecognizer: UILongPressGestureRecognizer) {
         
-        if let staticOnScreenView = JABGlobalVariables.staticOnScreenView {
+        if let verifiedStaticOnScreenView = staticOnScreenView {
             if let verifiedDelegate = delegate {
                 
                 let location = gestureRecognizer.locationInView(touchDomain) // Get the location in the associated TouchableView
-                let locationOnScreen = gestureRecognizer.locationInView(staticOnScreenView) // Get location in Static view
+                let locationOnScreen = gestureRecognizer.locationInView(verifiedStaticOnScreenView) // Get location in Static view
                 var xVelocity: CGFloat = 0.0
                 var yVelocity: CGFloat = 0.0
                 

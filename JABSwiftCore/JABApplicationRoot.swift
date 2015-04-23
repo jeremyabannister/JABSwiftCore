@@ -24,7 +24,7 @@ public class JABApplicationRoot: JABView {
     public override init () {
         super.init()
         
-        JABGlobalVariables.staticOnScreenView = self
+        staticOnScreenView = self
         
     }
     
