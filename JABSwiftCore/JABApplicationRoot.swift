@@ -6,6 +6,8 @@
 //  Copyright (c) 2015 Bard App Team. All rights reserved.
 //
 
+import Foundation
+
 public class JABApplicationRoot: JABView {
     
     

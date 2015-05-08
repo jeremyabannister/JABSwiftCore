@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		8701987B1AE61FCA0073BFD5 /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8701987A1AE61FCA0073BFD5 /* UIImageExtension.swift */; };
+		8705209D1AEF8799008C9555 /* ArrayExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8705209C1AEF8799008C9555 /* ArrayExtension.swift */; };
 		875444BB1AE1D01C00659E6B /* JABSwiftCore.h in Headers */ = {isa = PBXBuildFile; fileRef = 875444BA1AE1D01C00659E6B /* JABSwiftCore.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		875444C11AE1D01C00659E6B /* JABSwiftCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 875444B51AE1D01C00659E6B /* JABSwiftCore.framework */; };
 		875444C81AE1D01C00659E6B /* JABSwiftCoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 875444C71AE1D01C00659E6B /* JABSwiftCoreTests.swift */; };
@@ -18,7 +19,9 @@
 		875444DC1AE1D05800659E6B /* JABTouchManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 875444DB1AE1D05800659E6B /* JABTouchManager.swift */; };
 		875444DE1AE1D05E00659E6B /* JABButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 875444DD1AE1D05E00659E6B /* JABButton.swift */; };
 		875444E01AE1D06500659E6B /* JABApplicationRoot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 875444DF1AE1D06500659E6B /* JABApplicationRoot.swift */; };
+		87C21BBC1AEF131300FCE515 /* CGPointExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87C21BBB1AEF131300FCE515 /* CGPointExtension.swift */; };
 		87EE71A91AE562EF00526770 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87EE71A81AE562EF00526770 /* QuartzCore.framework */; };
+		87EF09DD1AFCA27100BE92A4 /* PhysicalObjectProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87EF09DC1AFCA27000BE92A4 /* PhysicalObjectProtocol.swift */; };
 		87F4FD3E1AE421A300953E38 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F4FD3D1AE421A300953E38 /* UIViewExtension.swift */; };
 		87F4FD411AE421ED00953E38 /* CGRectExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F4FD401AE421ED00953E38 /* CGRectExtension.swift */; };
 		87F4FD431AE4222A00953E38 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F4FD421AE4222A00953E38 /* UIColorExtension.swift */; };
@@ -36,6 +39,7 @@
 
 /* Begin PBXFileReference section */
 		8701987A1AE61FCA0073BFD5 /* UIImageExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageExtension.swift; sourceTree = "<group>"; };
+		8705209C1AEF8799008C9555 /* ArrayExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayExtension.swift; sourceTree = "<group>"; };
 		875444B51AE1D01C00659E6B /* JABSwiftCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = JABSwiftCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		875444B91AE1D01C00659E6B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		875444BA1AE1D01C00659E6B /* JABSwiftCore.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JABSwiftCore.h; sourceTree = "<group>"; };
@@ -49,7 +53,10 @@
 		875444DB1AE1D05800659E6B /* JABTouchManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JABTouchManager.swift; sourceTree = "<group>"; };
 		875444DD1AE1D05E00659E6B /* JABButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JABButton.swift; sourceTree = "<group>"; };
 		875444DF1AE1D06500659E6B /* JABApplicationRoot.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JABApplicationRoot.swift; sourceTree = "<group>"; };
+		87C21BBB1AEF131300FCE515 /* CGPointExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CGPointExtension.swift; sourceTree = "<group>"; };
+		87D997A01AF1640A0047483E /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		87EE71A81AE562EF00526770 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		87EF09DC1AFCA27000BE92A4 /* PhysicalObjectProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhysicalObjectProtocol.swift; sourceTree = "<group>"; };
 		87F4FD3D1AE421A300953E38 /* UIViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		87F4FD401AE421ED00953E38 /* CGRectExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CGRectExtension.swift; sourceTree = "<group>"; };
 		87F4FD421AE4222A00953E38 /* UIColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
@@ -78,6 +85,7 @@
 		875444AB1AE1D01C00659E6B = {
 			isa = PBXGroup;
 			children = (
+				87D997A01AF1640A0047483E /* CoreGraphics.framework */,
 				87EE71A81AE562EF00526770 /* QuartzCore.framework */,
 				875444B71AE1D01C00659E6B /* JABSwiftCore */,
 				875444C41AE1D01C00659E6B /* JABSwiftCoreTests */,
@@ -135,6 +143,7 @@
 			children = (
 				875444D11AE1D02C00659E6B /* Toolkit.swift */,
 				875444D21AE1D02C00659E6B /* JABGlobalVariables.swift */,
+				87EF09DC1AFCA27000BE92A4 /* PhysicalObjectProtocol.swift */,
 				87F4FD3F1AE421B100953E38 /* Class Extensions */,
 			);
 			name = General;
@@ -215,6 +224,8 @@
 				87F4FD401AE421ED00953E38 /* CGRectExtension.swift */,
 				87F4FD421AE4222A00953E38 /* UIColorExtension.swift */,
 				8701987A1AE61FCA0073BFD5 /* UIImageExtension.swift */,
+				87C21BBB1AEF131300FCE515 /* CGPointExtension.swift */,
+				8705209C1AEF8799008C9555 /* ArrayExtension.swift */,
 			);
 			name = "Class Extensions";
 			sourceTree = "<group>";
@@ -328,8 +339,10 @@
 			files = (
 				875444DA1AE1D04F00659E6B /* JABTouchableView.swift in Sources */,
 				875444D41AE1D02C00659E6B /* JABGlobalVariables.swift in Sources */,
+				87C21BBC1AEF131300FCE515 /* CGPointExtension.swift in Sources */,
 				875444DC1AE1D05800659E6B /* JABTouchManager.swift in Sources */,
 				875444E01AE1D06500659E6B /* JABApplicationRoot.swift in Sources */,
+				87EF09DD1AFCA27100BE92A4 /* PhysicalObjectProtocol.swift in Sources */,
 				8701987B1AE61FCA0073BFD5 /* UIImageExtension.swift in Sources */,
 				875444D31AE1D02C00659E6B /* Toolkit.swift in Sources */,
 				875444D71AE1D03E00659E6B /* JABView.swift in Sources */,
@@ -337,6 +350,7 @@
 				87F4FD431AE4222A00953E38 /* UIColorExtension.swift in Sources */,
 				87F4FD3E1AE421A300953E38 /* UIViewExtension.swift in Sources */,
 				875444DE1AE1D05E00659E6B /* JABButton.swift in Sources */,
+				8705209D1AEF8799008C9555 /* ArrayExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

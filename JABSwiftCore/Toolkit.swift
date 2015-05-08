@@ -9,6 +9,20 @@
 import Foundation
 import UIKit
 
+
+extension Array {
+    func find(includedElement: T -> Bool) -> Int? {
+        for (idx, element) in enumerate(self) {
+            if includedElement(element) {
+                return idx
+            }
+        }
+        return nil
+    }
+}
+
+
+
 public class Toolkit {
     
     // MARK:
@@ -36,12 +50,15 @@ public class Toolkit {
     // MARK: Arrays
     // MARK:
     
-    public static func removeObject<T : Equatable>(object: T, inout fromArray array: [T])
-    {
+    public static func removeObject<T : Equatable>(object: T, inout fromArray array: [T]) {
         var index = find(array, object)
         array.removeAtIndex(index!)
     }
     
+    public static func indexOfObject<T : Equatable>(object: T, inArray array: [T]) -> Int? {
+        var index = find(array, object)
+        return index
+    }
     
     
     
@@ -65,10 +82,7 @@ public class Toolkit {
         }
         
         return false
-        
-        
     }
-    
     
     
 }
