@@ -22,6 +22,8 @@
 		87C21BBC1AEF131300FCE515 /* CGPointExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87C21BBB1AEF131300FCE515 /* CGPointExtension.swift */; };
 		87EE71A91AE562EF00526770 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87EE71A81AE562EF00526770 /* QuartzCore.framework */; };
 		87EF09DD1AFCA27100BE92A4 /* PhysicalObjectProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87EF09DC1AFCA27000BE92A4 /* PhysicalObjectProtocol.swift */; };
+		87F422D81AFDB1C600C564D9 /* Vector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F422D71AFDB1C600C564D9 /* Vector.swift */; };
+		87F422DC1AFDB62A00C564D9 /* Size.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F422DB1AFDB62A00C564D9 /* Size.swift */; };
 		87F4FD3E1AE421A300953E38 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F4FD3D1AE421A300953E38 /* UIViewExtension.swift */; };
 		87F4FD411AE421ED00953E38 /* CGRectExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F4FD401AE421ED00953E38 /* CGRectExtension.swift */; };
 		87F4FD431AE4222A00953E38 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F4FD421AE4222A00953E38 /* UIColorExtension.swift */; };
@@ -57,6 +59,8 @@
 		87D997A01AF1640A0047483E /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		87EE71A81AE562EF00526770 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		87EF09DC1AFCA27000BE92A4 /* PhysicalObjectProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhysicalObjectProtocol.swift; sourceTree = "<group>"; };
+		87F422D71AFDB1C600C564D9 /* Vector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Vector.swift; sourceTree = "<group>"; };
+		87F422DB1AFDB62A00C564D9 /* Size.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Size.swift; sourceTree = "<group>"; };
 		87F4FD3D1AE421A300953E38 /* UIViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		87F4FD401AE421ED00953E38 /* CGRectExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CGRectExtension.swift; sourceTree = "<group>"; };
 		87F4FD421AE4222A00953E38 /* UIColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
@@ -107,6 +111,8 @@
 			children = (
 				875444BA1AE1D01C00659E6B /* JABSwiftCore.h */,
 				875444D51AE1D03000659E6B /* General */,
+				87F422D51AFDB1A000C564D9 /* Physics */,
+				87F422DA1AFDB1D600C564D9 /* Math */,
 				875444D81AE1D04000659E6B /* JABView */,
 				875444B81AE1D01C00659E6B /* Supporting Files */,
 			);
@@ -143,7 +149,6 @@
 			children = (
 				875444D11AE1D02C00659E6B /* Toolkit.swift */,
 				875444D21AE1D02C00659E6B /* JABGlobalVariables.swift */,
-				87EF09DC1AFCA27000BE92A4 /* PhysicalObjectProtocol.swift */,
 				87F4FD3F1AE421B100953E38 /* Class Extensions */,
 			);
 			name = General;
@@ -215,6 +220,47 @@
 				875444DF1AE1D06500659E6B /* JABApplicationRoot.swift */,
 			);
 			name = "Application Root";
+			sourceTree = "<group>";
+		};
+		87F422D51AFDB1A000C564D9 /* Physics */ = {
+			isa = PBXGroup;
+			children = (
+				87F422D61AFDB1A900C564D9 /* Physical Object Protocol */,
+				87F422DD1AFDB63800C564D9 /* Size */,
+			);
+			name = Physics;
+			sourceTree = "<group>";
+		};
+		87F422D61AFDB1A900C564D9 /* Physical Object Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				87EF09DC1AFCA27000BE92A4 /* PhysicalObjectProtocol.swift */,
+			);
+			name = "Physical Object Protocol";
+			sourceTree = "<group>";
+		};
+		87F422D91AFDB1CA00C564D9 /* Vector */ = {
+			isa = PBXGroup;
+			children = (
+				87F422D71AFDB1C600C564D9 /* Vector.swift */,
+			);
+			name = Vector;
+			sourceTree = "<group>";
+		};
+		87F422DA1AFDB1D600C564D9 /* Math */ = {
+			isa = PBXGroup;
+			children = (
+				87F422D91AFDB1CA00C564D9 /* Vector */,
+			);
+			name = Math;
+			sourceTree = "<group>";
+		};
+		87F422DD1AFDB63800C564D9 /* Size */ = {
+			isa = PBXGroup;
+			children = (
+				87F422DB1AFDB62A00C564D9 /* Size.swift */,
+			);
+			name = Size;
 			sourceTree = "<group>";
 		};
 		87F4FD3F1AE421B100953E38 /* Class Extensions */ = {
@@ -337,6 +383,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				87F422DC1AFDB62A00C564D9 /* Size.swift in Sources */,
 				875444DA1AE1D04F00659E6B /* JABTouchableView.swift in Sources */,
 				875444D41AE1D02C00659E6B /* JABGlobalVariables.swift in Sources */,
 				87C21BBC1AEF131300FCE515 /* CGPointExtension.swift in Sources */,
@@ -344,6 +391,7 @@
 				875444E01AE1D06500659E6B /* JABApplicationRoot.swift in Sources */,
 				87EF09DD1AFCA27100BE92A4 /* PhysicalObjectProtocol.swift in Sources */,
 				8701987B1AE61FCA0073BFD5 /* UIImageExtension.swift in Sources */,
+				87F422D81AFDB1C600C564D9 /* Vector.swift in Sources */,
 				875444D31AE1D02C00659E6B /* Toolkit.swift in Sources */,
 				875444D71AE1D03E00659E6B /* JABView.swift in Sources */,
 				87F4FD411AE421ED00953E38 /* CGRectExtension.swift in Sources */,

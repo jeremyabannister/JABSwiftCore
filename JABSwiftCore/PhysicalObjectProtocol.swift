@@ -14,9 +14,9 @@ public protocol PhysicalObject {
     // MARK: State
     var isBeingHeld: Bool { get set }
     
-    var position: CGPoint { get set }
-    var dimensions: CGSize { get set }
-    var velocity: CGPoint { get set }
+    var position: Vector { get set }
+    var dimensions: Size { get set }
+    var velocity: Vector { get set }
     var mass: CGFloat { get set }
     var charge: CGFloat { get set }
     
