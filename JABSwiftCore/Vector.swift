@@ -47,6 +47,25 @@ public class Vector {
         return false
     }
     
+    public func isEqualTo (vector: Vector) -> Bool {
+        if x == vector.x && y == vector.y && z == vector.z {
+            return true
+        }
+        return false
+    }
+    
+    public func isSameDirectionAs (vector: Vector) -> Bool {
+        let angle = radiansBetween(vector)
+        if angle != nil {
+            if angle! == 0 {
+                return true
+            }
+            return false
+        }
+        
+        return false
+    }
+    
     // Addition
     public func addOn(vector: Vector) {
         let result = addedOn(vector)
