@@ -58,10 +58,10 @@ public class JABTouchManager: NSObject, UIGestureRecognizerDelegate {
     
     public func touchDetected(gestureRecognizer: UILongPressGestureRecognizer) {
         
+        
         if let verifiedStaticOnScreenView = staticOnScreenView {
             if let verifiedDelegate = delegate {
                 
-                let location = gestureRecognizer.locationInView(touchDomain) // Get the location in the associated TouchableView
                 let locationOnScreen = gestureRecognizer.locationInView(verifiedStaticOnScreenView) // Get location in Static view
                 var xVelocity: CGFloat = 0.0
                 var yVelocity: CGFloat = 0.0
@@ -89,8 +89,8 @@ public class JABTouchManager: NSObject, UIGestureRecognizerDelegate {
                     deltaX = locationOnScreen.x - initialTouchLocation.x
                     deltaY = locationOnScreen.y - initialTouchLocation.y
                     
-                    var xDistanceMoved = deltaX - previousDeltaX
-                    var yDistanceMoved = deltaY - previousDeltaY
+                    let xDistanceMoved = deltaX - previousDeltaX
+                    let yDistanceMoved = deltaY - previousDeltaY
                     
                     
                     if gestureRecognizer.state == UIGestureRecognizerState.Changed {
@@ -224,7 +224,7 @@ public class JABTouchManager: NSObject, UIGestureRecognizerDelegate {
                 
             }
         } else {
-            println("Trying to detect touch before static on screen view was set")
+            print("Trying to detect touch before static on screen view was set")
         }
         
     }
@@ -273,9 +273,9 @@ public protocol JABTouchManagerDelegate {
     
     var blockingViews: [UIView] { get }
     
-    func touchDidBegin (gestureRecgonizer: UIGestureRecognizer)
-    func touchDidChange (gestureRecgonizer: UIGestureRecognizer, xDistance:CGFloat, yDistance:CGFloat, xVelocity:CGFloat, yVelocity:CGFloat, methodCallNumber:Int)
-    func touchDidEnd (gestureRecgonizer: UIGestureRecognizer, xDistance:CGFloat, yDistance:CGFloat, xVelocity:CGFloat, yVelocity:CGFloat, methodCallNumber:Int)
-    func touchDidCancel (gestureRecgonizer: UIGestureRecognizer, xDistance:CGFloat, yDistance:CGFloat, xVelocity:CGFloat, yVelocity:CGFloat, methodCallNumber:Int)
+    func touchDidBegin (gestureRecognizer: UIGestureRecognizer)
+    func touchDidChange (gestureRecognizer: UIGestureRecognizer, xDistance:CGFloat, yDistance:CGFloat, xVelocity:CGFloat, yVelocity:CGFloat, methodCallNumber:Int)
+    func touchDidEnd (gestureRecognizer: UIGestureRecognizer, xDistance:CGFloat, yDistance:CGFloat, xVelocity:CGFloat, yVelocity:CGFloat, methodCallNumber:Int)
+    func touchDidCancel (gestureRecognizer: UIGestureRecognizer, xDistance:CGFloat, yDistance:CGFloat, xVelocity:CGFloat, yVelocity:CGFloat, methodCallNumber:Int)
     
 }

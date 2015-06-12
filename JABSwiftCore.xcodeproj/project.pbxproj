@@ -10,6 +10,7 @@
 		8701987B1AE61FCA0073BFD5 /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8701987A1AE61FCA0073BFD5 /* UIImageExtension.swift */; };
 		8705209D1AEF8799008C9555 /* ArrayExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8705209C1AEF8799008C9555 /* ArrayExtension.swift */; };
 		87128B671AFDDC1C00D1F34A /* UIFontExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87128B661AFDDC1B00D1F34A /* UIFontExtension.swift */; };
+		873BFA6E1B11AAA300E677F5 /* JABImagePanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873BFA6D1B11AAA200E677F5 /* JABImagePanel.swift */; };
 		875444BB1AE1D01C00659E6B /* JABSwiftCore.h in Headers */ = {isa = PBXBuildFile; fileRef = 875444BA1AE1D01C00659E6B /* JABSwiftCore.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		875444C11AE1D01C00659E6B /* JABSwiftCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 875444B51AE1D01C00659E6B /* JABSwiftCore.framework */; };
 		875444C81AE1D01C00659E6B /* JABSwiftCoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 875444C71AE1D01C00659E6B /* JABSwiftCoreTests.swift */; };
@@ -21,6 +22,7 @@
 		875444DE1AE1D05E00659E6B /* JABButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 875444DD1AE1D05E00659E6B /* JABButton.swift */; };
 		875444E01AE1D06500659E6B /* JABApplicationRoot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 875444DF1AE1D06500659E6B /* JABApplicationRoot.swift */; };
 		87C21BBC1AEF131300FCE515 /* CGPointExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87C21BBB1AEF131300FCE515 /* CGPointExtension.swift */; };
+		87ED41DA1B1593F600B57E7B /* JABSquareImagePanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87ED41D91B1593F600B57E7B /* JABSquareImagePanel.swift */; };
 		87EE71A91AE562EF00526770 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87EE71A81AE562EF00526770 /* QuartzCore.framework */; };
 		87EF09DD1AFCA27100BE92A4 /* PhysicalObjectProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87EF09DC1AFCA27000BE92A4 /* PhysicalObjectProtocol.swift */; };
 		87F422D81AFDB1C600C564D9 /* Vector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F422D71AFDB1C600C564D9 /* Vector.swift */; };
@@ -28,6 +30,8 @@
 		87F4FD3E1AE421A300953E38 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F4FD3D1AE421A300953E38 /* UIViewExtension.swift */; };
 		87F4FD411AE421ED00953E38 /* CGRectExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F4FD401AE421ED00953E38 /* CGRectExtension.swift */; };
 		87F4FD431AE4222A00953E38 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F4FD421AE4222A00953E38 /* UIColorExtension.swift */; };
+		87F771EB1B0C1C0E00889827 /* JABPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F771EA1B0C1C0E00889827 /* JABPanel.swift */; };
+		87F771EF1B0C1C6600889827 /* JABPaneledScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F771EE1B0C1C6600889827 /* JABPaneledScrollView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +48,7 @@
 		8701987A1AE61FCA0073BFD5 /* UIImageExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageExtension.swift; sourceTree = "<group>"; };
 		8705209C1AEF8799008C9555 /* ArrayExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayExtension.swift; sourceTree = "<group>"; };
 		87128B661AFDDC1B00D1F34A /* UIFontExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIFontExtension.swift; sourceTree = "<group>"; };
+		873BFA6D1B11AAA200E677F5 /* JABImagePanel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JABImagePanel.swift; sourceTree = "<group>"; };
 		875444B51AE1D01C00659E6B /* JABSwiftCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = JABSwiftCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		875444B91AE1D01C00659E6B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		875444BA1AE1D01C00659E6B /* JABSwiftCore.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JABSwiftCore.h; sourceTree = "<group>"; };
@@ -59,6 +64,7 @@
 		875444DF1AE1D06500659E6B /* JABApplicationRoot.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JABApplicationRoot.swift; sourceTree = "<group>"; };
 		87C21BBB1AEF131300FCE515 /* CGPointExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CGPointExtension.swift; sourceTree = "<group>"; };
 		87D997A01AF1640A0047483E /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		87ED41D91B1593F600B57E7B /* JABSquareImagePanel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JABSquareImagePanel.swift; sourceTree = "<group>"; };
 		87EE71A81AE562EF00526770 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		87EF09DC1AFCA27000BE92A4 /* PhysicalObjectProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhysicalObjectProtocol.swift; sourceTree = "<group>"; };
 		87F422D71AFDB1C600C564D9 /* Vector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Vector.swift; sourceTree = "<group>"; };
@@ -66,6 +72,8 @@
 		87F4FD3D1AE421A300953E38 /* UIViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		87F4FD401AE421ED00953E38 /* CGRectExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CGRectExtension.swift; sourceTree = "<group>"; };
 		87F4FD421AE4222A00953E38 /* UIColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
+		87F771EA1B0C1C0E00889827 /* JABPanel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JABPanel.swift; sourceTree = "<group>"; };
+		87F771EE1B0C1C6600889827 /* JABPaneledScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JABPaneledScrollView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +96,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		873BFA6F1B11AAAA00E677F5 /* Image Panel */ = {
+			isa = PBXGroup;
+			children = (
+				873BFA6D1B11AAA200E677F5 /* JABImagePanel.swift */,
+			);
+			name = "Image Panel";
+			sourceTree = "<group>";
+		};
+		873BFA701B11AAB000E677F5 /* Subclasses */ = {
+			isa = PBXGroup;
+			children = (
+				873BFA6F1B11AAAA00E677F5 /* Image Panel */,
+				87ED41DB1B15940200B57E7B /* Square Image Panel */,
+			);
+			name = Subclasses;
+			sourceTree = "<group>";
+		};
 		875444AB1AE1D01C00659E6B = {
 			isa = PBXGroup;
 			children = (
@@ -170,6 +195,7 @@
 			children = (
 				875444E61AE1D09500659E6B /* Touchable View */,
 				875444E71AE1D09A00659E6B /* Application Root */,
+				87F771F01B0C1C6B00889827 /* PaneledScrollView */,
 			);
 			name = Subclasses;
 			sourceTree = "<group>";
@@ -222,6 +248,14 @@
 				875444DF1AE1D06500659E6B /* JABApplicationRoot.swift */,
 			);
 			name = "Application Root";
+			sourceTree = "<group>";
+		};
+		87ED41DB1B15940200B57E7B /* Square Image Panel */ = {
+			isa = PBXGroup;
+			children = (
+				87ED41D91B1593F600B57E7B /* JABSquareImagePanel.swift */,
+			);
+			name = "Square Image Panel";
 			sourceTree = "<group>";
 		};
 		87F422D51AFDB1A000C564D9 /* Physics */ = {
@@ -277,6 +311,32 @@
 				8705209C1AEF8799008C9555 /* ArrayExtension.swift */,
 			);
 			name = "Class Extensions";
+			sourceTree = "<group>";
+		};
+		87F771EC1B0C1C1800889827 /* Panel */ = {
+			isa = PBXGroup;
+			children = (
+				87F771EA1B0C1C0E00889827 /* JABPanel.swift */,
+				873BFA701B11AAB000E677F5 /* Subclasses */,
+			);
+			name = Panel;
+			sourceTree = "<group>";
+		};
+		87F771ED1B0C1C2800889827 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				87F771EC1B0C1C1800889827 /* Panel */,
+			);
+			name = Components;
+			sourceTree = "<group>";
+		};
+		87F771F01B0C1C6B00889827 /* PaneledScrollView */ = {
+			isa = PBXGroup;
+			children = (
+				87F771EE1B0C1C6600889827 /* JABPaneledScrollView.swift */,
+				87F771ED1B0C1C2800889827 /* Components */,
+			);
+			name = PaneledScrollView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -335,11 +395,13 @@
 		875444AC1AE1D01C00659E6B /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0630;
 				ORGANIZATIONNAME = "Jeremy Bannister";
 				TargetAttributes = {
 					875444B41AE1D01C00659E6B = {
 						CreatedOnToolsVersion = 6.3;
+						DevelopmentTeam = H5N9FLA33R;
 					};
 					875444BF1AE1D01C00659E6B = {
 						CreatedOnToolsVersion = 6.3;
@@ -386,6 +448,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				87ED41DA1B1593F600B57E7B /* JABSquareImagePanel.swift in Sources */,
 				87F422DC1AFDB62A00C564D9 /* Size.swift in Sources */,
 				875444DA1AE1D04F00659E6B /* JABTouchableView.swift in Sources */,
 				87128B671AFDDC1C00D1F34A /* UIFontExtension.swift in Sources */,
@@ -394,10 +457,13 @@
 				875444DC1AE1D05800659E6B /* JABTouchManager.swift in Sources */,
 				875444E01AE1D06500659E6B /* JABApplicationRoot.swift in Sources */,
 				87EF09DD1AFCA27100BE92A4 /* PhysicalObjectProtocol.swift in Sources */,
+				87F771EB1B0C1C0E00889827 /* JABPanel.swift in Sources */,
+				87F771EF1B0C1C6600889827 /* JABPaneledScrollView.swift in Sources */,
 				8701987B1AE61FCA0073BFD5 /* UIImageExtension.swift in Sources */,
 				87F422D81AFDB1C600C564D9 /* Vector.swift in Sources */,
 				875444D31AE1D02C00659E6B /* Toolkit.swift in Sources */,
 				875444D71AE1D03E00659E6B /* JABView.swift in Sources */,
+				873BFA6E1B11AAA300E677F5 /* JABImagePanel.swift in Sources */,
 				87F4FD411AE421ED00953E38 /* CGRectExtension.swift in Sources */,
 				87F4FD431AE4222A00953E38 /* UIColorExtension.swift in Sources */,
 				87F4FD3E1AE421A300953E38 /* UIViewExtension.swift in Sources */,
@@ -518,6 +584,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -526,6 +594,7 @@
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -535,6 +604,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -543,6 +614,7 @@
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SKIP_INSTALL = YES;
 			};
 			name = Release;

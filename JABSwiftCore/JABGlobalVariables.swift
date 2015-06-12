@@ -8,6 +8,7 @@
 
 import UIKit
 
+public var iPad = false
 public let heightOfStatusBar = CGFloat(20.0)
 public var staticOnScreenView: UIView?
 public let partialSlideFraction = CGFloat(0.3)
@@ -26,3 +27,24 @@ public let blackColor = UIColor.blackColor()
 public let lightGrayColor = UIColor.lightGrayColor()
 public let darkGrayColor = UIColor.darkGrayColor()
 public let clearColor = UIColor.clearColor()
+
+
+
+
+public func initializeGlobalParameters () {
+    
+    if UIDevice.currentDevice().model == "iPad" {
+        iPad == true
+    }
+    
+}
+
+
+public func indexOfA(object: AnyObject, array: [AnyObject]) -> Int? {
+    for i in 0..<array.count {
+        if array[i] === object {
+            return i
+        }
+    }
+    return nil
+}

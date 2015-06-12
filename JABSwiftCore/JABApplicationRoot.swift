@@ -27,6 +27,7 @@ public class JABApplicationRoot: JABView {
         super.init()
         
         staticOnScreenView = self
+        initializeGlobalParameters()
         
     }
     

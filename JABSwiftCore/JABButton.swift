@@ -230,7 +230,7 @@ public class JABButton: JABTouchableView {
     // MARK:
     
     // MARK: Touch Manager
-    override public func touchDidBegin(gestureRecgonizer: UIGestureRecognizer) {
+    override public func touchDidBegin(gestureRecognizer: UIGestureRecognizer) {
         
         pressed = true
         updateAllUI()
@@ -238,9 +238,9 @@ public class JABButton: JABTouchableView {
         
     }
     
-    override public func touchDidChange(gestureRecgonizer: UIGestureRecognizer, xDistance: CGFloat, yDistance: CGFloat, xVelocity: CGFloat, yVelocity: CGFloat, methodCallNumber: Int) {
+    override public func touchDidChange(gestureRecognizer: UIGestureRecognizer, xDistance: CGFloat, yDistance: CGFloat, xVelocity: CGFloat, yVelocity: CGFloat, methodCallNumber: Int) {
         
-        if relativeFrame.contains(gestureRecgonizer.locationInView(self)) {
+        if relativeFrame.contains(gestureRecognizer.locationInView(self)) {
             
             pressed = true
             
@@ -254,9 +254,9 @@ public class JABButton: JABTouchableView {
         
     }
     
-    override public func touchDidEnd(gestureRecgonizer: UIGestureRecognizer, xDistance: CGFloat, yDistance: CGFloat, xVelocity: CGFloat, yVelocity: CGFloat, methodCallNumber: Int) {
+    override public func touchDidEnd(gestureRecognizer: UIGestureRecognizer, xDistance: CGFloat, yDistance: CGFloat, xVelocity: CGFloat, yVelocity: CGFloat, methodCallNumber: Int) {
         
-        if relativeFrame.contains(gestureRecgonizer.locationInView(self)) {
+        if relativeFrame.contains(gestureRecognizer.locationInView(self)) {
             
             pressed = true
             
@@ -274,7 +274,7 @@ public class JABButton: JABTouchableView {
         
     }
     
-    override public func touchDidCancel(gestureRecgonizer: UIGestureRecognizer, xDistance: CGFloat, yDistance: CGFloat, xVelocity: CGFloat, yVelocity: CGFloat, methodCallNumber: Int) {
+    override public func touchDidCancel(gestureRecognizer: UIGestureRecognizer, xDistance: CGFloat, yDistance: CGFloat, xVelocity: CGFloat, yVelocity: CGFloat, methodCallNumber: Int) {
         
         buttonDelegate?.buttonWasUntouched(self, triggered: false)
         pressed = false

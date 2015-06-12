@@ -10,18 +10,6 @@ import Foundation
 import UIKit
 
 
-extension Array {
-    func find(includedElement: T -> Bool) -> Int? {
-        for (idx, element) in enumerate(self) {
-            if includedElement(element) {
-                return idx
-            }
-        }
-        return nil
-    }
-}
-
-
 
 public class Toolkit {
     
@@ -29,19 +17,15 @@ public class Toolkit {
     // MARK: Strings
     // MARK:
     public static func decapitalizeWord (word: String) -> String {
-        var head = word.substringToIndex(advance(word.startIndex, 1))
-        var decapitatedWord = word.substringFromIndex(advance(word.startIndex, 1))
+        let head = word.substringToIndex(advance(word.startIndex, 1))
+        let decapitatedWord = word.substringFromIndex(advance(word.startIndex, 1))
         return head.lowercaseString + decapitatedWord
     }
     
     public static func capitalizeWord (word: String) -> String {
-        var head = word.substringToIndex(advance(word.startIndex, 1))
-        var decapitatedWord = word.substringFromIndex(advance(word.startIndex, 1))
+        let head = word.substringToIndex(advance(word.startIndex, 1))
+        let decapitatedWord = word.substringFromIndex(advance(word.startIndex, 1))
         return head.uppercaseString + decapitatedWord
-    }
-    
-    public static func testFunction () {
-        println("Sup")
     }
     
     
@@ -51,12 +35,12 @@ public class Toolkit {
     // MARK:
     
     public static func removeObject<T : Equatable>(object: T, inout fromArray array: [T]) {
-        var index = find(array, object)
+        let index = array.indexOfObject(object)
         array.removeAtIndex(index!)
     }
     
     public static func indexOfObject<T : Equatable>(object: T, inArray array: [T]) -> Int? {
-        var index = find(array, object)
+        let index = array.indexOfObject(object)
         return index
     }
     
