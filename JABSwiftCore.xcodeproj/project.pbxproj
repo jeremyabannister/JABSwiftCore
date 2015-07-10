@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		8701987B1AE61FCA0073BFD5 /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8701987A1AE61FCA0073BFD5 /* UIImageExtension.swift */; };
 		8705209D1AEF8799008C9555 /* ArrayExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8705209C1AEF8799008C9555 /* ArrayExtension.swift */; };
+		871280701B4C5D410005716F /* NSDateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8712806F1B4C5D410005716F /* NSDateExtension.swift */; };
 		87128B671AFDDC1C00D1F34A /* UIFontExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87128B661AFDDC1B00D1F34A /* UIFontExtension.swift */; };
 		873BFA6E1B11AAA300E677F5 /* JABImagePanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873BFA6D1B11AAA200E677F5 /* JABImagePanel.swift */; };
 		875444BB1AE1D01C00659E6B /* JABSwiftCore.h in Headers */ = {isa = PBXBuildFile; fileRef = 875444BA1AE1D01C00659E6B /* JABSwiftCore.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -47,6 +48,7 @@
 /* Begin PBXFileReference section */
 		8701987A1AE61FCA0073BFD5 /* UIImageExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageExtension.swift; sourceTree = "<group>"; };
 		8705209C1AEF8799008C9555 /* ArrayExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayExtension.swift; sourceTree = "<group>"; };
+		8712806F1B4C5D410005716F /* NSDateExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSDateExtension.swift; sourceTree = "<group>"; };
 		87128B661AFDDC1B00D1F34A /* UIFontExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIFontExtension.swift; sourceTree = "<group>"; };
 		873BFA6D1B11AAA200E677F5 /* JABImagePanel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JABImagePanel.swift; sourceTree = "<group>"; };
 		875444B51AE1D01C00659E6B /* JABSwiftCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = JABSwiftCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -309,6 +311,7 @@
 				87128B661AFDDC1B00D1F34A /* UIFontExtension.swift */,
 				87C21BBB1AEF131300FCE515 /* CGPointExtension.swift */,
 				8705209C1AEF8799008C9555 /* ArrayExtension.swift */,
+				8712806F1B4C5D410005716F /* NSDateExtension.swift */,
 			);
 			name = "Class Extensions";
 			sourceTree = "<group>";
@@ -456,6 +459,7 @@
 				87C21BBC1AEF131300FCE515 /* CGPointExtension.swift in Sources */,
 				875444DC1AE1D05800659E6B /* JABTouchManager.swift in Sources */,
 				875444E01AE1D06500659E6B /* JABApplicationRoot.swift in Sources */,
+				871280701B4C5D410005716F /* NSDateExtension.swift in Sources */,
 				87EF09DD1AFCA27100BE92A4 /* PhysicalObjectProtocol.swift in Sources */,
 				87F771EB1B0C1C0E00889827 /* JABPanel.swift in Sources */,
 				87F771EF1B0C1C6600889827 /* JABPaneledScrollView.swift in Sources */,
