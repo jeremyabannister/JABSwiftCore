@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 
-public class JABView: UIView {
+public class JABView: UIView, GlobalVariablesInitializationNotificationSubscriber {
     
     
     
@@ -39,13 +39,23 @@ public class JABView: UIView {
     // MARK:
     
     public init () {
+        
         super.init(frame:CGRectZero)
+        if !globalVariablesInitialized {
+            globalVariableInitializationNotificationSubscribers.append(self)
+        } else {
+            globalVariablesWereInitialized()
+        }
         
         addAllUI()
     }
     
     required public init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
+    }
+    
+    public func globalVariablesWereInitialized() {
+        
     }
     
     

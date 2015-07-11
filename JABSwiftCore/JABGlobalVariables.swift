@@ -8,6 +8,8 @@
 
 import UIKit
 
+public var globalVariablesInitialized = false
+public var globalVariableInitializationNotificationSubscribers = [GlobalVariablesInitializationNotificationSubscriber]()
 public var iPad = false
 public let heightOfStatusBar = CGFloat(20.0)
 public var staticOnScreenView: UIView?
@@ -37,6 +39,11 @@ public func initializeGlobalParameters () {
         iPad == true
     }
     
+    globalVariablesInitialized = true
+    for subscriber in globalVariableInitializationNotificationSubscribers {
+        subscriber.globalVariablesWereInitialized()
+    }
+    
 }
 
 
@@ -47,4 +54,10 @@ public func indexOfA(object: AnyObject, array: [AnyObject]) -> Int? {
         }
     }
     return nil
+}
+
+
+
+public protocol GlobalVariablesInitializationNotificationSubscriber {
+    func globalVariablesWereInitialized ()
 }
