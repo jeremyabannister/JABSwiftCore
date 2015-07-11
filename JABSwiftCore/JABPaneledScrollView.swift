@@ -30,6 +30,7 @@ public class JABPaneledScrollView: JABView, JABPanelChangeSubscriber {
             }
         }
     }
+    
     public var numberOfPanels: Int {
         get {
             return panels.count
