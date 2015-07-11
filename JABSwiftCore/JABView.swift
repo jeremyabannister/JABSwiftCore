@@ -76,7 +76,7 @@ public class JABView: UIView, GlobalVariablesInitializationNotificationSubscribe
     }
     
     public func animatedUpdate (duration: NSTimeInterval) {
-        animatedUpdate(duration, completion: { (Bool) -> () in
+        animatedUpdate(duration: duration, completion: { (Bool) -> () in
             
         })
     }

@@ -253,10 +253,6 @@ public extension UIView {
         }
     }
     
-    public func printFrame () {
-        println(frame)
-    }
-    
     
     public func red () {
         backgroundColor = UIColor.redColor()

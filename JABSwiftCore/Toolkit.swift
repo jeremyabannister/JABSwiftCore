@@ -35,13 +35,26 @@ public class Toolkit {
     // MARK:
     
     public static func removeObject<T : Equatable>(object: T, inout fromArray array: [T]) {
-        let index = array.indexOfObject(object)
-        array.removeAtIndex(index!)
+        var index: Int?
+        for i in 0..<array.count {
+            if array[i] == object {
+                index = i
+            }
+        }
+        
+        if index != nil {
+            array.removeAtIndex(index!)
+        }
     }
     
     public static func indexOfObject<T : Equatable>(object: T, inArray array: [T]) -> Int? {
-        let index = array.indexOfObject(object)
-        return index
+        for i in 0..<array.count {
+            if array[i] == object {
+                return i
+            }
+        }
+        
+        return nil
     }
     
     

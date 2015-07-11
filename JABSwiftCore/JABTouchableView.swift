@@ -60,14 +60,16 @@ public class JABTouchableView: JABView, JABTouchManagerDelegate {
     
     public func blockWithView(blockingView: UIView) {
         
-        if !blockingViews.contains(blockingView) {
+        if !contains(blockingViews, blockingView) {
             blockingViews.append(blockingView)
         }
+        
     }
     
     
     public func unblockWithView(blockingView: UIView) {
-        if blockingViews.contains(blockingView) {
+        
+        if contains(blockingViews, blockingView) {
             Toolkit.removeObject(blockingView, fromArray: &blockingViews)
         }
     }

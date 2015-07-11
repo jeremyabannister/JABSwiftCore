@@ -277,9 +277,11 @@ public class JABPaneledScrollView: JABView, JABPanelChangeSubscriber {
     // MARK: Private
     func drawPanels () {
         
-        for panel in panels {
-            if !scrollView.subviews.contains({ $0 === panel } ) {
-                scrollView.addSubview(panel)
+        if let views = scrollView.subviews as? [UIView] {
+            for panel in panels {
+                if !contains(views, panel as UIView) {
+                    scrollView.addSubview(panel)
+                }
             }
         }
         
