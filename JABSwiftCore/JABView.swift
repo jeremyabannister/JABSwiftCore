@@ -88,4 +88,13 @@ public class JABView: UIView, GlobalVariablesInitializationNotificationSubscribe
     }
     
     
+    // MARK:
+    // MARK: Keyboard
+    // MARK:
+    
+    public func closeAllKeyboards () {
+        
+    }
+    
+    
 }
