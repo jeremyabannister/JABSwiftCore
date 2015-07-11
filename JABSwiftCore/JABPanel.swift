@@ -29,7 +29,6 @@ public class JABPanel: JABTouchableView {
     public var staticAdditionToHeight = CGFloat(0)
     public var shouldPassOnTouchNotification = true
     
-    
     var initialTouchLocation = CGPoint()
     
     
