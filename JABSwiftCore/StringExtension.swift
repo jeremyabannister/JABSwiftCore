@@ -117,7 +117,12 @@ public extension String {
     
     
     
+    // MARK: Conversion
     
+    
+    public func toDouble() -> Double? {
+        return NSNumberFormatter().numberFromString(self)?.doubleValue
+    }
     
     
     
