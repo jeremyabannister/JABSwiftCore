@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		8701987B1AE61FCA0073BFD5 /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8701987A1AE61FCA0073BFD5 /* UIImageExtension.swift */; };
 		8705209D1AEF8799008C9555 /* ArrayExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8705209C1AEF8799008C9555 /* ArrayExtension.swift */; };
+		870DFB831B532A9200BC76D7 /* DoubleExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870DFB821B532A9200BC76D7 /* DoubleExtension.swift */; };
 		871280701B4C5D410005716F /* NSDateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8712806F1B4C5D410005716F /* NSDateExtension.swift */; };
 		87128B671AFDDC1C00D1F34A /* UIFontExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87128B661AFDDC1B00D1F34A /* UIFontExtension.swift */; };
 		873BFA6E1B11AAA300E677F5 /* JABImagePanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873BFA6D1B11AAA200E677F5 /* JABImagePanel.swift */; };
@@ -49,6 +50,7 @@
 /* Begin PBXFileReference section */
 		8701987A1AE61FCA0073BFD5 /* UIImageExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageExtension.swift; sourceTree = "<group>"; };
 		8705209C1AEF8799008C9555 /* ArrayExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayExtension.swift; sourceTree = "<group>"; };
+		870DFB821B532A9200BC76D7 /* DoubleExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoubleExtension.swift; sourceTree = "<group>"; };
 		8712806F1B4C5D410005716F /* NSDateExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSDateExtension.swift; sourceTree = "<group>"; };
 		87128B661AFDDC1B00D1F34A /* UIFontExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIFontExtension.swift; sourceTree = "<group>"; };
 		873BFA6D1B11AAA200E677F5 /* JABImagePanel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JABImagePanel.swift; sourceTree = "<group>"; };
@@ -315,6 +317,7 @@
 				8705209C1AEF8799008C9555 /* ArrayExtension.swift */,
 				8712806F1B4C5D410005716F /* NSDateExtension.swift */,
 				87FB2E2A1B522C27000E09D9 /* StringExtension.swift */,
+				870DFB821B532A9200BC76D7 /* DoubleExtension.swift */,
 			);
 			name = "Class Extensions";
 			sourceTree = "<group>";
@@ -454,6 +457,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				870DFB831B532A9200BC76D7 /* DoubleExtension.swift in Sources */,
 				87ED41DA1B1593F600B57E7B /* JABSquareImagePanel.swift in Sources */,
 				87F422DC1AFDB62A00C564D9 /* Size.swift in Sources */,
 				875444DA1AE1D04F00659E6B /* JABTouchableView.swift in Sources */,
