@@ -53,4 +53,11 @@ public extension String {
         return true
     }
     
+    public func isValidInteger () -> Bool {
+        if self[0] == "-" {
+            return substringFromIndex(advance(startIndex, 1)).isValidWholeNumber()
+        }
+        return isValidWholeNumber()
+    }
+    
 }
