@@ -28,6 +28,14 @@ public class Toolkit {
         return head.uppercaseString + decapitatedWord
     }
     
+    public static func intendedStringFromIngredients (initialString: String, range: NSRange, replacementString: String) -> String {
+        
+        var frankensteinString = initialString.substringToIndex(advance(initialString.startIndex, range.location))
+        frankensteinString += replacementString
+        frankensteinString += initialString.substringFromIndex(advance(initialString.startIndex, range.location + range.length))
+        
+        return frankensteinString
+    }
     
     
     // MARK:
