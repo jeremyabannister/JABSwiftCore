@@ -60,7 +60,7 @@ public extension String {
     public func isValidInteger () -> Bool {
         if count(self) > 0 {
             if self[0] == "-" {
-                return substringFromIndex(advance(startIndex, 1)).isValidWholeNumber()
+                return decapitate().isValidWholeNumber()
             }
             return isValidWholeNumber()
         } else {
@@ -89,13 +89,13 @@ public extension String {
         var testSubject = self
         if count(testSubject) > 0 {
             if testSubject[0] == "-" {
-                testSubject = testSubject.substringFromIndex(advance(testSubject.startIndex, 1))
+                testSubject = testSubject.decapitate()
             }
         }
         
         if count(testSubject) > 0 {
             if testSubject[0] == "$" {
-                testSubject = testSubject.substringFromIndex(advance(testSubject.startIndex, 1))
+                testSubject = testSubject.decapitate()
             } else {
                 return false
             }
@@ -113,6 +113,20 @@ public extension String {
             return true
         }
         
+    }
+    
+    
+    
+    
+    
+    
+    
+    // MARK: Substring
+    public func decapitate () -> String {
+        if count(self) > 0 {
+            return substringFromIndex(advance(startIndex, 1))
+        }
+        return ""
     }
     
     
