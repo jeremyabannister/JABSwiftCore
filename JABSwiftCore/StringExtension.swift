@@ -32,16 +32,15 @@ public extension String {
     
     
     // MARK: Is Valid
-    public func isValidWholeNumber () -> Bool {
+    public func isValidCombinationOfCharacterSet (characterSet: [Character]) -> Bool {
         
         if count(self) == 0 {
-            return true // It is useful to define the empty string to be a valid number
+            return true
         } else {
-            let digits = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
             for i in 0..<count(self) {
                 var validCharacter = false
-                for digit in digits {
-                    if String(self[i]) == digit {
+                for character in characterSet {
+                    if self[i] == character {
                         validCharacter = true
                     }
                 }
@@ -51,6 +50,11 @@ public extension String {
             }
             return true
         }
+    }
+    
+    public func isValidWholeNumber () -> Bool {
+        
+        return self.isValidCombinationOfCharacterSet(["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"])
     }
     
     public func isValidInteger () -> Bool {
@@ -79,5 +83,8 @@ public extension String {
             return false
         }
     }
+    
+    
+    
     
 }
