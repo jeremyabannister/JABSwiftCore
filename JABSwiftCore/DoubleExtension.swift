@@ -18,4 +18,13 @@ public extension Double {
     // MARK: Methods
     // MARK:
     
+    // MARK: Conversion
+    public func dollarAmountString () -> String {
+        if self < 0 {
+            return "-$".stringByAppendingFormat("%.2f", -self)
+        } else {
+            return "$".stringByAppendingFormat("%.2f", self)
+        }
+    }
+    
 }
