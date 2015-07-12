@@ -33,6 +33,7 @@
 		87F4FD431AE4222A00953E38 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F4FD421AE4222A00953E38 /* UIColorExtension.swift */; };
 		87F771EB1B0C1C0E00889827 /* JABPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F771EA1B0C1C0E00889827 /* JABPanel.swift */; };
 		87F771EF1B0C1C6600889827 /* JABPaneledScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F771EE1B0C1C6600889827 /* JABPaneledScrollView.swift */; };
+		87FB2E2B1B522C27000E09D9 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87FB2E2A1B522C27000E09D9 /* StringExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -76,6 +77,7 @@
 		87F4FD421AE4222A00953E38 /* UIColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		87F771EA1B0C1C0E00889827 /* JABPanel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JABPanel.swift; sourceTree = "<group>"; };
 		87F771EE1B0C1C6600889827 /* JABPaneledScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JABPaneledScrollView.swift; sourceTree = "<group>"; };
+		87FB2E2A1B522C27000E09D9 /* StringExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -312,6 +314,7 @@
 				87C21BBB1AEF131300FCE515 /* CGPointExtension.swift */,
 				8705209C1AEF8799008C9555 /* ArrayExtension.swift */,
 				8712806F1B4C5D410005716F /* NSDateExtension.swift */,
+				87FB2E2A1B522C27000E09D9 /* StringExtension.swift */,
 			);
 			name = "Class Extensions";
 			sourceTree = "<group>";
@@ -472,6 +475,7 @@
 				87F4FD431AE4222A00953E38 /* UIColorExtension.swift in Sources */,
 				87F4FD3E1AE421A300953E38 /* UIViewExtension.swift in Sources */,
 				875444DE1AE1D05E00659E6B /* JABButton.swift in Sources */,
+				87FB2E2B1B522C27000E09D9 /* StringExtension.swift in Sources */,
 				8705209D1AEF8799008C9555 /* ArrayExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
