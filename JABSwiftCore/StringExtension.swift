@@ -84,7 +84,36 @@ public extension String {
         }
     }
     
-    
+    public func isValidDollarAmount () -> Bool {
+        
+        var testSubject = self
+        if count(testSubject) > 0 {
+            if testSubject[0] == "-" {
+                testSubject = testSubject.substringFromIndex(advance(testSubject.startIndex, 1))
+            }
+        }
+        
+        if count(testSubject) > 0 {
+            if testSubject[0] == "$" {
+                testSubject = testSubject.substringFromIndex(advance(testSubject.startIndex, 1))
+            } else {
+                return false
+            }
+        } else {
+            return false
+        }
+        
+        if count(testSubject) > 0 {
+            if testSubject[0] == "-" {
+                return false
+            } else {
+                return testSubject.isValidFloatingPointNumber()
+            }
+        } else {
+            return true
+        }
+        
+    }
     
     
 }
