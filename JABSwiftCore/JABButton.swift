@@ -26,6 +26,17 @@ public class JABButton: JABTouchableView {
     public var type = JABButtonType.Image
     public var pressed = false
     public var dimmed = false
+    var swollen = false
+    
+    // Frame
+    override public var frame: CGRect {
+        didSet {
+            if !swollen {
+                originalFrame = frame
+            }
+        }
+    }
+    var originalFrame = CGRectZero
     
     // Background Color
     override public var backgroundColor: UIColor? {
@@ -55,6 +66,7 @@ public class JABButton: JABTouchableView {
     public var font = UIFont(name: "HelveticaNeue-Medium", size: 12)
     
     
+    
     // MARK: UI
     var imageView = UIImageView()
     var textLabel = UILabel()
@@ -65,6 +77,9 @@ public class JABButton: JABTouchableView {
     public var verticalContentInset: CGFloat = 0.0
     
     public var dimsWhenPressed = false
+    public var swellsWhenPressed = false
+    public var swellFraction = CGFloat(1.1)
+    public var swellDuration = 0.2
     
     
     
@@ -81,7 +96,6 @@ public class JABButton: JABTouchableView {
     
     public override init () {
         super.init()
-        
     }
     
     required public init(coder aDecoder: NSCoder) {
@@ -106,6 +120,7 @@ public class JABButton: JABTouchableView {
     
     override public func updateAllUI() {
         
+        configureSize()
         configureBackground()
         
         configureImageView()
@@ -126,6 +141,23 @@ public class JABButton: JABTouchableView {
         addSubview(textLabel)
     }
     
+    
+    // MARK: Size
+    func configureSize () {
+        
+        if swellsWhenPressed {
+            if pressed {
+                if !swollen {
+                    setSwollen(true, animated: false)
+                }
+            } else {
+                if swollen {
+                    setSwollen(false, animated: false)
+                }
+            }
+        }
+        
+    }
     
     
     // MARK: Background
@@ -209,19 +241,52 @@ public class JABButton: JABTouchableView {
     }
     
     func positionTextLabel () {
-        var newFrame = CGRectZero
-        
-        newFrame.origin.x = horizontalContentInset
-        newFrame.origin.y = verticalContentInset
-        
-        newFrame.size.width = width - 2*horizontalContentInset
-        newFrame.size.height = height - 2*verticalContentInset
-        
-        textLabel.frame = newFrame
-        
+        if let text = textLabel.text {
+            
+            var newFrame = CGRectZero
+            let size = textLabel.font.sizeOfString(text, constrainedToWidth: 0)
+            
+            newFrame.size.width = size.width
+            newFrame.size.height = size.height
+            
+            newFrame.origin.x = (width - newFrame.size.width)/2
+            newFrame.origin.y = (height - newFrame.size.height)/2
+            
+            textLabel.frame = newFrame
+        }
     }
     
     
+    
+    // MARK:
+    // MARK: Actions
+    // MARK:
+    
+    func setSwollen(isSwollen: Bool, animated: Bool) {
+        
+        swollen = isSwollen
+        
+        var newFrame = CGRectZero
+        if isSwollen {
+            
+            newFrame.size.width = originalFrame.size.width * swellFraction
+            newFrame.size.height = originalFrame.size.height * swellFraction
+            
+            newFrame.origin.x = originalFrame.origin.x - (newFrame.size.width - originalFrame.size.width)/2
+            newFrame.origin.y = originalFrame.origin.y - (newFrame.size.height - originalFrame.size.height)/2
+        
+        } else {
+            newFrame = originalFrame
+        }
+        
+        if animated {
+            UIView.animateWithDuration(swellDuration, animations: { () -> Void in
+                self.frame = newFrame
+            })
+        } else {
+            frame = newFrame
+        }
+    }
     
     
     
@@ -233,7 +298,7 @@ public class JABButton: JABTouchableView {
     override public func touchDidBegin(gestureRecognizer: UIGestureRecognizer) {
         
         pressed = true
-        updateAllUI()
+        animatedUpdate()
         buttonDelegate?.buttonWasTouched(self)
         
     }
@@ -241,44 +306,33 @@ public class JABButton: JABTouchableView {
     override public func touchDidChange(gestureRecognizer: UIGestureRecognizer, xDistance: CGFloat, yDistance: CGFloat, xVelocity: CGFloat, yVelocity: CGFloat, methodCallNumber: Int) {
         
         if relativeFrame.contains(gestureRecognizer.locationInView(self)) {
-            
             pressed = true
-            
         } else {
-            
             pressed = false
-            
         }
         
-        updateAllUI()
+        animatedUpdate()
         
     }
     
     override public func touchDidEnd(gestureRecognizer: UIGestureRecognizer, xDistance: CGFloat, yDistance: CGFloat, xVelocity: CGFloat, yVelocity: CGFloat, methodCallNumber: Int) {
         
         if relativeFrame.contains(gestureRecognizer.locationInView(self)) {
-            
             pressed = true
-            
         } else {
-            
             pressed = false
-            
         }
         
         buttonDelegate?.buttonWasUntouched(self, triggered: pressed)
-        
         pressed = false
-        
-        updateAllUI()
-        
+        animatedUpdate()
     }
     
     override public func touchDidCancel(gestureRecognizer: UIGestureRecognizer, xDistance: CGFloat, yDistance: CGFloat, xVelocity: CGFloat, yVelocity: CGFloat, methodCallNumber: Int) {
         
         buttonDelegate?.buttonWasUntouched(self, triggered: false)
         pressed = false
-        updateAllUI()
+        animatedUpdate()
         
     }
     
