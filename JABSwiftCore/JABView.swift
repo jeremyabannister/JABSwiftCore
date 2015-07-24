@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 
+public var defaultAnimationDuration = 0.25
 
 public class JABView: UIView, GlobalVariablesInitializationNotificationSubscriber {
     
@@ -72,7 +73,7 @@ public class JABView: UIView, GlobalVariablesInitializationNotificationSubscribe
     }
     
     public func animatedUpdate () {
-        animatedUpdate(0.3)
+        animatedUpdate(defaultAnimationDuration)
     }
     
     public func animatedUpdate (duration: NSTimeInterval) {
@@ -81,7 +82,7 @@ public class JABView: UIView, GlobalVariablesInitializationNotificationSubscribe
         })
     }
     
-    public func animatedUpdate (duration: NSTimeInterval = 0.3, completion: (Bool) -> Void) {
+    public func animatedUpdate (duration: NSTimeInterval = defaultAnimationDuration, completion: (Bool) -> Void) {
         UIView.animateWithDuration(duration, animations: { () -> Void in
             self.updateAllUI()
         }, completion: completion)

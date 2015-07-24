@@ -7,14 +7,14 @@
 	<key>IDESourceControlProjectIdentifier</key>
 	<string>11B74C25-5ED1-4677-9AA2-21D67CE38217</string>
 	<key>IDESourceControlProjectName</key>
-	<string>project</string>
+	<string>JABSwiftCore</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>E67213AD422DA2F73E55FACEED52C520E91729E4</key>
 		<string>https://bitbucket.org/jabannister/jabswiftcore.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>JABSwiftCore.xcodeproj/project.xcworkspace</string>
+	<string>JABSwiftCore.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>E67213AD422DA2F73E55FACEED52C520E91729E4</key>

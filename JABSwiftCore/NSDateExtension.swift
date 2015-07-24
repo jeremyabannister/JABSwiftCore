@@ -11,6 +11,65 @@ import Foundation
 extension NSDate: Comparable {
     
     
+    // MARK:
+    // MARK: Init
+    // MARK:
+    
+    public convenience init(dateString:String) {
+        
+        let components = dateString.componentsSeparatedByString(" ")
+        if components.count == 3 {
+            let dayAsString = components[1].substringToIndex(advance(components[1].endIndex, -3))
+            var monthIndex = -1
+            for i in 0..<NSDate.months.count {
+                let month = NSDate.months[i]
+                if month == components[0] {
+                    monthIndex = i
+                }
+            }
+            
+            if monthIndex == -1 { // If the month was not found then check against the abbreviated versions of the months
+                for i in 0..<NSDate.months.count {
+                    let month = NSDate.monthsShort[i]
+                    if month == components[0] {
+                        monthIndex = i
+                    }
+                }
+            }
+            
+            
+            let dateStringFormatter = NSDateFormatter()
+            dateStringFormatter.dateFormat = "yyyy-MM-dd"
+            dateStringFormatter.locale = NSLocale(localeIdentifier: "en_US_POSIX")
+            if let d = dateStringFormatter.dateFromString(String(format: "%@-%02d-%@", components[2], monthIndex + 1, dayAsString)) {
+                self.init(timeInterval:0, sinceDate:d)
+            } else {
+                self.init(timeInterval:0, sinceDate:NSDate())
+            }
+            
+        } else {
+            self.init(timeInterval:0, sinceDate:NSDate())
+        }
+    }
+    
+    
+    
+    // MARK:
+    // MARK: Components
+    // MARK:
+    
+    public static var months: [String] {
+        get {
+            return ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+        }
+    }
+    
+    public static var monthsShort: [String] {
+        get {
+            return ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sept", "Oct", "Nov", "Dec"]
+        }
+    }
+    
     public var year: Int {
         get {
             let components = NSCalendar.currentCalendar().components(NSCalendarUnit.YearCalendarUnit, fromDate: self)
@@ -34,7 +93,14 @@ extension NSDate: Comparable {
     
     public var monthString: String {
         get {
-            let months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+            let months = NSDate.months
+            return months[month - 1]
+        }
+    }
+    
+    public var monthStringShort: String {
+        get {
+            let months = NSDate.monthsShort
             return months[month - 1]
         }
     }
