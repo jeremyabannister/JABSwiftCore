@@ -19,7 +19,6 @@ public class JABView: UIView, GlobalVariablesInitializationNotificationSubscribe
     // MARK: Properties
     // MARK:
     
-    
     override public var frame: CGRect {
         didSet {
             var scaled = false
@@ -33,6 +32,8 @@ public class JABView: UIView, GlobalVariablesInitializationNotificationSubscribe
             }
         }
     }
+    
+    
     
     
     // MARK:
@@ -69,6 +70,10 @@ public class JABView: UIView, GlobalVariablesInitializationNotificationSubscribe
     }
     
     public func updateAllUI () {
+        
+    }
+    
+    public func updateParameters () {
         
     }
     

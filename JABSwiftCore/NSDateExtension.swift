@@ -15,7 +15,12 @@ extension NSDate: Comparable {
     // MARK: Init
     // MARK:
     
-    public convenience init(dateString:String) {
+    public convenience init(dateString: String) {
+        self.init(dateString: dateString, beginning: true)
+    }
+    
+    
+    public convenience init(dateString:String, beginning: Bool) {
         
         let components = dateString.componentsSeparatedByString(" ")
         if components.count == 3 {
@@ -42,9 +47,17 @@ extension NSDate: Comparable {
             dateStringFormatter.dateFormat = "yyyy-MM-dd"
             dateStringFormatter.locale = NSLocale(localeIdentifier: "en_US_POSIX")
             if let d = dateStringFormatter.dateFromString(String(format: "%@-%02d-%@", components[2], monthIndex + 1, dayAsString)) {
-                self.init(timeInterval:0, sinceDate:d)
+                if beginning {
+                    self.init(timeInterval:0, sinceDate:d)
+                } else {
+                    self.init(timeInterval:86370, sinceDate:d)
+                }
             } else {
-                self.init(timeInterval:0, sinceDate:NSDate())
+                if beginning {
+                    self.init(timeInterval:0, sinceDate:NSDate())
+                } else {
+                    self.init(timeInterval:86370, sinceDate:NSDate())
+                }
             }
             
         } else {
@@ -58,6 +71,7 @@ extension NSDate: Comparable {
     // MARK: Components
     // MARK:
     
+    // MARK: Class
     public static var months: [String] {
         get {
             return ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
@@ -67,6 +81,33 @@ extension NSDate: Comparable {
     public static var monthsShort: [String] {
         get {
             return ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sept", "Oct", "Nov", "Dec"]
+        }
+    }
+    
+    public static var daysOfWeek: [String] {
+        get {
+            return ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
+        }
+    }
+    
+    public static var daysOfWeekShort: [String] {
+        get {
+            return ["Sun", "Mon", "Tues", "Weds", "Thurs", "Fri", "Sat"]
+        }
+    }
+    
+    
+    
+    // MARK: Instance
+    public var fullDateString: String {
+        get {
+            return String(format: "%@ %@, %@", monthString, dayStringOrdinal, yearString)
+        }
+    }
+    
+    public var fullDateStringShort: String {
+        get {
+            return String(format: "%@ %@, %@", monthStringShort, dayStringOrdinal, yearString)
         }
     }
     
@@ -150,8 +191,13 @@ extension NSDate: Comparable {
     
     public var dayOfWeekString: String {
         get {
-            let daysOfWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
-            return daysOfWeek[dayOfWeek - 1]
+            return NSDate.daysOfWeek[dayOfWeek - 1]
+        }
+    }
+    
+    public var dayOfWeekStringShort: String {
+        get {
+            return NSDate.daysOfWeekShort[dayOfWeek - 1]
         }
     }
     
@@ -197,6 +243,47 @@ extension NSDate: Comparable {
         }
     }
     
+    public var millisecond: Int {
+        get {
+            var integer = 0.0
+            let fraction = modf(self.timeIntervalSinceReferenceDate, &integer)
+            return Int(fraction * 1000)
+        }
+    }
+    
+    
+    
+    
+    // MARK:
+    // MARK: Methods
+    // MARK:
+    
+    public func numberOfDaysUntil(futureDate: NSDate, inclusive: Bool) -> Int? {
+        
+        if futureDate > self {
+            
+            var unitFlags = NSCalendarUnit.DayCalendarUnit
+            if let calendar = NSCalendar(calendarIdentifier: NSGregorianCalendar) {
+                let components = calendar.components(unitFlags, fromDate: self, toDate: futureDate, options: nil)
+                
+                if inclusive {
+                    return components.day + 1
+                } else {
+                    return components.day
+                }
+            }
+        }
+        return nil
+    }
+    
+    
+    public func tomorrow () -> NSDate {
+        return self.dateByAddingTimeInterval(86400)
+    }
+    
+    public func yesterday () -> NSDate {
+        return self.dateByAddingTimeInterval(-86400)
+    }
 
     
 }

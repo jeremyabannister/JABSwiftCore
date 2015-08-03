@@ -10,8 +10,8 @@ import Foundation
 
 public extension UIFont {
     
-    public func sizeOfString (string: String, constrainedToWidth width: Double) -> CGSize {
-        return (string as NSString).boundingRectWithSize(CGSize(width: width, height: DBL_MAX),
+    public func sizeOfString (string: String, constrainedToWidth width: CGFloat) -> CGSize {
+        return (string as NSString).boundingRectWithSize(CGSize(width: Double(width), height: DBL_MAX),
             options: NSStringDrawingOptions.UsesLineFragmentOrigin,
             attributes: [NSFontAttributeName: self],
             context: nil).size

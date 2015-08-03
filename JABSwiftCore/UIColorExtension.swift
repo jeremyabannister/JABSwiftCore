@@ -12,14 +12,14 @@ import UIKit
 public extension UIColor {
     
     
-    public func dim (percentage: CGFloat) -> UIColor {
+    public func dim (fraction: CGFloat) -> UIColor {
         
-        // Force the percentage to be between 0 and 100
-        var modifiedPercentage = percentage
-        if ( modifiedPercentage > 100 ) {
-            modifiedPercentage = 100
-        } else if ( modifiedPercentage < 0 ) {
-            modifiedPercentage = 0
+        // Force the fraction to be between 0 and 1
+        var modifiedFraction = fraction
+        if modifiedFraction > 1 {
+            modifiedFraction = 1
+        } else if modifiedFraction < 0 {
+            modifiedFraction = 0
         }
         
         let redComponent = components.red
@@ -27,7 +27,7 @@ public extension UIColor {
         let blueComponent = components.blue
         let alpha = components.alpha
         
-        return UIColor(red: redComponent * (modifiedPercentage/100.0), green: greenComponent * (modifiedPercentage/100.0), blue: blueComponent * (modifiedPercentage/100.0), alpha: alpha)
+        return UIColor(red: redComponent * modifiedFraction, green: greenComponent * modifiedFraction, blue: blueComponent * modifiedFraction, alpha: alpha)
         
     }
     

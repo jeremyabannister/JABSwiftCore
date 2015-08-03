@@ -225,12 +225,17 @@ public extension UIView {
         }
     }
     
-    public var shadowColor: CGColor {
+    public var shadowColor: UIColor {
         get {
-            return layer.shadowColor
+            if let color = UIColor(CGColor: layer.shadowColor) {
+                return color
+            } else {
+                println("Problem in JABSwiftCore.UIViewExtension.shadowColor.get - ^^^ shadowColor was not convertible from CGColor to UIColor")
+                return UIColor()
+            }
         }
         set {
-            layer.shadowColor = newValue
+            layer.shadowColor = newValue.CGColor
         }
     }
     
@@ -292,6 +297,25 @@ public extension UIView {
     
     public func darkGray () {
         backgroundColor = UIColor.darkGrayColor()
+    }
+    
+    
+    
+    // MARK: Subview Manipulation
+    public func changeAllTextOfSubviewsToColor(color: UIColor) {
+        
+        for subviewObject in subviews {
+            if let subview = subviewObject as? UIView {
+                if let label = subview as? UILabel {
+                    label.textColor = color
+                } else {
+                    if subview.subviews.count != 0 {
+                        subview.changeAllTextOfSubviewsToColor(color)
+                    }
+                }
+            }
+        }
+        
     }
     
     

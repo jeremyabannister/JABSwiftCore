@@ -31,6 +31,10 @@ public let darkGrayColor = UIColor.darkGrayColor()
 public let clearColor = UIColor.clearColor()
 
 
+// MATH
+public let pi = 3.14159
+
+
 
 
 public func initializeGlobalParameters () {

@@ -4,6 +4,11 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>JABSwiftCore - Universal.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
 		<key>JABSwiftCore.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -18,6 +23,21 @@
 			<true/>
 		</dict>
 		<key>875444BF1AE1D01C00659E6B</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>87EE74621B65F705005F7678</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>87EE746F1B65F846005F7678</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>87EE747C1B65F978005F7678</key>
 		<dict>
 			<key>primary</key>
 			<true/>

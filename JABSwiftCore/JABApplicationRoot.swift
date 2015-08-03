@@ -8,11 +8,18 @@
 
 import Foundation
 
-public class JABApplicationRoot: JABView {
+public class JABApplicationRoot: JABView, JABLocationTesterDelegate {
     
     
     
-    // **********************************************************************************************************************
+    // MARK:
+    // MARK: Properties
+    // MARK:
+    
+    // MARK: State
+    
+    // MARK: UI
+    private let locationTester = JABLocationTester()
     
     
     // MARK:
@@ -29,10 +36,46 @@ public class JABApplicationRoot: JABView {
         staticOnScreenView = self
         initializeGlobalParameters()
         
+        locationTester.locationTesterDelegate = self
+        
     }
     
     required public init(coder aDecoder: NSCoder) {
         super.init()
+    }
+    
+    
+    // MARK:
+    // MARK: Debug
+    // MARK:
+    
+    public func launchLocationTesterAfterDelay (delay: NSTimeInterval) {
+        
+        NSTimer.scheduledTimerWithTimeInterval(delay, target: self, selector: "launchLocationTester", userInfo: nil, repeats: false)
+        
+    }
+    
+    public func launchLocationTester () {
+        
+        locationTester.frame = relativeFrame
+        addSubview(locationTester)
+        
+    }
+    
+    public func cancelLocationTester () {
+        
+        locationTester.removeFromSuperview()
+        
+    }
+    
+    
+    // MARK:
+    // MARK: Delegate Methods
+    // MARK:
+    
+    // MARK: Location Tester
+    public func locationTesterDelegateDidCancel() {
+        cancelLocationTester()
     }
     
     
