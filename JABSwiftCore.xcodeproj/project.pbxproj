@@ -14,6 +14,7 @@
 		87128B671AFDDC1C00D1F34A /* UIFontExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87128B661AFDDC1B00D1F34A /* UIFontExtension.swift */; };
 		8721FF2B1B6ECE37000EB3CB /* JABLocationTester.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8721FF2A1B6ECE37000EB3CB /* JABLocationTester.swift */; };
 		873BFA6E1B11AAA300E677F5 /* JABImagePanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873BFA6D1B11AAA200E677F5 /* JABImagePanel.swift */; };
+		874D00001B76C8F8002E1A32 /* MarshalOperator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874DFFFF1B76C8F8002E1A32 /* MarshalOperator.swift */; };
 		875444BB1AE1D01C00659E6B /* JABSwiftCore.h in Headers */ = {isa = PBXBuildFile; fileRef = 875444BA1AE1D01C00659E6B /* JABSwiftCore.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		875444C11AE1D01C00659E6B /* JABSwiftCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 875444B51AE1D01C00659E6B /* JABSwiftCore.framework */; };
 		875444C81AE1D01C00659E6B /* JABSwiftCoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 875444C71AE1D01C00659E6B /* JABSwiftCoreTests.swift */; };
@@ -56,6 +57,7 @@
 		87128B661AFDDC1B00D1F34A /* UIFontExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIFontExtension.swift; sourceTree = "<group>"; };
 		8721FF2A1B6ECE37000EB3CB /* JABLocationTester.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JABLocationTester.swift; sourceTree = "<group>"; };
 		873BFA6D1B11AAA200E677F5 /* JABImagePanel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JABImagePanel.swift; sourceTree = "<group>"; };
+		874DFFFF1B76C8F8002E1A32 /* MarshalOperator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarshalOperator.swift; sourceTree = "<group>"; };
 		875444B51AE1D01C00659E6B /* JABSwiftCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = JABSwiftCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		875444B91AE1D01C00659E6B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		875444BA1AE1D01C00659E6B /* JABSwiftCore.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JABSwiftCore.h; sourceTree = "<group>"; };
@@ -137,6 +139,14 @@
 			name = Subclasses;
 			sourceTree = "<group>";
 		};
+		874D00011B76C8FB002E1A32 /* Operators */ = {
+			isa = PBXGroup;
+			children = (
+				874DFFFF1B76C8F8002E1A32 /* MarshalOperator.swift */,
+			);
+			name = Operators;
+			sourceTree = "<group>";
+		};
 		875444AB1AE1D01C00659E6B = {
 			isa = PBXGroup;
 			children = (
@@ -201,6 +211,7 @@
 				875444D11AE1D02C00659E6B /* Toolkit.swift */,
 				875444D21AE1D02C00659E6B /* JABGlobalVariables.swift */,
 				87F4FD3F1AE421B100953E38 /* Class Extensions */,
+				874D00011B76C8FB002E1A32 /* Operators */,
 			);
 			name = General;
 			sourceTree = "<group>";
@@ -488,6 +499,7 @@
 				875444E01AE1D06500659E6B /* JABApplicationRoot.swift in Sources */,
 				871280701B4C5D410005716F /* NSDateExtension.swift in Sources */,
 				87EF09DD1AFCA27100BE92A4 /* PhysicalObjectProtocol.swift in Sources */,
+				874D00001B76C8F8002E1A32 /* MarshalOperator.swift in Sources */,
 				87F771EB1B0C1C0E00889827 /* JABPanel.swift in Sources */,
 				87F771EF1B0C1C6600889827 /* JABPaneledScrollView.swift in Sources */,
 				8701987B1AE61FCA0073BFD5 /* UIImageExtension.swift in Sources */,
