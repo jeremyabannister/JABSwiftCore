@@ -78,13 +78,11 @@ public class JABView: UIView, GlobalVariablesInitializationNotificationSubscribe
     }
     
     public func animatedUpdate () {
-        animatedUpdate(defaultAnimationDuration)
+        animatedUpdate(.CurveEaseInOut)
     }
     
-    public func animatedUpdate (duration: NSTimeInterval) {
-        animatedUpdate(duration: duration, completion: { (Bool) -> () in
-            
-        })
+    public func animatedUpdate (options: UIViewAnimationOptions) {
+        animatedUpdate(defaultAnimationDuration, options: options)
     }
     
     public func animatedUpdate (duration: NSTimeInterval, options: UIViewAnimationOptions) {
@@ -94,9 +92,7 @@ public class JABView: UIView, GlobalVariablesInitializationNotificationSubscribe
     }
     
     public func animatedUpdate (duration: NSTimeInterval = defaultAnimationDuration, completion: (Bool) -> ()) {
-        UIView.animateWithDuration(duration, animations: { () -> () in
-            self.updateAllUI()
-        }, completion: completion)
+        animatedUpdate(duration: duration, options: .CurveEaseInOut, completion: completion)
     }
     
     public func animatedUpdate (duration: NSTimeInterval = defaultAnimationDuration, options: UIViewAnimationOptions, completion: (Bool) -> ()) {
