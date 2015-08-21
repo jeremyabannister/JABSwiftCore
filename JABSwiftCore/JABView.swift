@@ -87,8 +87,21 @@ public class JABView: UIView, GlobalVariablesInitializationNotificationSubscribe
         })
     }
     
-    public func animatedUpdate (duration: NSTimeInterval = defaultAnimationDuration, completion: (Bool) -> Void) {
-        UIView.animateWithDuration(duration, animations: { () -> Void in
+    public func animatedUpdate (duration: NSTimeInterval, options: UIViewAnimationOptions) {
+        animatedUpdate(duration: duration, options: options) { (Bool) -> () in
+            
+        }
+    }
+    
+    public func animatedUpdate (duration: NSTimeInterval = defaultAnimationDuration, completion: (Bool) -> ()) {
+        UIView.animateWithDuration(duration, animations: { () -> () in
+            self.updateAllUI()
+        }, completion: completion)
+    }
+    
+    public func animatedUpdate (duration: NSTimeInterval = defaultAnimationDuration, options: UIViewAnimationOptions, completion: (Bool) -> ()) {
+        
+        UIView.animateWithDuration(duration, delay: 0, options: options, animations: { () -> Void in
             self.updateAllUI()
         }, completion: completion)
     }
