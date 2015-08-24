@@ -49,7 +49,7 @@ public class JABButton: JABTouchableView {
     public var undimmedBackgroundColor: UIColor? {
         didSet {
             if dimmedBackgroundColor == nil {
-                dimmedBackgroundColor = undimmedBackgroundColor?.dim(70)
+                dimmedBackgroundColor = undimmedBackgroundColor?.dim(0.7)
             }
         }
     }
@@ -62,9 +62,29 @@ public class JABButton: JABTouchableView {
     // Text
     public var text = ""
     public var textAlignment = NSTextAlignment.Center
-    public var textColor = UIColor.blackColor()
     public var font = UIFont(name: "HelveticaNeue-Medium", size: 12)
     
+    // Text Color
+    public var textColor = UIColor.blackColor() {
+        didSet {
+            if !dimmed {
+                undimmedTextColor = textColor
+            }
+        }
+    }
+    public var undimmedTextColor: UIColor? {
+        didSet {
+            if dimmedTextColor == nil {
+                if undimmedTextColor != blackColor {
+                    dimmedTextColor = undimmedTextColor?.dim(0.7)
+                } else {
+                    dimmedTextColor = UIColor(white: 0.3, alpha: 1)
+                }
+                
+            }
+        }
+    }
+    public var dimmedTextColor: UIColor?
     
     
     // MARK: UI
@@ -163,16 +183,18 @@ public class JABButton: JABTouchableView {
     // MARK: Background
     func configureBackground () {
         
-        if dimsWhenPressed {
-            if pressed {
-                if !dimmed {
-                    dimmed = true
-                    backgroundColor = dimmedBackgroundColor
-                }
-            } else {
-                if dimmed {
-                    dimmed = false
-                    backgroundColor = undimmedBackgroundColor
+        if type == JABButtonType.Image {
+            if dimsWhenPressed {
+                if pressed {
+                    if !dimmed {
+                        dimmed = true
+                        backgroundColor = dimmedBackgroundColor
+                    }
+                } else {
+                    if dimmed {
+                        dimmed = false
+                        backgroundColor = undimmedBackgroundColor
+                    }
                 }
             }
         }
@@ -235,8 +257,17 @@ public class JABButton: JABTouchableView {
         
         textLabel.text = text
         textLabel.textAlignment = textAlignment
-        textLabel.textColor = textColor
         textLabel.font = font
+        
+        if dimsWhenPressed {
+            if pressed {
+                dimmed = true
+                textLabel.textColor = dimmedTextColor
+            } else {
+                dimmed = false
+                textLabel.textColor = undimmedTextColor
+            }
+        }
         
     }
     
