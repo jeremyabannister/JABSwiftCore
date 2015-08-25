@@ -270,6 +270,8 @@ public class JABButton: JABTouchableView {
                     textLabel.textColor = undimmedTextColor
                 }
             }
+        } else {
+            textLabel.textColor = textColor
         }
         
     }

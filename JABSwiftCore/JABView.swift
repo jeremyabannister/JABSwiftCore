@@ -29,15 +29,13 @@ public class JABView: UIView, GlobalVariablesInitializationNotificationSubscribe
             }
             
             if scaled {
-                notificationLayer.frame = relativeFrame
                 updateAllUI()
             }
         }
     }
     
     
-    // MARK: Notification Layer
-    public var notificationLayer = UIView()
+    
     
     
     
@@ -50,10 +48,6 @@ public class JABView: UIView, GlobalVariablesInitializationNotificationSubscribe
         
         super.init(frame:CGRectZero)
         
-        addSubview(notificationLayer)
-        notificationLayer.frame = relativeFrame
-        undimNotificationLayer()
-        
         if !globalVariablesInitialized {
             globalVariableInitializationNotificationSubscribers.append(self)
         } else {
@@ -62,6 +56,7 @@ public class JABView: UIView, GlobalVariablesInitializationNotificationSubscribe
         
         addAllUI()
     }
+    
     
     required public init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -74,30 +69,7 @@ public class JABView: UIView, GlobalVariablesInitializationNotificationSubscribe
     // MARK:
     // MARK: Methods
     // MARK:
-    
-    // MARK:
-    // MARK: Override
-    // MARK:
-    
-    override public func addSubview(view: UIView) {
-        super.addSubview(view)
-        bringSubviewToFront(notificationLayer)
-    }
-    
-    
-    // MARK:
-    // MARK: Notifications
-    // MARK:
-    
-    public func dimNotificationLayer () {
-        notificationLayer.backgroundColor = UIColor(white: 0, alpha: 0.6)
-        notificationLayer.userInteractionEnabled = true
-    }
-    
-    public func undimNotificationLayer () {
-        notificationLayer.backgroundColor = UIColor(white: 0, alpha: 0)
-        notificationLayer.userInteractionEnabled = false
-    }
+        
     
     
     // MARK:
