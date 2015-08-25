@@ -24,9 +24,9 @@ public class JABButton: JABTouchableView {
     // Button
     public var buttonDelegate: JABButtonDelegate? // The receiver of notifications from button
     public var type = JABButtonType.Image
-    public var pressed = false
-    public var dimmed = false
-    var swollen = false
+    private var pressed = false
+    private var dimmed = false
+    private var swollen = false
     
     // Frame
     override public var frame: CGRect {
@@ -88,8 +88,8 @@ public class JABButton: JABTouchableView {
     
     
     // MARK: UI
-    var imageView = UIImageView()
-    var textLabel = UILabel()
+    private let imageView = UIImageView()
+    private let textLabel = UILabel()
     
     
     // MARK: Parameters
@@ -97,6 +97,7 @@ public class JABButton: JABTouchableView {
     public var verticalContentInset: CGFloat = 0.0
     
     public var dimsWhenPressed = false
+    public var textButtonDimsBackground = false
     public var swellsWhenPressed = false
     public var swellFraction = CGFloat(1.1)
     public var swellDuration = 0.2
@@ -183,7 +184,7 @@ public class JABButton: JABTouchableView {
     // MARK: Background
     func configureBackground () {
         
-        if type == JABButtonType.Image {
+        if type == JABButtonType.Image || textButtonDimsBackground {
             if dimsWhenPressed {
                 if pressed {
                     if !dimmed {
@@ -259,13 +260,15 @@ public class JABButton: JABTouchableView {
         textLabel.textAlignment = textAlignment
         textLabel.font = font
         
-        if dimsWhenPressed {
-            if pressed {
-                dimmed = true
-                textLabel.textColor = dimmedTextColor
-            } else {
-                dimmed = false
-                textLabel.textColor = undimmedTextColor
+        if !textButtonDimsBackground {
+            if dimsWhenPressed {
+                if pressed {
+                    dimmed = true
+                    textLabel.textColor = dimmedTextColor
+                } else {
+                    dimmed = false
+                    textLabel.textColor = undimmedTextColor
+                }
             }
         }
         
@@ -327,9 +330,10 @@ public class JABButton: JABTouchableView {
     
     // MARK: Touch Manager
     override public func touchDidBegin(gestureRecognizer: UIGestureRecognizer) {
-        
         pressed = true
-        animatedUpdate()
+        animatedUpdate(duration: 0.1) { (Bool) -> () in
+            
+        }
         buttonDelegate?.buttonWasTouched(self)
         
     }
@@ -342,7 +346,9 @@ public class JABButton: JABTouchableView {
             pressed = false
         }
         
-        animatedUpdate()
+        animatedUpdate(duration: 0.1) { (Bool) -> () in
+            
+        }
         
     }
     
@@ -356,14 +362,18 @@ public class JABButton: JABTouchableView {
         
         buttonDelegate?.buttonWasUntouched(self, triggered: pressed)
         pressed = false
-        animatedUpdate()
+        animatedUpdate(duration: 0.1) { (Bool) -> () in
+            
+        }
     }
     
     override public func touchDidCancel(gestureRecognizer: UIGestureRecognizer, xDistance: CGFloat, yDistance: CGFloat, xVelocity: CGFloat, yVelocity: CGFloat, methodCallNumber: Int) {
         
         buttonDelegate?.buttonWasUntouched(self, triggered: false)
         pressed = false
-        animatedUpdate()
+        animatedUpdate(duration: 0.1) { (Bool) -> () in
+            
+        }
         
     }
     

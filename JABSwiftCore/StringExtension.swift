@@ -116,6 +116,20 @@ public extension String {
     }
     
     
+    public func isValidVersionNumber () -> Bool {
+        
+        let components = self.componentsSeparatedByString(".")
+        
+        for component in components {
+            if !component.isValidWholeNumber() {
+                return false
+            }
+        }
+        
+        return true
+    }
+    
+    
     
     // MARK: Conversion
     public func doubleFromDollarAmount () -> Double? {
