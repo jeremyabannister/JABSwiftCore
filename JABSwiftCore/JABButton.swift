@@ -269,6 +269,8 @@ public class JABButton: JABTouchableView {
                     dimmed = false
                     textLabel.textColor = undimmedTextColor
                 }
+            } else if swellsWhenPressed {
+                textLabel.textColor = textColor
             }
         } else {
             textLabel.textColor = textColor
