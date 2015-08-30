@@ -92,6 +92,12 @@ extension NSDate: Comparable {
     
     public static var daysOfWeekShort: [String] {
         get {
+            return ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
+        }
+    }
+    
+    public static var daysOfWeekMedium: [String] {
+        get {
             return ["Sun", "Mon", "Tues", "Weds", "Thurs", "Fri", "Sat"]
         }
     }
@@ -198,6 +204,12 @@ extension NSDate: Comparable {
     public var dayOfWeekStringShort: String {
         get {
             return NSDate.daysOfWeekShort[dayOfWeek - 1]
+        }
+    }
+    
+    public var dayOfWeekStringMedium: String {
+        get {
+            return NSDate.daysOfWeekMedium[dayOfWeek - 1]
         }
     }
     
