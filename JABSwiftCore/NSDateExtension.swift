@@ -191,25 +191,25 @@ extension NSDate: Comparable {
     public var dayOfWeek: Int {
         get {
             let components = NSCalendar.currentCalendar().components(NSCalendarUnit.WeekdayCalendarUnit, fromDate: self)
-            return components.weekday
+            return components.weekday - 1
         }
     }
     
     public var dayOfWeekString: String {
         get {
-            return NSDate.daysOfWeek[dayOfWeek - 1]
+            return NSDate.daysOfWeek[dayOfWeek]
         }
     }
     
     public var dayOfWeekStringShort: String {
         get {
-            return NSDate.daysOfWeekShort[dayOfWeek - 1]
+            return NSDate.daysOfWeekShort[dayOfWeek]
         }
     }
     
     public var dayOfWeekStringMedium: String {
         get {
-            return NSDate.daysOfWeekMedium[dayOfWeek - 1]
+            return NSDate.daysOfWeekMedium[dayOfWeek]
         }
     }
     

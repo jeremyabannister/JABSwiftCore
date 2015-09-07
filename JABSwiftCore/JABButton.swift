@@ -49,11 +49,15 @@ public class JABButton: JABTouchableView {
     public var undimmedBackgroundColor: UIColor? {
         didSet {
             if dimmedBackgroundColor == nil {
-                dimmedBackgroundColor = undimmedBackgroundColor?.dim(0.7)
+                if undimmedBackgroundColor?.components.alpha == 0 {
+                    dimmedBackgroundColor = UIColor(white: 0, alpha: 0.2)
+                } else {
+                    dimmedBackgroundColor = undimmedBackgroundColor?.dim(0.7)
+                }
             }
         }
     }
-    public var dimmedBackgroundColor: UIColor?
+    public var dimmedBackgroundColor: UIColor? = UIColor(white: 0, alpha: 0.2)
     
     // Image
     public var image: UIImage?
