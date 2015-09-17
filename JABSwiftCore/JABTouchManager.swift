@@ -224,7 +224,7 @@ public class JABTouchManager: NSObject, UIGestureRecognizerDelegate {
                 
             }
         } else {
-            print("Trying to detect touch before static on screen view was set")
+            print("Trying to detect touch before static on screen view was set", terminator: "")
         }
         
     }

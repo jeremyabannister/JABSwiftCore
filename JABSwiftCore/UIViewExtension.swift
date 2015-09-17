@@ -225,21 +225,23 @@ public extension UIView {
         }
     }
     
-    public var shadowColor: UIColor {
+    public var shadowColor: UIColor? {
         get {
-            if let color = UIColor(CGColor: layer.shadowColor) {
-                return color
+            if let color = layer.shadowColor {
+                return UIColor(CGColor: color)
             } else {
-                println("Problem in JABSwiftCore.UIViewExtension.shadowColor.get - ^^^ shadowColor was not convertible from CGColor to UIColor")
+                print("Problem in JABSwiftCore.UIViewExtension.shadowColor.get - ^^^ shadowColor was not convertible from CGColor to UIColor")
                 return UIColor()
             }
         }
         set {
-            layer.shadowColor = newValue.CGColor
+            if let color = newValue {
+                layer.shadowColor = color.CGColor
+            }
         }
     }
     
-    public var shadowPath: CGPath {
+    public var shadowPath: CGPath? {
         get {
             return layer.shadowPath
         }
@@ -252,9 +254,9 @@ public extension UIView {
     
     public func printFrame(tag: NSString = "") {
         if tag == "" {
-            println(frame)
+            print(frame)
         } else {
-            println("\(tag) : \(frame)")
+            print("\(tag) : \(frame)")
         }
     }
     
@@ -304,14 +306,12 @@ public extension UIView {
     // MARK: Subview Manipulation
     public func changeAllTextOfSubviewsToColor(color: UIColor) {
         
-        for subviewObject in subviews {
-            if let subview = subviewObject as? UIView {
-                if let label = subview as? UILabel {
-                    label.textColor = color
-                } else {
-                    if subview.subviews.count != 0 {
-                        subview.changeAllTextOfSubviewsToColor(color)
-                    }
+        for subview in subviews {
+            if let label = subview as? UILabel {
+                label.textColor = color
+            } else {
+                if subview.subviews.count != 0 {
+                    subview.changeAllTextOfSubviewsToColor(color)
                 }
             }
         }

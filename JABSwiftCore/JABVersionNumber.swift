@@ -8,7 +8,7 @@
 
 import UIKit
 
-public class JABVersionNumber: NSObject, Equatable, Comparable {
+public class JABVersionNumber: NSObject, Comparable {
     
     // MARK:
     // MARK: Properties
@@ -39,7 +39,7 @@ public class JABVersionNumber: NSObject, Equatable, Comparable {
         if string.isValidVersionNumber() {
             let components = string.componentsSeparatedByString(".")
             for component in components {
-                if let number = component.toInt() {
+                if let number = Int(component) {
                     numbers.append(number)
                 }
             }

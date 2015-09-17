@@ -36,11 +36,11 @@ public extension UIImage {
         
         // Mask tint color-swatch to this image's opaque mask.
         // We want behaviour like NSCompositeDestinationIn on Mac OS X.
-        drawInRect(rect, blendMode: kCGBlendModeDestinationIn, alpha: 1.0)
+        drawInRect(rect, blendMode: CGBlendMode.DestinationIn, alpha: 1.0)
         
         // Finally, composite this image over the tinted mask at desired opacity.
         if fraction > 0.0 {
-            drawInRect(rect, blendMode: kCGBlendModeSourceAtop, alpha: fraction)
+            drawInRect(rect, blendMode: CGBlendMode.SourceAtop, alpha: fraction)
         }
         image = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()

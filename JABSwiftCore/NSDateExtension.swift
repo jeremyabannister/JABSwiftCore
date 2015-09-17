@@ -24,7 +24,7 @@ extension NSDate: Comparable {
         
         let components = dateString.componentsSeparatedByString(" ")
         if components.count == 3 {
-            let dayAsString = components[1].substringToIndex(advance(components[1].endIndex, -3))
+            let dayAsString = components[1].substringToIndex(components[1].endIndex.advancedBy(-3))
             var monthIndex = -1
             for i in 0..<NSDate.months.count {
                 let month = NSDate.months[i]
@@ -119,7 +119,7 @@ extension NSDate: Comparable {
     
     public var year: Int {
         get {
-            let components = NSCalendar.currentCalendar().components(NSCalendarUnit.YearCalendarUnit, fromDate: self)
+            let components = NSCalendar.currentCalendar().components(.Year, fromDate: self)
             return components.year
         }
     }
@@ -133,7 +133,7 @@ extension NSDate: Comparable {
     
     public var month: Int {
         get {
-            let components = NSCalendar.currentCalendar().components(NSCalendarUnit.MonthCalendarUnit, fromDate: self)
+            let components = NSCalendar.currentCalendar().components(.Month, fromDate: self)
             return components.month
         }
     }
@@ -155,7 +155,7 @@ extension NSDate: Comparable {
     
     public var weekOfYear: Int {
         get {
-            let components = NSCalendar.currentCalendar().components(NSCalendarUnit.WeekOfYearCalendarUnit, fromDate: self)
+            let components = NSCalendar.currentCalendar().components(.WeekOfYear, fromDate: self)
             return components.weekOfYear
         }
     }
@@ -169,7 +169,7 @@ extension NSDate: Comparable {
     
     public var day: Int {
         get {
-            let components = NSCalendar.currentCalendar().components(NSCalendarUnit.DayCalendarUnit, fromDate: self)
+            let components = NSCalendar.currentCalendar().components(.Day, fromDate: self)
             return components.day
         }
     }
@@ -190,7 +190,7 @@ extension NSDate: Comparable {
     
     public var dayOfWeek: Int {
         get {
-            let components = NSCalendar.currentCalendar().components(NSCalendarUnit.WeekdayCalendarUnit, fromDate: self)
+            let components = NSCalendar.currentCalendar().components(.Weekday, fromDate: self)
             return components.weekday - 1
         }
     }
@@ -216,7 +216,7 @@ extension NSDate: Comparable {
     
     public var hour: Int {
         get {
-            let components = NSCalendar.currentCalendar().components(NSCalendarUnit.HourCalendarUnit, fromDate: self)
+            let components = NSCalendar.currentCalendar().components(.Hour, fromDate: self)
             return components.hour
         }
     }
@@ -230,7 +230,7 @@ extension NSDate: Comparable {
     
     public var minute: Int {
         get {
-            let components = NSCalendar.currentCalendar().components(NSCalendarUnit.MinuteCalendarUnit, fromDate: self)
+            let components = NSCalendar.currentCalendar().components(.Minute, fromDate: self)
             return components.minute
         }
     }
@@ -244,7 +244,7 @@ extension NSDate: Comparable {
     
     public var second: Int {
         get {
-            let components = NSCalendar.currentCalendar().components(NSCalendarUnit.SecondCalendarUnit, fromDate: self)
+            let components = NSCalendar.currentCalendar().components(.Second, fromDate: self)
             return components.second
         }
     }
@@ -274,9 +274,9 @@ extension NSDate: Comparable {
         
         if futureDate > self {
             
-            var unitFlags = NSCalendarUnit.DayCalendarUnit
-            if let calendar = NSCalendar(calendarIdentifier: NSGregorianCalendar) {
-                let components = calendar.components(unitFlags, fromDate: self, toDate: futureDate, options: nil)
+            let unitFlags = NSCalendarUnit.Day
+            if let calendar = NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian) {
+                let components = calendar.components(unitFlags, fromDate: self, toDate: futureDate, options: [])
                 
                 if inclusive {
                     return components.day + 1

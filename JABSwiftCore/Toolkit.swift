@@ -17,22 +17,22 @@ public class Toolkit {
     // MARK: Strings
     // MARK:
     public static func decapitalizeWord (word: String) -> String {
-        let head = word.substringToIndex(advance(word.startIndex, 1))
-        let decapitatedWord = word.substringFromIndex(advance(word.startIndex, 1))
+        let head = word.substringToIndex(word.startIndex.advancedBy(1))
+        let decapitatedWord = word.substringFromIndex(word.startIndex.advancedBy(1))
         return head.lowercaseString + decapitatedWord
     }
     
     public static func capitalizeWord (word: String) -> String {
-        let head = word.substringToIndex(advance(word.startIndex, 1))
-        let decapitatedWord = word.substringFromIndex(advance(word.startIndex, 1))
+        let head = word.substringToIndex(word.startIndex.advancedBy(1))
+        let decapitatedWord = word.substringFromIndex(word.startIndex.advancedBy(1))
         return head.uppercaseString + decapitatedWord
     }
     
     public static func intendedStringFromIngredients (initialString: String, range: NSRange, replacementString: String) -> String {
         
-        var frankensteinString = initialString.substringToIndex(advance(initialString.startIndex, range.location))
+        var frankensteinString = initialString.substringToIndex(initialString.startIndex.advancedBy(range.location))
         frankensteinString += replacementString
-        frankensteinString += initialString.substringFromIndex(advance(initialString.startIndex, range.location + range.length))
+        frankensteinString += initialString.substringFromIndex(initialString.startIndex.advancedBy(range.location + range.length))
         
         return frankensteinString
     }

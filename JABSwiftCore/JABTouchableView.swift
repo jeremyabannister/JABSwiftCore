@@ -43,7 +43,7 @@ public class JABTouchableView: JABView, JABTouchManagerDelegate {
     }
     
     
-    required public init(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
     
@@ -60,7 +60,7 @@ public class JABTouchableView: JABView, JABTouchManagerDelegate {
     
     public func blockWithView(blockingView: UIView) {
         
-        if !contains(blockingViews, blockingView) {
+        if !blockingViews.contains(blockingView) {
             blockingViews.append(blockingView)
         }
         
@@ -69,7 +69,7 @@ public class JABTouchableView: JABView, JABTouchManagerDelegate {
     
     public func unblockWithView(blockingView: UIView) {
         
-        if contains(blockingViews, blockingView) {
+        if blockingViews.contains(blockingView) {
             Toolkit.removeObject(blockingView, fromArray: &blockingViews)
         }
     }

@@ -62,10 +62,10 @@ public class JABLocationTester: JABTouchableView {
         
     }
     
-    required public init(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         
         super.init()
-        println("Should not be initializing from coder \(self)")
+        print("Should not be initializing from coder \(self)")
     }
     
     override public func globalVariablesWereInitialized() {
@@ -173,7 +173,7 @@ public class JABLocationTester: JABTouchableView {
     override public func touchDidBegin(gestureRecognizer: UIGestureRecognizer) {
         
         location = gestureRecognizer.locationInView(self)
-        println("(\(location.x), \(location.y))")
+        print("(\(location.x), \(location.y))")
         animatedUpdate()
         
     }
@@ -181,7 +181,7 @@ public class JABLocationTester: JABTouchableView {
     override public func touchDidChange(gestureRecognizer: UIGestureRecognizer, xDistance: CGFloat, yDistance: CGFloat, xVelocity: CGFloat, yVelocity: CGFloat, methodCallNumber: Int) {
         
         location = gestureRecognizer.locationInView(self)
-        println("(\(location.x), \(location.y))")
+        print("(\(location.x), \(location.y))")
         updateAllUI()
         
     }
@@ -189,7 +189,7 @@ public class JABLocationTester: JABTouchableView {
     override public func touchDidEnd(gestureRecognizer: UIGestureRecognizer, xDistance: CGFloat, yDistance: CGFloat, xVelocity: CGFloat, yVelocity: CGFloat, methodCallNumber: Int) {
         
         location = gestureRecognizer.locationInView(self)
-        println("(\(location.x), \(location.y))")
+        print("(\(location.x), \(location.y))")
         updateAllUI()
         
         
@@ -204,7 +204,7 @@ public class JABLocationTester: JABTouchableView {
     override public func touchDidCancel(gestureRecognizer: UIGestureRecognizer, xDistance: CGFloat, yDistance: CGFloat, xVelocity: CGFloat, yVelocity: CGFloat, methodCallNumber: Int) {
         
         location = gestureRecognizer.locationInView(self)
-        println("(\(location.x), \(location.y))")
+        print("(\(location.x), \(location.y))")
         updateAllUI()
         
     }

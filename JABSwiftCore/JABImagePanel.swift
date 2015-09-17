@@ -60,10 +60,10 @@ public class JABImagePanel: JABPanel {
         
     }
     
-    required public init(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         
         super.init()
-        println("Should not be initializing from coder \(self)")
+        print("Should not be initializing from coder \(self)")
     }
     
     

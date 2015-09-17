@@ -45,7 +45,7 @@ public class JABPaneledScrollView: JABView, JABPanelChangeSubscriber {
     public var numberOfColumns = 1 {
         didSet {
             if numberOfColumns < 1 {
-                print("numberOfColumns of \(self) was set to \(numberOfColumns) but may not be less than 1. Setting to 1...")
+                print("numberOfColumns of \(self) was set to \(numberOfColumns) but may not be less than 1. Setting to 1...", terminator: "")
                 numberOfColumns = 1
             }
             
@@ -85,10 +85,10 @@ public class JABPaneledScrollView: JABView, JABPanelChangeSubscriber {
         
     }
     
-    required public init(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         
         super.init()
-        print("Should not be initializing from coder \(self)")
+        print("Should not be initializing from coder \(self)", terminator: "")
     }
     
     
@@ -277,11 +277,9 @@ public class JABPaneledScrollView: JABView, JABPanelChangeSubscriber {
     // MARK: Private
     func drawPanels () {
         
-        if let views = scrollView.subviews as? [UIView] {
-            for panel in panels {
-                if !contains(views, panel as UIView) {
-                    scrollView.addSubview(panel)
-                }
+        for panel in panels {
+            if !scrollView.subviews.contains(panel as UIView) {
+                scrollView.addSubview(panel)
             }
         }
         
@@ -306,7 +304,7 @@ public class JABPaneledScrollView: JABView, JABPanelChangeSubscriber {
     func assignColumns () {
         
         columns.removeAll(keepCapacity: true)
-        for i in 0..<numberOfColumns {
+        for _ in 0..<numberOfColumns {
             columns.append([JABPanel]())
         }
         

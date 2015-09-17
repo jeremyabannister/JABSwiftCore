@@ -23,21 +23,21 @@ public extension String {
     // MARK: Subscript
     
     subscript (i: Int) -> Character {
-        return self[advance(self.startIndex, i)]
+        return self[self.startIndex.advancedBy(i)]
     }
     
     subscript (r: Range<Int>) -> String {
-        return substringWithRange(Range(start: advance(startIndex, r.startIndex), end: advance(startIndex, r.endIndex)))
+        return substringWithRange(Range(start: startIndex.advancedBy(r.startIndex), end: startIndex.advancedBy(r.endIndex)))
     }
     
     
     // MARK: Is Valid
     public func isValidCombinationOfCharacterSet (characterSet: [Character]) -> Bool {
         
-        if count(self) == 0 {
+        if self.characters.count == 0 {
             return true
         } else {
-            for i in 0..<count(self) {
+            for i in 0..<self.characters.count {
                 var validCharacter = false
                 for character in characterSet {
                     if self[i] == character {
@@ -58,7 +58,7 @@ public extension String {
     }
     
     public func isValidInteger () -> Bool {
-        if count(self) > 0 {
+        if self.characters.count > 0 {
             if self[0] == "-" {
                 return decapitate().isValidWholeNumber()
             }
@@ -87,13 +87,13 @@ public extension String {
     public func isValidDollarAmount () -> Bool {
         
         var testSubject = self
-        if count(testSubject) > 0 {
+        if testSubject.characters.count > 0 {
             if testSubject[0] == "-" {
                 testSubject = testSubject.decapitate()
             }
         }
         
-        if count(testSubject) > 0 {
+        if testSubject.characters.count > 0 {
             if testSubject[0] == "$" {
                 testSubject = testSubject.decapitate()
             } else {
@@ -103,7 +103,7 @@ public extension String {
             return false
         }
         
-        if count(testSubject) > 0 {
+        if testSubject.characters.count > 0 {
             if testSubject[0] == "-" {
                 return false
             } else {
@@ -138,23 +138,23 @@ public extension String {
             var testSubject = self
             var negative = false
             
-            if count(testSubject) > 0 {
+            if testSubject.characters.count > 0 {
                 if testSubject[0] == "-" {
                     negative = true
                     testSubject = testSubject.decapitate()
                 }
             }
             
-            if count(testSubject) > 0 {
+            if testSubject.characters.count > 0 {
                 if testSubject[0] == "$" {
                     testSubject = testSubject.decapitate()
                 } else {
-                    println("Problem in JABSwiftCore.String.doubleFromDollarAmount - The string \"\(self)\" does not begin with either \"$\" or \"-$\".")
+                    print("Problem in JABSwiftCore.String.doubleFromDollarAmount - The string \"\(self)\" does not begin with either \"$\" or \"-$\".")
                     return nil
                 }
             }
             
-            if count(testSubject) > 0 {
+            if testSubject.characters.count > 0 {
                 if let doubleAmount = testSubject.toDouble() {
                     if negative {
                         return -doubleAmount
@@ -169,7 +169,7 @@ public extension String {
             }
             
         } else {
-            println("Problem in JABSwiftCore.String.doubleFromDollarAmount - The string \"\(self)\" is not a valid dollar amount.")
+            print("Problem in JABSwiftCore.String.doubleFromDollarAmount - The string \"\(self)\" is not a valid dollar amount.")
             return nil
         }
     }
@@ -182,8 +182,8 @@ public extension String {
     
     // MARK: Substring
     public func decapitate () -> String {
-        if count(self) > 0 {
-            return substringFromIndex(advance(startIndex, 1))
+        if self.characters.count > 0 {
+            return substringFromIndex(startIndex.advancedBy(1))
         }
         return ""
     }

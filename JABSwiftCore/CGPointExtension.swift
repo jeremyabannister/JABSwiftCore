@@ -12,7 +12,7 @@ public extension CGPoint {
     
     public func distanceTo(point: CGPoint) -> CGFloat {
         
-        var difference = CGPoint(x: x - point.x, y: y - point.y)
+        let difference = CGPoint(x: x - point.x, y: y - point.y)
         
         return CGFloat(sqrt(Double((difference.x * difference.x) + (difference.y * difference.y))))
         

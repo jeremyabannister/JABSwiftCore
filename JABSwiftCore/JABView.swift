@@ -58,7 +58,7 @@ public class JABView: UIView, GlobalVariablesInitializationNotificationSubscribe
     }
     
     
-    required public init(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
     
@@ -97,13 +97,13 @@ public class JABView: UIView, GlobalVariablesInitializationNotificationSubscribe
     }
     
     public func animatedUpdate (duration: NSTimeInterval, options: UIViewAnimationOptions) {
-        animatedUpdate(duration: duration, options: options) { (Bool) -> () in
+        animatedUpdate(duration, options: options) { (Bool) -> () in
             
         }
     }
     
     public func animatedUpdate (duration: NSTimeInterval = defaultAnimationDuration, completion: (Bool) -> ()) {
-        animatedUpdate(duration: duration, options: .CurveEaseInOut, completion: completion)
+        animatedUpdate(duration, options: .CurveEaseInOut, completion: completion)
     }
     
     public func animatedUpdate (duration: NSTimeInterval = defaultAnimationDuration, options: UIViewAnimationOptions, completion: (Bool) -> ()) {

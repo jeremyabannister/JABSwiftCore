@@ -123,7 +123,7 @@ public class JABButton: JABTouchableView {
         super.init()
     }
     
-    required public init(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         super.init()
     }
     
@@ -339,7 +339,7 @@ public class JABButton: JABTouchableView {
     // MARK: Touch Manager
     override public func touchDidBegin(gestureRecognizer: UIGestureRecognizer) {
         pressed = true
-        animatedUpdate(duration: 0.1) { (Bool) -> () in
+        animatedUpdate(0.1) { (Bool) -> () in
             
         }
         buttonDelegate?.buttonWasTouched(self)
@@ -354,7 +354,7 @@ public class JABButton: JABTouchableView {
             pressed = false
         }
         
-        animatedUpdate(duration: 0.1) { (Bool) -> () in
+        animatedUpdate(0.1) { (Bool) -> () in
             
         }
         
@@ -370,7 +370,7 @@ public class JABButton: JABTouchableView {
         
         buttonDelegate?.buttonWasUntouched(self, triggered: pressed)
         pressed = false
-        animatedUpdate(duration: 0.1) { (Bool) -> () in
+        animatedUpdate(0.1) { (Bool) -> () in
             
         }
     }
@@ -379,7 +379,7 @@ public class JABButton: JABTouchableView {
         
         buttonDelegate?.buttonWasUntouched(self, triggered: false)
         pressed = false
-        animatedUpdate(duration: 0.1) { (Bool) -> () in
+        animatedUpdate(0.1) { (Bool) -> () in
             
         }
         
