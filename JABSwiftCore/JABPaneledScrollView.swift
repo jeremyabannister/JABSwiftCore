@@ -19,7 +19,7 @@ public class JABPaneledScrollView: JABView, JABPanelChangeSubscriber {
     // MARK: State
     public var scrollEnabled = true
     
-    var panels = [JABPanel]() {
+    private var panels = [JABPanel]() {
         didSet {
             for panel in panels {
                 if !panel.subscriberIsAlreadySubscribed(self) {
@@ -36,10 +36,33 @@ public class JABPaneledScrollView: JABView, JABPanelChangeSubscriber {
             return panels.count
         }
     }
-    var columns = [[JABPanel]]()
+    private var columns = [[JABPanel]]()
+    
+    public var topView: UIView? {
+        didSet {
+            oldValue?.removeFromSuperview()
+            if let newValue = topView {
+                
+                scrollView.addSubview(newValue)
+                
+                drawPanels()
+            }
+        }
+    }
+    public var bottomView: UIView? {
+        didSet {
+            oldValue?.removeFromSuperview()
+            if let newValue = bottomView {
+                
+                scrollView.addSubview(newValue)
+                
+                drawPanels()
+            }
+        }
+    }
     
     // MARK: UI
-    let scrollView = UIScrollView()
+    private let scrollView = UIScrollView()
     
     // MARK: Parameters
     public var numberOfColumns = 1 {
@@ -56,12 +79,36 @@ public class JABPaneledScrollView: JABView, JABPanelChangeSubscriber {
     }
     
     
-    public var betweenBufferForColumns = CGFloat(0);
-    public var betweenBufferForRows = CGFloat(0);
-    public var sideBuffer = CGFloat(0);
-    public var topBuffer = CGFloat(0);
+    public var betweenBufferForColumns = CGFloat(0) {
+        didSet {
+            if oldValue != betweenBufferForColumns {
+                drawPanels()
+            }
+        }
+    }
+    public var betweenBufferForRows = CGFloat(0) {
+        didSet {
+            if oldValue != betweenBufferForRows {
+                drawPanels()
+            }
+        }
+    }
+    public var sideBuffer = CGFloat(0) {
+        didSet {
+            if oldValue != sideBuffer {
+                drawPanels()
+            }
+        }
+    }
+    public var topBuffer = CGFloat(0) {
+        didSet {
+            if oldValue != topBuffer {
+                drawPanels()
+            }
+        }
+    }
     
-    var widthOfPanels = CGFloat(0)
+    private var widthOfPanels = CGFloat(0)
     
     
     
@@ -275,7 +322,7 @@ public class JABPaneledScrollView: JABView, JABPanelChangeSubscriber {
     
     
     // MARK: Private
-    func drawPanels () {
+    private func drawPanels () {
         
         for panel in panels {
             if !scrollView.subviews.contains(panel as UIView) {
@@ -286,22 +333,44 @@ public class JABPaneledScrollView: JABView, JABPanelChangeSubscriber {
         updateWidthOfPanels()
         assignColumns()
         
+        positionTopView()
+        
         for i in 0..<numberOfColumns {
             drawColumn(i)
         }
+        
+        positionBottomView()
         
         adjustContentSize()
         
     }
     
-    func updateWidthOfPanels () {
+    private func positionTopView () {
+        
+        if topView != nil {
+            topView!.x = (width - topView!.width)/2
+            topView!.y = topBuffer
+        }
+    }
+    
+    private func positionBottomView () {
+        
+        if bottomView != nil {
+            bottomView!.x = (width - bottomView!.width)/2
+            if let lastPanel = panels.last {
+                bottomView!.y = lastPanel.bottom
+            }
+        }
+    }
+    
+    private func updateWidthOfPanels () {
         
         let emptyHorizontalSpace = (2*sideBuffer) + (CGFloat((numberOfColumns - 1)) * betweenBufferForColumns)
         widthOfPanels = (width - emptyHorizontalSpace)/CGFloat(numberOfColumns)
         
     }
     
-    func assignColumns () {
+    private func assignColumns () {
         
         columns.removeAll(keepCapacity: true)
         for _ in 0..<numberOfColumns {
@@ -314,7 +383,7 @@ public class JABPaneledScrollView: JABView, JABPanelChangeSubscriber {
         
     }
     
-    func drawColumn (column: Int) {
+    private func drawColumn (column: Int) {
         
         let columnArray = columns[column]
         
@@ -326,7 +395,11 @@ public class JABPaneledScrollView: JABView, JABPanelChangeSubscriber {
             newFrame.origin.x = sideBuffer + (CGFloat(column) * (widthOfPanels + betweenBufferForColumns))
             
             if i == 0 {
-                newFrame.origin.y = topBuffer
+                if topView != nil {
+                    newFrame.origin.y = (2 * topBuffer) + topView!.height
+                } else {
+                    newFrame.origin.y = topBuffer
+                }
             } else {
                 newFrame.origin.y = columnArray[i-1].bottom + betweenBufferForRows
             }
@@ -339,17 +412,23 @@ public class JABPaneledScrollView: JABView, JABPanelChangeSubscriber {
         
     }
     
-    func adjustContentSize () {
+    private func adjustContentSize () {
         
-        var lowestPoint = CGFloat(0);
-        for column in columns {
-            let locallyLowestFrame = column.last?.frame
-            if locallyLowestFrame != nil {
-                if locallyLowestFrame!.bottom > lowestPoint {
-                    lowestPoint = locallyLowestFrame!.bottom
+        var lowestPoint = CGFloat(0)
+        
+        if bottomView != nil {
+            lowestPoint = bottomView!.bottom
+        } else {
+            for column in columns {
+                let locallyLowestFrame = column.last?.frame
+                if locallyLowestFrame != nil {
+                    if locallyLowestFrame!.bottom > lowestPoint {
+                        lowestPoint = locallyLowestFrame!.bottom
+                    }
                 }
             }
         }
+        
         
         if scrollView.height > lowestPoint {
             scrollView.contentSize = CGSize(width: scrollView.width, height: scrollView.height + 10)

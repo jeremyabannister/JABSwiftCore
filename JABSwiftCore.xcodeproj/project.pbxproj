@@ -8,11 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		8701987B1AE61FCA0073BFD5 /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8701987A1AE61FCA0073BFD5 /* UIImageExtension.swift */; };
+		870419781BE97635004DD8DF /* JABImageBank.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870419771BE97635004DD8DF /* JABImageBank.swift */; };
 		8705209D1AEF8799008C9555 /* ArrayExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8705209C1AEF8799008C9555 /* ArrayExtension.swift */; };
 		870DFB831B532A9200BC76D7 /* DoubleExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870DFB821B532A9200BC76D7 /* DoubleExtension.swift */; };
 		871280701B4C5D410005716F /* NSDateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8712806F1B4C5D410005716F /* NSDateExtension.swift */; };
 		87128B671AFDDC1C00D1F34A /* UIFontExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87128B661AFDDC1B00D1F34A /* UIFontExtension.swift */; };
 		8721FF2B1B6ECE37000EB3CB /* JABLocationTester.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8721FF2A1B6ECE37000EB3CB /* JABLocationTester.swift */; };
+		872B6A011BE1A9B600916EE8 /* SRTCamera.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872B6A001BE1A9B600916EE8 /* SRTCamera.swift */; };
 		873BFA6E1B11AAA300E677F5 /* JABImagePanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873BFA6D1B11AAA200E677F5 /* JABImagePanel.swift */; };
 		874D00001B76C8F8002E1A32 /* MarshalOperator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874DFFFF1B76C8F8002E1A32 /* MarshalOperator.swift */; };
 		875444BB1AE1D01C00659E6B /* JABSwiftCore.h in Headers */ = {isa = PBXBuildFile; fileRef = 875444BA1AE1D01C00659E6B /* JABSwiftCore.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -52,11 +54,13 @@
 
 /* Begin PBXFileReference section */
 		8701987A1AE61FCA0073BFD5 /* UIImageExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageExtension.swift; sourceTree = "<group>"; };
+		870419771BE97635004DD8DF /* JABImageBank.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JABImageBank.swift; sourceTree = "<group>"; };
 		8705209C1AEF8799008C9555 /* ArrayExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayExtension.swift; sourceTree = "<group>"; };
 		870DFB821B532A9200BC76D7 /* DoubleExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoubleExtension.swift; sourceTree = "<group>"; };
 		8712806F1B4C5D410005716F /* NSDateExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSDateExtension.swift; sourceTree = "<group>"; };
 		87128B661AFDDC1B00D1F34A /* UIFontExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIFontExtension.swift; sourceTree = "<group>"; };
 		8721FF2A1B6ECE37000EB3CB /* JABLocationTester.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JABLocationTester.swift; sourceTree = "<group>"; };
+		872B6A001BE1A9B600916EE8 /* SRTCamera.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SRTCamera.swift; sourceTree = "<group>"; };
 		873BFA6D1B11AAA200E677F5 /* JABImagePanel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JABImagePanel.swift; sourceTree = "<group>"; };
 		874DFFFF1B76C8F8002E1A32 /* MarshalOperator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarshalOperator.swift; sourceTree = "<group>"; };
 		875444B51AE1D01C00659E6B /* JABSwiftCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = JABSwiftCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -108,6 +112,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		870419761BE5501D004DD8DF /* Camera */ = {
+			isa = PBXGroup;
+			children = (
+				872B6A001BE1A9B600916EE8 /* SRTCamera.swift */,
+			);
+			name = Camera;
+			sourceTree = "<group>";
+		};
+		870419791BE97638004DD8DF /* Image Bank */ = {
+			isa = PBXGroup;
+			children = (
+				870419771BE97635004DD8DF /* JABImageBank.swift */,
+			);
+			name = "Image Bank";
+			sourceTree = "<group>";
+		};
 		8721FF2C1B6ECE54000EB3CB /* Location Tester */ = {
 			isa = PBXGroup;
 			children = (
@@ -234,6 +254,8 @@
 				875444E61AE1D09500659E6B /* Touchable View */,
 				875444E71AE1D09A00659E6B /* Application Root */,
 				87F771F01B0C1C6B00889827 /* PaneledScrollView */,
+				870419761BE5501D004DD8DF /* Camera */,
+				870419791BE97638004DD8DF /* Image Bank */,
 			);
 			name = Subclasses;
 			sourceTree = "<group>";
@@ -519,7 +541,9 @@
 				875444E01AE1D06500659E6B /* JABApplicationRoot.swift in Sources */,
 				871280701B4C5D410005716F /* NSDateExtension.swift in Sources */,
 				87EF09DD1AFCA27100BE92A4 /* PhysicalObjectProtocol.swift in Sources */,
+				872B6A011BE1A9B600916EE8 /* SRTCamera.swift in Sources */,
 				874D00001B76C8F8002E1A32 /* MarshalOperator.swift in Sources */,
+				870419781BE97635004DD8DF /* JABImageBank.swift in Sources */,
 				87F771EB1B0C1C0E00889827 /* JABPanel.swift in Sources */,
 				87F771EF1B0C1C6600889827 /* JABPaneledScrollView.swift in Sources */,
 				8701987B1AE61FCA0073BFD5 /* UIImageExtension.swift in Sources */,

@@ -21,7 +21,7 @@ public class JABPanel: JABTouchableView {
     var subscribers = [JABPanelChangeSubscriber]()
     
     // MARK: State
-    public var heightToWidthRatio = CGFloat(0) {
+    public var heightToWidthRatio = CGFloat(1) {
         didSet {
             notifySubscribersOfChange()
         }
