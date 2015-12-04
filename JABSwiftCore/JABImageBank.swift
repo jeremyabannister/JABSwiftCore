@@ -8,7 +8,7 @@
 
 import UIKit
 
-public class JABImageBank: JABView, JABButtonDelegate {
+public class JABImageBank: JABView, JABPaneledScrollViewDelegate, JABButtonDelegate {
 
     // MARK:
     // MARK: Properties
@@ -19,6 +19,18 @@ public class JABImageBank: JABView, JABButtonDelegate {
     
     // MARK: State
     public var numberOfColumns = 1
+    public var images = [UIImage]() {
+        didSet {
+            paneledScrollView.deleteAllPanels()
+            
+            var panels = [JABImagePanel]()
+            for image in images {
+                panels.append(JABImagePanel(image: image))
+            }
+            
+            paneledScrollView.loadWithPanels(panels)
+        }
+    }
     
     // MARK: UI
     private let newMediaButton = JABButton()
@@ -147,6 +159,8 @@ public class JABImageBank: JABView, JABButtonDelegate {
     // MARK: Paneled Scroll View
     private func configurePaneledScrollView () {
         
+        paneledScrollView.delegate = self
+        
         paneledScrollView.numberOfColumns = numberOfColumns
         paneledScrollView.betweenBufferForRows = 5
         paneledScrollView.topBuffer = 10
@@ -166,6 +180,36 @@ public class JABImageBank: JABView, JABButtonDelegate {
     // MARK:
     // MARK: Actions
     // MARK:
+    
+    // MARK: Panel
+    private func panelWasLongPressed (panel: JABImagePanel, panelIndex: Int) {
+        
+        let alertController = UIAlertController(title: nil, message: "Choose what to do with the selected photo.", preferredStyle: .ActionSheet)
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel) { (action) in
+            
+        }
+        alertController.addAction(cancelAction)
+        
+        let copyAction = UIAlertAction(title: "Copy", style: .Default) { (action) in
+            if let image = panel.image {
+                UIPasteboard.generalPasteboard().image = image
+            }
+        }
+        alertController.addAction(copyAction)
+        
+        let deleteAction = UIAlertAction(title: "Delete", style: .Destructive) { (action) in
+            if self.images.count > panelIndex {
+                self.delegate?.imageBankWantsToDeleteImage(self, image: self.images[panelIndex], atIndex: panelIndex)
+            }
+        }
+        alertController.addAction(deleteAction)
+        
+        rootViewController.presentViewController(alertController, animated: true) {
+            
+        }
+    }
+    
     
     // MARK: Buttons
     private func newMediaButtonPressed () {
@@ -198,6 +242,14 @@ public class JABImageBank: JABView, JABButtonDelegate {
     // MARK: Delegate Methods
     // MARK:
     
+    // MARK: Paneled Scroll View
+    public func paneledScrollViewPanelWasLongPressed(paneledScrollView: JABPaneledScrollView, panel: JABPanel, panelIndex: Int) {
+        
+        if let imagePanel = panel as? JABImagePanel {
+            panelWasLongPressed(imagePanel, panelIndex: panelIndex)
+        }
+    }
+    
     // MARK: Button
     public func buttonWasTouched(button: JABButton) {
         
@@ -218,6 +270,8 @@ public class JABImageBank: JABView, JABButtonDelegate {
 
 
 public protocol JABImageBankDelegate {
+    func imageBankWantsToDeleteImage (imageBank: JABImageBank, image: UIImage, atIndex index: Int)
+    
     func imageBankDidSelectCamera (imageBank: JABImageBank)
     func imageBankDidSelectPhotos (imageBank: JABImageBank)
 }

@@ -8,13 +8,14 @@
 
 import UIKit
 
-public class JABPaneledScrollView: JABView, JABPanelChangeSubscriber {
+public class JABPaneledScrollView: JABView, JABPanelChangeSubscriber, JABPanelDelegate {
 
     // MARK:
     // MARK: Properties
     // MARK:
     
     // MARK: Delegate
+    public var delegate: JABPaneledScrollViewDelegate?
     
     // MARK: State
     public var scrollEnabled = true
@@ -25,6 +26,7 @@ public class JABPaneledScrollView: JABView, JABPanelChangeSubscriber {
                 if !panel.subscriberIsAlreadySubscribed(self) {
                     panel.addSubscriber(self)
                 }
+                panel.panelDelegate = self
                 
                 drawPanels()
             }
@@ -245,7 +247,9 @@ public class JABPaneledScrollView: JABView, JABPanelChangeSubscriber {
     
     public func removeAllPanels () {
         for subview in scrollView.subviews {
-            subview.removeFromSuperview()
+            if subview != topView && subview != bottomView {
+                subview.removeFromSuperview()
+            }
         }
     }
     
@@ -440,6 +444,25 @@ public class JABPaneledScrollView: JABView, JABPanelChangeSubscriber {
     
     
     
+    // MARK:
+    // MARK: Delegate
+    // MARK:
+    
+    // MARK: Panel
+    public func panelWasLongPressed(panel: JABPanel) {
+        
+        for i in 0 ..< panels.count {
+            if panels[i] === panel {
+                delegate?.paneledScrollViewPanelWasLongPressed(self, panel: panel, panelIndex: i)
+            }
+        }
+        
+    }
+    
+    public func panelWasTapped(panel: JABPanel) {
+        
+    }
+    
     
     // MARK:
     // MARK: Subscriptions
@@ -449,4 +472,8 @@ public class JABPaneledScrollView: JABView, JABPanelChangeSubscriber {
     public func panelContentsDidChange(panel: JABPanel) {
         
     }
+}
+
+public protocol JABPaneledScrollViewDelegate: class {
+    func paneledScrollViewPanelWasLongPressed (paneledScrollView: JABPaneledScrollView, panel: JABPanel, panelIndex: Int)
 }

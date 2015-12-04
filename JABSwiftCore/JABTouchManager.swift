@@ -95,6 +95,7 @@ public class JABTouchManager: NSObject, UIGestureRecognizerDelegate {
                     
                     if gestureRecognizer.state == UIGestureRecognizerState.Changed {
                         
+                        
                         let xDisplacement = locationOnScreen.x - mostRecentTouchLocation.x
                         let yDisplacement = locationOnScreen.y - mostRecentTouchLocation.y
                         let timeInterval = CGFloat(CACurrentMediaTime() - mostRecentTouchTime)

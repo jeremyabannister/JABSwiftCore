@@ -29,7 +29,8 @@ public class JABPanel: JABTouchableView {
     public var staticAdditionToHeight = CGFloat(0)
     public var shouldPassOnTouchNotification = true
     
-    var initialTouchLocation = CGPoint()
+    private var initialTouchLocation = CGPoint()
+    private var longPressTimer = NSTimer()
     
     
     
@@ -92,6 +93,23 @@ public class JABPanel: JABTouchableView {
     // MARK:
     
     
+    // MARK:
+    // MARK: Actions
+    // MARK:
+    
+    private func restartLongPressTimer () {
+        cancelLongPressTimer()
+        longPressTimer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: "longPressTimerTriggered", userInfo: nil, repeats: false)
+    }
+    
+    private func cancelLongPressTimer () {
+        longPressTimer.invalidate()
+    }
+    
+    public func longPressTimerTriggered () {
+        panelDelegate?.panelWasLongPressed(self)
+    }
+    
     
     // MARK:
     // MARK: Delegate Methods
@@ -99,9 +117,17 @@ public class JABPanel: JABTouchableView {
     
     override public func touchDidBegin(gestureRecgonizer: UIGestureRecognizer) {
         initialTouchLocation = gestureRecgonizer.locationInView(staticOnScreenView)
+        
+        restartLongPressTimer()
+        
     }
     
     override public func touchDidChange(gestureRecgonizer: UIGestureRecognizer, xDistance: CGFloat, yDistance: CGFloat, xVelocity: CGFloat, yVelocity: CGFloat, methodCallNumber: Int) {
+        
+        
+        if gestureRecgonizer.locationInView(staticOnScreenView).distanceToPoint(initialTouchLocation) > 7 {
+            cancelLongPressTimer()
+        }
         
     }
     
@@ -109,15 +135,18 @@ public class JABPanel: JABTouchableView {
         
         if shouldPassOnTouchNotification {
             if relativeFrame.containsPoint(gestureRecgonizer.locationInView(self)) {
-                if initialTouchLocation.distanceTo(gestureRecgonizer.locationInView(staticOnScreenView)) < 10 {
+                if initialTouchLocation.distanceToPoint(gestureRecgonizer.locationInView(staticOnScreenView)) < 10 {
                     panelDelegate?.panelWasTapped(self)
                 }
             }
         }
+        
+        cancelLongPressTimer()
     }
     
     override public func touchDidCancel(gestureRecgonizer: UIGestureRecognizer, xDistance: CGFloat, yDistance: CGFloat, xVelocity: CGFloat, yVelocity: CGFloat, methodCallNumber: Int) {
         
+        cancelLongPressTimer()
     }
     
     
@@ -173,6 +202,7 @@ public class JABPanel: JABTouchableView {
 
 public protocol JABPanelDelegate: class {
     func panelWasTapped(panel: JABPanel)
+    func panelWasLongPressed (panel: JABPanel)
 }
 
 public protocol JABPanelChangeSubscriber: class {
