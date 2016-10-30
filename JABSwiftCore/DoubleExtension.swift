@@ -28,5 +28,4 @@ public extension Double {
             return "$".appendingFormat("%.2f", self)
         }
     }
-    
 }
