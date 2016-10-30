@@ -41,18 +41,18 @@ open class Toolkit {
     // MARK: Arrays
     // MARK:
     
-    open static func removeObject<T : Equatable>(_ object: T, fromArray array: inout [T]) {
-        var index: Int?
-        for i in 0..<array.count {
-            if array[i] == object {
-                index = i
-            }
-        }
-        
-        if index != nil {
-            array.remove(at: index!)
-        }
-    }
+//    open static func removeObject<T : Equatable>(_ object: T, fromArray array: inout [T]) {
+//        var index: Int?
+//        for i in 0..<array.count {
+//            if array[i] == object {
+//                index = i
+//            }
+//        }
+//        
+//        if index != nil {
+//            array.remove(at: index!)
+//        }
+//    }
     
     open static func indexOfObject<T : Equatable>(_ object: T, inArray array: [T]) -> Int? {
         for i in 0..<array.count {

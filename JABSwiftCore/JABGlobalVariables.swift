@@ -42,7 +42,7 @@ public let pi = 3.14159
 public func initializeGlobalParameters () {
     
     if UIDevice.current.model == "iPad" {
-        iPad == true
+        iPad = true
     }
     
     globalVariablesInitialized = true

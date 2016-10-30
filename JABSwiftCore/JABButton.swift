@@ -236,8 +236,6 @@ open class JABButton: JABTouchableView {
             
             imageView.opacity = 0
             
-        default:
-            imageView.opacity = 1
         }
         
     }
