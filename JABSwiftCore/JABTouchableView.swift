@@ -67,6 +67,7 @@ open class JABTouchableView: JABView, JABTouchManagerDelegate {
     }
     
     
+    
     open func unblockWithView(_ blockingView: UIView) {
         
         if blockingViews.contains(blockingView) {
