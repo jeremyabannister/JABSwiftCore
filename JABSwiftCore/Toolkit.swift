@@ -11,28 +11,28 @@ import UIKit
 
 
 
-public class Toolkit {
+open class Toolkit {
     
     // MARK:
     // MARK: Strings
     // MARK:
-    public static func decapitalizeWord (word: String) -> String {
-        let head = word.substringToIndex(word.startIndex.advancedBy(1))
-        let decapitatedWord = word.substringFromIndex(word.startIndex.advancedBy(1))
-        return head.lowercaseString + decapitatedWord
+    open static func decapitalizeWord (_ word: String) -> String {
+        let head = word.substring(to: word.characters.index(word.startIndex, offsetBy: 1))
+        let decapitatedWord = word.substring(from: word.characters.index(word.startIndex, offsetBy: 1))
+        return head.lowercased() + decapitatedWord
     }
     
-    public static func capitalizeWord (word: String) -> String {
-        let head = word.substringToIndex(word.startIndex.advancedBy(1))
-        let decapitatedWord = word.substringFromIndex(word.startIndex.advancedBy(1))
-        return head.uppercaseString + decapitatedWord
+    open static func capitalizeWord (_ word: String) -> String {
+        let head = word.substring(to: word.characters.index(word.startIndex, offsetBy: 1))
+        let decapitatedWord = word.substring(from: word.characters.index(word.startIndex, offsetBy: 1))
+        return head.uppercased() + decapitatedWord
     }
     
-    public static func intendedStringFromIngredients (initialString: String, range: NSRange, replacementString: String) -> String {
+    open static func intendedStringFromIngredients (_ initialString: String, range: NSRange, replacementString: String) -> String {
         
-        var frankensteinString = initialString.substringToIndex(initialString.startIndex.advancedBy(range.location))
+        var frankensteinString = initialString.substring(to: initialString.characters.index(initialString.startIndex, offsetBy: range.location))
         frankensteinString += replacementString
-        frankensteinString += initialString.substringFromIndex(initialString.startIndex.advancedBy(range.location + range.length))
+        frankensteinString += initialString.substring(from: initialString.characters.index(initialString.startIndex, offsetBy: range.location + range.length))
         
         return frankensteinString
     }
@@ -42,7 +42,7 @@ public class Toolkit {
     // MARK: Arrays
     // MARK:
     
-    public static func removeObject<T : Equatable>(object: T, inout fromArray array: [T]) {
+    open static func removeObject<T : Equatable>(_ object: T, fromArray array: inout [T]) {
         var index: Int?
         for i in 0..<array.count {
             if array[i] == object {
@@ -51,11 +51,11 @@ public class Toolkit {
         }
         
         if index != nil {
-            array.removeAtIndex(index!)
+            array.remove(at: index!)
         }
     }
     
-    public static func indexOfObject<T : Equatable>(object: T, inArray array: [T]) -> Int? {
+    open static func indexOfObject<T : Equatable>(_ object: T, inArray array: [T]) -> Int? {
         for i in 0..<array.count {
             if array[i] == object {
                 return i
@@ -71,7 +71,7 @@ public class Toolkit {
     // MARK: Rects
     // MARK:
     
-    public static func rectContainsPoint(rect: CGRect, point: CGPoint) -> Bool {
+    open static func rectContainsPoint(_ rect: CGRect, point: CGPoint) -> Bool {
         
         let xTest = point.x - rect.x
         let yTest = point.y - rect.y

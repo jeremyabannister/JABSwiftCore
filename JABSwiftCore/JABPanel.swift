@@ -8,29 +8,29 @@
 
 import UIKit
 
-public class JABPanel: JABTouchableView {
+open class JABPanel: JABTouchableView {
     
     // MARK:
     // MARK: Properties
     // MARK:
     
     // MARK: Delegate
-    public var panelDelegate: JABPanelDelegate?
+    open var panelDelegate: JABPanelDelegate?
     
     // MARK: Subscribers
     var subscribers = [JABPanelChangeSubscriber]()
     
     // MARK: State
-    public var heightToWidthRatio = CGFloat(1) {
+    open var heightToWidthRatio = CGFloat(1) {
         didSet {
             notifySubscribersOfChange()
         }
     }
-    public var staticAdditionToHeight = CGFloat(0)
-    public var shouldPassOnTouchNotification = true
+    open var staticAdditionToHeight = CGFloat(0)
+    open var shouldPassOnTouchNotification = true
     
-    private var initialTouchLocation = CGPoint()
-    private var longPressTimer = NSTimer()
+    fileprivate var initialTouchLocation = CGPoint()
+    fileprivate var longPressTimer = Timer()
     
     
     
@@ -76,11 +76,11 @@ public class JABPanel: JABTouchableView {
     
     
     // MARK: All
-    override public func addAllUI() {
+    override open func addAllUI() {
         
     }
     
-    override public func updateAllUI() {
+    override open func updateAllUI() {
         
     }
     
@@ -97,16 +97,16 @@ public class JABPanel: JABTouchableView {
     // MARK: Actions
     // MARK:
     
-    private func restartLongPressTimer () {
+    fileprivate func restartLongPressTimer () {
         cancelLongPressTimer()
-        longPressTimer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: "longPressTimerTriggered", userInfo: nil, repeats: false)
+        longPressTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(JABPanel.longPressTimerTriggered), userInfo: nil, repeats: false)
     }
     
-    private func cancelLongPressTimer () {
+    fileprivate func cancelLongPressTimer () {
         longPressTimer.invalidate()
     }
     
-    public func longPressTimerTriggered () {
+    open func longPressTimerTriggered () {
         panelDelegate?.panelWasLongPressed(self)
     }
     
@@ -115,27 +115,27 @@ public class JABPanel: JABTouchableView {
     // MARK: Delegate Methods
     // MARK:
     
-    override public func touchDidBegin(gestureRecgonizer: UIGestureRecognizer) {
-        initialTouchLocation = gestureRecgonizer.locationInView(staticOnScreenView)
+    override open func touchDidBegin(_ gestureRecgonizer: UIGestureRecognizer) {
+        initialTouchLocation = gestureRecgonizer.location(in: staticOnScreenView)
         
         restartLongPressTimer()
         
     }
     
-    override public func touchDidChange(gestureRecgonizer: UIGestureRecognizer, xDistance: CGFloat, yDistance: CGFloat, xVelocity: CGFloat, yVelocity: CGFloat, methodCallNumber: Int) {
+    override open func touchDidChange(_ gestureRecgonizer: UIGestureRecognizer, xDistance: CGFloat, yDistance: CGFloat, xVelocity: CGFloat, yVelocity: CGFloat, methodCallNumber: Int) {
         
         
-        if gestureRecgonizer.locationInView(staticOnScreenView).distanceToPoint(initialTouchLocation) > 7 {
+        if gestureRecgonizer.location(in: staticOnScreenView).distanceToPoint(initialTouchLocation) > 7 {
             cancelLongPressTimer()
         }
         
     }
     
-    override public func touchDidEnd(gestureRecgonizer: UIGestureRecognizer, xDistance: CGFloat, yDistance: CGFloat, xVelocity: CGFloat, yVelocity: CGFloat, methodCallNumber: Int) {
+    override open func touchDidEnd(_ gestureRecgonizer: UIGestureRecognizer, xDistance: CGFloat, yDistance: CGFloat, xVelocity: CGFloat, yVelocity: CGFloat, methodCallNumber: Int) {
         
         if shouldPassOnTouchNotification {
-            if relativeFrame.containsPoint(gestureRecgonizer.locationInView(self)) {
-                if initialTouchLocation.distanceToPoint(gestureRecgonizer.locationInView(staticOnScreenView)) < 10 {
+            if relativeFrame.containsPoint(gestureRecgonizer.location(in: self)) {
+                if initialTouchLocation.distanceToPoint(gestureRecgonizer.location(in: staticOnScreenView)) < 10 {
                     panelDelegate?.panelWasTapped(self)
                 }
             }
@@ -144,7 +144,7 @@ public class JABPanel: JABTouchableView {
         cancelLongPressTimer()
     }
     
-    override public func touchDidCancel(gestureRecgonizer: UIGestureRecognizer, xDistance: CGFloat, yDistance: CGFloat, xVelocity: CGFloat, yVelocity: CGFloat, methodCallNumber: Int) {
+    override open func touchDidCancel(_ gestureRecgonizer: UIGestureRecognizer, xDistance: CGFloat, yDistance: CGFloat, xVelocity: CGFloat, yVelocity: CGFloat, methodCallNumber: Int) {
         
         cancelLongPressTimer()
     }
@@ -155,7 +155,7 @@ public class JABPanel: JABTouchableView {
     // MARK: Subscribers
     // MARK:
     
-    public func addSubscriber(subscriber: JABPanelChangeSubscriber) {
+    open func addSubscriber(_ subscriber: JABPanelChangeSubscriber) {
         
         for currentSubscriber in subscribers {
             if currentSubscriber === subscriber {
@@ -167,17 +167,17 @@ public class JABPanel: JABTouchableView {
         
     }
     
-    public func removeSubscriber(subscriber: JABPanelChangeSubscriber) {
+    open func removeSubscriber(_ subscriber: JABPanelChangeSubscriber) {
         
         for i in 0..<subscribers.count {
             if subscribers[i] === subscriber {
-                subscribers.removeAtIndex(i)
+                subscribers.remove(at: i)
             }
         }
         
     }
     
-    public func subscriberIsAlreadySubscribed(subscriber: JABPanelChangeSubscriber) -> Bool {
+    open func subscriberIsAlreadySubscribed(_ subscriber: JABPanelChangeSubscriber) -> Bool {
         
         for i in 0..<subscribers.count {
             if subscribers[i] === subscriber {
@@ -188,7 +188,7 @@ public class JABPanel: JABTouchableView {
         return false
     }
     
-    public func notifySubscribersOfChange () {
+    open func notifySubscribersOfChange () {
         
         for subscriber in subscribers {
             subscriber.panelContentsDidChange(self)
@@ -201,12 +201,12 @@ public class JABPanel: JABTouchableView {
 
 
 public protocol JABPanelDelegate: class {
-    func panelWasTapped(panel: JABPanel)
-    func panelWasLongPressed (panel: JABPanel)
+    func panelWasTapped(_ panel: JABPanel)
+    func panelWasLongPressed (_ panel: JABPanel)
 }
 
 public protocol JABPanelChangeSubscriber: class {
-    func panelContentsDidChange(panel: JABPanel)
+    func panelContentsDidChange(_ panel: JABPanel)
 }
 
 

@@ -8,21 +8,21 @@
 
 import UIKit
 
-public class JABTouchableView: JABView, JABTouchManagerDelegate {
+open class JABTouchableView: JABView, JABTouchManagerDelegate {
     
     // MARK:
     // MARK: Properties
     // MARK:
     
     // MARK: Delegate
-    public var delegate: JABTouchableViewDelegate?
+    open var delegate: JABTouchableViewDelegate?
     
     
     // MARK:
     // MARK: Touch Recognition System
     // MARK:
-    public var touchManager: JABTouchManager?
-    public var blockingViews: [UIView] = []
+    open var touchManager: JABTouchManager?
+    open var blockingViews: [UIView] = []
     
     
     // **********************************************************************************************************************
@@ -51,14 +51,14 @@ public class JABTouchableView: JABView, JABTouchManagerDelegate {
     // MARK: Actions
     // MARK:
     
-    public func createTouchRecognitionSystem () {
+    open func createTouchRecognitionSystem () {
         
         touchManager = JABTouchManager(newTouchDomain: self)
         touchManager?.delegate = self
         
     }
     
-    public func blockWithView(blockingView: UIView) {
+    open func blockWithView(_ blockingView: UIView) {
         
         if !blockingViews.contains(blockingView) {
             blockingViews.append(blockingView)
@@ -67,7 +67,7 @@ public class JABTouchableView: JABView, JABTouchManagerDelegate {
     }
     
     
-    public func unblockWithView(blockingView: UIView) {
+    open func unblockWithView(_ blockingView: UIView) {
         
         if blockingViews.contains(blockingView) {
             Toolkit.removeObject(blockingView, fromArray: &blockingViews)
@@ -82,20 +82,20 @@ public class JABTouchableView: JABView, JABTouchManagerDelegate {
     // MARK:
     
     // MARK: Touch Manager
-    public func touchDidBegin(gestureRecognizer: UIGestureRecognizer) {
+    open func touchDidBegin(_ gestureRecognizer: UIGestureRecognizer) {
         delegate?.touchableViewTouchDidBegin(self, gestureRecognizer: gestureRecognizer)
     }
     
-    public func touchDidChange(gestureRecognizer: UIGestureRecognizer, xDistance: CGFloat, yDistance: CGFloat, xVelocity: CGFloat, yVelocity: CGFloat, methodCallNumber: Int) {
+    open func touchDidChange(_ gestureRecognizer: UIGestureRecognizer, xDistance: CGFloat, yDistance: CGFloat, xVelocity: CGFloat, yVelocity: CGFloat, methodCallNumber: Int) {
         
         delegate?.touchableViewTouchDidChange(self, gestureRecognizer: gestureRecognizer, xDistance: xDistance, yDistance: yDistance, xVelocity: xVelocity, yVelocity: yVelocity, methodCallNumber: methodCallNumber)
     }
     
-    public func touchDidEnd(gestureRecognizer: UIGestureRecognizer, xDistance: CGFloat, yDistance: CGFloat, xVelocity: CGFloat, yVelocity: CGFloat, methodCallNumber: Int) {
+    open func touchDidEnd(_ gestureRecognizer: UIGestureRecognizer, xDistance: CGFloat, yDistance: CGFloat, xVelocity: CGFloat, yVelocity: CGFloat, methodCallNumber: Int) {
         delegate?.touchableViewTouchDidEnd(self, gestureRecognizer: gestureRecognizer, xDistance: xDistance, yDistance: yDistance, xVelocity: xVelocity, yVelocity: yVelocity, methodCallNumber: methodCallNumber)
     }
     
-    public func touchDidCancel(gestureRecognizer: UIGestureRecognizer, xDistance: CGFloat, yDistance: CGFloat, xVelocity: CGFloat, yVelocity: CGFloat, methodCallNumber: Int) {
+    open func touchDidCancel(_ gestureRecognizer: UIGestureRecognizer, xDistance: CGFloat, yDistance: CGFloat, xVelocity: CGFloat, yVelocity: CGFloat, methodCallNumber: Int) {
         delegate?.touchableViewTouchDidCancel(self, gestureRecognizer: gestureRecognizer, xDistance: xDistance, yDistance: yDistance, xVelocity: xVelocity, yVelocity: yVelocity, methodCallNumber: methodCallNumber)
     }
     
@@ -109,10 +109,10 @@ public class JABTouchableView: JABView, JABTouchManagerDelegate {
 
 public protocol JABTouchableViewDelegate {
     
-    func touchableViewTouchDidBegin(touchableView: JABTouchableView, gestureRecognizer: UIGestureRecognizer)
-    func touchableViewTouchDidChange(touchableView: JABTouchableView, gestureRecognizer: UIGestureRecognizer, xDistance: CGFloat, yDistance: CGFloat, xVelocity: CGFloat, yVelocity: CGFloat, methodCallNumber: Int)
-    func touchableViewTouchDidEnd(touchableView: JABTouchableView, gestureRecognizer: UIGestureRecognizer, xDistance: CGFloat, yDistance: CGFloat, xVelocity: CGFloat, yVelocity: CGFloat, methodCallNumber: Int)
-    func touchableViewTouchDidCancel(touchableView: JABTouchableView, gestureRecognizer: UIGestureRecognizer, xDistance: CGFloat, yDistance: CGFloat, xVelocity: CGFloat, yVelocity: CGFloat, methodCallNumber: Int)
+    func touchableViewTouchDidBegin(_ touchableView: JABTouchableView, gestureRecognizer: UIGestureRecognizer)
+    func touchableViewTouchDidChange(_ touchableView: JABTouchableView, gestureRecognizer: UIGestureRecognizer, xDistance: CGFloat, yDistance: CGFloat, xVelocity: CGFloat, yVelocity: CGFloat, methodCallNumber: Int)
+    func touchableViewTouchDidEnd(_ touchableView: JABTouchableView, gestureRecognizer: UIGestureRecognizer, xDistance: CGFloat, yDistance: CGFloat, xVelocity: CGFloat, yVelocity: CGFloat, methodCallNumber: Int)
+    func touchableViewTouchDidCancel(_ touchableView: JABTouchableView, gestureRecognizer: UIGestureRecognizer, xDistance: CGFloat, yDistance: CGFloat, xVelocity: CGFloat, yVelocity: CGFloat, methodCallNumber: Int)
     
     
 }

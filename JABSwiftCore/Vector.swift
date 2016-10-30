@@ -8,15 +8,15 @@
 
 import UIKit
 
-public class Vector {
+open class Vector {
     
     
     // MARK: Properties
-    public var x = CGFloat(0)
-    public var y = CGFloat(0)
-    public var z = CGFloat(0)
+    open var x = CGFloat(0)
+    open var y = CGFloat(0)
+    open var z = CGFloat(0)
     
-    public var length: CGFloat {
+    open var length: CGFloat {
         get {
             return sqrt(dottedWith(self))
         }
@@ -39,7 +39,7 @@ public class Vector {
     // MARK: Methods
     
     // Booleans
-    public func isZero () -> Bool {
+    open func isZero () -> Bool {
         if x == 0 && y == 0 && z == 0 {
             return true
         }
@@ -47,14 +47,14 @@ public class Vector {
         return false
     }
     
-    public func isEqualTo (vector: Vector) -> Bool {
+    open func isEqualTo (_ vector: Vector) -> Bool {
         if x == vector.x && y == vector.y && z == vector.z {
             return true
         }
         return false
     }
     
-    public func isSameDirectionAs (vector: Vector) -> Bool {
+    open func isSameDirectionAs (_ vector: Vector) -> Bool {
         let angle = radiansBetween(vector)
         if angle != nil {
             if angle! == 0 {
@@ -67,7 +67,7 @@ public class Vector {
     }
     
     // Addition
-    public func addOn(vector: Vector) {
+    open func addOn(_ vector: Vector) {
         let result = addedOn(vector)
         
         x = result.x
@@ -75,7 +75,7 @@ public class Vector {
         z = result.z
     }
     
-    public func addedOn(vector: Vector) -> Vector {
+    open func addedOn(_ vector: Vector) -> Vector {
         let newX = x + vector.x
         let newY = y + vector.y
         let newZ = z + vector.z
@@ -84,7 +84,7 @@ public class Vector {
     }
     
     // Subtraction
-    public func subtractOff(vector: Vector) {
+    open func subtractOff(_ vector: Vector) {
         let result = subtractedOff(vector)
         
         x = result.x
@@ -92,7 +92,7 @@ public class Vector {
         z = result.z
     }
     
-    public func subtractedOff(vector: Vector) -> Vector {
+    open func subtractedOff(_ vector: Vector) -> Vector {
         let newX = x - vector.x
         let newY = y - vector.y
         let newZ = z - vector.z
@@ -101,7 +101,7 @@ public class Vector {
     }
     
     // Scaling
-    public func scaleBy(scalar: CGFloat) {
+    open func scaleBy(_ scalar: CGFloat) {
         let result = scaledBy(scalar)
         
         x = result.x
@@ -109,7 +109,7 @@ public class Vector {
         z = result.z
     }
     
-    public func scaledBy(scalar: CGFloat) -> Vector {
+    open func scaledBy(_ scalar: CGFloat) -> Vector {
         
         return Vector(x: x * scalar, y: y * scalar, z: z * scalar)
         
@@ -117,7 +117,7 @@ public class Vector {
     
     
     // Normalization
-    public func normalize () {
+    open func normalize () {
         let result = self.normalized()
         
         if let normalizedSelf = result {
@@ -127,7 +127,7 @@ public class Vector {
         }
     }
     
-    public func normalized () -> Vector? {
+    open func normalized () -> Vector? {
         if self.isZero() {
             return nil
         }
@@ -137,7 +137,7 @@ public class Vector {
     
     
     // Angle
-    public func radiansBetween(vector: Vector) -> CGFloat? {
+    open func radiansBetween(_ vector: Vector) -> CGFloat? {
         
         if self.isZero() {
             
@@ -155,13 +155,13 @@ public class Vector {
     }
     
     // MARK: Dot Product
-    public func dottedWith(vector: Vector) -> CGFloat {
+    open func dottedWith(_ vector: Vector) -> CGFloat {
         return ((x * vector.x) + (y * vector.y) + (z * vector.z))
     }
     
     
     // MARK: Cross Product
-    public func crossWith(vector: Vector) {     // Modifies the receiver
+    open func crossWith(_ vector: Vector) {     // Modifies the receiver
         let result = crossedWith(vector)
         
         x = result.x
@@ -169,7 +169,7 @@ public class Vector {
         z = result.z
     }
     
-    public func crossedWith(vector: Vector) -> Vector {     // Returns a new vector
+    open func crossedWith(_ vector: Vector) -> Vector {     // Returns a new vector
         let newX = (y * vector.z) - (z * vector.y)
         let newY = (z * vector.x) - (x * vector.z)
         let newZ = (x * vector.y) - (y * vector.x)

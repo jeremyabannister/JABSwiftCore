@@ -8,18 +8,18 @@
 
 import UIKit
 
-public class JABImageBank: JABView, JABPaneledScrollViewDelegate, JABButtonDelegate {
+open class JABImageBank: JABView, JABPaneledScrollViewDelegate, JABButtonDelegate {
 
     // MARK:
     // MARK: Properties
     // MARK:
     
     // MARK: Delegate
-    public var delegate: JABImageBankDelegate?
+    open var delegate: JABImageBankDelegate?
     
     // MARK: State
-    public var numberOfColumns = 1
-    public var images = [UIImage]() {
+    open var numberOfColumns = 1
+    open var images = [UIImage]() {
         didSet {
             paneledScrollView.deleteAllPanels()
             
@@ -33,8 +33,8 @@ public class JABImageBank: JABView, JABPaneledScrollViewDelegate, JABButtonDeleg
     }
     
     // MARK: UI
-    private let newMediaButton = JABButton()
-    private let paneledScrollView = JABPaneledScrollView()
+    fileprivate let newMediaButton = JABButton()
+    fileprivate let paneledScrollView = JABPaneledScrollView()
     
     
     // MARK: Parameters
@@ -65,7 +65,7 @@ public class JABImageBank: JABView, JABPaneledScrollViewDelegate, JABButtonDeleg
         print("Should not be initializing from coder \(self)")
     }
     
-    override public func globalVariablesWereInitialized() {
+    override open func globalVariablesWereInitialized() {
         
         updateParameters()
         
@@ -73,7 +73,7 @@ public class JABImageBank: JABView, JABPaneledScrollViewDelegate, JABButtonDeleg
     
     
     // MARK: Parameters
-    override public func updateParameters() {
+    override open func updateParameters() {
         
         
         if iPad {
@@ -91,14 +91,14 @@ public class JABImageBank: JABView, JABPaneledScrollViewDelegate, JABButtonDeleg
     
     
     // MARK: All
-    override public func addAllUI() {
+    override open func addAllUI() {
         
         addNewMediaButton()
         addPaneledScrollView()
         
     }
     
-    override public func updateAllUI() {
+    override open func updateAllUI() {
         
         updateParameters()
         
@@ -113,11 +113,11 @@ public class JABImageBank: JABView, JABPaneledScrollViewDelegate, JABButtonDeleg
     
     
     // MARK: Adding
-    private func addPaneledScrollView () {
+    fileprivate func addPaneledScrollView () {
         addSubview(paneledScrollView)
     }
     
-    private func addNewMediaButton () {
+    fileprivate func addNewMediaButton () {
         // Do nothing because the paneled scroll view will add the top view as a subview when it is assigned
     }
     
@@ -125,13 +125,13 @@ public class JABImageBank: JABView, JABPaneledScrollViewDelegate, JABButtonDeleg
     
     
     // MARK: New Media Button
-    private func configureNewMediaButton () {
+    fileprivate func configureNewMediaButton () {
         
-        newMediaButton.type = .Text
+        newMediaButton.type = .text
         newMediaButton.buttonDelegate = self
         
         newMediaButton.text = "+"
-        newMediaButton.textAlignment = .Center
+        newMediaButton.textAlignment = .center
         newMediaButton.textColor = blackColor
         newMediaButton.font = UIFont(name: "AvenirNext-DemiBold", size: 24)
         
@@ -147,7 +147,7 @@ public class JABImageBank: JABView, JABPaneledScrollViewDelegate, JABButtonDeleg
         
     }
     
-    private func positionNewMediaButton () {
+    fileprivate func positionNewMediaButton () {
         
         // Not using normal positioning format because we do not want to set the origin to anything
         newMediaButton.width = width
@@ -157,7 +157,7 @@ public class JABImageBank: JABView, JABPaneledScrollViewDelegate, JABButtonDeleg
     
     
     // MARK: Paneled Scroll View
-    private func configurePaneledScrollView () {
+    fileprivate func configurePaneledScrollView () {
         
         paneledScrollView.delegate = self
         
@@ -168,7 +168,7 @@ public class JABImageBank: JABView, JABPaneledScrollViewDelegate, JABButtonDeleg
         
     }
     
-    private func positionPaneledScrollView () {
+    fileprivate func positionPaneledScrollView () {
         
         paneledScrollView.frame = relativeFrame
         
@@ -182,56 +182,56 @@ public class JABImageBank: JABView, JABPaneledScrollViewDelegate, JABButtonDeleg
     // MARK:
     
     // MARK: Panel
-    private func panelWasLongPressed (panel: JABImagePanel, panelIndex: Int) {
+    fileprivate func panelWasLongPressed (_ panel: JABImagePanel, panelIndex: Int) {
         
-        let alertController = UIAlertController(title: nil, message: "Choose what to do with the selected photo.", preferredStyle: .ActionSheet)
+        let alertController = UIAlertController(title: nil, message: "Choose what to do with the selected photo.", preferredStyle: .actionSheet)
         
-        let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel) { (action) in
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (action) in
             
         }
         alertController.addAction(cancelAction)
         
-        let copyAction = UIAlertAction(title: "Copy", style: .Default) { (action) in
+        let copyAction = UIAlertAction(title: "Copy", style: .default) { (action) in
             if let image = panel.image {
-                UIPasteboard.generalPasteboard().image = image
+                UIPasteboard.general.image = image
             }
         }
         alertController.addAction(copyAction)
         
-        let deleteAction = UIAlertAction(title: "Delete", style: .Destructive) { (action) in
+        let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { (action) in
             if self.images.count > panelIndex {
                 self.delegate?.imageBankWantsToDeleteImage(self, image: self.images[panelIndex], atIndex: panelIndex)
             }
         }
         alertController.addAction(deleteAction)
         
-        rootViewController.presentViewController(alertController, animated: true) {
+        rootViewController.present(alertController, animated: true) {
             
         }
     }
     
     
     // MARK: Buttons
-    private func newMediaButtonPressed () {
+    fileprivate func newMediaButtonPressed () {
         
-        let alertController = UIAlertController(title: nil, message: "Either take a new picture or choose an existing one.", preferredStyle: .ActionSheet)
+        let alertController = UIAlertController(title: nil, message: "Either take a new picture or choose an existing one.", preferredStyle: .actionSheet)
         
-        let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel) { (action) in
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (action) in
             
         }
         alertController.addAction(cancelAction)
         
-        let cameraAction = UIAlertAction(title: "Camera", style: .Default) { (action) in
+        let cameraAction = UIAlertAction(title: "Camera", style: .default) { (action) in
             self.delegate?.imageBankDidSelectCamera(self)
         }
         alertController.addAction(cameraAction)
         
-        let photosAction = UIAlertAction(title: "Photos", style: .Default) { (action) in
+        let photosAction = UIAlertAction(title: "Photos", style: .default) { (action) in
             self.delegate?.imageBankDidSelectPhotos(self)
         }
         alertController.addAction(photosAction)
         
-        rootViewController.presentViewController(alertController, animated: true) {
+        rootViewController.present(alertController, animated: true) {
             
         }
         
@@ -243,19 +243,24 @@ public class JABImageBank: JABView, JABPaneledScrollViewDelegate, JABButtonDeleg
     // MARK:
     
     // MARK: Paneled Scroll View
-    public func paneledScrollViewPanelWasLongPressed(paneledScrollView: JABPaneledScrollView, panel: JABPanel, panelIndex: Int) {
+    open func paneledScrollViewPanelWasTapped(_ paneledScrollView: JABPaneledScrollView, panel: JABPanel, panelIndex: Int) {
+        
+    }
+    
+    open func paneledScrollViewPanelWasLongPressed(_ paneledScrollView: JABPaneledScrollView, panel: JABPanel, panelIndex: Int) {
         
         if let imagePanel = panel as? JABImagePanel {
             panelWasLongPressed(imagePanel, panelIndex: panelIndex)
         }
     }
     
+    
     // MARK: Button
-    public func buttonWasTouched(button: JABButton) {
+    open func buttonWasTouched(_ button: JABButton) {
         
     }
     
-    public func buttonWasUntouched(button: JABButton, triggered: Bool) {
+    open func buttonWasUntouched(_ button: JABButton, triggered: Bool) {
         if triggered {
             switch button {
             case newMediaButton:
@@ -270,8 +275,8 @@ public class JABImageBank: JABView, JABPaneledScrollViewDelegate, JABButtonDeleg
 
 
 public protocol JABImageBankDelegate {
-    func imageBankWantsToDeleteImage (imageBank: JABImageBank, image: UIImage, atIndex index: Int)
+    func imageBankWantsToDeleteImage (_ imageBank: JABImageBank, image: UIImage, atIndex index: Int)
     
-    func imageBankDidSelectCamera (imageBank: JABImageBank)
-    func imageBankDidSelectPhotos (imageBank: JABImageBank)
+    func imageBankDidSelectCamera (_ imageBank: JABImageBank)
+    func imageBankDidSelectPhotos (_ imageBank: JABImageBank)
 }

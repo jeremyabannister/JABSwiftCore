@@ -228,7 +228,7 @@ public extension UIView {
     public var shadowColor: UIColor? {
         get {
             if let color = layer.shadowColor {
-                return UIColor(CGColor: color)
+                return UIColor(cgColor: color)
             } else {
                 print("Problem in JABSwiftCore.UIViewExtension.shadowColor.get - ^^^ shadowColor was not convertible from CGColor to UIColor")
                 return UIColor()
@@ -236,7 +236,7 @@ public extension UIView {
         }
         set {
             if let color = newValue {
-                layer.shadowColor = color.CGColor
+                layer.shadowColor = color.cgColor
             }
         }
     }
@@ -252,7 +252,7 @@ public extension UIView {
     
     
     
-    public func printFrame(tag: NSString = "") {
+    public func printFrame(_ tag: NSString = "") {
         if tag == "" {
             print(frame)
         } else {
@@ -262,49 +262,49 @@ public extension UIView {
     
     
     public func red () {
-        backgroundColor = UIColor.redColor()
+        backgroundColor = UIColor.red
     }
     
     public func blue () {
-        backgroundColor = UIColor.blueColor()
+        backgroundColor = UIColor.blue
     }
     
     public func green () {
-        backgroundColor = UIColor.greenColor()
+        backgroundColor = UIColor.green
     }
     
     public func yellow () {
-        backgroundColor = UIColor.yellowColor()
+        backgroundColor = UIColor.yellow
     }
     
     public func purple () {
-        backgroundColor = UIColor.purpleColor()
+        backgroundColor = UIColor.purple
     }
     
     public func cyan () {
-        backgroundColor = UIColor.cyanColor()
+        backgroundColor = UIColor.cyan
     }
     
     public func white () {
-        backgroundColor = UIColor.whiteColor()
+        backgroundColor = UIColor.white
     }
     
     public func black () {
-        backgroundColor = UIColor.blackColor()
+        backgroundColor = UIColor.black
     }
     
     public func lightGray () {
-        backgroundColor = UIColor.lightGrayColor()
+        backgroundColor = UIColor.lightGray
     }
     
     public func darkGray () {
-        backgroundColor = UIColor.darkGrayColor()
+        backgroundColor = UIColor.darkGray
     }
     
     
     
     // MARK: Subview Manipulation
-    public func changeAllTextOfSubviewsToColor(color: UIColor) {
+    public func changeAllTextOfSubviewsToColor(_ color: UIColor) {
         
         for subview in subviews {
             if let label = subview as? UILabel {

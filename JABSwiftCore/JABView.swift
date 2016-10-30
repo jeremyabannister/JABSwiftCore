@@ -11,7 +11,7 @@ import UIKit
 
 public var defaultAnimationDuration = 0.25
 
-public class JABView: UIView, GlobalVariablesInitializationNotificationSubscriber {
+open class JABView: UIView, GlobalVariablesInitializationNotificationSubscriber {
     
     
     
@@ -20,7 +20,7 @@ public class JABView: UIView, GlobalVariablesInitializationNotificationSubscribe
     // MARK:
     
     // MARK: Override
-    override public var frame: CGRect {
+    override open var frame: CGRect {
         didSet {
             var scaled = false
             
@@ -46,7 +46,7 @@ public class JABView: UIView, GlobalVariablesInitializationNotificationSubscribe
     
     public init () {
         
-        super.init(frame:CGRectZero)
+        super.init(frame:CGRect.zero)
         
         if !globalVariablesInitialized {
             globalVariableInitializationNotificationSubscribers.append(self)
@@ -62,7 +62,7 @@ public class JABView: UIView, GlobalVariablesInitializationNotificationSubscribe
         super.init(coder: aDecoder)
     }
     
-    public func globalVariablesWereInitialized() {
+    open func globalVariablesWereInitialized() {
         
     }
     
@@ -76,39 +76,39 @@ public class JABView: UIView, GlobalVariablesInitializationNotificationSubscribe
     // MARK: UI
     // MARK:
     
-    public func addAllUI () {
+    open func addAllUI () {
         
     }
     
-    public func updateAllUI () {
+    open func updateAllUI () {
         
     }
     
-    public func updateParameters () {
+    open func updateParameters () {
         
     }
     
-    public func animatedUpdate () {
-        animatedUpdate(.CurveEaseInOut)
+    open func animatedUpdate () {
+        animatedUpdate(UIViewAnimationOptions())
     }
     
-    public func animatedUpdate (options: UIViewAnimationOptions) {
+    open func animatedUpdate (_ options: UIViewAnimationOptions) {
         animatedUpdate(defaultAnimationDuration, options: options)
     }
     
-    public func animatedUpdate (duration: NSTimeInterval, options: UIViewAnimationOptions) {
+    open func animatedUpdate (_ duration: TimeInterval, options: UIViewAnimationOptions) {
         animatedUpdate(duration, options: options) { (Bool) -> () in
             
         }
     }
     
-    public func animatedUpdate (duration: NSTimeInterval = defaultAnimationDuration, completion: (Bool) -> ()) {
-        animatedUpdate(duration, options: .CurveEaseInOut, completion: completion)
+    open func animatedUpdate (_ duration: TimeInterval = defaultAnimationDuration, completion: @escaping (Bool) -> ()) {
+        animatedUpdate(duration, options: UIViewAnimationOptions(), completion: completion)
     }
     
-    public func animatedUpdate (duration: NSTimeInterval = defaultAnimationDuration, options: UIViewAnimationOptions, completion: (Bool) -> ()) {
+    open func animatedUpdate (_ duration: TimeInterval = defaultAnimationDuration, options: UIViewAnimationOptions, completion: @escaping (Bool) -> ()) {
         
-        UIView.animateWithDuration(duration, delay: 0, options: options, animations: { () -> Void in
+        UIView.animate(withDuration: duration, delay: 0, options: options, animations: { () -> Void in
             self.updateAllUI()
         }, completion: completion)
     }
@@ -118,7 +118,7 @@ public class JABView: UIView, GlobalVariablesInitializationNotificationSubscribe
     // MARK: Keyboard
     // MARK:
     
-    public func closeAllKeyboards () {
+    open func closeAllKeyboards () {
         
     }
     

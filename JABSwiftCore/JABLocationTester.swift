@@ -8,14 +8,14 @@
 
 import UIKit
 
-public class JABLocationTester: JABTouchableView {
+open class JABLocationTester: JABTouchableView {
     
     // MARK:
     // MARK: Properties
     // MARK:
     
     // MARK: Override
-    override public var frame: CGRect {
+    override open var frame: CGRect {
         didSet {
             if frame.size.width != oldValue.size.width || frame.size.height != oldValue.size.height {
                 location = CGPoint(x: width/2, y: height/2)
@@ -25,19 +25,19 @@ public class JABLocationTester: JABTouchableView {
     }
     
     // MARK: Delegate
-    public var locationTesterDelegate: JABLocationTesterDelegate?
+    open var locationTesterDelegate: JABLocationTesterDelegate?
     
     // MARK: State
     // Public
-    public var color = blackColor
+    open var color = blackColor
     
     // Private
-    private var location = CGPoint()
-    private var mediaTimeOfLastTap = CACurrentMediaTime()
+    fileprivate var location = CGPoint()
+    fileprivate var mediaTimeOfLastTap = CACurrentMediaTime()
     
     // MARK: UI
-    private let horizontalLine = UIView()
-    private let verticalLine = UIView()
+    fileprivate let horizontalLine = UIView()
+    fileprivate let verticalLine = UIView()
     
     // MARK: Parameters
     // Most parameters are expressed as a fraction of the width of the view. This is done so that if the view is animated to a different frame the subviews will adjust accordingly, which would not happen if all spacing was defined statically
@@ -68,7 +68,7 @@ public class JABLocationTester: JABTouchableView {
         print("Should not be initializing from coder \(self)")
     }
     
-    override public func globalVariablesWereInitialized() {
+    override open func globalVariablesWereInitialized() {
         
         if iPad {
             
@@ -86,14 +86,14 @@ public class JABLocationTester: JABTouchableView {
     
     
     // MARK: All
-    override public func addAllUI() {
+    override open func addAllUI() {
         
         addHorizontalLine()
         addVerticalLine()
         
     }
     
-    override public func updateAllUI() {
+    override open func updateAllUI() {
         
         configureHorizontalLine()
         positionHorizontalLine()
@@ -106,26 +106,26 @@ public class JABLocationTester: JABTouchableView {
     
     
     // MARK: Adding
-    private func addHorizontalLine () {
+    fileprivate func addHorizontalLine () {
         addSubview(horizontalLine)
     }
     
-    private func addVerticalLine () {
+    fileprivate func addVerticalLine () {
         addSubview(verticalLine)
     }
     
     
     
     // MARK: Horizontal Line
-    private func configureHorizontalLine () {
+    fileprivate func configureHorizontalLine () {
         
         horizontalLine.backgroundColor = color
         
     }
     
-    private func positionHorizontalLine () {
+    fileprivate func positionHorizontalLine () {
         
-        var newFrame = CGRectZero
+        var newFrame = CGRect.zero
         
         newFrame.size.width = width
         newFrame.size.height = 0.5
@@ -139,15 +139,15 @@ public class JABLocationTester: JABTouchableView {
     
     
     // MARK: Vertical Line
-    private func configureVerticalLine () {
+    fileprivate func configureVerticalLine () {
         
         verticalLine.backgroundColor = color
         
     }
     
-    private func positionVerticalLine () {
+    fileprivate func positionVerticalLine () {
         
-        var newFrame = CGRectZero
+        var newFrame = CGRect.zero
         
         newFrame.size.width = 0.5
         newFrame.size.height = height
@@ -170,25 +170,25 @@ public class JABLocationTester: JABTouchableView {
     // MARK:
     
     // MARK: Touch Manager
-    override public func touchDidBegin(gestureRecognizer: UIGestureRecognizer) {
+    override open func touchDidBegin(_ gestureRecognizer: UIGestureRecognizer) {
         
-        location = gestureRecognizer.locationInView(self)
+        location = gestureRecognizer.location(in: self)
         print("(\(location.x), \(location.y))")
         animatedUpdate()
         
     }
     
-    override public func touchDidChange(gestureRecognizer: UIGestureRecognizer, xDistance: CGFloat, yDistance: CGFloat, xVelocity: CGFloat, yVelocity: CGFloat, methodCallNumber: Int) {
+    override open func touchDidChange(_ gestureRecognizer: UIGestureRecognizer, xDistance: CGFloat, yDistance: CGFloat, xVelocity: CGFloat, yVelocity: CGFloat, methodCallNumber: Int) {
         
-        location = gestureRecognizer.locationInView(self)
+        location = gestureRecognizer.location(in: self)
         print("(\(location.x), \(location.y))")
         updateAllUI()
         
     }
     
-    override public func touchDidEnd(gestureRecognizer: UIGestureRecognizer, xDistance: CGFloat, yDistance: CGFloat, xVelocity: CGFloat, yVelocity: CGFloat, methodCallNumber: Int) {
+    override open func touchDidEnd(_ gestureRecognizer: UIGestureRecognizer, xDistance: CGFloat, yDistance: CGFloat, xVelocity: CGFloat, yVelocity: CGFloat, methodCallNumber: Int) {
         
-        location = gestureRecognizer.locationInView(self)
+        location = gestureRecognizer.location(in: self)
         print("(\(location.x), \(location.y))")
         updateAllUI()
         
@@ -201,9 +201,9 @@ public class JABLocationTester: JABTouchableView {
         
     }
     
-    override public func touchDidCancel(gestureRecognizer: UIGestureRecognizer, xDistance: CGFloat, yDistance: CGFloat, xVelocity: CGFloat, yVelocity: CGFloat, methodCallNumber: Int) {
+    override open func touchDidCancel(_ gestureRecognizer: UIGestureRecognizer, xDistance: CGFloat, yDistance: CGFloat, xVelocity: CGFloat, yVelocity: CGFloat, methodCallNumber: Int) {
         
-        location = gestureRecognizer.locationInView(self)
+        location = gestureRecognizer.location(in: self)
         print("(\(location.x), \(location.y))")
         updateAllUI()
         

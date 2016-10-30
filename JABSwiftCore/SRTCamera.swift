@@ -8,16 +8,16 @@
 
 import UIKit
 
-public class SRTCamera: JABView {
+open class SRTCamera: JABView {
     
     // MARK:
     // MARK: Properties
     // MARK:
     
     // MARK: Delegate
-    public var delegate: protocol<UIImagePickerControllerDelegate, UINavigationControllerDelegate>? {
+    open var delegate: UIImagePickerControllerDelegate & UINavigationControllerDelegate {
         get {
-            return imagePicker.delegate
+            return imagePicker.delegate!
         }
         set {
             imagePicker.delegate = newValue
@@ -28,7 +28,7 @@ public class SRTCamera: JABView {
     // MARK: State
     
     // MARK: UI
-    private let imagePicker = UIImagePickerController()
+    fileprivate let imagePicker = UIImagePickerController()
     
     // MARK: Parameters
     // Most parameters are expressed as a fraction of the width of the view. This is done so that if the view is animated to a different frame the subviews will adjust accordingly, which would not happen if all spacing was defined statically
@@ -59,7 +59,7 @@ public class SRTCamera: JABView {
         print("Should not be initializing from coder \(self)")
     }
     
-    override public func globalVariablesWereInitialized() {
+    override open func globalVariablesWereInitialized() {
         
         updateParameters()
         
@@ -67,7 +67,7 @@ public class SRTCamera: JABView {
     
     
     // MARK: Parameters
-    override public func updateParameters() {
+    override open func updateParameters() {
         
         
         if iPad {
@@ -87,13 +87,13 @@ public class SRTCamera: JABView {
     
     
     // MARK: All
-    override public func addAllUI() {
+    override open func addAllUI() {
         
         addImagePicker()
         
     }
     
-    override public func updateAllUI() {
+    override open func updateAllUI() {
         
         updateParameters()
         
@@ -106,20 +106,21 @@ public class SRTCamera: JABView {
     
     
     // MARK: Adding
-    private func addImagePicker () {
+    fileprivate func addImagePicker () {
         addSubview(imagePicker.view)
     }
     
     
     
     // MARK: Image Picker
-    private func configureImagePicker () {
+    fileprivate func configureImagePicker () {
         
-        imagePicker.sourceType = UIImagePickerControllerSourceType.Camera
+        imagePicker.sourceType = UIImagePickerControllerSourceType.camera
+        imagePicker.mediaTypes = ["public.image", "public.movie"]
         
     }
     
-    private func positionImagePicker () {
+    fileprivate func positionImagePicker () {
         
         imagePicker.view.frame = relativeFrame
         

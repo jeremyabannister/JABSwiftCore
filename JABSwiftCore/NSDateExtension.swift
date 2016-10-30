@@ -8,34 +8,34 @@
 
 import Foundation
 
-extension NSDate: Comparable {
+extension Date {
     
     
     // MARK:
     // MARK: Init
     // MARK:
     
-    public convenience init(dateString: String) {
+    public init(dateString: String) {
         self.init(dateString: dateString, beginning: true)
     }
     
     
-    public convenience init(dateString:String, beginning: Bool) {
+    public init(dateString:String, beginning: Bool) {
         
-        let components = dateString.componentsSeparatedByString(" ")
+        let components = dateString.components(separatedBy: " ")
         if components.count == 3 {
-            let dayAsString = components[1].substringToIndex(components[1].endIndex.advancedBy(-3))
+            let dayAsString = components[1].substring(to: components[1].characters.index(components[1].endIndex, offsetBy: -3))
             var monthIndex = -1
-            for i in 0..<NSDate.months.count {
-                let month = NSDate.months[i]
+            for i in 0..<Date.months.count {
+                let month = Date.months[i]
                 if month == components[0] {
                     monthIndex = i
                 }
             }
             
             if monthIndex == -1 { // If the month was not found then check against the abbreviated versions of the months
-                for i in 0..<NSDate.months.count {
-                    let month = NSDate.monthsShort[i]
+                for i in 0..<Date.months.count {
+                    let month = Date.monthsShort[i]
                     if month == components[0] {
                         monthIndex = i
                     }
@@ -43,25 +43,25 @@ extension NSDate: Comparable {
             }
             
             
-            let dateStringFormatter = NSDateFormatter()
+            let dateStringFormatter = DateFormatter()
             dateStringFormatter.dateFormat = "yyyy-MM-dd"
-            dateStringFormatter.locale = NSLocale(localeIdentifier: "en_US_POSIX")
-            if let d = dateStringFormatter.dateFromString(String(format: "%@-%02d-%@", components[2], monthIndex + 1, dayAsString)) {
+            dateStringFormatter.locale = Locale(identifier: "en_US_POSIX")
+            if let d = dateStringFormatter.date(from: String(format: "%@-%02d-%@", components[2], monthIndex + 1, dayAsString)) {
                 if beginning {
-                    self.init(timeInterval:0, sinceDate:d)
+                    self = Date.init(timeInterval:0, since: d)
                 } else {
-                    self.init(timeInterval:86370, sinceDate:d)
+                    self = Date.init(timeInterval:86370, since: d)
                 }
             } else {
                 if beginning {
-                    self.init(timeInterval:0, sinceDate:NSDate())
+                    self = Date.init(timeInterval:0, since: Date())
                 } else {
-                    self.init(timeInterval:86370, sinceDate:NSDate())
+                    self = Date.init(timeInterval:86370, since: Date())
                 }
             }
             
         } else {
-            self.init(timeInterval:0, sinceDate:NSDate())
+            self = Date.init(timeInterval:0, since: Date())
         }
     }
     
@@ -119,8 +119,8 @@ extension NSDate: Comparable {
     
     public var year: Int {
         get {
-            let components = NSCalendar.currentCalendar().components(.Year, fromDate: self)
-            return components.year
+            let components = (Calendar.current as NSCalendar).components(.year, from: self)
+            return components.year!
         }
     }
     
@@ -133,21 +133,21 @@ extension NSDate: Comparable {
     
     public var month: Int {
         get {
-            let components = NSCalendar.currentCalendar().components(.Month, fromDate: self)
-            return components.month
+            let components = (Calendar.current as NSCalendar).components(.month, from: self)
+            return components.month!
         }
     }
     
     public var monthString: String {
         get {
-            let months = NSDate.months
+            let months = Date.months
             return months[month - 1]
         }
     }
     
     public var monthStringShort: String {
         get {
-            let months = NSDate.monthsShort
+            let months = Date.monthsShort
             return months[month - 1]
         }
     }
@@ -155,8 +155,8 @@ extension NSDate: Comparable {
     
     public var weekOfYear: Int {
         get {
-            let components = NSCalendar.currentCalendar().components(.WeekOfYear, fromDate: self)
-            return components.weekOfYear
+            let components = (Calendar.current as NSCalendar).components(.weekOfYear, from: self)
+            return components.weekOfYear!
         }
     }
     
@@ -169,8 +169,8 @@ extension NSDate: Comparable {
     
     public var day: Int {
         get {
-            let components = NSCalendar.currentCalendar().components(.Day, fromDate: self)
-            return components.day
+            let components = (Calendar.current as NSCalendar).components(.day, from: self)
+            return components.day!
         }
     }
     
@@ -190,34 +190,34 @@ extension NSDate: Comparable {
     
     public var dayOfWeek: Int {
         get {
-            let components = NSCalendar.currentCalendar().components(.Weekday, fromDate: self)
-            return components.weekday - 1
+            let components = (Calendar.current as NSCalendar).components(.weekday, from: self)
+            return components.weekday! - 1
         }
     }
     
     public var dayOfWeekString: String {
         get {
-            return NSDate.daysOfWeek[dayOfWeek]
+            return Date.daysOfWeek[dayOfWeek]
         }
     }
     
     public var dayOfWeekStringShort: String {
         get {
-            return NSDate.daysOfWeekShort[dayOfWeek]
+            return Date.daysOfWeekShort[dayOfWeek]
         }
     }
     
     public var dayOfWeekStringMedium: String {
         get {
-            return NSDate.daysOfWeekMedium[dayOfWeek]
+            return Date.daysOfWeekMedium[dayOfWeek]
         }
     }
     
     
     public var hour: Int {
         get {
-            let components = NSCalendar.currentCalendar().components(.Hour, fromDate: self)
-            return components.hour
+            let components = (Calendar.current as NSCalendar).components(.hour, from: self)
+            return components.hour!
         }
     }
     
@@ -230,8 +230,8 @@ extension NSDate: Comparable {
     
     public var minute: Int {
         get {
-            let components = NSCalendar.currentCalendar().components(.Minute, fromDate: self)
-            return components.minute
+            let components = (Calendar.current as NSCalendar).components(.minute, from: self)
+            return components.minute!
         }
     }
     
@@ -244,8 +244,8 @@ extension NSDate: Comparable {
     
     public var second: Int {
         get {
-            let components = NSCalendar.currentCalendar().components(.Second, fromDate: self)
-            return components.second
+            let components = (Calendar.current as NSCalendar).components(.second, from: self)
+            return components.second!
         }
     }
     
@@ -270,16 +270,17 @@ extension NSDate: Comparable {
     // MARK: Methods
     // MARK:
     
-    public func numberOfDaysUntil(futureDate: NSDate, inclusive: Bool) -> Int? {
+    public func numberOfDaysUntil(_ futureDate: Date, inclusive: Bool) -> Int? {
         
-        if futureDate > self {
+        if (futureDate > self) {
             
-            let unitFlags = NSCalendarUnit.Day
-            if let calendar = NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian) {
-                let components = calendar.components(unitFlags, fromDate: self, toDate: futureDate, options: [])
-                
+            let unitFlags = NSCalendar.Unit.day
+            let calendar = Calendar(identifier: Calendar.Identifier.gregorian)
+            let components = (calendar as NSCalendar).components(unitFlags, from: self, to: futureDate, options: [])
+            
+            if let comDay = components.day {
                 if inclusive {
-                    return components.day + 1
+                    return comDay + 1
                 } else {
                     return components.day
                 }
@@ -289,26 +290,15 @@ extension NSDate: Comparable {
     }
     
     
-    public func tomorrow () -> NSDate {
-        return self.dateByAddingTimeInterval(86400)
+    public func tomorrow () -> Date {
+        return self.addingTimeInterval(86400)
     }
     
-    public func yesterday () -> NSDate {
-        return self.dateByAddingTimeInterval(-86400)
+    public func yesterday () -> Date {
+        return self.addingTimeInterval(-86400)
     }
 
     
 }
 
 
-public func ==(lhs: NSDate, rhs: NSDate) -> Bool {
-    return lhs === rhs || lhs.compare(rhs) == .OrderedSame
-}
-
-public func <(lhs: NSDate, rhs: NSDate) -> Bool {
-    return lhs.compare(rhs) == .OrderedAscending
-}
-
-public func >(lhs: NSDate, rhs: NSDate) -> Bool {
-    return lhs.compare(rhs) == .OrderedDescending
-}

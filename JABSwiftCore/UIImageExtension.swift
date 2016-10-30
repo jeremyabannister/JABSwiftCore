@@ -13,16 +13,16 @@ import UIKit
 public extension UIImage {
     
     
-    public func imageTintedWithColor(color: UIColor) -> UIImage {
+    public func imageTintedWithColor(_ color: UIColor) -> UIImage {
         // This method is designed for use with template images, i.e. solid-coloured mask-like images.
         return imageTintedWithColor(color, fraction: 0.0) // default to a fully tinted mask of the image.
     }
     
-    public func imageTintedWithColor(color: UIColor, fraction: CGFloat) -> UIImage {
+    public func imageTintedWithColor(_ color: UIColor, fraction: CGFloat) -> UIImage {
         
         // Construct new image the same size as this one.
         var image = UIImage()
-        if UIScreen.instancesRespondToSelector("scale") {
+        if UIScreen.instancesRespond(to: #selector(NSDecimalNumberBehaviors.scale)) {
             UIGraphicsBeginImageContextWithOptions(size, false, 0.0)
         } else {
             UIGraphicsBeginImageContext(size)
@@ -36,13 +36,13 @@ public extension UIImage {
         
         // Mask tint color-swatch to this image's opaque mask.
         // We want behaviour like NSCompositeDestinationIn on Mac OS X.
-        drawInRect(rect, blendMode: CGBlendMode.DestinationIn, alpha: 1.0)
+        draw(in: rect, blendMode: CGBlendMode.destinationIn, alpha: 1.0)
         
         // Finally, composite this image over the tinted mask at desired opacity.
         if fraction > 0.0 {
-            drawInRect(rect, blendMode: CGBlendMode.SourceAtop, alpha: fraction)
+            draw(in: rect, blendMode: CGBlendMode.sourceAtop, alpha: fraction)
         }
-        image = UIGraphicsGetImageFromCurrentImageContext()
+        image = UIGraphicsGetImageFromCurrentImageContext()!
         UIGraphicsEndImageContext()
         
         return image

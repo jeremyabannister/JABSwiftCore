@@ -23,9 +23,9 @@ public extension Double {
         if self == 0 {
             return "$0.00" // This condition is here due to an unexplored issue causing the method to return "$-0.00" before this condition was added
         } else if self < 0 {
-            return "-$".stringByAppendingFormat("%.2f", -self)
+            return "-$".appendingFormat("%.2f", -self)
         } else {
-            return "$".stringByAppendingFormat("%.2f", self)
+            return "$".appendingFormat("%.2f", self)
         }
     }
     

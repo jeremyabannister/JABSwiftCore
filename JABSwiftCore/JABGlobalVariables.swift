@@ -19,18 +19,18 @@ public let backPanTouchThreshold = CGFloat(25.0)
 
 public var rootViewController = UIViewController()
 
-public let redColor = UIColor.redColor()
-public let blueColor = UIColor.blueColor()
-public let greenColor = UIColor.greenColor()
-public let yellowColor = UIColor.yellowColor()
-public let purpleColor = UIColor.purpleColor()
-public let orangeColor = UIColor.orangeColor()
-public let cyanColor = UIColor.cyanColor()
-public let whiteColor = UIColor.whiteColor()
-public let blackColor = UIColor.blackColor()
-public let lightGrayColor = UIColor.lightGrayColor()
-public let darkGrayColor = UIColor.darkGrayColor()
-public let clearColor = UIColor.clearColor()
+public let redColor = UIColor.red
+public let blueColor = UIColor.blue
+public let greenColor = UIColor.green
+public let yellowColor = UIColor.yellow
+public let purpleColor = UIColor.purple
+public let orangeColor = UIColor.orange
+public let cyanColor = UIColor.cyan
+public let whiteColor = UIColor.white
+public let blackColor = UIColor.black
+public let lightGrayColor = UIColor.lightGray
+public let darkGrayColor = UIColor.darkGray
+public let clearColor = UIColor.clear
 
 
 // MATH
@@ -41,7 +41,7 @@ public let pi = 3.14159
 
 public func initializeGlobalParameters () {
     
-    if UIDevice.currentDevice().model == "iPad" {
+    if UIDevice.current.model == "iPad" {
         iPad == true
     }
     
@@ -53,7 +53,7 @@ public func initializeGlobalParameters () {
 }
 
 
-public func indexOfA(object: AnyObject, array: [AnyObject]) -> Int? {
+public func indexOfA(_ object: AnyObject, array: [AnyObject]) -> Int? {
     for i in 0..<array.count {
         if array[i] === object {
             return i

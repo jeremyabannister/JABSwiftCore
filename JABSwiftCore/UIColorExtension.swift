@@ -12,7 +12,7 @@ import UIKit
 public extension UIColor {
     
     
-    public func dim (fraction: CGFloat) -> UIColor {
+    public func dim (_ fraction: CGFloat) -> UIColor {
         
         // Force the fraction to be between 0 and 1
         var modifiedFraction = fraction

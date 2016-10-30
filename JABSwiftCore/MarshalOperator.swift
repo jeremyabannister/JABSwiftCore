@@ -12,17 +12,17 @@ import Foundation
 // infix operator ~> {}
 
 /** Serial dispatch queue used by the ~> operator. */
-private let queue = dispatch_queue_create("serial-worker", DISPATCH_QUEUE_SERIAL)
+private let queue = DispatchQueue(label: "serial-worker", attributes: [])
 
 /**
 Executes the lefthand closure on a background thread and,
 upon completion, the righthand closure on the main thread.
 */
-public func ~> (backgroundClosure: () -> (),
-         mainClosure:       () -> ())
+public func ~> (backgroundClosure: @escaping () -> (),
+         mainClosure:       @escaping () -> ())
 {
-    dispatch_async(queue) {
+    queue.async {
         backgroundClosure()
-        dispatch_async(dispatch_get_main_queue(), mainClosure)
+        DispatchQueue.main.async(execute: mainClosure)
     }
 }

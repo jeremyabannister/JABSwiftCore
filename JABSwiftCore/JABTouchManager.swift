@@ -9,7 +9,7 @@
 import UIKit
 import QuartzCore
 
-public class JABTouchManager: NSObject, UIGestureRecognizerDelegate {
+open class JABTouchManager: NSObject, UIGestureRecognizerDelegate {
     
     // MARK:
     // MARK: Properties
@@ -20,13 +20,13 @@ public class JABTouchManager: NSObject, UIGestureRecognizerDelegate {
     var delegate: JABTouchManagerDelegate?
     
     // MARK: State
-    public var touchDomain: UIView
+    open var touchDomain: UIView
     
     var touchRecognizer: UILongPressGestureRecognizer?
     
     var initialTouchLocation = CGPoint() // Stores location from touchDidBegin
     var mostRecentTouchLocation = CGPoint() // Does not ever store end location, only intermediate locations
-    var mostRecentTouchTime: NSTimeInterval = 0
+    var mostRecentTouchTime: TimeInterval = 0
     var xVelocityHistory: [CGFloat] = []
     var yVelocityHistory: [CGFloat] = []
     var deltaX: CGFloat = 0.0
@@ -44,7 +44,7 @@ public class JABTouchManager: NSObject, UIGestureRecognizerDelegate {
         
         super.init()
         
-        touchRecognizer = UILongPressGestureRecognizer(target: self, action: "touchDetected:")
+        touchRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(JABTouchManager.touchDetected(_:)))
         touchRecognizer?.delegate = self
         touchRecognizer?.minimumPressDuration = 0.0001
         touchRecognizer?.allowableMovement = 1000000
@@ -56,13 +56,13 @@ public class JABTouchManager: NSObject, UIGestureRecognizerDelegate {
     
     
     
-    public func touchDetected(gestureRecognizer: UILongPressGestureRecognizer) {
+    open func touchDetected(_ gestureRecognizer: UILongPressGestureRecognizer) {
         
         
         if let verifiedStaticOnScreenView = staticOnScreenView {
             if let verifiedDelegate = delegate {
                 
-                let locationOnScreen = gestureRecognizer.locationInView(verifiedStaticOnScreenView) // Get location in Static view
+                let locationOnScreen = gestureRecognizer.location(in: verifiedStaticOnScreenView) // Get location in Static view
                 var xVelocity: CGFloat = 0.0
                 var yVelocity: CGFloat = 0.0
                 
@@ -72,9 +72,9 @@ public class JABTouchManager: NSObject, UIGestureRecognizerDelegate {
                 let velocityAverageCount = 4
                 
                 
-                methodCallNumber++
+                methodCallNumber += 1
                 
-                if gestureRecognizer.state == UIGestureRecognizerState.Began {
+                if gestureRecognizer.state == UIGestureRecognizerState.began {
                     
                     initialTouchLocation = locationOnScreen
                     mostRecentTouchLocation = locationOnScreen
@@ -93,7 +93,7 @@ public class JABTouchManager: NSObject, UIGestureRecognizerDelegate {
                     let yDistanceMoved = deltaY - previousDeltaY
                     
                     
-                    if gestureRecognizer.state == UIGestureRecognizerState.Changed {
+                    if gestureRecognizer.state == UIGestureRecognizerState.changed {
                         
                         
                         let xDisplacement = locationOnScreen.x - mostRecentTouchLocation.x
@@ -103,15 +103,15 @@ public class JABTouchManager: NSObject, UIGestureRecognizerDelegate {
                         instantaneousXVelocity = xDisplacement/timeInterval
                         instantaneousYVelocity = yDisplacement/timeInterval
                         
-                        xVelocityHistory.insert(instantaneousXVelocity, atIndex: 0)
-                        yVelocityHistory.insert(instantaneousYVelocity, atIndex: 0)
+                        xVelocityHistory.insert(instantaneousXVelocity, at: 0)
+                        yVelocityHistory.insert(instantaneousYVelocity, at: 0)
                         
                         var count = 0
                         for v in xVelocityHistory {
                             if count < velocityAverageCount {
                                 xVelocity += v
                             }
-                            count++
+                            count += 1
                         }
                         
                         count = 0
@@ -119,7 +119,7 @@ public class JABTouchManager: NSObject, UIGestureRecognizerDelegate {
                             if count < velocityAverageCount {
                                 yVelocity += v
                             }
-                            count++
+                            count += 1
                         }
                         
                         xVelocity = xVelocity/CGFloat(velocityAverageCount)
@@ -136,7 +136,7 @@ public class JABTouchManager: NSObject, UIGestureRecognizerDelegate {
                         
                     } else {
                         
-                        if gestureRecognizer.state == UIGestureRecognizerState.Ended {
+                        if gestureRecognizer.state == UIGestureRecognizerState.ended {
                             
                             let xDisplacement = locationOnScreen.x - mostRecentTouchLocation.x
                             let yDisplacement = locationOnScreen.y - mostRecentTouchLocation.y
@@ -146,8 +146,8 @@ public class JABTouchManager: NSObject, UIGestureRecognizerDelegate {
                             instantaneousYVelocity = yDisplacement/timeInterval
                             
                             // Record the velocity
-                            xVelocityHistory.insert(instantaneousXVelocity, atIndex: 0)
-                            yVelocityHistory.insert(instantaneousYVelocity, atIndex: 0)
+                            xVelocityHistory.insert(instantaneousXVelocity, at: 0)
+                            yVelocityHistory.insert(instantaneousYVelocity, at: 0)
                             
                             // Average recent velocities for return value
                             var count = 0
@@ -155,7 +155,7 @@ public class JABTouchManager: NSObject, UIGestureRecognizerDelegate {
                                 if count < velocityAverageCount {
                                     xVelocity += v
                                 }
-                                count++
+                                count += 1
                             }
                             
                             count = 0
@@ -163,7 +163,7 @@ public class JABTouchManager: NSObject, UIGestureRecognizerDelegate {
                                 if count < velocityAverageCount {
                                     yVelocity += v
                                 }
-                                count++
+                                count += 1
                             }
                             
                             xVelocity = xVelocity/CGFloat(velocityAverageCount)
@@ -175,7 +175,7 @@ public class JABTouchManager: NSObject, UIGestureRecognizerDelegate {
                             xVelocityHistory = []
                             yVelocityHistory = []
                             
-                        } else if gestureRecognizer.state == UIGestureRecognizerState.Cancelled {
+                        } else if gestureRecognizer.state == UIGestureRecognizerState.cancelled {
                             
                             let xDisplacement = locationOnScreen.x - mostRecentTouchLocation.x
                             let yDisplacement = locationOnScreen.y - mostRecentTouchLocation.y
@@ -185,8 +185,8 @@ public class JABTouchManager: NSObject, UIGestureRecognizerDelegate {
                             instantaneousYVelocity = yDisplacement/timeInterval
                             
                             // Record the velocity
-                            xVelocityHistory.insert(instantaneousXVelocity, atIndex: 0)
-                            yVelocityHistory.insert(instantaneousYVelocity, atIndex: 0)
+                            xVelocityHistory.insert(instantaneousXVelocity, at: 0)
+                            yVelocityHistory.insert(instantaneousYVelocity, at: 0)
                             
                             // Average recent velocities for return value
                             var count = 0
@@ -194,7 +194,7 @@ public class JABTouchManager: NSObject, UIGestureRecognizerDelegate {
                                 if count < velocityAverageCount {
                                     xVelocity += v
                                 }
-                                count++
+                                count += 1
                             }
                             
                             count = 0
@@ -202,7 +202,7 @@ public class JABTouchManager: NSObject, UIGestureRecognizerDelegate {
                                 if count < velocityAverageCount {
                                     yVelocity += v
                                 }
-                                count++
+                                count += 1
                             }
                             
                             xVelocity = xVelocity/CGFloat(velocityAverageCount)
@@ -238,18 +238,18 @@ public class JABTouchManager: NSObject, UIGestureRecognizerDelegate {
     // MARK:
     
     // MARK: Gesture Recognizer
-    public func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWithGestureRecognizer otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+    open func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
         
         return true
     }
     
-    public func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldReceiveTouch touch: UITouch) -> Bool {
+    open func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
         
         
         if let blockingViews = delegate?.blockingViews {
             for blockingView in blockingViews {
                 
-                if Toolkit.rectContainsPoint(blockingView.relativeFrame, point: touch.locationInView(blockingView)) {
+                if Toolkit.rectContainsPoint(blockingView.relativeFrame, point: touch.location(in: blockingView)) {
                     return false
                 }
                 
@@ -274,9 +274,9 @@ public protocol JABTouchManagerDelegate {
     
     var blockingViews: [UIView] { get }
     
-    func touchDidBegin (gestureRecognizer: UIGestureRecognizer)
-    func touchDidChange (gestureRecognizer: UIGestureRecognizer, xDistance:CGFloat, yDistance:CGFloat, xVelocity:CGFloat, yVelocity:CGFloat, methodCallNumber:Int)
-    func touchDidEnd (gestureRecognizer: UIGestureRecognizer, xDistance:CGFloat, yDistance:CGFloat, xVelocity:CGFloat, yVelocity:CGFloat, methodCallNumber:Int)
-    func touchDidCancel (gestureRecognizer: UIGestureRecognizer, xDistance:CGFloat, yDistance:CGFloat, xVelocity:CGFloat, yVelocity:CGFloat, methodCallNumber:Int)
+    func touchDidBegin (_ gestureRecognizer: UIGestureRecognizer)
+    func touchDidChange (_ gestureRecognizer: UIGestureRecognizer, xDistance:CGFloat, yDistance:CGFloat, xVelocity:CGFloat, yVelocity:CGFloat, methodCallNumber:Int)
+    func touchDidEnd (_ gestureRecognizer: UIGestureRecognizer, xDistance:CGFloat, yDistance:CGFloat, xVelocity:CGFloat, yVelocity:CGFloat, methodCallNumber:Int)
+    func touchDidCancel (_ gestureRecognizer: UIGestureRecognizer, xDistance:CGFloat, yDistance:CGFloat, xVelocity:CGFloat, yVelocity:CGFloat, methodCallNumber:Int)
     
 }

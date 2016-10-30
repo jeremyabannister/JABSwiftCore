@@ -8,7 +8,7 @@
 
 import UIKit
 
-public class JABImagePanel: JABPanel {
+open class JABImagePanel: JABPanel {
 
     // MARK:
     // MARK: Properties
@@ -17,7 +17,7 @@ public class JABImagePanel: JABPanel {
     // MARK: Delegate
     
     // MARK: State
-    public var image: UIImage? {
+    open var image: UIImage? {
         didSet {
             updateHeightToWidthRatio()
         }
@@ -78,13 +78,13 @@ public class JABImagePanel: JABPanel {
     
     
     // MARK: All
-    override public func addAllUI() {
+    override open func addAllUI() {
         
         addImageView()
         
     }
     
-    override public func updateAllUI() {
+    override open func updateAllUI() {
         
         configureImageView()
         positionImageView()

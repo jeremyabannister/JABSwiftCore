@@ -10,7 +10,7 @@ import Foundation
 
 public extension CGPoint {
     
-    public func distanceToPoint(point: CGPoint) -> CGFloat {
+    public func distanceToPoint(_ point: CGPoint) -> CGFloat {
         
         let difference = CGPoint(x: x - point.x, y: y - point.y)
         
@@ -18,7 +18,7 @@ public extension CGPoint {
         
     }
     
-    public func slopeToPoint(point: CGPoint) -> CGFloat? {
+    public func slopeToPoint(_ point: CGPoint) -> CGFloat? {
         
         let rise = point.y - y
         let run = point.x - x

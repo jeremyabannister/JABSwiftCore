@@ -8,7 +8,7 @@
 
 import UIKit
 
-public class JABSquareImagePanel: JABPanel {
+open class JABSquareImagePanel: JABPanel {
 
     // MARK:
     // MARK: Properties
@@ -17,10 +17,11 @@ public class JABSquareImagePanel: JABPanel {
     // MARK: Delegate
     
     // MARK: State
-    public var image: UIImage?
+    open var image: UIImage?
+    open var videoPath: URL?
     
     // MARK: UI
-    let mask = UIView()
+    open let imageViewMask = UIView()
     let imageView = UIImageView()
     
     // MARK: Parameters
@@ -43,6 +44,7 @@ public class JABSquareImagePanel: JABPanel {
     public override init () {
         super.init()
         
+        self.image = UIImage(named:"black.jpg")
         heightToWidthRatio = 1
         
     }
@@ -53,6 +55,12 @@ public class JABSquareImagePanel: JABPanel {
         
         self.image = image
         
+    }
+    
+    public convenience init (videoPath: URL?) {
+        self.init()
+        
+        self.videoPath = videoPath
     }
     
     required public init?(coder aDecoder: NSCoder) {
@@ -73,17 +81,17 @@ public class JABSquareImagePanel: JABPanel {
     
     
     // MARK: All
-    override public func addAllUI() {
+    override open func addAllUI() {
         
-        addMask()
+        addImageViewMask()
         addImageView()
         
     }
     
-    override public func updateAllUI() {
+    override open func updateAllUI() {
         
-        configureMask()
-        positionMask()
+        configureImageViewMask()
+        positionImageViewMask()
         
         configureImageView()
         positionImageView()
@@ -93,25 +101,25 @@ public class JABSquareImagePanel: JABPanel {
     
     
     // MARK: Adding
-    func addMask () {
-        addSubview(mask)
+    func addImageViewMask () {
+        addSubview(imageViewMask)
     }
     
     func addImageView () {
-        mask.addSubview(imageView)
+        imageViewMask.addSubview(imageView)
     }
     
     
     // MARK: Mask
-    func configureMask () {
+    func configureImageViewMask () {
         
-        mask.clipsToBounds = true
+        imageViewMask.clipsToBounds = true
         
     }
     
-    func positionMask () {
+    func positionImageViewMask () {
         
-        mask.frame = relativeFrame
+        imageViewMask.frame = relativeFrame
         
     }
     
@@ -125,7 +133,7 @@ public class JABSquareImagePanel: JABPanel {
     
     func positionImageView () {
         
-        var newFrame = CGRectZero
+        var newFrame = CGRect.zero
         
         if let verifiedImage = image {
             if verifiedImage.size.width != 0 && verifiedImage.size.height != 0 {

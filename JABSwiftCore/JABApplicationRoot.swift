@@ -8,7 +8,7 @@
 
 import Foundation
 
-public class JABApplicationRoot: JABView, JABTouchableViewDelegate, JABLocationTesterDelegate {
+open class JABApplicationRoot: JABView, JABTouchableViewDelegate, JABLocationTesterDelegate {
     
     
     
@@ -16,7 +16,7 @@ public class JABApplicationRoot: JABView, JABTouchableViewDelegate, JABLocationT
     // MARK: Properties
     // MARK:
     
-    override public var frame: CGRect {
+    override open var frame: CGRect {
         didSet {
             notificationLayer.frame = relativeFrame
             updateAllUI()
@@ -26,8 +26,8 @@ public class JABApplicationRoot: JABView, JABTouchableViewDelegate, JABLocationT
     // MARK: State
     
     // MARK: UI
-    public var notificationLayer = JABTouchableView()
-    private let locationTester = JABLocationTester()
+    open var notificationLayer = JABTouchableView()
+    fileprivate let locationTester = JABLocationTester()
     
     
     // MARK:
@@ -38,9 +38,9 @@ public class JABApplicationRoot: JABView, JABTouchableViewDelegate, JABLocationT
     // MARK: Override
     // MARK:
     
-    override public func addSubview(view: UIView) {
+    override open func addSubview(_ view: UIView) {
         super.addSubview(view)
-        bringSubviewToFront(notificationLayer)
+        bringSubview(toFront: notificationLayer)
     }
 
     
@@ -72,14 +72,14 @@ public class JABApplicationRoot: JABView, JABTouchableViewDelegate, JABLocationT
     // MARK: Notifications
     // MARK:
     
-    public func dimNotificationLayer () {
+    open func dimNotificationLayer () {
         notificationLayer.backgroundColor = UIColor(white: 0, alpha: 0.4)
-        notificationLayer.userInteractionEnabled = true
+        notificationLayer.isUserInteractionEnabled = true
     }
     
-    public func undimNotificationLayer () {
+    open func undimNotificationLayer () {
         notificationLayer.backgroundColor = UIColor(white: 0, alpha: 0)
-        notificationLayer.userInteractionEnabled = false
+        notificationLayer.isUserInteractionEnabled = false
     }
     
     
@@ -87,20 +87,20 @@ public class JABApplicationRoot: JABView, JABTouchableViewDelegate, JABLocationT
     // MARK: Debug
     // MARK:
     
-    public func launchLocationTesterAfterDelay (delay: NSTimeInterval) {
+    open func launchLocationTesterAfterDelay (_ delay: TimeInterval) {
         
-        NSTimer.scheduledTimerWithTimeInterval(delay, target: self, selector: "launchLocationTester", userInfo: nil, repeats: false)
+        Timer.scheduledTimer(timeInterval: delay, target: self, selector: #selector(JABApplicationRoot.launchLocationTester), userInfo: nil, repeats: false)
         
     }
     
-    public func launchLocationTester () {
+    open func launchLocationTester () {
         
         locationTester.frame = relativeFrame
         addSubview(locationTester)
         
     }
     
-    public func cancelLocationTester () {
+    open func cancelLocationTester () {
         
         locationTester.removeFromSuperview()
         
@@ -112,24 +112,24 @@ public class JABApplicationRoot: JABView, JABTouchableViewDelegate, JABLocationT
     // MARK:
     
     // MARK: Touchable View
-    public func touchableViewTouchDidBegin(touchableView: JABTouchableView, gestureRecognizer: UIGestureRecognizer) {
+    open func touchableViewTouchDidBegin(_ touchableView: JABTouchableView, gestureRecognizer: UIGestureRecognizer) {
         
     }
     
-    public func touchableViewTouchDidChange(touchableView: JABTouchableView, gestureRecognizer: UIGestureRecognizer, xDistance: CGFloat, yDistance: CGFloat, xVelocity: CGFloat, yVelocity: CGFloat, methodCallNumber: Int) {
+    open func touchableViewTouchDidChange(_ touchableView: JABTouchableView, gestureRecognizer: UIGestureRecognizer, xDistance: CGFloat, yDistance: CGFloat, xVelocity: CGFloat, yVelocity: CGFloat, methodCallNumber: Int) {
         
     }
     
-    public func touchableViewTouchDidEnd(touchableView: JABTouchableView, gestureRecognizer: UIGestureRecognizer, xDistance: CGFloat, yDistance: CGFloat, xVelocity: CGFloat, yVelocity: CGFloat, methodCallNumber: Int) {
+    open func touchableViewTouchDidEnd(_ touchableView: JABTouchableView, gestureRecognizer: UIGestureRecognizer, xDistance: CGFloat, yDistance: CGFloat, xVelocity: CGFloat, yVelocity: CGFloat, methodCallNumber: Int) {
         
     }
     
-    public func touchableViewTouchDidCancel(touchableView: JABTouchableView, gestureRecognizer: UIGestureRecognizer, xDistance: CGFloat, yDistance: CGFloat, xVelocity: CGFloat, yVelocity: CGFloat, methodCallNumber: Int) {
+    open func touchableViewTouchDidCancel(_ touchableView: JABTouchableView, gestureRecognizer: UIGestureRecognizer, xDistance: CGFloat, yDistance: CGFloat, xVelocity: CGFloat, yVelocity: CGFloat, methodCallNumber: Int) {
         
     }
     
     // MARK: Location Tester
-    public func locationTesterDelegateDidCancel() {
+    open func locationTesterDelegateDidCancel() {
         cancelLocationTester()
     }
     

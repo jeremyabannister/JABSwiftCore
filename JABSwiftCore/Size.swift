@@ -8,12 +8,12 @@
 
 import UIKit
 
-public class Size {
+open class Size {
     
     
     // MARK: Properties
     
-    public var width = CGFloat(0) {
+    open var width = CGFloat(0) {
         didSet {
             if width < 0 {
                 width = 0
@@ -21,7 +21,7 @@ public class Size {
         }
     }
     
-    public var height = CGFloat(0) {
+    open var height = CGFloat(0) {
         didSet {
             if height < 0 {
                 height = 0
@@ -29,7 +29,7 @@ public class Size {
         }
     }
     
-    public var depth = CGFloat(0) {
+    open var depth = CGFloat(0) {
         didSet {
             if depth < 0 {
                 depth = 0

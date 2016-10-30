@@ -8,7 +8,7 @@
 
 import UIKit
 
-public class JABVersionNumber: NSObject, Comparable {
+open class JABVersionNumber: NSObject, Comparable, NSCoding {
     
     // MARK:
     // MARK: Properties
@@ -16,8 +16,23 @@ public class JABVersionNumber: NSObject, Comparable {
     
     
     // MARK: State
-    public var numbers = [Int]()
-    
+    open var numbers = [Int]()
+    open var stringDescription: String {
+        get {
+            var string = ""
+            var firstNumber = true
+            for number in numbers {
+                if !firstNumber {
+                    string += "."
+                } else {
+                    firstNumber = false
+                }
+                string += "\(number)"
+            }
+            
+            return string
+        }
+    }
     
     
     
@@ -37,7 +52,7 @@ public class JABVersionNumber: NSObject, Comparable {
         super.init()
         
         if string.isValidVersionNumber() {
-            let components = string.componentsSeparatedByString(".")
+            let components = string.components(separatedBy: ".")
             for component in components {
                 if let number = Int(component) {
                     numbers.append(number)
@@ -46,6 +61,28 @@ public class JABVersionNumber: NSObject, Comparable {
         } else {
             numbers.append(0)
         }
+        
+    }
+    
+    
+    // MARK:
+    // MARK: NSCoding
+    // MARK:
+    
+    required public init(coder aDecoder: NSCoder) {
+        
+        if let numbers = aDecoder.decodeObject(forKey: "numbers") as? [Int] {
+            self.numbers = numbers
+        } else {
+            self.numbers = [Int]()
+        }
+        
+    }
+    
+    
+    open func encode(with aCoder: NSCoder) {
+        
+        aCoder.encode(numbers, forKey: "numbers")
         
     }
     

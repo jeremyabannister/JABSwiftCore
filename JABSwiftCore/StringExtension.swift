@@ -23,16 +23,16 @@ public extension String {
     // MARK: Subscript
     
     subscript (i: Int) -> Character {
-        return self[self.startIndex.advancedBy(i)]
+        return self[self.characters.index(self.startIndex, offsetBy: i)]
     }
     
     subscript (r: Range<Int>) -> String {
-        return substringWithRange(Range(start: startIndex.advancedBy(r.startIndex), end: startIndex.advancedBy(r.endIndex)))
+        return substring(with: (characters.index(startIndex, offsetBy: r.lowerBound) ..< characters.index(startIndex, offsetBy: r.upperBound)))
     }
     
     
     // MARK: Is Valid
-    public func isValidCombinationOfCharacterSet (characterSet: [Character]) -> Bool {
+    public func isValidCombinationOfCharacterSet (_ characterSet: [Character]) -> Bool {
         
         if self.characters.count == 0 {
             return true
@@ -70,7 +70,7 @@ public extension String {
     
     public func isValidFloatingPointNumber () -> Bool {
         
-        let split = componentsSeparatedByString(".")
+        let split = components(separatedBy: ".")
         
         switch split.count {
         case 0:
@@ -118,7 +118,7 @@ public extension String {
     
     public func isValidVersionNumber () -> Bool {
         
-        let components = self.componentsSeparatedByString(".")
+        let components = self.components(separatedBy: ".")
         
         for component in components {
             if !component.isValidWholeNumber() {
@@ -175,7 +175,7 @@ public extension String {
     }
     
     public func toDouble() -> Double? {
-        return NSNumberFormatter().numberFromString(self)?.doubleValue
+        return NumberFormatter().number(from: self)?.doubleValue
     }
     
     
@@ -183,7 +183,7 @@ public extension String {
     // MARK: Substring
     public func decapitate () -> String {
         if self.characters.count > 0 {
-            return substringFromIndex(startIndex.advancedBy(1))
+            return substring(from: characters.index(startIndex, offsetBy: 1))
         }
         return ""
     }
