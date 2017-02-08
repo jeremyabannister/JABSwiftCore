@@ -27,6 +27,7 @@ open class SRTCamera: JABView {
     
     // MARK: State
     public var cameraDevice = UIImagePickerControllerCameraDevice.rear
+    public var mediaTypes: [String]?
     
     // MARK: UI
     fileprivate let imagePicker = UIImagePickerController()
@@ -118,7 +119,12 @@ open class SRTCamera: JABView {
         
         imagePicker.sourceType = UIImagePickerControllerSourceType.camera
         imagePicker.cameraDevice = cameraDevice
-        imagePicker.mediaTypes = ["public.image", "public.movie"]
+        
+        if mediaTypes != nil {
+            imagePicker.mediaTypes = mediaTypes!
+        } else {
+            imagePicker.mediaTypes = ["public.image", "public.movie"]
+        }
         
     }
     
