@@ -100,7 +100,7 @@ open class JABButton: JABTouchableView {
     open var horizontalContentInset: CGFloat = 0.0
     open var verticalContentInset: CGFloat = 0.0
     
-    open var dimsWhenPressed = false
+    open var dimsWhenPressed = true
     open var textButtonDimsBackground = false
     open var swellsWhenPressed = false
     open var swellFraction = CGFloat(1.1)

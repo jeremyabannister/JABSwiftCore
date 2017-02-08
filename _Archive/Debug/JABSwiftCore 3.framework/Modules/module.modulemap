@@ -1,0 +1,10 @@
+framework module JABSwiftCore {
+  umbrella header "JABSwiftCore.h"
+
+  export *
+  module * { export * }
+}
+
+module JABSwiftCore.Swift {
+    header "JABSwiftCore-Swift.h"
+}
