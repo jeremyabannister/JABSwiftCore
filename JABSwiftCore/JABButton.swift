@@ -67,6 +67,7 @@ open class JABButton: JABTouchableView {
     open var text = ""
     open var textAlignment = NSTextAlignment.center
     open var font = UIFont(name: "HelveticaNeue-Medium", size: 12)
+    open var numberOfLines: Int?
     
     // Text Color
     open var textColor = UIColor.black {
@@ -261,6 +262,10 @@ open class JABButton: JABTouchableView {
         textLabel.text = text
         textLabel.textAlignment = textAlignment
         textLabel.font = font
+        
+        if numberOfLines != nil {
+            textLabel.numberOfLines = numberOfLines!
+        }
         
         if !textButtonDimsBackground {
             if dimsWhenPressed {
