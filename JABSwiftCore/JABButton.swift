@@ -68,6 +68,7 @@ open class JABButton: JABTouchableView {
     open var textAlignment = NSTextAlignment.center
     open var font = UIFont(name: "HelveticaNeue-Medium", size: 12)
     open var numberOfLines: Int?
+    open var maximumWidthForTextLabel: CGFloat?
     
     // Text Color
     open var textColor = UIColor.black {
@@ -289,7 +290,10 @@ open class JABButton: JABTouchableView {
         if let text = textLabel.text {
             
             var newFrame = CGRect.zero
-            let size = textLabel.font.sizeOfString(text, constrainedToWidth: 0)
+            var size = textLabel.font.sizeOfString(text, constrainedToWidth: 0)
+            if let maxWidth = maximumWidthForTextLabel {
+                size = textLabel.font.sizeOfString(text, constrainedToWidth: maxWidth)
+            }
             
             newFrame.size.width = size.width
             newFrame.size.height = size.height
