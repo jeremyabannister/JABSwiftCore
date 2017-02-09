@@ -13,6 +13,8 @@ import UIKit
 public extension UIImage {
     
     
+    
+    // MARK: Coloring
     public func imageTintedWithColor(_ color: UIColor) -> UIImage {
         // This method is designed for use with template images, i.e. solid-coloured mask-like images.
         return imageTintedWithColor(color, fraction: 0.0) // default to a fully tinted mask of the image.
@@ -47,6 +49,25 @@ public extension UIImage {
         
         return image
         
+    }
+    
+    
+    
+    // MARK: Resizing
+    
+    func resized(withPercentage percentage: CGFloat) -> UIImage? {
+        let canvasSize = CGSize(width: size.width * percentage, height: size.height * percentage)
+        UIGraphicsBeginImageContextWithOptions(canvasSize, false, scale)
+        defer { UIGraphicsEndImageContext() }
+        draw(in: CGRect(origin: .zero, size: canvasSize))
+        return UIGraphicsGetImageFromCurrentImageContext()
+    }
+    func resized(toWidth width: CGFloat) -> UIImage? {
+        let canvasSize = CGSize(width: width, height: CGFloat(ceil(width/size.width * size.height)))
+        UIGraphicsBeginImageContextWithOptions(canvasSize, false, scale)
+        defer { UIGraphicsEndImageContext() }
+        draw(in: CGRect(origin: .zero, size: canvasSize))
+        return UIGraphicsGetImageFromCurrentImageContext()
     }
     
 }
