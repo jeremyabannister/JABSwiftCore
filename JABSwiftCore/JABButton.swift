@@ -49,7 +49,7 @@ open class JABButton: JABTouchableView {
     open var undimmedBackgroundColor: UIColor? {
         didSet {
             if dimmedBackgroundColor == nil {
-                if undimmedBackgroundColor?.components.alpha == 0 {
+                if undimmedBackgroundColor?.components.alpha == 0 || undimmedBackgroundColor == nil {
                     dimmedBackgroundColor = UIColor(white: 0, alpha: 1 - dimFraction)
                 } else {
                     dimmedBackgroundColor = undimmedBackgroundColor?.dim(dimFraction)
