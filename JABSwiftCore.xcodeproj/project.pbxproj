@@ -28,6 +28,8 @@
 		875444DC1AE1D05800659E6B /* JABTouchManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 875444DB1AE1D05800659E6B /* JABTouchManager.swift */; };
 		875444DE1AE1D05E00659E6B /* JABButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 875444DD1AE1D05E00659E6B /* JABButton.swift */; };
 		875444E01AE1D06500659E6B /* JABApplicationRoot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 875444DF1AE1D06500659E6B /* JABApplicationRoot.swift */; };
+		87B0130D1E5698770000280E /* MutableCollectionExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87B0130C1E5698770000280E /* MutableCollectionExtension.swift */; };
+		87B013111E5698D30000280E /* SequenceExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87B013101E5698D30000280E /* SequenceExtension.swift */; };
 		87C21BBC1AEF131300FCE515 /* CGPointExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87C21BBB1AEF131300FCE515 /* CGPointExtension.swift */; };
 		87D71C261B8BD988004E7D05 /* JABVersionNumber.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D71C251B8BD988004E7D05 /* JABVersionNumber.swift */; };
 		87ED41DA1B1593F600B57E7B /* JABSquareImagePanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87ED41D91B1593F600B57E7B /* JABSquareImagePanel.swift */; };
@@ -78,6 +80,8 @@
 		875444DB1AE1D05800659E6B /* JABTouchManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JABTouchManager.swift; sourceTree = "<group>"; };
 		875444DD1AE1D05E00659E6B /* JABButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JABButton.swift; sourceTree = "<group>"; };
 		875444DF1AE1D06500659E6B /* JABApplicationRoot.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JABApplicationRoot.swift; sourceTree = "<group>"; };
+		87B0130C1E5698770000280E /* MutableCollectionExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MutableCollectionExtension.swift; sourceTree = "<group>"; };
+		87B013101E5698D30000280E /* SequenceExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SequenceExtension.swift; sourceTree = "<group>"; };
 		87C21BBB1AEF131300FCE515 /* CGPointExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CGPointExtension.swift; sourceTree = "<group>"; };
 		87D71C251B8BD988004E7D05 /* JABVersionNumber.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JABVersionNumber.swift; sourceTree = "<group>"; };
 		87D997A01AF1640A0047483E /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -392,6 +396,8 @@
 				8712806F1B4C5D410005716F /* NSDateExtension.swift */,
 				87FB2E2A1B522C27000E09D9 /* StringExtension.swift */,
 				870DFB821B532A9200BC76D7 /* DoubleExtension.swift */,
+				87B0130C1E5698770000280E /* MutableCollectionExtension.swift */,
+				87B013101E5698D30000280E /* SequenceExtension.swift */,
 			);
 			name = "Class Extensions";
 			sourceTree = "<group>";
@@ -539,6 +545,7 @@
 				870DFB831B532A9200BC76D7 /* DoubleExtension.swift in Sources */,
 				87ED41DA1B1593F600B57E7B /* JABSquareImagePanel.swift in Sources */,
 				87F422DC1AFDB62A00C564D9 /* Size.swift in Sources */,
+				87B013111E5698D30000280E /* SequenceExtension.swift in Sources */,
 				8721FF2B1B6ECE37000EB3CB /* JABLocationTester.swift in Sources */,
 				875444DA1AE1D04F00659E6B /* JABTouchableView.swift in Sources */,
 				87128B671AFDDC1C00D1F34A /* UIFontExtension.swift in Sources */,
@@ -562,6 +569,7 @@
 				87F4FD431AE4222A00953E38 /* UIColorExtension.swift in Sources */,
 				87D71C261B8BD988004E7D05 /* JABVersionNumber.swift in Sources */,
 				87F4FD3E1AE421A300953E38 /* UIViewExtension.swift in Sources */,
+				87B0130D1E5698770000280E /* MutableCollectionExtension.swift in Sources */,
 				875444DE1AE1D05E00659E6B /* JABButton.swift in Sources */,
 				87FB2E2B1B522C27000E09D9 /* StringExtension.swift in Sources */,
 				8705209D1AEF8799008C9555 /* ArrayExtension.swift in Sources */,

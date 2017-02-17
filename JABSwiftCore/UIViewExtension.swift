@@ -252,11 +252,11 @@ public extension UIView {
     
     
     
-    public func printFrame(_ tag: NSString = "") {
-        if tag == "" {
-            print(frame)
+    public func printFrame(_ tag: String? = nil) {
+        if tag != nil {
+            print("\(tag) : (x:\(frame.origin.x), y:\(frame.origin.y), width:\(frame.size.width), height:\(frame.size.height)")
         } else {
-            print("\(tag) : \(frame)")
+            print("(x:\(frame.origin.x), y:\(frame.origin.y), width:\(frame.size.width), height:\(frame.size.height)")
         }
     }
     
