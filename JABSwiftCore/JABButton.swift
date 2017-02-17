@@ -82,7 +82,7 @@ open class JABButton: JABTouchableView {
         didSet {
             if dimmedTextColor == nil {
                 if undimmedTextColor != blackColor {
-                    dimmedTextColor = undimmedTextColor?.dim(0.7)
+                    dimmedTextColor = undimmedTextColor?.dim(dimFraction)
                 } else {
                     dimmedTextColor = UIColor(white: 0.3, alpha: 1)
                 }
@@ -103,6 +103,7 @@ open class JABButton: JABTouchableView {
     open var verticalContentInset: CGFloat = 0.0
     
     open var dimsWhenPressed = true
+    open var dimFraction: CGFloat = 0.7
     open var textButtonDimsBackground = false
     open var swellsWhenPressed = false
     open var swellFraction = CGFloat(1.1)
