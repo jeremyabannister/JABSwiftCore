@@ -191,6 +191,11 @@ open class JABButton: JABTouchableView {
     // MARK: Background
     func configureBackground () {
         
+        if undimmedBackgroundColor == nil {
+            let currentBackgroundColor = backgroundColor
+            backgroundColor = currentBackgroundColor
+        }
+        
         if type == JABButtonType.image || textButtonDimsBackground {
             if dimsWhenPressed {
                 if pressed {
