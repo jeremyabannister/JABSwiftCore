@@ -104,6 +104,7 @@ open class JABButton: JABTouchableView {
     
     open var dimsWhenPressed = true
     open var dimFraction: CGFloat = 0.8
+    open var dimDuration: TimeInterval = 0.05
     open var textButtonDimsBackground = false
     open var swellsWhenPressed = false
     open var swellFraction = CGFloat(1.1)
@@ -352,9 +353,7 @@ open class JABButton: JABTouchableView {
     // MARK: Touch Manager
     override open func touchDidBegin(_ gestureRecognizer: UIGestureRecognizer) {
         pressed = true
-        animatedUpdate(0.1) { (Bool) -> () in
-            
-        }
+        animatedUpdate(dimDuration) { (Bool) -> () in }
         buttonDelegate?.buttonWasTouched(self)
         
     }
@@ -367,9 +366,7 @@ open class JABButton: JABTouchableView {
             pressed = false
         }
         
-        animatedUpdate(0.1) { (Bool) -> () in
-            
-        }
+        animatedUpdate(dimDuration) { (Bool) -> () in }
         
     }
     
@@ -383,18 +380,14 @@ open class JABButton: JABTouchableView {
         
         buttonDelegate?.buttonWasUntouched(self, triggered: pressed)
         pressed = false
-        animatedUpdate(0.1) { (Bool) -> () in
-            
-        }
+        animatedUpdate(dimDuration) { (Bool) -> () in }
     }
     
     override open func touchDidCancel(_ gestureRecognizer: UIGestureRecognizer, xDistance: CGFloat, yDistance: CGFloat, xVelocity: CGFloat, yVelocity: CGFloat, methodCallNumber: Int) {
         
         buttonDelegate?.buttonWasUntouched(self, triggered: false)
         pressed = false
-        animatedUpdate(0.1) { (Bool) -> () in
-            
-        }
+        animatedUpdate(dimDuration) { (Bool) -> () in }
         
     }
     
