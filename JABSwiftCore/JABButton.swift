@@ -372,15 +372,15 @@ open class JABButton: JABTouchableView {
     
     override open func touchDidEnd(_ gestureRecognizer: UIGestureRecognizer, xDistance: CGFloat, yDistance: CGFloat, xVelocity: CGFloat, yVelocity: CGFloat, methodCallNumber: Int) {
         
+        var triggered = false
         if relativeFrame.contains(gestureRecognizer.location(in: self)) {
-            pressed = true
-        } else {
-            pressed = false
+            triggered = true
         }
         
-        buttonDelegate?.buttonWasUntouched(self, triggered: pressed)
         pressed = false
         animatedUpdate(dimDuration) { (Bool) -> () in }
+        
+        buttonDelegate?.buttonWasUntouched(self, triggered: triggered)
     }
     
     override open func touchDidCancel(_ gestureRecognizer: UIGestureRecognizer, xDistance: CGFloat, yDistance: CGFloat, xVelocity: CGFloat, yVelocity: CGFloat, methodCallNumber: Int) {
