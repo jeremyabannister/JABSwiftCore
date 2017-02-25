@@ -62,6 +62,7 @@ open class JABButton: JABTouchableView {
     // Image
     open var image: UIImage?
     open var pressedImage: UIImage?
+    open var imageViewTransform: CGAffineTransform?
     
     // Text
     open var text = ""
@@ -219,38 +220,24 @@ open class JABButton: JABTouchableView {
     
     // MARK: Image View
     func configureImageView () {
-        
-        
+        let view = imageView
         if pressed {
-            
-            if let verifiedPressedImage = pressedImage {
-                imageView.image = verifiedPressedImage
-            }
-            
+            if let verifiedPressedImage = pressedImage { imageView.image = verifiedPressedImage }
         } else {
-            
             imageView.image = image
-            
         }
         
-        
-        
         switch type {
-            
         case JABButtonType.image:
-            
-            imageView.opacity = 1
-            
+            view.opacity = 1
         case JABButtonType.text:
-            
-            imageView.opacity = 0
-            
+            view.opacity = 0
         }
         
     }
     
     func positionImageView () {
-        
+        let view = imageView
         var newFrame = CGRect.zero
         
         newFrame.origin.x = horizontalContentInset
@@ -259,8 +246,12 @@ open class JABButton: JABTouchableView {
         newFrame.size.width = width - 2*horizontalContentInset
         newFrame.size.height = height - 2*verticalContentInset
         
-        imageView.frame = newFrame
-        
+        if let transform = imageViewTransform {
+            view.transform = transform
+        } else {
+            view.transform = CGAffineTransform.identity
+            view.frame = newFrame
+        }
     }
     
     
@@ -360,13 +351,16 @@ open class JABButton: JABTouchableView {
     
     override open func touchDidChange(_ gestureRecognizer: UIGestureRecognizer, xDistance: CGFloat, yDistance: CGFloat, xVelocity: CGFloat, yVelocity: CGFloat, methodCallNumber: Int) {
         
+        let oldPressed = pressed
         if relativeFrame.contains(gestureRecognizer.location(in: self)) {
             pressed = true
         } else {
             pressed = false
         }
         
-        animatedUpdate(dimDuration) { (Bool) -> () in }
+        if pressed != oldPressed {
+            animatedUpdate(dimDuration) { (Bool) -> () in }
+        }
         
     }
     
