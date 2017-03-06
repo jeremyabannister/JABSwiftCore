@@ -42,6 +42,7 @@ open class JABButton: JABTouchableView {
     override open var backgroundColor: UIColor? {
         didSet {
             if !dimmed {
+                if oldValue != backgroundColor { dimmedBackgroundColor = nil }
                 undimmedBackgroundColor = backgroundColor
             }
         }
