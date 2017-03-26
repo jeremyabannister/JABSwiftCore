@@ -44,11 +44,12 @@ open class JABTouchManager: NSObject, UIGestureRecognizerDelegate {
         
         super.init()
         
-        let touchRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(JABTouchManager.touchDetected(_:)))
-        touchRecognizer.delegate = self
-        touchRecognizer.minimumPressDuration = 0.0001
-        touchRecognizer.allowableMovement = 1000000
-        self.touchDomain.addGestureRecognizer(touchRecognizer)
+        touchRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(JABTouchManager.touchDetected(_:)))
+        guard let recognizer = touchRecognizer else { return }
+        recognizer.delegate = self
+        recognizer.minimumPressDuration = 0.0001
+        recognizer.allowableMovement = 1000000
+        touchDomain.addGestureRecognizer(recognizer)
     }
     
     
