@@ -17,12 +17,12 @@ open class JABTouchManager: NSObject, UIGestureRecognizerDelegate {
     
     
     // MARK: Delegate
-    var delegate: JABTouchManagerDelegate?
+    open var delegate: JABTouchManagerDelegate?
     
     // MARK: State
     open var touchDomain: UIView
     
-    var touchRecognizer: UILongPressGestureRecognizer?
+    open var touchRecognizer: UILongPressGestureRecognizer?
     
     var initialTouchLocation = CGPoint() // Stores location from touchDidBegin
     var mostRecentTouchLocation = CGPoint() // Does not ever store end location, only intermediate locations
@@ -38,19 +38,17 @@ open class JABTouchManager: NSObject, UIGestureRecognizerDelegate {
     
     
     
-    public init(newTouchDomain: UIView) {
+    public init(touchDomain: UIView) {
         
-        touchDomain = newTouchDomain
+        self.touchDomain = touchDomain
         
         super.init()
         
-        touchRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(JABTouchManager.touchDetected(_:)))
-        touchRecognizer?.delegate = self
-        touchRecognizer?.minimumPressDuration = 0.0001
-        touchRecognizer?.allowableMovement = 1000000
-        if touchRecognizer != nil {
-            touchDomain.addGestureRecognizer(touchRecognizer!)
-        }
+        let touchRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(JABTouchManager.touchDetected(_:)))
+        touchRecognizer.delegate = self
+        touchRecognizer.minimumPressDuration = 0.0001
+        touchRecognizer.allowableMovement = 1000000
+        self.touchDomain.addGestureRecognizer(touchRecognizer)
     }
     
     
@@ -82,7 +80,7 @@ open class JABTouchManager: NSObject, UIGestureRecognizerDelegate {
                     previousDeltaX = 0.0
                     previousDeltaY = 0.0
                     
-                    verifiedDelegate.touchDidBegin(gestureRecognizer)
+                    verifiedDelegate.touchDidBegin(self)
                     
                 } else {
                     
@@ -125,7 +123,7 @@ open class JABTouchManager: NSObject, UIGestureRecognizerDelegate {
                         xVelocity = xVelocity/CGFloat(velocityAverageCount)
                         yVelocity = yVelocity/CGFloat(velocityAverageCount)
                         
-                        verifiedDelegate.touchDidChange(gestureRecognizer, xDistance: xDistanceMoved, yDistance: yDistanceMoved, xVelocity: xVelocity, yVelocity: yVelocity, methodCallNumber: methodCallNumber)
+                        verifiedDelegate.touchDidChange(self, xDistance: xDistanceMoved, yDistance: yDistanceMoved, xVelocity: xVelocity, yVelocity: yVelocity, methodCallNumber: methodCallNumber)
                         
                         previousDeltaX = deltaX
                         previousDeltaY = deltaY
@@ -169,7 +167,7 @@ open class JABTouchManager: NSObject, UIGestureRecognizerDelegate {
                             xVelocity = xVelocity/CGFloat(velocityAverageCount)
                             yVelocity = yVelocity/CGFloat(velocityAverageCount)
                             
-                            verifiedDelegate.touchDidEnd(gestureRecognizer, xDistance: xDistanceMoved, yDistance: yDistanceMoved, xVelocity: xVelocity, yVelocity: yVelocity, methodCallNumber: methodCallNumber)
+                            verifiedDelegate.touchDidEnd(self, xDistance: xDistanceMoved, yDistance: yDistanceMoved, xVelocity: xVelocity, yVelocity: yVelocity, methodCallNumber: methodCallNumber)
                             
                             mostRecentTouchLocation = CGPoint()
                             xVelocityHistory = []
@@ -208,7 +206,7 @@ open class JABTouchManager: NSObject, UIGestureRecognizerDelegate {
                             xVelocity = xVelocity/CGFloat(velocityAverageCount)
                             yVelocity = yVelocity/CGFloat(velocityAverageCount)
                             
-                            verifiedDelegate.touchDidCancel(gestureRecognizer, xDistance: xDistanceMoved, yDistance: yDistanceMoved, xVelocity: xVelocity, yVelocity: yVelocity, methodCallNumber: methodCallNumber)
+                            verifiedDelegate.touchDidCancel(self, xDistance: xDistanceMoved, yDistance: yDistanceMoved, xVelocity: xVelocity, yVelocity: yVelocity, methodCallNumber: methodCallNumber)
                             
                             mostRecentTouchLocation = CGPoint()
                             
@@ -274,9 +272,9 @@ public protocol JABTouchManagerDelegate {
     
     var blockingViews: [UIView] { get }
     
-    func touchDidBegin (_ gestureRecognizer: UIGestureRecognizer)
-    func touchDidChange (_ gestureRecognizer: UIGestureRecognizer, xDistance:CGFloat, yDistance:CGFloat, xVelocity:CGFloat, yVelocity:CGFloat, methodCallNumber:Int)
-    func touchDidEnd (_ gestureRecognizer: UIGestureRecognizer, xDistance:CGFloat, yDistance:CGFloat, xVelocity:CGFloat, yVelocity:CGFloat, methodCallNumber:Int)
-    func touchDidCancel (_ gestureRecognizer: UIGestureRecognizer, xDistance:CGFloat, yDistance:CGFloat, xVelocity:CGFloat, yVelocity:CGFloat, methodCallNumber:Int)
+    func touchDidBegin (_ touchManager: JABTouchManager)
+    func touchDidChange (_ touchManager: JABTouchManager, xDistance:CGFloat, yDistance:CGFloat, xVelocity:CGFloat, yVelocity:CGFloat, methodCallNumber:Int)
+    func touchDidEnd (_ touchManager: JABTouchManager, xDistance:CGFloat, yDistance:CGFloat, xVelocity:CGFloat, yVelocity:CGFloat, methodCallNumber:Int)
+    func touchDidCancel (_ touchManager: JABTouchManager, xDistance:CGFloat, yDistance:CGFloat, xVelocity:CGFloat, yVelocity:CGFloat, methodCallNumber:Int)
     
 }

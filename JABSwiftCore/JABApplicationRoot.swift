@@ -112,19 +112,19 @@ open class JABApplicationRoot: JABView, JABTouchableViewDelegate, JABLocationTes
     // MARK:
     
     // MARK: Touchable View
-    open func touchableViewTouchDidBegin(_ touchableView: JABTouchableView, gestureRecognizer: UIGestureRecognizer) {
+    open func touchableViewTouchDidBegin(_ touchableView: JABTouchableView) {
         
     }
     
-    open func touchableViewTouchDidChange(_ touchableView: JABTouchableView, gestureRecognizer: UIGestureRecognizer, xDistance: CGFloat, yDistance: CGFloat, xVelocity: CGFloat, yVelocity: CGFloat, methodCallNumber: Int) {
+    open func touchableViewTouchDidChange(_ touchableView: JABTouchableView, xDistance: CGFloat, yDistance: CGFloat, xVelocity: CGFloat, yVelocity: CGFloat, methodCallNumber: Int) {
         
     }
     
-    open func touchableViewTouchDidEnd(_ touchableView: JABTouchableView, gestureRecognizer: UIGestureRecognizer, xDistance: CGFloat, yDistance: CGFloat, xVelocity: CGFloat, yVelocity: CGFloat, methodCallNumber: Int) {
+    open func touchableViewTouchDidEnd(_ touchableView: JABTouchableView, xDistance: CGFloat, yDistance: CGFloat, xVelocity: CGFloat, yVelocity: CGFloat, methodCallNumber: Int) {
         
     }
     
-    open func touchableViewTouchDidCancel(_ touchableView: JABTouchableView, gestureRecognizer: UIGestureRecognizer, xDistance: CGFloat, yDistance: CGFloat, xVelocity: CGFloat, yVelocity: CGFloat, methodCallNumber: Int) {
+    open func touchableViewTouchDidCancel(_ touchableView: JABTouchableView, xDistance: CGFloat, yDistance: CGFloat, xVelocity: CGFloat, yVelocity: CGFloat, methodCallNumber: Int) {
         
     }
     

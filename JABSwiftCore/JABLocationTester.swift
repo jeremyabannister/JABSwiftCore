@@ -170,25 +170,28 @@ open class JABLocationTester: JABTouchableView {
     // MARK:
     
     // MARK: Touch Manager
-    override open func touchDidBegin(_ gestureRecognizer: UIGestureRecognizer) {
+    override open func touchDidBegin(_ touchManager: JABTouchManager) {
         
-        location = gestureRecognizer.location(in: self)
+        guard let touchRecognizer = touchManager.touchRecognizer else { return }
+        location = touchRecognizer.location(in: self)
         print("(\(location.x), \(location.y))")
         animatedUpdate()
         
     }
     
-    override open func touchDidChange(_ gestureRecognizer: UIGestureRecognizer, xDistance: CGFloat, yDistance: CGFloat, xVelocity: CGFloat, yVelocity: CGFloat, methodCallNumber: Int) {
+    override open func touchDidChange(_ touchManager: JABTouchManager, xDistance: CGFloat, yDistance: CGFloat, xVelocity: CGFloat, yVelocity: CGFloat, methodCallNumber: Int) {
         
-        location = gestureRecognizer.location(in: self)
+        guard let touchRecognizer = touchManager.touchRecognizer else { return }
+        location = touchRecognizer.location(in: self)
         print("(\(location.x), \(location.y))")
         updateAllUI()
         
     }
     
-    override open func touchDidEnd(_ gestureRecognizer: UIGestureRecognizer, xDistance: CGFloat, yDistance: CGFloat, xVelocity: CGFloat, yVelocity: CGFloat, methodCallNumber: Int) {
+    override open func touchDidEnd(_ touchManager: JABTouchManager, xDistance: CGFloat, yDistance: CGFloat, xVelocity: CGFloat, yVelocity: CGFloat, methodCallNumber: Int) {
         
-        location = gestureRecognizer.location(in: self)
+        guard let touchRecognizer = touchManager.touchRecognizer else { return }
+        location = touchRecognizer.location(in: self)
         print("(\(location.x), \(location.y))")
         updateAllUI()
         
@@ -201,9 +204,10 @@ open class JABLocationTester: JABTouchableView {
         
     }
     
-    override open func touchDidCancel(_ gestureRecognizer: UIGestureRecognizer, xDistance: CGFloat, yDistance: CGFloat, xVelocity: CGFloat, yVelocity: CGFloat, methodCallNumber: Int) {
+    override open func touchDidCancel(_ touchManager: JABTouchManager, xDistance: CGFloat, yDistance: CGFloat, xVelocity: CGFloat, yVelocity: CGFloat, methodCallNumber: Int) {
         
-        location = gestureRecognizer.location(in: self)
+        guard let touchRecognizer = touchManager.touchRecognizer else { return }
+        location = touchRecognizer.location(in: self)
         print("(\(location.x), \(location.y))")
         updateAllUI()
         

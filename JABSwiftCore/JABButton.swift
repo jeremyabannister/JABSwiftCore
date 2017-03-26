@@ -343,17 +343,18 @@ open class JABButton: JABTouchableView {
     // MARK:
     
     // MARK: Touch Manager
-    override open func touchDidBegin(_ gestureRecognizer: UIGestureRecognizer) {
+    override open func touchDidBegin(_ touchManager: JABTouchManager) {
         pressed = true
         animatedUpdate(dimDuration) { (Bool) -> () in }
         buttonDelegate?.buttonWasTouched(self)
         
     }
     
-    override open func touchDidChange(_ gestureRecognizer: UIGestureRecognizer, xDistance: CGFloat, yDistance: CGFloat, xVelocity: CGFloat, yVelocity: CGFloat, methodCallNumber: Int) {
+    override open func touchDidChange(_ touchManager: JABTouchManager, xDistance: CGFloat, yDistance: CGFloat, xVelocity: CGFloat, yVelocity: CGFloat, methodCallNumber: Int) {
         
+        guard let touchRecognizer = touchManager.touchRecognizer else { return }
         let oldPressed = pressed
-        if relativeFrame.contains(gestureRecognizer.location(in: self)) {
+        if relativeFrame.contains(touchRecognizer.location(in: self)) {
             pressed = true
         } else {
             pressed = false
@@ -365,10 +366,11 @@ open class JABButton: JABTouchableView {
         
     }
     
-    override open func touchDidEnd(_ gestureRecognizer: UIGestureRecognizer, xDistance: CGFloat, yDistance: CGFloat, xVelocity: CGFloat, yVelocity: CGFloat, methodCallNumber: Int) {
+    override open func touchDidEnd(_ touchManager: JABTouchManager, xDistance: CGFloat, yDistance: CGFloat, xVelocity: CGFloat, yVelocity: CGFloat, methodCallNumber: Int) {
         
+        guard let touchRecognizer = touchManager.touchRecognizer else { return }
         var triggered = false
-        if relativeFrame.contains(gestureRecognizer.location(in: self)) {
+        if relativeFrame.contains(touchRecognizer.location(in: self)) {
             triggered = true
         }
         
@@ -378,7 +380,7 @@ open class JABButton: JABTouchableView {
         buttonDelegate?.buttonWasUntouched(self, triggered: triggered)
     }
     
-    override open func touchDidCancel(_ gestureRecognizer: UIGestureRecognizer, xDistance: CGFloat, yDistance: CGFloat, xVelocity: CGFloat, yVelocity: CGFloat, methodCallNumber: Int) {
+    override open func touchDidCancel(_ touchManager: JABTouchManager, xDistance: CGFloat, yDistance: CGFloat, xVelocity: CGFloat, yVelocity: CGFloat, methodCallNumber: Int) {
         
         buttonDelegate?.buttonWasUntouched(self, triggered: false)
         pressed = false
