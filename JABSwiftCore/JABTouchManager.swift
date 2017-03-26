@@ -258,6 +258,10 @@ open class JABTouchManager: NSObject, UIGestureRecognizerDelegate {
         
     }
     
+    open func cancelTouch () {
+        touchRecognizer?.isEnabled = false
+        touchRecognizer?.isEnabled = true
+    }
     
     
     
