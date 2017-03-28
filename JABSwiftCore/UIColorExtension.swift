@@ -27,7 +27,6 @@ public extension UIColor {
         let alpha = components.alpha
         
         return UIColor(red: redComponent * modifiedFraction, green: greenComponent * modifiedFraction, blue: blueComponent * modifiedFraction, alpha: alpha)
-        
     }
     
     public var components:(red: CGFloat, green: CGFloat, blue: CGFloat, alpha: CGFloat) {
