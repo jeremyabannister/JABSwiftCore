@@ -15,13 +15,14 @@ public extension UIImage {
     
     
     // MARK: Coloring
-    public func imageTintedWithColor(_ color: UIColor) -> UIImage {
+    public func imageTintedWithColor(_ color: UIColor?) -> UIImage {
         // This method is designed for use with template images, i.e. solid-coloured mask-like images.
         return imageTintedWithColor(color, fraction: 0.0) // default to a fully tinted mask of the image.
     }
     
-    public func imageTintedWithColor(_ color: UIColor, fraction: CGFloat) -> UIImage {
+    public func imageTintedWithColor(_ color: UIColor?, fraction: CGFloat) -> UIImage {
         
+        if color == nil { return self }
         // Construct new image the same size as this one.
         var image = UIImage()
         if UIScreen.instancesRespond(to: #selector(NSDecimalNumberBehaviors.scale)) {
@@ -33,7 +34,7 @@ public extension UIImage {
         let rect = CGRect(x: 0, y: 0, width: size.width, height: size.height)
         
         // Composite tint color at its own opacity.
-        color.set()
+        color!.set()
         UIRectFill(rect)
         
         // Mask tint color-swatch to this image's opaque mask.
