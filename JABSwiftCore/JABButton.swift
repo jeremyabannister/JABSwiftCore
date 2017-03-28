@@ -107,6 +107,8 @@ open class JABButton: JABTouchableView {
     open var dimsWhenPressed = true
     open var dimFraction: CGFloat = 0.8
     open var dimDuration: TimeInterval = 0.05
+    open var dimDelay: TimeInterval?
+    open var waitingForDimDelay = false
     open var textButtonDimsBackground = false
     open var swellsWhenPressed = false
     open var swellFraction = CGFloat(1.1)
@@ -338,6 +340,13 @@ open class JABButton: JABTouchableView {
     
     
     
+    
+    open func cancelTouch () {
+        touchManager?.cancelTouch()
+    }
+    
+    
+    
     // MARK:
     // MARK: Delegate Methods
     // MARK:
@@ -345,9 +354,13 @@ open class JABButton: JABTouchableView {
     // MARK: Touch Manager
     override open func touchDidBegin(_ touchManager: JABTouchManager) {
         pressed = true
-        animatedUpdate(dimDuration) { (Bool) -> () in }
+        if dimDelay != nil {
+            waitingForDimDelay = true
+            DispatchQueue.main.asyncAfter(deadline: .now() + dimDelay!) { self.waitingForDimDelay = false; self.animatedUpdate(self.dimDuration) { (Bool) -> () in } }
+        } else {
+            animatedUpdate(dimDuration) { (Bool) -> () in }
+        }
         buttonDelegate?.buttonWasTouched(self)
-        
     }
     
     override open func touchDidChange(_ touchManager: JABTouchManager, xDistance: CGFloat, yDistance: CGFloat, xVelocity: CGFloat, yVelocity: CGFloat, methodCallNumber: Int) {
@@ -374,8 +387,13 @@ open class JABButton: JABTouchableView {
             triggered = true
         }
         
-        pressed = false
-        animatedUpdate(dimDuration) { (Bool) -> () in }
+        if waitingForDimDelay {
+            pressed = true
+            animatedUpdate(dimDuration) { (Bool) -> () in self.pressed = false; self.animatedUpdate(self.dimDuration) { (Bool) -> () in } }
+        } else {
+            pressed = false
+            animatedUpdate(dimDuration) { (Bool) -> () in }
+        }
         
         buttonDelegate?.buttonWasUntouched(self, triggered: triggered)
     }

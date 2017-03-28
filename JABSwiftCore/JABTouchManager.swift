@@ -21,7 +21,6 @@ open class JABTouchManager: NSObject, UIGestureRecognizerDelegate {
     
     // MARK: State
     open var touchDomain: UIView
-    
     open var touchRecognizer: UILongPressGestureRecognizer?
     
     var initialTouchLocation = CGPoint() // Stores location from touchDidBegin
@@ -56,7 +55,6 @@ open class JABTouchManager: NSObject, UIGestureRecognizerDelegate {
     
     
     open func touchDetected(_ gestureRecognizer: UILongPressGestureRecognizer) {
-        
         
         if let verifiedStaticOnScreenView = staticOnScreenView {
             if let verifiedDelegate = delegate {
@@ -94,6 +92,7 @@ open class JABTouchManager: NSObject, UIGestureRecognizerDelegate {
                     
                     if gestureRecognizer.state == UIGestureRecognizerState.changed {
                         
+                        if xDistanceMoved == 0 && yDistanceMoved == 0 { methodCallNumber -= 1; return }
                         
                         let xDisplacement = locationOnScreen.x - mostRecentTouchLocation.x
                         let yDisplacement = locationOnScreen.y - mostRecentTouchLocation.y
