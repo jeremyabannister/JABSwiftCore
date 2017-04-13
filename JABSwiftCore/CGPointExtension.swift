@@ -30,5 +30,30 @@ public extension CGPoint {
         }
         
     }
-    
 }
+
+
+
+// Basic
+public func + (left: CGPoint, right: CGPoint) -> CGPoint { return CGPoint(x: left.x + right.x, y: left.y + right.y) }
+public func - (left: CGPoint, right: CGPoint) -> CGPoint { return CGPoint(x: left.x - right.x, y: left.y - right.y) }
+public func * (left: CGPoint, right: CGFloat) -> CGPoint { return CGPoint(x: left.x * right, y: left.y * right) }
+public func * (left: CGFloat, right: CGPoint) -> CGPoint { return right * left }
+public func * (left: (CGPoint, CGPoint), right: CGFloat) -> (CGPoint, CGPoint) { return (left.0 * right, left.1 * right) }
+
+
+// Dot Product
+infix operator •
+public func • (left: CGPoint, right: CGPoint) -> CGFloat { return (left.x * right.x) + (left.y * right.y) }
+
+// Cross Product // Only return the z value of the cross product since x and y values are 0
+infix operator ***
+public func *** (left: CGPoint, right: CGPoint) -> CGFloat { return (left.x * right.y) - (left.y * right.x) }
+
+// Vector Rotation
+infix operator &<
+infix operator &>
+public func &< (left: CGPoint, right: CGFloat) -> CGPoint { return CGPoint(x: (left.x * cos(right)) + (left.y * sin(right)), y: (left.x * sin(-right)) + (left.y * cos(right))) }
+public func &> (left: CGPoint, right: CGFloat) -> CGPoint { return left &< -right  }
+
+

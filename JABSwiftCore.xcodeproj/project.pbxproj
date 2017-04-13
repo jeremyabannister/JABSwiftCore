@@ -13,6 +13,7 @@
 		870DFB831B532A9200BC76D7 /* DoubleExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870DFB821B532A9200BC76D7 /* DoubleExtension.swift */; };
 		871280701B4C5D410005716F /* NSDateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8712806F1B4C5D410005716F /* NSDateExtension.swift */; };
 		87128B671AFDDC1C00D1F34A /* UIFontExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87128B661AFDDC1B00D1F34A /* UIFontExtension.swift */; };
+		8714B2961EA01D8A00B7C5FA /* CGFloatExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8714B2951EA01D8A00B7C5FA /* CGFloatExtension.swift */; };
 		8721FF2B1B6ECE37000EB3CB /* JABLocationTester.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8721FF2A1B6ECE37000EB3CB /* JABLocationTester.swift */; };
 		872B6A011BE1A9B600916EE8 /* SRTCamera.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872B6A001BE1A9B600916EE8 /* SRTCamera.swift */; };
 		87389F781D4719D500F0116B /* black.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 87389F771D4719D500F0116B /* black.jpg */; };
@@ -62,6 +63,7 @@
 		870DFB821B532A9200BC76D7 /* DoubleExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoubleExtension.swift; sourceTree = "<group>"; };
 		8712806F1B4C5D410005716F /* NSDateExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSDateExtension.swift; sourceTree = "<group>"; };
 		87128B661AFDDC1B00D1F34A /* UIFontExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIFontExtension.swift; sourceTree = "<group>"; };
+		8714B2951EA01D8A00B7C5FA /* CGFloatExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CGFloatExtension.swift; sourceTree = "<group>"; };
 		8721FF2A1B6ECE37000EB3CB /* JABLocationTester.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JABLocationTester.swift; sourceTree = "<group>"; };
 		872B6A001BE1A9B600916EE8 /* SRTCamera.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SRTCamera.swift; sourceTree = "<group>"; };
 		87389F771D4719D500F0116B /* black.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = black.jpg; sourceTree = "<group>"; };
@@ -392,6 +394,7 @@
 				8701987A1AE61FCA0073BFD5 /* UIImageExtension.swift */,
 				87128B661AFDDC1B00D1F34A /* UIFontExtension.swift */,
 				87C21BBB1AEF131300FCE515 /* CGPointExtension.swift */,
+				8714B2951EA01D8A00B7C5FA /* CGFloatExtension.swift */,
 				8705209C1AEF8799008C9555 /* ArrayExtension.swift */,
 				8712806F1B4C5D410005716F /* NSDateExtension.swift */,
 				87FB2E2A1B522C27000E09D9 /* StringExtension.swift */,
@@ -556,6 +559,7 @@
 				871280701B4C5D410005716F /* NSDateExtension.swift in Sources */,
 				87EF09DD1AFCA27100BE92A4 /* PhysicalObjectProtocol.swift in Sources */,
 				872B6A011BE1A9B600916EE8 /* SRTCamera.swift in Sources */,
+				8714B2961EA01D8A00B7C5FA /* CGFloatExtension.swift in Sources */,
 				874D00001B76C8F8002E1A32 /* MarshalOperator.swift in Sources */,
 				870419781BE97635004DD8DF /* JABImageBank.swift in Sources */,
 				87F771EB1B0C1C0E00889827 /* JABPanel.swift in Sources */,
