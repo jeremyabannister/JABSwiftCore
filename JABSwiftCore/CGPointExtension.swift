@@ -50,6 +50,10 @@ public func • (left: CGPoint, right: CGPoint) -> CGFloat { return (left.x * ri
 infix operator ***
 public func *** (left: CGPoint, right: CGPoint) -> CGFloat { return (left.x * right.y) - (left.y * right.x) }
 
+// Angle Between Vectors
+infix operator •<
+public func •< (left: CGPoint, right: CGPoint) -> CGFloat { return acos((left • right)/(sqrt(left • left) * sqrt(right • right))) }
+
 // Vector Rotation
 infix operator &<
 infix operator &>

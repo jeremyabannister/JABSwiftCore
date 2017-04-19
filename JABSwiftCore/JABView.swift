@@ -44,9 +44,9 @@ open class JABView: UIView, GlobalVariablesInitializationNotificationSubscriber 
     // MARK: Init
     // MARK:
     
-    public init () {
+    override public init (frame: CGRect = CGRect.zero) {
         
-        super.init(frame:CGRect.zero)
+        super.init(frame: frame)
         
         if !globalVariablesInitialized {
             globalVariableInitializationNotificationSubscribers.append(self)

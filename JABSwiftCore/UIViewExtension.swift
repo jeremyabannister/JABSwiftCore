@@ -254,7 +254,7 @@ public extension UIView {
     
     public func printFrame(_ tag: String? = nil) {
         if tag != nil {
-            print("\(tag) : (x:\(frame.origin.x), y:\(frame.origin.y), width:\(frame.size.width), height:\(frame.size.height)")
+            print("\(String(describing: tag)) : (x:\(frame.origin.x), y:\(frame.origin.y), width:\(frame.size.width), height:\(frame.size.height)")
         } else {
             print("(x:\(frame.origin.x), y:\(frame.origin.y), width:\(frame.size.width), height:\(frame.size.height)")
         }

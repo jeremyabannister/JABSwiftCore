@@ -53,16 +53,13 @@ open class JABPanel: JABTouchableView {
     // MARK: Init
     // MARK:
     
-    public override init () {
-        super.init()
-        
+    override public init (frame: CGRect = CGRect.zero) {
+        super.init(frame: frame)
         clipsToBounds = true
-        
     }
     
     required public init?(coder aDecoder: NSCoder) {
-        
-        super.init()
+        super.init(coder: aDecoder)
         print("Should not be initializing from coder \(self)", terminator: "")
     }
     

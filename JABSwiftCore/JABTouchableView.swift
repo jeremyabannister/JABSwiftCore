@@ -36,12 +36,10 @@ open class JABTouchableView: JABView, JABTouchManagerDelegate {
     // MARK: Init
     // MARK:
     
-    public override init () {
-        super.init()
-        
+    override public init (frame: CGRect = CGRect.zero) {
+        super.init(frame: frame)
         createTouchRecognitionSystem()
     }
-    
     
     required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)

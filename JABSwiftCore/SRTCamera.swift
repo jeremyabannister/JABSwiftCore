@@ -33,10 +33,6 @@ open class SRTCamera: JABView {
     fileprivate let imagePicker = UIImagePickerController()
     
     // MARK: Parameters
-    // Most parameters are expressed as a fraction of the width of the view. This is done so that if the view is animated to a different frame the subviews will adjust accordingly, which would not happen if all spacing was defined statically
-    
-    
-    
     
     // **********************************************************************************************************************
     
@@ -49,15 +45,12 @@ open class SRTCamera: JABView {
     // MARK: Init
     // MARK:
     
-    public override init () {
-        super.init()
-        
-        
+    override public init (frame: CGRect = CGRect.zero) {
+        super.init(frame: frame)
     }
     
-    required public init(coder aDecoder: NSCoder) {
-        
-        super.init()
+    required public init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
         print("Should not be initializing from coder \(self)")
     }
     

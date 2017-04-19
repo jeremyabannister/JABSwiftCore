@@ -41,31 +41,25 @@ open class JABSquareImagePanel: JABPanel {
     // MARK: Init
     // MARK:
     
-    public override init () {
-        super.init()
-        
+    override public init (frame: CGRect = CGRect.zero) {
+        super.init(frame: frame)
         self.image = UIImage(named:"black.jpg")
         heightToWidthRatio = 1
-        
     }
     
     public convenience init (image: UIImage?) {
-        
-        self.init()
-        
+        self.init(frame: CGRect.zero)
         self.image = image
         
     }
     
     public convenience init (videoPath: URL?) {
         self.init()
-        
         self.videoPath = videoPath
     }
     
     required public init?(coder aDecoder: NSCoder) {
-        
-        super.init()
+        super.init(coder: aDecoder)
         print("Should not be initializing from coder \(self)", terminator: "")
     }
     
