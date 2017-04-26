@@ -19,26 +19,6 @@ open class JABView: UIView, GlobalVariablesInitializationNotificationSubscriber 
     // MARK: Properties
     // MARK:
     
-    // MARK: Override
-    override open var frame: CGRect {
-        didSet {
-            var scaled = false
-            
-            if ( (self.frame.size.width != oldValue.size.width) || (self.frame.size.height != oldValue.size.height) ) {
-                scaled = true
-            }
-            
-            if scaled {
-                updateAllUI()
-            }
-        }
-    }
-    
-    
-    
-    
-    
-    
     
     // MARK:
     // MARK: Init

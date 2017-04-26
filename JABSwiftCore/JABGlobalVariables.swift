@@ -17,6 +17,8 @@ public let partialSlideFraction = CGFloat(0.3)
 public let thresholdDragDistance = CGFloat(90.0)
 public let backPanTouchThreshold = CGFloat(25.0)
 
+public let globalStopwatch = JABStopwatch()
+
 public var rootViewController = UIViewController()
 
 public let redColor = UIColor.red
