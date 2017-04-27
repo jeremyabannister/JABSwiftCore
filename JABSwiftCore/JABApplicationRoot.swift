@@ -16,13 +16,6 @@ open class JABApplicationRoot: JABView, JABTouchableViewDelegate, JABLocationTes
     // MARK: Properties
     // MARK:
     
-    override open var frame: CGRect {
-        didSet {
-            notificationLayer.frame = relativeFrame
-            updateAllUI()
-        }
-    }
-    
     // MARK: State
     
     // MARK: UI
