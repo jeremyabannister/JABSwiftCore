@@ -30,7 +30,7 @@ open class SRTCamera: JABView {
     public var mediaTypes: [String]?
     
     // MARK: UI
-    fileprivate let imagePicker = UIImagePickerController()
+    public let imagePicker = UIImagePickerController()
     
     // MARK: Parameters
     
@@ -47,6 +47,7 @@ open class SRTCamera: JABView {
     
     override public init (frame: CGRect = CGRect.zero, shouldAddAllUI: Bool = true) {
         super.init(frame: frame, shouldAddAllUI: shouldAddAllUI)
+        updateAllUI()
     }
     
     required public init?(coder aDecoder: NSCoder) {
