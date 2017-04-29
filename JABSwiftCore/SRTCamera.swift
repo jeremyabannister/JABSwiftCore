@@ -45,8 +45,8 @@ open class SRTCamera: JABView {
     // MARK: Init
     // MARK:
     
-    override public init (frame: CGRect = CGRect.zero) {
-        super.init(frame: frame)
+    override public init (frame: CGRect = CGRect.zero, shouldAddAllUI: Bool = true) {
+        super.init(frame: frame, shouldAddAllUI: shouldAddAllUI)
     }
     
     required public init?(coder aDecoder: NSCoder) {

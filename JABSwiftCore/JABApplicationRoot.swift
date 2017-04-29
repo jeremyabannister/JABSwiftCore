@@ -41,8 +41,8 @@ open class JABApplicationRoot: JABView, JABTouchableViewDelegate, JABLocationTes
     // MARK: Init
     // MARK:
     
-    public override init (frame: CGRect = CGRect.zero) {
-        super.init(frame: frame)
+    public override init (frame: CGRect = CGRect.zero, shouldAddAllUI: Bool = true) {
+        super.init(frame: frame, shouldAddAllUI: shouldAddAllUI)
         
         staticOnScreenView = self
         initializeGlobalParameters()

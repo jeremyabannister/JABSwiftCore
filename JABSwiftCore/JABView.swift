@@ -24,7 +24,7 @@ open class JABView: UIView, GlobalVariablesInitializationNotificationSubscriber 
     // MARK: Init
     // MARK:
     
-    override public init (frame: CGRect = CGRect.zero) {
+    public init (frame: CGRect = CGRect.zero, shouldAddAllUI: Bool = true) {
         
         super.init(frame: frame)
         
@@ -34,7 +34,7 @@ open class JABView: UIView, GlobalVariablesInitializationNotificationSubscriber 
             globalVariablesWereInitialized()
         }
         
-        addAllUI()
+        if shouldAddAllUI { addAllUI() }
     }
     
     
