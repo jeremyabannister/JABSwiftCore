@@ -10,249 +10,68 @@ import Foundation
 import UIKit
 
 
-public extension UIView {
+extension UIView {
     
-    public var x: CGFloat {
-        get {
-            
-            return frame.origin.x
-            
-        }
-        set(newX) {
-            
-            var newFrame = frame
-            newFrame.origin.x = newX
-            frame = newFrame
-            
-        }
-    }
+    open var x: CGFloat {
+        get { return frame.origin.x }
+        set { frame.origin.x = newValue } }
     
-    public var y: CGFloat {
-        get {
-            
-            return frame.origin.y
-            
-        }
-        set(newY) {
-            
-            var newFrame = frame
-            newFrame.origin.y = newY
-            frame = newFrame
-            
-        }
-    }
+    open var y: CGFloat {
+        get { return frame.origin.y }
+        set { frame.origin.y = newValue } }
     
-    public var width: CGFloat {
-        get {
-            
-            return frame.size.width
-            
-        }
-        set(newWidth) {
-            
-            var newFrame = frame
-            newFrame.size.width = newWidth
-            frame = newFrame
-            
-        }
-    }
+    open var width: CGFloat {
+        get { return frame.size.width }
+        set { frame.size.width = newValue } }
     
-    public var height: CGFloat {
-        get {
-            
-            return frame.size.height
-            
-        }
-        set(newHeight) {
-            
-            var newFrame = frame
-            newFrame.size.height = newHeight
-            frame = newFrame
-            
-        }
-    }
+    open var height: CGFloat {
+        get { return frame.size.height }
+        set { frame.size.height = newValue } }
     
     
+    open var left: CGFloat { get { return frame.origin.x } }
+    open var right: CGFloat { get { return frame.origin.x + frame.size.width } }
+    open var top: CGFloat { get { return frame.origin.y } }
+    open var bottom: CGFloat { get { return frame.origin.y + frame.size.height } }
     
-    
-    
-    public var left: CGFloat {
-        get {
-            
-            return frame.origin.x
-            
-        }
-        set(newLeft) {
-            
-            var newFrame = frame
-            newFrame.origin.x = newLeft
-            frame = newFrame
-            
-        }
-    }
-    
-    
-    
-    public var right: CGFloat {
-        get {
-            
-            return frame.origin.x + frame.size.width
-            
-        }
-        set(newRight) {
-            
-            // MARK: Unfinished
-            
-        }
-    }
-    
-    public var top: CGFloat {
-        get {
-            
-            return frame.origin.y
-            
-        }
-        set(newTop) {
-            
-            var newFrame = frame
-            newFrame.origin.y = newTop
-            frame = newFrame
-            
-        }
-    }
-    
-    
-    
-    public var bottom: CGFloat {
-        get {
-            
-            return frame.origin.y + frame.size.height
-            
-        }
-        set(newBottom) {
-            
-            // MARK: Unfinished
-            
-        }
-    }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    public var relativeFrame: CGRect {
-        get {
-            
-            var computedFrame = frame
-            computedFrame.origin.x = 0
-            computedFrame.origin.y = 0
-            return computedFrame
-            
-        }
-        set(newRelativeFrame) {
-            
-            var newFrame = frame
-            newFrame.size.width = newRelativeFrame.size.width
-            newFrame.size.height = newRelativeFrame.size.height
-            frame = newFrame
-            
-        }
-    }
-    
-    
-    
-    
-    
-    
+
     
     // Layer
+    open var opacity: Float {
+        get { return layer.opacity }
+        set { layer.opacity = newValue } }
     
-    public var opacity: Float {
-        get {
-            return layer.opacity
-        }
-        set {
-            layer.opacity = newValue
-        }
-    }
+    open var cornerRadius: CGFloat {
+        get { return layer.cornerRadius }
+        set { layer.cornerRadius = newValue } }
     
-    public var cornerRadius: CGFloat {
-        get {
-            return layer.cornerRadius
-        }
-        set {
-            layer.cornerRadius = newValue
-        }
-    }
+    open var masksToBounds: Bool {
+        get { return layer.masksToBounds }
+        set { layer.masksToBounds = newValue } }
     
-    public var masksToBounds: Bool {
-        get {
-            return layer.masksToBounds
-        }
-        set {
-            layer.masksToBounds = newValue
-        }
-    }
+    open var shadowOpacity: Float {
+        get { return layer.shadowOpacity }
+        set { layer.shadowOpacity = newValue } }
     
-    public var shadowOpacity: Float {
-        get {
-            return layer.shadowOpacity
-        }
-        set {
-            layer.shadowOpacity = newValue
-        }
-    }
+    open var shadowRadius: CGFloat {
+        get { return layer.shadowRadius }
+        set { layer.shadowRadius = newValue } }
     
-    public var shadowRadius: CGFloat {
-        get {
-            return layer.shadowRadius
-        }
-        set {
-            layer.shadowRadius = newValue
-        }
-    }
+    open var shadowOffset: CGSize {
+        get { return layer.shadowOffset }
+        set { layer.shadowOffset = newValue } }
     
-    public var shadowOffset: CGSize {
-        get {
-            return layer.shadowOffset
-        }
-        set {
-            layer.shadowOffset = newValue
-        }
-    }
+    open var shadowColor: UIColor? {
+        get { return UIColor(cgColor: layer.shadowColor ?? blackColor.cgColor) }
+        set { layer.shadowColor = newValue?.cgColor } }
     
-    public var shadowColor: UIColor? {
-        get {
-            if let color = layer.shadowColor {
-                return UIColor(cgColor: color)
-            } else {
-                print("Problem in JABSwiftCore.UIViewExtension.shadowColor.get - ^^^ shadowColor was not convertible from CGColor to UIColor")
-                return UIColor()
-            }
-        }
-        set {
-            if let color = newValue {
-                layer.shadowColor = color.cgColor
-            }
-        }
-    }
-    
-    public var shadowPath: CGPath? {
-        get {
-            return layer.shadowPath
-        }
-        set {
-            layer.shadowPath = newValue
-        }
-    }
+    open var shadowPath: CGPath? {
+        get { return layer.shadowPath }
+        set { layer.shadowPath = newValue } }
     
     
     
-    public func printFrame(_ tag: String? = nil) {
+    open func printFrame(_ tag: String? = nil) {
         if tag != nil {
             print("\(String(describing: tag)) : (x:\(frame.origin.x), y:\(frame.origin.y), width:\(frame.size.width), height:\(frame.size.height)")
         } else {
@@ -261,51 +80,21 @@ public extension UIView {
     }
     
     
-    public func red () {
-        backgroundColor = UIColor.red
-    }
-    
-    public func blue () {
-        backgroundColor = UIColor.blue
-    }
-    
-    public func green () {
-        backgroundColor = UIColor.green
-    }
-    
-    public func yellow () {
-        backgroundColor = UIColor.yellow
-    }
-    
-    public func purple () {
-        backgroundColor = UIColor.purple
-    }
-    
-    public func cyan () {
-        backgroundColor = UIColor.cyan
-    }
-    
-    public func white () {
-        backgroundColor = UIColor.white
-    }
-    
-    public func black () {
-        backgroundColor = UIColor.black
-    }
-    
-    public func lightGray () {
-        backgroundColor = UIColor.lightGray
-    }
-    
-    public func darkGray () {
-        backgroundColor = UIColor.darkGray
-    }
+    open func red () { backgroundColor = UIColor.red }
+    open func blue () { backgroundColor = UIColor.blue }
+    open func green () { backgroundColor = UIColor.green }
+    open func yellow () { backgroundColor = UIColor.yellow }
+    open func purple () { backgroundColor = UIColor.purple }
+    open func cyan () { backgroundColor = UIColor.cyan }
+    open func white () { backgroundColor = UIColor.white }
+    open func black () { backgroundColor = UIColor.black }
+    open func lightGray () { backgroundColor = UIColor.lightGray }
+    open func darkGray () { backgroundColor = UIColor.darkGray }
     
     
     
     // MARK: Subview Manipulation
-    public func changeAllTextOfSubviewsToColor(_ color: UIColor) {
-        
+    open func changeAllTextOfSubviewsToColor(_ color: UIColor) {
         for subview in subviews {
             if let label = subview as? UILabel {
                 label.textColor = color
@@ -315,7 +104,6 @@ public extension UIView {
                 }
             }
         }
-        
     }
     
     

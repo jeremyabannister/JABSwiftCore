@@ -124,7 +124,7 @@ open class SRTCamera: JABView {
     
     fileprivate func positionImagePicker () {
         
-        imagePicker.view.frame = relativeFrame
+        imagePicker.view.frame = bounds
         
     }
     

@@ -247,7 +247,7 @@ open class JABTouchManager: NSObject, UIGestureRecognizerDelegate {
         if let blockingViews = delegate?.blockingViews {
             for blockingView in blockingViews {
                 
-                if Toolkit.rectContainsPoint(blockingView.relativeFrame, point: touch.location(in: blockingView)) {
+                if Toolkit.rectContainsPoint(blockingView.bounds, point: touch.location(in: blockingView)) {
                     return false
                 }
                 

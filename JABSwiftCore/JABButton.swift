@@ -367,7 +367,7 @@ open class JABButton: JABTouchableView {
         
         guard let touchRecognizer = touchManager.touchRecognizer else { return }
         let oldPressed = pressed
-        if relativeFrame.contains(touchRecognizer.location(in: self)) {
+        if bounds.contains(touchRecognizer.location(in: self)) {
             pressed = true
         } else {
             pressed = false
@@ -383,7 +383,7 @@ open class JABButton: JABTouchableView {
         
         guard let touchRecognizer = touchManager.touchRecognizer else { return }
         var triggered = false
-        if relativeFrame.contains(touchRecognizer.location(in: self)) {
+        if bounds.contains(touchRecognizer.location(in: self)) {
             triggered = true
         }
         

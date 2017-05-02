@@ -165,7 +165,7 @@ open class JABImageBank: JABView, JABPaneledScrollViewDelegate, JABButtonDelegat
     
     fileprivate func positionPaneledScrollView () {
         
-        paneledScrollView.frame = relativeFrame
+        paneledScrollView.frame = bounds
         
     }
     

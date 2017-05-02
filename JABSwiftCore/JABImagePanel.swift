@@ -99,7 +99,7 @@ open class JABImagePanel: JABPanel {
     
     func positionImageView () {
         
-        imageView.frame = relativeFrame
+        imageView.frame = bounds
         
     }
     

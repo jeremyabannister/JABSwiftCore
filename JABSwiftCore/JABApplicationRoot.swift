@@ -51,7 +51,7 @@ open class JABApplicationRoot: JABView, JABTouchableViewDelegate, JABLocationTes
         
         addSubview(notificationLayer)
         notificationLayer.delegate = self
-        notificationLayer.frame = relativeFrame
+        notificationLayer.frame = bounds
         undimNotificationLayer()
         
     }
@@ -88,7 +88,7 @@ open class JABApplicationRoot: JABView, JABTouchableViewDelegate, JABLocationTes
     
     open func launchLocationTester () {
         
-        locationTester.frame = relativeFrame
+        locationTester.frame = bounds
         addSubview(locationTester)
         
     }

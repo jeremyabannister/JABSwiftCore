@@ -133,7 +133,7 @@ open class JABPanel: JABTouchableView {
         
         guard let touchRecognizer = touchManager.touchRecognizer else { return }
         if shouldPassOnTouchNotification {
-            if relativeFrame.containsPoint(touchRecognizer.location(in: self)) {
+            if bounds.containsPoint(touchRecognizer.location(in: self)) {
                 if initialTouchLocation.distanceToPoint(touchRecognizer.location(in: staticOnScreenView)) < 10 {
                     panelDelegate?.panelWasTapped(self)
                 }

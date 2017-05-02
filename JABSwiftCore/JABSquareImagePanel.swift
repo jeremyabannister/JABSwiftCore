@@ -113,7 +113,7 @@ open class JABSquareImagePanel: JABPanel {
     
     func positionImageViewMask () {
         
-        imageViewMask.frame = relativeFrame
+        imageViewMask.frame = bounds
         
     }
     
@@ -153,10 +153,10 @@ open class JABSquareImagePanel: JABPanel {
                     
                 }
             } else {
-                imageView.frame = relativeFrame
+                imageView.frame = bounds
             }
         } else {
-            imageView.frame = relativeFrame
+            imageView.frame = bounds
         }
         
     }

@@ -179,8 +179,8 @@ open class JABPaneledScrollView: JABView, JABPanelChangeSubscriber, JABPanelDele
     
     func positionScrollView () {
         
-        if scrollView.frame != relativeFrame {
-            scrollView.frame = relativeFrame
+        if scrollView.frame != bounds {
+            scrollView.frame = bounds
             drawPanels()
         }
         
