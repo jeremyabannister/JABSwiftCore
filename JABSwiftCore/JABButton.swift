@@ -356,9 +356,9 @@ open class JABButton: JABTouchableView {
         pressed = true
         if dimDelay != nil {
             waitingForDimDelay = true
-            DispatchQueue.main.asyncAfter(deadline: .now() + dimDelay!) { self.waitingForDimDelay = false; self.animatedUpdate(self.dimDuration) { (Bool) -> () in } }
+            DispatchQueue.main.asyncAfter(deadline: .now() + dimDelay!) { self.waitingForDimDelay = false; self.animatedUpdate(duration: self.dimDuration) { (Bool) -> () in } }
         } else {
-            animatedUpdate(dimDuration) { (Bool) -> () in }
+            animatedUpdate(duration: dimDuration) { (Bool) -> () in }
         }
         buttonDelegate?.buttonWasTouched(self)
     }
@@ -374,7 +374,7 @@ open class JABButton: JABTouchableView {
         }
         
         if pressed != oldPressed {
-            animatedUpdate(dimDuration) { (Bool) -> () in }
+            animatedUpdate(duration: dimDuration) { (Bool) -> () in }
         }
         
     }
@@ -389,10 +389,10 @@ open class JABButton: JABTouchableView {
         
         if waitingForDimDelay {
             pressed = true
-            animatedUpdate(dimDuration) { (Bool) -> () in self.pressed = false; self.animatedUpdate(self.dimDuration) { (Bool) -> () in } }
+            animatedUpdate(duration: dimDuration) { (Bool) -> () in self.pressed = false; self.animatedUpdate(duration: self.dimDuration) { (Bool) -> () in } }
         } else {
             pressed = false
-            animatedUpdate(dimDuration) { (Bool) -> () in }
+            animatedUpdate(duration: dimDuration) { (Bool) -> () in }
         }
         
         buttonDelegate?.buttonWasUntouched(self, triggered: triggered)
@@ -402,7 +402,7 @@ open class JABButton: JABTouchableView {
         
         buttonDelegate?.buttonWasUntouched(self, triggered: false)
         pressed = false
-        animatedUpdate(dimDuration) { (Bool) -> () in }
+        animatedUpdate(duration: dimDuration) { (Bool) -> () in }
         
     }
     

@@ -68,27 +68,9 @@ open class JABView: UIView, GlobalVariablesInitializationNotificationSubscriber 
         
     }
     
-    open func animatedUpdate () {
-        animatedUpdate(UIViewAnimationOptions())
-    }
-    
-    open func animatedUpdate (_ options: UIViewAnimationOptions) {
-        animatedUpdate(defaultAnimationDuration, options: options)
-    }
-    
-    open func animatedUpdate (_ duration: TimeInterval, options: UIViewAnimationOptions) {
-        animatedUpdate(duration, options: options) { (Bool) -> () in
-            
-        }
-    }
-    
-    open func animatedUpdate (_ duration: TimeInterval = defaultAnimationDuration, completion: @escaping (Bool) -> ()) {
-        animatedUpdate(duration, options: UIViewAnimationOptions(), completion: completion)
-    }
-    
-    open func animatedUpdate (_ duration: TimeInterval = defaultAnimationDuration, options: UIViewAnimationOptions, completion: @escaping (Bool) -> ()) {
+    open func animatedUpdate (duration: TimeInterval = defaultAnimationDuration, delay: TimeInterval = 0, options: UIViewAnimationOptions = .curveEaseInOut, completion: @escaping (Bool) -> () = {(completed) in }) {
         
-        UIView.animate(withDuration: duration, delay: 0, options: options, animations: { () -> Void in
+        UIView.animate(withDuration: duration, delay: duration, options: options, animations: { () -> Void in
             self.updateAllUI()
         }, completion: completion)
     }
