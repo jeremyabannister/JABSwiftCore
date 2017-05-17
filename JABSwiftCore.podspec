@@ -1,6 +1,6 @@
 Pod::Spec.new do |spec|
   spec.name         = 'JABSwiftCore'
-  spec.version      = '2.0.6'
+  spec.version      = '2.0.7'
   spec.license      = { :type => 'MIT', :file => 'LICENSE'}
   spec.homepage     = 'https://github.com/jeremyabannister/JABSwiftCore'
   spec.authors      = { 'Jeremy Bannister' => 'jeremy.a.bannister@gmail.com' }
