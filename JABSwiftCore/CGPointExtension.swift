@@ -46,6 +46,10 @@ public func * (left: (CGPoint, CGPoint), right: CGFloat) -> (CGPoint, CGPoint) {
 infix operator •
 public func • (left: CGPoint, right: CGPoint) -> CGFloat { return (left.x * right.x) + (left.y * right.y) }
 
+// Unit Vector
+postfix operator •^
+public postfix func •^ (point: CGPoint) -> CGPoint { return point * (1/sqrt(point•point)) }
+
 // Cross Product // Only return the z value of the cross product since x and y values are 0
 infix operator ***
 public func *** (left: CGPoint, right: CGPoint) -> CGFloat { return (left.x * right.y) - (left.y * right.x) }
