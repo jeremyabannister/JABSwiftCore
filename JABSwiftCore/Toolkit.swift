@@ -15,26 +15,47 @@ open class Toolkit {
     // MARK:
     // MARK: Strings
     // MARK:
+    
+    /**
+     - returns:
+     The string that was passed in with the first letter decapitalized.
+     
+     - parameters:
+        - word: The word to be decapitalized.
+     
+     
+     This function capitalizes the first word of the string which is passed in. Examples:
+        * "Hello" -> "hello"
+        * "hello" -> "hello"
+        * "Hello world" -> "hello world"
+        * "!Hello world" -> "!Hello world"
+     */
     open static func decapitalizeWord (_ word: String) -> String {
         let head = word.substring(to: word.characters.index(word.startIndex, offsetBy: 1))
         let decapitatedWord = word.substring(from: word.characters.index(word.startIndex, offsetBy: 1))
         return head.lowercased() + decapitatedWord
     }
     
+    /**
+     - returns:
+     The string that was passed in with the first letter capitalized.
+     
+     - parameters:
+     - word: The word to be capitalized.
+     
+     
+     This function capitalizes the first word of the string which is passed in. Examples:
+     * "hello" -> "Hello"
+     * "Hello" -> "Hello"
+     * "hello world" -> "Hello world"
+     * "!hello world" -> "!hello world"
+     */
     open static func capitalizeWord (_ word: String) -> String {
         let head = word.substring(to: word.characters.index(word.startIndex, offsetBy: 1))
         let decapitatedWord = word.substring(from: word.characters.index(word.startIndex, offsetBy: 1))
         return head.uppercased() + decapitatedWord
     }
     
-    open static func intendedStringFromIngredients (_ initialString: String, range: NSRange, replacementString: String) -> String {
-        
-        var frankensteinString = initialString.substring(to: initialString.characters.index(initialString.startIndex, offsetBy: range.location))
-        frankensteinString += replacementString
-        frankensteinString += initialString.substring(from: initialString.characters.index(initialString.startIndex, offsetBy: range.location + range.length))
-        
-        return frankensteinString
-    }
     
     // MARK:
     // MARK: Arrays

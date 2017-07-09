@@ -24,7 +24,7 @@ open class JABButton: JABTouchableView {
     // Button
     open var buttonDelegate: JABButtonDelegate? // The receiver of notifications from button
     open var type = JABButtonType.image
-    fileprivate var pressed = false
+    open var pressed = false
     fileprivate var dimmed = false
     fileprivate var swollen = false
     

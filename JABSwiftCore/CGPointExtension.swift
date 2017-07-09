@@ -40,15 +40,20 @@ public func - (left: CGPoint, right: CGPoint) -> CGPoint { return CGPoint(x: lef
 public func * (left: CGPoint, right: CGFloat) -> CGPoint { return CGPoint(x: left.x * right, y: left.y * right) }
 public func * (left: CGFloat, right: CGPoint) -> CGPoint { return right * left }
 public func * (left: (CGPoint, CGPoint), right: CGFloat) -> (CGPoint, CGPoint) { return (left.0 * right, left.1 * right) }
+public func / (left: CGPoint, right: CGFloat) -> CGPoint { return CGPoint(x: left.x/right, y: left.y/right) }
 
 
 // Dot Product
 infix operator •
 public func • (left: CGPoint, right: CGPoint) -> CGFloat { return (left.x * right.x) + (left.y * right.y) }
 
+// Norm Operator
+postfix operator •|
+public postfix func •| (point: CGPoint) -> CGFloat { return sqrt(CGFloat(point•point)) }
+
 // Unit Vector
 postfix operator •^
-public postfix func •^ (point: CGPoint) -> CGPoint { return point * (1/sqrt(point•point)) }
+public postfix func •^ (point: CGPoint) -> CGPoint? { if point•| != 0 { return point/(point•|) } else { return nil } }
 
 // Cross Product // Only return the z value of the cross product since x and y values are 0
 infix operator ***
@@ -56,7 +61,7 @@ public func *** (left: CGPoint, right: CGPoint) -> CGFloat { return (left.x * ri
 
 // Angle Between Vectors
 infix operator •<
-public func •< (left: CGPoint, right: CGPoint) -> CGFloat { return acos((left • right)/(sqrt(left • left) * sqrt(right • right))) }
+public func •< (left: CGPoint, right: CGPoint) -> CGFloat { return acos((left • right)/((left•|) * (right•|))) }
 
 // Vector Rotation
 infix operator &<
