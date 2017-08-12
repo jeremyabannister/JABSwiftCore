@@ -24,6 +24,7 @@ open class JABButton: JABTouchableView {
         get { return background.cornerRadius }
         set { background.cornerRadius = newValue }
     }
+    override open var layer: CALayer { get { return background.layer } }
     
     // MARK: Delegate
     open var buttonDelegate: JABButtonDelegate?
@@ -78,9 +79,7 @@ open class JABButton: JABTouchableView {
     
     // MARK: All
     override open func addAllUI () {
-        
         addBackground()
-        
     }
     
     override open func updateAllUI() {
@@ -127,6 +126,11 @@ open class JABButton: JABTouchableView {
     // MARK: Actions
     // MARK:
     
+    // MARK: Override
+    override open func addSubview(_ view: UIView) {
+        if view == background { super.addSubview(view) }
+        else { background.addSubview(view) }
+    }
     
     // MARK: Touch
     open func cancelTouch () {
@@ -152,6 +156,7 @@ open class JABButton: JABTouchableView {
         guard let animationDuration = timer.userInfo as? TimeInterval else { return }
         animatedUpdate(duration: animationDuration)
     }
+    
     
     // MARK:
     // MARK: Delegate Methods
