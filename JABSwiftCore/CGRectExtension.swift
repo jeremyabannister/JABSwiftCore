@@ -13,159 +13,45 @@ import UIKit
 
 public extension CGRect {
     
+    // MARK:
+    // MARK: Properties
+    // MARK:
     public var x: CGFloat {
-        get {
-            
-            return origin.x
-            
-        }
-        set(newX) {
-            
-            var newOrigin = origin
-            newOrigin.x = newX
-            origin = newOrigin
-            
-        }
-    }
+        get { return self.origin.x }
+        set { self.origin.x = newValue } }
     
     public var y: CGFloat {
-        get {
-            
-            return origin.y
-            
-        }
-        set(newY) {
-            
-            var newOrigin = origin
-            newOrigin.y = newY
-            origin = newOrigin
-            
-        }
-    }
-    
-    public var width: CGFloat {
-        get {
-            
-            return size.width
-            
-        }
-        set(newWidth) {
-            
-            var newSize = size
-            newSize.width = newWidth
-            size = newSize
-            
-        }
-    }
-    
-    public var height: CGFloat {
-        get {
-            
-            return size.height
-            
-        }
-        set(newHeight) {
-            
-            var newSize = size
-            newSize.height = newHeight
-            size = newSize
-            
-        }
-    }
-    
-    
-    
+        get { return self.origin.y }
+        set { self.origin.y = newValue } }
     
     
     
     public var left: CGFloat {
-        get {
-            
-            return x
-            
-        }
-    }
-    
-    
+        get { return self.x } }
     
     public var right: CGFloat {
-        get {
-            
-            return x + width
-            
-        }
-    }
+        get { return self.x + size.width } }
     
     public var top: CGFloat {
-        get {
-            
-            return y
-            
-        }
-    }
-    
-    
+        get { return self.y } }
     
     public var bottom: CGFloat {
-        get {
-            
-            return y + height
-            
-        }
-    }
+        get { return self.y + size.height } }
     
     
     
-    
-    
-    
-    
-    public var relativeFrame: CGRect {
-        get {
-            
-            var computedFrame = self
-            computedFrame.origin.x = 0
-            computedFrame.origin.y = 0
-            return computedFrame
-            
-        }
-        set(newRelativeFrame) {
-            
-            var newSize = newRelativeFrame.size
-            newSize.width = newRelativeFrame.size.width
-            newSize.height = newRelativeFrame.size.height
-            size = newSize
-            
-        }
-    }
-    
-    
-    
-    
-    
-    
+    // MARK:
+    // MARK: Methods
+    // MARK:
     public func containsPoint(_ point: CGPoint) -> Bool {
-        
-        if ( point.x < x ) {
-            return false
-        }
-        
-        if ( point.y < y ) {
-            return false
-        }
-        
-        if ( point.x > right ) {
-            return false
-        }
-        
-        if ( point.y > bottom ) {
-            return false
-        }
-        
+        if ( point.x < self.x ) { return false }
+        if ( point.y < self.y ) { return false }
+        if ( point.x > self.right ) { return false }
+        if ( point.y > self.bottom ) { return false }
         return true
-        
     }
     
-    
-    
+    public func translated (by point: CGPoint) -> CGRect {
+        return CGRect(x: self.x + point.x, y: self.y + point.y, width: self.size.width, height: self.size.height)
+    }
 }

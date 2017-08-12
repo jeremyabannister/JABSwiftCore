@@ -8,111 +8,44 @@
 
 import UIKit
 
-public enum JABButtonType {
-    case image
-    case text
-}
-
 open class JABButton: JABTouchableView {
-   
+    
     
     // MARK:
     // MARK: Properties
     // MARK:
     
-    // MARK: State
-    // Button
-    open var buttonDelegate: JABButtonDelegate? // The receiver of notifications from button
-    open var type = JABButtonType.image
-    open var pressed = false
-    fileprivate var dimmed = false
-    fileprivate var swollen = false
-    
-    // Frame
-    override open var frame: CGRect {
-        didSet {
-            if !swollen {
-                originalFrame = frame
-            }
-        }
-    }
-    var originalFrame = CGRect.zero
-    
-    // Background Color
+    // Override
     override open var backgroundColor: UIColor? {
-        didSet {
-            if !dimmed {
-                if oldValue != backgroundColor { dimmedBackgroundColor = nil }
-                undimmedBackgroundColor = backgroundColor
-            }
-        }
+        get { return background.backgroundColor }
+        set { undimmedBackgroundColor = newValue; configureBackground() }
     }
-    open var undimmedBackgroundColor: UIColor? {
-        didSet {
-            if dimmedBackgroundColor == nil {
-                if undimmedBackgroundColor?.components.alpha == 0 || undimmedBackgroundColor == nil {
-                    dimmedBackgroundColor = UIColor(white: 0, alpha: 1 - dimFraction)
-                } else {
-                    dimmedBackgroundColor = undimmedBackgroundColor?.dim(dimFraction)
-                }
-            }
-        }
+    override open var cornerRadius: CGFloat {
+        get { return background.cornerRadius }
+        set { background.cornerRadius = newValue }
     }
-    open var dimmedBackgroundColor: UIColor?
     
-    // Image
-    open var image: UIImage?
-    open var pressedImage: UIImage?
-    open var imageViewTransform: CGAffineTransform?
+    // MARK: Delegate
+    open var buttonDelegate: JABButtonDelegate?
     
-    // Text
-    open var text = ""
-    open var textAlignment = NSTextAlignment.center
-    open var font = UIFont(name: "HelveticaNeue-Medium", size: 12)
-    open var numberOfLines: Int?
-    open var maximumWidthForTextLabel: CGFloat?
-    
-    // Text Color
-    open var textColor = UIColor.black {
-        didSet {
-            if !dimmed {
-                undimmedTextColor = textColor
-            }
-        }
-    }
-    open var undimmedTextColor: UIColor? {
-        didSet {
-            if dimmedTextColor == nil {
-                if undimmedTextColor != blackColor {
-                    dimmedTextColor = undimmedTextColor?.dim(dimFraction)
-                } else {
-                    dimmedTextColor = UIColor(white: 1 - dimFraction, alpha: 1)
-                }
-                
-            }
-        }
-    }
-    open var dimmedTextColor: UIColor?
-    
-    
-    // MARK: UI
-    fileprivate let imageView = UIImageView()
-    fileprivate let textLabel = UILabel()
-    
-    
-    // MARK: Parameters
-    open var horizontalContentInset: CGFloat = 0.0
-    open var verticalContentInset: CGFloat = 0.0
+    // MARK: State
+    open var visualPressedExtent: CGFloat = 0
+    open var pressDuration: TimeInterval = 0.05
+    open var pressDelay: TimeInterval = 0
     
     open var dimsWhenPressed = true
     open var dimFraction: CGFloat = 0.8
-    open var dimDuration: TimeInterval = 0.05
-    open var dimDelay: TimeInterval?
-    open var waitingForDimDelay = false
-    open var textButtonDimsBackground = false
-    open var swellsWhenPressed = false
-    open var swellFraction = CGFloat(1.1)
-    open var swellDuration = 0.2
+    fileprivate var undimmedBackgroundColor: UIColor?
+    
+    fileprivate var pressDelayTimer: Timer?
+    fileprivate var isPressed = false
+    
+    
+    // MARK: UI
+    fileprivate let background = UIView()
+    
+    
+    // MARK: Parameters
     
     
     
@@ -146,164 +79,46 @@ open class JABButton: JABTouchableView {
     // MARK: All
     override open func addAllUI () {
         
-        addImageView()
-        addTextLabel()
+        addBackground()
         
     }
     
     override open func updateAllUI() {
         
-        configureSize()
+        
         configureBackground()
-        
-        configureImageView()
-        positionImageView()
-        
-        configureTextLabel()
-        positionTextLabel()
+        positionBackground()
         
     }
     
     
     // MARK: Adding
-    func addImageView () {
-        addSubview(imageView)
+    fileprivate func addBackground () {
+        addSubview(background)
     }
     
-    func addTextLabel () {
-        addSubview(textLabel)
-    }
-    
-    
-    // MARK: Size
-    func configureSize () {
-        
-        if swellsWhenPressed {
-            if pressed {
-                if !swollen {
-                    setSwollen(true, animated: false)
-                }
-            } else {
-                if swollen {
-                    setSwollen(false, animated: false)
-                }
-            }
-        }
-        
-    }
     
     
     // MARK: Background
-    func configureBackground () {
-        
-        if undimmedBackgroundColor == nil {
-            let currentBackgroundColor = backgroundColor
-            backgroundColor = currentBackgroundColor
+    fileprivate func configureBackground () {
+        let view = background
+        if dimsWhenPressed {
+            view.backgroundColor = undimmedBackgroundColor?.dim(1 - (visualPressedExtent * (1 - dimFraction)))
         }
-        
-        if type == JABButtonType.image || textButtonDimsBackground {
-            if dimsWhenPressed {
-                if pressed {
-                    if !dimmed {
-                        dimmed = true
-                        backgroundColor = dimmedBackgroundColor
-                    }
-                } else {
-                    if dimmed {
-                        dimmed = false
-                        backgroundColor = undimmedBackgroundColor
-                    }
-                }
-            }
-        }
-        
+        else { view.backgroundColor = undimmedBackgroundColor }
     }
     
-    
-    
-    // MARK: Image View
-    func configureImageView () {
-        let view = imageView
-        if pressed {
-            if let verifiedPressedImage = pressedImage { imageView.image = verifiedPressedImage }
-        } else {
-            imageView.image = image
-        }
-        
-        switch type {
-        case JABButtonType.image:
-            view.opacity = 1
-        case JABButtonType.text:
-            view.opacity = 0
-        }
-        
-    }
-    
-    func positionImageView () {
-        let view = imageView
+    fileprivate func positionBackground () {
+        let view = background
         var newFrame = CGRect.zero
         
-        newFrame.origin.x = horizontalContentInset
-        newFrame.origin.y = verticalContentInset
+        newFrame.size.width = width
+        newFrame.size.height = height
         
-        newFrame.size.width = width - 2*horizontalContentInset
-        newFrame.size.height = height - 2*verticalContentInset
+        newFrame.origin.x = (width - newFrame.size.width)/2
+        newFrame.origin.y = (height - newFrame.size.height)/2
         
-        if let transform = imageViewTransform {
-            view.transform = transform
-        } else {
-            view.transform = CGAffineTransform.identity
-            view.frame = newFrame
-        }
-    }
-    
-    
-    // MARK: Text Label
-    func configureTextLabel () {
-        
-        textLabel.text = text
-        textLabel.textAlignment = textAlignment
-        textLabel.font = font
-        
-        if numberOfLines != nil {
-            textLabel.numberOfLines = numberOfLines!
-        }
-        
-        if !textButtonDimsBackground {
-            if dimsWhenPressed {
-                if pressed {
-                    dimmed = true
-                    textLabel.textColor = dimmedTextColor
-                } else {
-                    dimmed = false
-                    textLabel.textColor = undimmedTextColor
-                }
-            } else if swellsWhenPressed {
-                textLabel.textColor = textColor
-            }
-        } else {
-            textLabel.textColor = textColor
-        }
-        
-    }
-    
-    func positionTextLabel () {
-        if let text = textLabel.text {
-            
-            var newFrame = CGRect.zero
-            var size = textLabel.font.sizeOfString(text, constrainedToWidth: 0)
-            if let maxWidth = maximumWidthForTextLabel {
-                size = textLabel.font.sizeOfString(text, constrainedToWidth: maxWidth)
-            }
-            
-            newFrame.size.width = size.width
-            newFrame.size.height = size.height
-            
-            newFrame.origin.x = (width - newFrame.size.width)/2
-            newFrame.origin.y = (height - newFrame.size.height)/2
-            
-            textLabel.frame = newFrame
-        }
+        view.frame = newFrame
     }
     
     
@@ -312,40 +127,31 @@ open class JABButton: JABTouchableView {
     // MARK: Actions
     // MARK:
     
-    func setSwollen(_ isSwollen: Bool, animated: Bool) {
-        
-        swollen = isSwollen
-        
-        var newFrame = CGRect.zero
-        if isSwollen {
-            
-            newFrame.size.width = originalFrame.size.width * swellFraction
-            newFrame.size.height = originalFrame.size.height * swellFraction
-            
-            newFrame.origin.x = originalFrame.origin.x - (newFrame.size.width - originalFrame.size.width)/2
-            newFrame.origin.y = originalFrame.origin.y - (newFrame.size.height - originalFrame.size.height)/2
-        
-        } else {
-            newFrame = originalFrame
-        }
-        
-        if animated {
-            UIView.animate(withDuration: swellDuration, animations: { () -> Void in
-                self.frame = newFrame
-            })
-        } else {
-            frame = newFrame
-        }
-    }
     
-    
-    
-    
+    // MARK: Touch
     open func cancelTouch () {
         touchManager?.cancelTouch()
     }
     
+    fileprivate func endTouch (wasTriggered: Bool) {
+        isPressed = false
+        visualPressedExtent = 0
+        pressDelayTimer?.invalidate()
+        animatedUpdate(duration: pressDuration)
+        buttonDelegate?.buttonWasUntouched(self, wasTriggered: wasTriggered)
+    }
     
+    // MARK: Visual
+    open func updateVisualPressedExtent (to newVisualPressedExtent: CGFloat, animated: Bool = false) {
+        visualPressedExtent = newVisualPressedExtent
+        if animated { animatedUpdate() } else { updateAllUI() }
+    }
+    
+    // MARK: Timer
+    open func animateUsingTimer (_ timer: Timer) {
+        guard let animationDuration = timer.userInfo as? TimeInterval else { return }
+        animatedUpdate(duration: animationDuration)
+    }
     
     // MARK:
     // MARK: Delegate Methods
@@ -353,57 +159,33 @@ open class JABButton: JABTouchableView {
     
     // MARK: Touch Manager
     override open func touchDidBegin(_ touchManager: JABTouchManager) {
-        pressed = true
-        if dimDelay != nil {
-            waitingForDimDelay = true
-            DispatchQueue.main.asyncAfter(deadline: .now() + dimDelay!) { self.waitingForDimDelay = false; self.animatedUpdate(duration: self.dimDuration) { (Bool) -> () in } }
-        } else {
-            animatedUpdate(duration: dimDuration) { (Bool) -> () in }
+        isPressed = true
+        visualPressedExtent = 1
+        if pressDelay != 0 {
+            animatedUpdate(duration: pressDuration, delay: pressDelay)
+            pressDelayTimer = Timer.scheduledTimer(timeInterval: pressDelay, target: self, selector: #selector(animateUsingTimer(_:)), userInfo: pressDuration, repeats: false)
         }
+        else { animatedUpdate(duration: pressDuration) }
         buttonDelegate?.buttonWasTouched(self)
     }
     
     override open func touchDidChange(_ touchManager: JABTouchManager, xDistance: CGFloat, yDistance: CGFloat, xVelocity: CGFloat, yVelocity: CGFloat, methodCallNumber: Int) {
-        
         guard let touchRecognizer = touchManager.touchRecognizer else { return }
-        let oldPressed = pressed
-        if bounds.contains(touchRecognizer.location(in: self)) {
-            pressed = true
-        } else {
-            pressed = false
+        let wasPressed = isPressed
+        isPressed = self.bounds.contains(touchRecognizer.location(in: self))
+        if isPressed != wasPressed {
+            visualPressedExtent = [true: 1, false: 0][isPressed]!
+            animatedUpdate(duration: pressDuration)
         }
-        
-        if pressed != oldPressed {
-            animatedUpdate(duration: dimDuration) { (Bool) -> () in }
-        }
-        
     }
     
     override open func touchDidEnd(_ touchManager: JABTouchManager, xDistance: CGFloat, yDistance: CGFloat, xVelocity: CGFloat, yVelocity: CGFloat, methodCallNumber: Int) {
-        
         guard let touchRecognizer = touchManager.touchRecognizer else { return }
-        var triggered = false
-        if bounds.contains(touchRecognizer.location(in: self)) {
-            triggered = true
-        }
-        
-        if waitingForDimDelay {
-            pressed = true
-            animatedUpdate(duration: dimDuration) { (Bool) -> () in self.pressed = false; self.animatedUpdate(duration: self.dimDuration) { (Bool) -> () in } }
-        } else {
-            pressed = false
-            animatedUpdate(duration: dimDuration) { (Bool) -> () in }
-        }
-        
-        buttonDelegate?.buttonWasUntouched(self, triggered: triggered)
+        endTouch(wasTriggered: bounds.contains(touchRecognizer.location(in: self)))
     }
     
     override open func touchDidCancel(_ touchManager: JABTouchManager, xDistance: CGFloat, yDistance: CGFloat, xVelocity: CGFloat, yVelocity: CGFloat, methodCallNumber: Int) {
-        
-        buttonDelegate?.buttonWasUntouched(self, triggered: false)
-        pressed = false
-        animatedUpdate(duration: dimDuration) { (Bool) -> () in }
-        
+        endTouch(wasTriggered: false)
     }
     
     
@@ -413,8 +195,6 @@ open class JABButton: JABTouchableView {
 
 
 public protocol JABButtonDelegate {
-    
     func buttonWasTouched(_ button: JABButton)
-    func buttonWasUntouched(_ button: JABButton, triggered: Bool)
-    
+    func buttonWasUntouched(_ button: JABButton, wasTriggered: Bool)
 }

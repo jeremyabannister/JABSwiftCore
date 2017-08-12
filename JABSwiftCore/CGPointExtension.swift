@@ -10,6 +10,13 @@ import Foundation
 
 public extension CGPoint {
     
+    
+    public static func unitVector (for angle: CGFloat, degrees: Bool) -> CGPoint {
+        let conversion = [true: (2*CGFloat.pi)/360.0, false: 1][degrees]!
+        return CGPoint(x: cos(angle*conversion), y: sin(angle*conversion))
+    }
+    
+    
     public func distanceToPoint(_ point: CGPoint) -> CGFloat {
         
         let difference = CGPoint(x: x - point.x, y: y - point.y)
@@ -28,7 +35,6 @@ public extension CGPoint {
         } else {
             return rise/run
         }
-        
     }
 }
 

@@ -31,6 +31,8 @@
 		875444E01AE1D06500659E6B /* JABApplicationRoot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 875444DF1AE1D06500659E6B /* JABApplicationRoot.swift */; };
 		87643AB11EB07A8400D41A60 /* JABBlurLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87643AB01EB07A8400D41A60 /* JABBlurLayer.swift */; };
 		87643AB31EB07B4600D41A60 /* JABStopwatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87643AB21EB07B4600D41A60 /* JABStopwatch.swift */; };
+		8765CE941F3FA74000E3D062 /* JABImageButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8765CE931F3FA74000E3D062 /* JABImageButton.swift */; };
+		8765CE961F3FA85A00E3D062 /* JABTextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8765CE951F3FA85A00E3D062 /* JABTextButton.swift */; };
 		87B0130D1E5698770000280E /* MutableCollectionExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87B0130C1E5698770000280E /* MutableCollectionExtension.swift */; };
 		87B013111E5698D30000280E /* SequenceExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87B013101E5698D30000280E /* SequenceExtension.swift */; };
 		87C21BBC1AEF131300FCE515 /* CGPointExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87C21BBB1AEF131300FCE515 /* CGPointExtension.swift */; };
@@ -86,6 +88,8 @@
 		875444DF1AE1D06500659E6B /* JABApplicationRoot.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JABApplicationRoot.swift; sourceTree = "<group>"; };
 		87643AB01EB07A8400D41A60 /* JABBlurLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JABBlurLayer.swift; sourceTree = "<group>"; };
 		87643AB21EB07B4600D41A60 /* JABStopwatch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JABStopwatch.swift; sourceTree = "<group>"; };
+		8765CE931F3FA74000E3D062 /* JABImageButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JABImageButton.swift; sourceTree = "<group>"; };
+		8765CE951F3FA85A00E3D062 /* JABTextButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JABTextButton.swift; sourceTree = "<group>"; };
 		87B0130C1E5698770000280E /* MutableCollectionExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MutableCollectionExtension.swift; sourceTree = "<group>"; };
 		87B013101E5698D30000280E /* SequenceExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SequenceExtension.swift; sourceTree = "<group>"; };
 		87C21BBB1AEF131300FCE515 /* CGPointExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CGPointExtension.swift; sourceTree = "<group>"; };
@@ -279,6 +283,7 @@
 			isa = PBXGroup;
 			children = (
 				875444DD1AE1D05E00659E6B /* JABButton.swift */,
+				8765CE921F3FA72E00E3D062 /* Subclasses */,
 			);
 			name = Button;
 			sourceTree = "<group>";
@@ -332,6 +337,15 @@
 				87643AB01EB07A8400D41A60 /* JABBlurLayer.swift */,
 			);
 			name = "Blur Layer";
+			sourceTree = "<group>";
+		};
+		8765CE921F3FA72E00E3D062 /* Subclasses */ = {
+			isa = PBXGroup;
+			children = (
+				8765CE931F3FA74000E3D062 /* JABImageButton.swift */,
+				8765CE951F3FA85A00E3D062 /* JABTextButton.swift */,
+			);
+			name = Subclasses;
 			sourceTree = "<group>";
 		};
 		87D71C271B8BD98B004E7D05 /* Version Number */ = {
@@ -587,9 +601,11 @@
 				873BFA6E1B11AAA300E677F5 /* JABImagePanel.swift in Sources */,
 				87F4FD411AE421ED00953E38 /* CGRectExtension.swift in Sources */,
 				87F4FD431AE4222A00953E38 /* UIColorExtension.swift in Sources */,
+				8765CE941F3FA74000E3D062 /* JABImageButton.swift in Sources */,
 				87D71C261B8BD988004E7D05 /* JABVersionNumber.swift in Sources */,
 				87F4FD3E1AE421A300953E38 /* UIViewExtension.swift in Sources */,
 				87B0130D1E5698770000280E /* MutableCollectionExtension.swift in Sources */,
+				8765CE961F3FA85A00E3D062 /* JABTextButton.swift in Sources */,
 				875444DE1AE1D05E00659E6B /* JABButton.swift in Sources */,
 				87FB2E2B1B522C27000E09D9 /* StringExtension.swift in Sources */,
 				8705209D1AEF8799008C9555 /* ArrayExtension.swift in Sources */,

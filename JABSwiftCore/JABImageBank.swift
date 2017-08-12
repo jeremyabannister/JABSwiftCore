@@ -33,7 +33,7 @@ open class JABImageBank: JABView, JABPaneledScrollViewDelegate, JABButtonDelegat
     }
     
     // MARK: UI
-    fileprivate let newMediaButton = JABButton()
+    fileprivate let newMediaButton = JABTextButton()
     fileprivate let paneledScrollView = JABPaneledScrollView()
     
     
@@ -121,32 +121,30 @@ open class JABImageBank: JABView, JABPaneledScrollViewDelegate, JABButtonDelegat
     
     // MARK: New Media Button
     fileprivate func configureNewMediaButton () {
+        let view = newMediaButton
         
-        newMediaButton.type = .text
-        newMediaButton.buttonDelegate = self
+        view.buttonDelegate = self
+        view.dimsWhenPressed = true
         
-        newMediaButton.text = "+"
-        newMediaButton.textAlignment = .center
-        newMediaButton.textColor = blackColor
-        newMediaButton.font = UIFont(name: "AvenirNext-DemiBold", size: 24)
+        view.text = "+"
+        view.textAlignment = .center
+        view.textColor = blackColor
+        view.font = UIFont(name: "AvenirNext-DemiBold", size: 24)
         
-        newMediaButton.dimsWhenPressed = true
-        newMediaButton.textButtonDimsBackground = true
+        view.backgroundColor = UIColor(white: 0.8, alpha: 1)
+        view.shadowRadius = 3
+        view.shadowOpacity = 0.3
+        view.shadowOffset = CGSize(width: 0, height: 2)
         
-        newMediaButton.backgroundColor = UIColor(white: 0.8, alpha: 1)
-        newMediaButton.shadowRadius = 3
-        newMediaButton.shadowOpacity = 0.3
-        newMediaButton.shadowOffset = CGSize(width: 0, height: 2)
-        
-        newMediaButton.updateAllUI()
+        view.updateAllUI()
         
     }
     
     fileprivate func positionNewMediaButton () {
-        
+        let view = newMediaButton
         // Not using normal positioning format because we do not want to set the origin to anything
-        newMediaButton.width = width
-        newMediaButton.height = 60
+        view.width = width
+        view.height = 60
         
     }
     
@@ -255,8 +253,8 @@ open class JABImageBank: JABView, JABPaneledScrollViewDelegate, JABButtonDelegat
         
     }
     
-    open func buttonWasUntouched(_ button: JABButton, triggered: Bool) {
-        if triggered {
+    open func buttonWasUntouched(_ button: JABButton, wasTriggered: Bool) {
+        if wasTriggered {
             switch button {
             case newMediaButton:
                 newMediaButtonPressed()
