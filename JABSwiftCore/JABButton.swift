@@ -10,7 +10,6 @@ import UIKit
 
 open class JABButton: JABTouchableView {
     
-    
     // MARK:
     // MARK: Properties
     // MARK:
@@ -33,14 +32,12 @@ open class JABButton: JABTouchableView {
     open var visualPressedExtent: CGFloat = 0
     open var pressDuration: TimeInterval = 0.05
     open var pressDelay: TimeInterval = 0
-    
     open var dimsWhenPressed = true
     open var dimFraction: CGFloat = 0.8
-    fileprivate var undimmedBackgroundColor: UIColor?
     
-    fileprivate var pressDelayTimer: Timer?
     fileprivate var isPressed = false
-    
+    fileprivate var undimmedBackgroundColor: UIColor?
+    fileprivate var pressDelayTimer: Timer?
     
     // MARK: UI
     fileprivate let background = UIView()
@@ -68,8 +65,6 @@ open class JABButton: JABTouchableView {
     required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
-    
-    
     
     
     
@@ -192,11 +187,7 @@ open class JABButton: JABTouchableView {
     override open func touchDidCancel(_ touchManager: JABTouchManager, xDistance: CGFloat, yDistance: CGFloat, xVelocity: CGFloat, yVelocity: CGFloat, methodCallNumber: Int) {
         endTouch(wasTriggered: false)
     }
-    
-    
-    
 }
-
 
 
 public protocol JABButtonDelegate {

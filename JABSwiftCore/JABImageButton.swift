@@ -156,10 +156,8 @@ open class JABImageButton: JABButton {
     fileprivate func configurePressedImageView () {
         let view = pressedImageView
         let pressedImage = self.pressedImage ?? image
-        
         if let tintColorForPressedImage = self.tintColorForPressedImage ?? self.tintColorForImage { view.image = pressedImage?.imageTintedWithColor(tintColorForPressedImage) }
         else { view.image = pressedImage }
-        
         view.opacity = Float(visualPressedExtent)
     }
     
@@ -168,7 +166,7 @@ open class JABImageButton: JABButton {
         guard let pressedImage = self.pressedImage ?? self.image else { return }
         if pressedImage.size.width == 0 || pressedImage.size.height == 0 || width == 0 || height == 0 { return }
         
-        let view = imageView
+        let view = pressedImageView
         var newFrame = CGRect.zero
         
         let aspectRatio = self.width/self.height
