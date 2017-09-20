@@ -129,6 +129,11 @@ public extension String {
         return true
     }
     
+    public func isValidEmail () -> Bool {
+        let emailRegex = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,6}"
+        return NSPredicate(format: "SELF MATCHES %@", emailRegex).evaluate(with: self)
+    }
+    
     
     
     // MARK: Conversion
@@ -191,7 +196,7 @@ public extension String {
     
     
     // MARK: Ranges
-    func nsRange(from range: Range<String.Index>) -> NSRange {
+    public func nsRange(from range: Range<String.Index>) -> NSRange {
         let utf16view = self.utf16
         let from = range.lowerBound.samePosition(in: utf16view)
         let to = range.upperBound.samePosition(in: utf16view)
@@ -199,7 +204,7 @@ public extension String {
                            utf16view.distance(from: from, to: to))
     }
     
-    func range(from nsRange: NSRange) -> Range<String.Index>? {
+    public func range(from nsRange: NSRange) -> Range<String.Index>? {
         guard
             let from16 = utf16.index(utf16.startIndex, offsetBy: nsRange.location, limitedBy: utf16.endIndex),
             let to16 = utf16.index(from16, offsetBy: nsRange.length, limitedBy: utf16.endIndex),
@@ -207,6 +212,12 @@ public extension String {
             let to = String.Index(to16, within: self)
             else { return nil }
         return from ..< to
+    }
+    
+    public func rangeIsValid (_ nsRange: NSRange) -> Bool {
+        if nsRange.location == NSNotFound { return false }
+        if nsRange.location + nsRange.length > NSString(string: self).length { return false }
+        return true
     }
     
     

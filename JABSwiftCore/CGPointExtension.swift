@@ -11,8 +11,8 @@ import Foundation
 public extension CGPoint {
     
     
-    public static func unitVector (for angle: CGFloat, degrees: Bool) -> CGPoint {
-        let conversion = [true: (2*CGFloat.pi)/360.0, false: 1][degrees]!
+    public static func unitVector (for angle: CGFloat, inDegrees: Bool) -> CGPoint {
+        let conversion = [true: (2*CGFloat.pi)/360.0, false: 1][inDegrees]!
         return CGPoint(x: cos(angle*conversion), y: sin(angle*conversion))
     }
     

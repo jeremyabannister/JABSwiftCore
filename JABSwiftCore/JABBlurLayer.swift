@@ -121,7 +121,7 @@ public class JABBlurLayer: JABView {
         newFrame.size.height = height
         
         newFrame.origin.x = (width - newFrame.size.width)/2
-        newFrame.origin.y = (height - newFrame.size.width)/2
+        newFrame.origin.y = (height - newFrame.size.height)/2
         
         view.frame = newFrame
     }
@@ -136,8 +136,8 @@ public class JABBlurLayer: JABView {
     public func blur (duration: TimeInterval = defaultAnimationDuration, completion: @escaping () -> () = { position in }) {
         if #available(iOS 10, *) {
             let animator = UIViewPropertyAnimator(duration: duration/Double(blurFraction), curve: .linear, animations: { self.visualEffectView.effect = UIBlurEffect(style: self.blurStyle) })
-            animator.addCompletion({ (position) in completion() })
             blurAnimator = animator
+            animator.addCompletion({ (position) in completion() })
             animator.startAnimation()
             blurPauseTimer = Timer.scheduledTimer(timeInterval: duration, target: self, selector: #selector(pauseBlur), userInfo: nil, repeats: false)
         } else {
@@ -147,11 +147,8 @@ public class JABBlurLayer: JABView {
     
     public func pauseBlur () {
         if #available(iOS 10, *) {
-            if let animator = blurAnimator as? UIViewPropertyAnimator {
-                if !isUnblurring {
-                    animator.stopAnimation(true)
-                }
-            }
+            guard let animator = blurAnimator as? UIViewPropertyAnimator else { return }
+            if !isUnblurring { animator.stopAnimation(false) }
         }
     }
     
@@ -167,11 +164,11 @@ public class JABBlurLayer: JABView {
     public func unblur (duration: TimeInterval = defaultAnimationDuration, completion: @escaping () -> () = { position in }) {
         if #available(iOS 10, *) {
             blurPauseTimer?.invalidate()
+            (blurAnimator as? UIViewPropertyAnimator)?.finishAnimation(at: .current)
             let animator = UIViewPropertyAnimator(duration: duration, curve: .linear, animations: { self.visualEffectView.effect = nil })
-            animator.addCompletion({ (position) in
-                self.isUnblurring = false
-                completion()
-            })
+            // The animator's fromValue is the value of the property at the time of creation, which in this case is actually the fully blurred state. To mitigate this, explicitly set the property animator's progress to the correct blur before starting the animation
+            animator.fractionComplete = 1 - blurFraction
+            animator.addCompletion({ (position) in self.isUnblurring = false; completion() })
             isUnblurring = true
             animator.startAnimation()
         } else {
@@ -185,3 +182,4 @@ public class JABBlurLayer: JABView {
     // MARK:
     
 }
+
