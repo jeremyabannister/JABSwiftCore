@@ -166,8 +166,8 @@ public class JABBlurLayer: JABView {
             blurPauseTimer?.invalidate()
             (blurAnimator as? UIViewPropertyAnimator)?.finishAnimation(at: .current)
             let animator = UIViewPropertyAnimator(duration: duration, curve: .linear, animations: { self.visualEffectView.effect = nil })
-            // The animator's fromValue is the value of the property at the time of creation, which in this case is actually the fully blurred state. To mitigate this, explicitly set the property animator's progress to the correct blur before starting the animation
-            animator.fractionComplete = 1 - blurFraction
+            // In iOS 10, setting fractionComplete causes the animator to get stuck at this fraction, but in iOS 11 this is essential to prevent the animation starting from full blur
+            if #available(iOS 11, *) { animator.fractionComplete = 1 - blurFraction }
             animator.addCompletion({ (position) in self.isUnblurring = false; completion() })
             isUnblurring = true
             animator.startAnimation()
