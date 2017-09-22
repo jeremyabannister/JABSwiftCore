@@ -136,6 +136,11 @@ public class JABBlurLayer: JABView {
     public func blur (duration: TimeInterval = defaultAnimationDuration, completion: @escaping () -> () = { position in }) {
         if #available(iOS 10, *) {
             let animator = UIViewPropertyAnimator(duration: duration/Double(blurFraction), curve: .linear, animations: { self.visualEffectView.effect = UIBlurEffect(style: self.blurStyle) })
+            if let blurAnimator = blurAnimator as? UIViewPropertyAnimator {
+                // If we give blurAnimator a new value while it currently holds a paused or stopped animator the app will crash. Therefore we must always stop the potential preexisting animator before assigning a new value to it. However, stopping it while it is already stopped will also cause a crash, so we have to check for it
+                if blurAnimator.state == .stopped { blurAnimator.finishAnimation(at: .current) }
+            }
+            
             blurAnimator = animator
             animator.addCompletion({ (position) in completion() })
             animator.startAnimation()
@@ -164,7 +169,7 @@ public class JABBlurLayer: JABView {
     public func unblur (duration: TimeInterval = defaultAnimationDuration, completion: @escaping () -> () = { position in }) {
         if #available(iOS 10, *) {
             blurPauseTimer?.invalidate()
-            (blurAnimator as? UIViewPropertyAnimator)?.finishAnimation(at: .current)
+            if let blurAnimator = blurAnimator as? UIViewPropertyAnimator { if blurAnimator.state == .stopped { blurAnimator.finishAnimation(at: .current) } }
             let animator = UIViewPropertyAnimator(duration: duration, curve: .linear, animations: { self.visualEffectView.effect = nil })
             // In iOS 10, setting fractionComplete causes the animator to get stuck at this fraction, but in iOS 11 this is essential to prevent the animation starting from full blur
             if #available(iOS 11, *) { animator.fractionComplete = 1 - blurFraction }
