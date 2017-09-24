@@ -133,7 +133,7 @@ public class JABBlurLayer: JABView {
     
     
     // MARK: Blur
-    public func blur (duration: TimeInterval = defaultAnimationDuration, completion: @escaping () -> () = { position in }) {
+    public func blur (duration: TimeInterval = defaultAnimationDuration, completion: @escaping (Bool) -> () = { position in }) {
         if #available(iOS 10, *) {
             let animator = UIViewPropertyAnimator(duration: duration/Double(blurFraction), curve: .linear, animations: { self.visualEffectView.effect = UIBlurEffect(style: self.blurStyle) })
             if let blurAnimator = blurAnimator as? UIViewPropertyAnimator {
@@ -142,15 +142,15 @@ public class JABBlurLayer: JABView {
             }
             
             blurAnimator = animator
-            animator.addCompletion({ (position) in completion() })
             animator.startAnimation()
-            blurPauseTimer = Timer.scheduledTimer(timeInterval: duration, target: self, selector: #selector(pauseBlur), userInfo: nil, repeats: false)
+            blurPauseTimer = Timer.scheduledTimer(timeInterval: duration, target: self, selector: #selector(pauseBlur), userInfo: completion, repeats: false)
         } else {
-            UIView.animate(withDuration: duration, animations: { self.visualEffectView.effect = UIBlurEffect(style: self.blurStyle) }, completion: { (completed) in completion() })
+            UIView.animate(withDuration: duration, animations: { self.visualEffectView.effect = UIBlurEffect(style: self.blurStyle) }, completion: completion)
         }
     }
     
-    public func pauseBlur () {
+    public func pauseBlur (timer: Timer) {
+        if let completion = timer.userInfo as? (Bool) -> () { completion(true) }
         if #available(iOS 10, *) {
             guard let animator = blurAnimator as? UIViewPropertyAnimator else { return }
             if !isUnblurring { animator.stopAnimation(false) }
@@ -166,18 +166,18 @@ public class JABBlurLayer: JABView {
      
      */
     
-    public func unblur (duration: TimeInterval = defaultAnimationDuration, completion: @escaping () -> () = { position in }) {
+    public func unblur (duration: TimeInterval = defaultAnimationDuration, completion: @escaping (Bool) -> () = { position in }) {
         if #available(iOS 10, *) {
             blurPauseTimer?.invalidate()
             if let blurAnimator = blurAnimator as? UIViewPropertyAnimator { if blurAnimator.state == .stopped { blurAnimator.finishAnimation(at: .current) } }
             let animator = UIViewPropertyAnimator(duration: duration, curve: .linear, animations: { self.visualEffectView.effect = nil })
             // In iOS 10, setting fractionComplete causes the animator to get stuck at this fraction, but in iOS 11 this is essential to prevent the animation starting from full blur
             if #available(iOS 11, *) { animator.fractionComplete = 1 - blurFraction }
-            animator.addCompletion({ (position) in self.isUnblurring = false; completion() })
+            animator.addCompletion({ (position) in self.isUnblurring = false; completion(true) })
             isUnblurring = true
             animator.startAnimation()
         } else {
-            UIView.animate(withDuration: duration, animations: { self.visualEffectView.effect = nil }, completion: { (completed) in completion() })
+            UIView.animate(withDuration: duration, animations: { self.visualEffectView.effect = nil }, completion: completion)
         }
     }
     

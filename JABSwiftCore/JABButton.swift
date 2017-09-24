@@ -132,6 +132,21 @@ open class JABButton: JABTouchableView {
         touchManager?.cancelTouch()
     }
     
+    open func simulatePress () {
+        beginTouch { (completed) in self.endTouch(wasTriggered: true) }
+    }
+    
+    fileprivate func beginTouch (completion: @escaping (Bool) -> () = { (completed) in }) {
+        isPressed = true
+        visualPressedExtent = 1
+        if pressDelay != 0 {
+            animatedUpdate(duration: pressDuration, delay: pressDelay, completion: completion)
+            pressDelayTimer = Timer.scheduledTimer(timeInterval: pressDelay, target: self, selector: #selector(animateUsingTimer(_:)), userInfo: pressDuration, repeats: false)
+        }
+        else { animatedUpdate(duration: pressDuration, completion: completion) }
+        buttonDelegate?.buttonWasTouched(self)
+    }
+    
     fileprivate func endTouch (wasTriggered: Bool) {
         isPressed = false
         visualPressedExtent = 0
@@ -139,6 +154,7 @@ open class JABButton: JABTouchableView {
         animatedUpdate(duration: pressDuration)
         buttonDelegate?.buttonWasUntouched(self, wasTriggered: wasTriggered)
     }
+    
     
     // MARK: Visual
     open func updateVisualPressedExtent (to newVisualPressedExtent: CGFloat, animated: Bool = false) {
@@ -159,14 +175,7 @@ open class JABButton: JABTouchableView {
     
     // MARK: Touch Manager
     override open func touchDidBegin(_ touchManager: JABTouchManager) {
-        isPressed = true
-        visualPressedExtent = 1
-        if pressDelay != 0 {
-            animatedUpdate(duration: pressDuration, delay: pressDelay)
-            pressDelayTimer = Timer.scheduledTimer(timeInterval: pressDelay, target: self, selector: #selector(animateUsingTimer(_:)), userInfo: pressDuration, repeats: false)
-        }
-        else { animatedUpdate(duration: pressDuration) }
-        buttonDelegate?.buttonWasTouched(self)
+        beginTouch()
     }
     
     override open func touchDidChange(_ touchManager: JABTouchManager, xDistance: CGFloat, yDistance: CGFloat, xVelocity: CGFloat, yVelocity: CGFloat, methodCallNumber: Int) {
@@ -194,3 +203,4 @@ public protocol JABButtonDelegate {
     func buttonWasTouched(_ button: JABButton)
     func buttonWasUntouched(_ button: JABButton, wasTriggered: Bool)
 }
+
