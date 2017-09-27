@@ -110,7 +110,7 @@ public class JABBlurLayer: JABView {
     
     // MARK: Visual Effect View
     private func configureVisualEffectView () {
-        let view = visualEffectView
+//        let view = visualEffectView
     }
     
     private func positionVisualEffectView () {
@@ -149,7 +149,7 @@ public class JABBlurLayer: JABView {
         }
     }
     
-    public func pauseBlur (timer: Timer) {
+    @objc public func pauseBlur (timer: Timer) {
         if let completion = timer.userInfo as? (Bool) -> () { completion(true) }
         if #available(iOS 10, *) {
             guard let animator = blurAnimator as? UIViewPropertyAnimator else { return }

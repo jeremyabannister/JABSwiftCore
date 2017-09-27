@@ -163,7 +163,7 @@ open class JABButton: JABTouchableView {
     }
     
     // MARK: Timer
-    open func animateUsingTimer (_ timer: Timer) {
+    @objc open func animateUsingTimer (_ timer: Timer) {
         guard let animationDuration = timer.userInfo as? TimeInterval else { return }
         animatedUpdate(duration: animationDuration)
     }

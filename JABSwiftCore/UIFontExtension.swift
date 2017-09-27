@@ -13,7 +13,7 @@ public extension UIFont {
     public func sizeOfString (_ string: String, constrainedToWidth width: CGFloat) -> CGSize {
         return (string as NSString).boundingRect(with: CGSize(width: Double(width), height: Double.greatestFiniteMagnitude),
             options: NSStringDrawingOptions.usesLineFragmentOrigin,
-            attributes: [NSFontAttributeName: self],
+            attributes: [NSAttributedStringKey.font: self],
             context: nil).size
     }
     

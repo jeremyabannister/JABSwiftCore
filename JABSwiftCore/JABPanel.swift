@@ -103,7 +103,7 @@ open class JABPanel: JABTouchableView {
         longPressTimer.invalidate()
     }
     
-    open func longPressTimerTriggered () {
+    @objc open func longPressTimerTriggered () {
         panelDelegate?.panelWasLongPressed(self)
     }
     

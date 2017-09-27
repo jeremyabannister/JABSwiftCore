@@ -54,7 +54,7 @@ open class JABTouchManager: NSObject, UIGestureRecognizerDelegate {
     
     
     
-    open func touchDetected(_ gestureRecognizer: UILongPressGestureRecognizer) {
+    @objc open func touchDetected(_ gestureRecognizer: UILongPressGestureRecognizer) {
         
         if let verifiedStaticOnScreenView = staticOnScreenView {
             if let verifiedDelegate = delegate {
@@ -237,25 +237,16 @@ open class JABTouchManager: NSObject, UIGestureRecognizerDelegate {
     
     // MARK: Gesture Recognizer
     open func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
-        
         return true
     }
     
     open func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
-        
-        
         if let blockingViews = delegate?.blockingViews {
             for blockingView in blockingViews {
-                
-                if Toolkit.rectContainsPoint(blockingView.bounds, point: touch.location(in: blockingView)) {
-                    return false
-                }
-                
+                if blockingView.bounds.contains(touch.location(in: blockingView)) { return false }
             }
         }
-        
         return true
-        
     }
     
     open func cancelTouch () {

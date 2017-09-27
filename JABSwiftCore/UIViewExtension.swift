@@ -63,7 +63,7 @@ extension UIView {
         get { return layer.opacity }
         set { layer.opacity = newValue } }
     /** A shortcut to the `cornerRadius` of the view's layer */
-    open var cornerRadius: CGFloat {
+    @objc open var cornerRadius: CGFloat {
         get { return layer.cornerRadius }
         set { layer.cornerRadius = newValue } }
     /** A shortcut to the `masksToBounds` of the view's layer */

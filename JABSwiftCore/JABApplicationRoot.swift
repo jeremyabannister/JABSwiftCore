@@ -86,7 +86,7 @@ open class JABApplicationRoot: JABView, JABTouchableViewDelegate, JABLocationTes
         
     }
     
-    open func launchLocationTester () {
+    @objc open func launchLocationTester () {
         
         locationTester.frame = bounds
         addSubview(locationTester)

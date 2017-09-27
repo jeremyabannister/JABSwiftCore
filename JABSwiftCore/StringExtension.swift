@@ -26,9 +26,6 @@ public extension String {
         return self[self.characters.index(self.startIndex, offsetBy: i)]
     }
     
-    subscript (r: Range<Int>) -> String {
-        return substring(with: (characters.index(startIndex, offsetBy: r.lowerBound) ..< characters.index(startIndex, offsetBy: r.upperBound)))
-    }
     
     
     // MARK: Is Valid
@@ -60,7 +57,7 @@ public extension String {
     public func isValidInteger () -> Bool {
         if self.characters.count > 0 {
             if self[0] == "-" {
-                return decapitate().isValidWholeNumber()
+                return String(decapitate()).isValidWholeNumber()
             }
             return isValidWholeNumber()
         } else {
@@ -89,13 +86,13 @@ public extension String {
         var testSubject = self
         if testSubject.characters.count > 0 {
             if testSubject[0] == "-" {
-                testSubject = testSubject.decapitate()
+                testSubject = String(testSubject.decapitate())
             }
         }
         
         if testSubject.characters.count > 0 {
             if testSubject[0] == "$" {
-                testSubject = testSubject.decapitate()
+                testSubject = String(testSubject.decapitate())
             } else {
                 return false
             }
@@ -146,13 +143,13 @@ public extension String {
             if testSubject.characters.count > 0 {
                 if testSubject[0] == "-" {
                     negative = true
-                    testSubject = testSubject.decapitate()
+                    testSubject = String(testSubject.decapitate())
                 }
             }
             
             if testSubject.characters.count > 0 {
                 if testSubject[0] == "$" {
-                    testSubject = testSubject.decapitate()
+                    testSubject = String(testSubject.decapitate())
                 } else {
                     print("Problem in JABSwiftCore.String.doubleFromDollarAmount - The string \"\(self)\" does not begin with either \"$\" or \"-$\".")
                     return nil
@@ -186,9 +183,9 @@ public extension String {
     
     
     // MARK: Substring
-    public func decapitate () -> String {
+    public func decapitate () -> Substring {
         if self.characters.count > 0 {
-            return substring(from: characters.index(startIndex, offsetBy: 1))
+            return self[index(after: startIndex)...]
         }
         return ""
     }
@@ -196,24 +193,6 @@ public extension String {
     
     
     // MARK: Ranges
-    public func nsRange(from range: Range<String.Index>) -> NSRange {
-        let utf16view = self.utf16
-        let from = range.lowerBound.samePosition(in: utf16view)
-        let to = range.upperBound.samePosition(in: utf16view)
-        return NSMakeRange(utf16view.distance(from: utf16view.startIndex, to: from),
-                           utf16view.distance(from: from, to: to))
-    }
-    
-    public func range(from nsRange: NSRange) -> Range<String.Index>? {
-        guard
-            let from16 = utf16.index(utf16.startIndex, offsetBy: nsRange.location, limitedBy: utf16.endIndex),
-            let to16 = utf16.index(from16, offsetBy: nsRange.length, limitedBy: utf16.endIndex),
-            let from = String.Index(from16, within: self),
-            let to = String.Index(to16, within: self)
-            else { return nil }
-        return from ..< to
-    }
-    
     public func rangeIsValid (_ nsRange: NSRange) -> Bool {
         if nsRange.location == NSNotFound { return false }
         if nsRange.location + nsRange.length > NSString(string: self).length { return false }

@@ -24,7 +24,8 @@ extension Date {
         
         let components = dateString.components(separatedBy: " ")
         if components.count == 3 {
-            let dayAsString = components[1].substring(to: components[1].characters.index(components[1].endIndex, offsetBy: -3))
+            let dayAsString = String(components[1][..<components[1].index(components[1].endIndex, offsetBy: -3)])
+//            let dayAsString = components[1].substring(to: components[1].characters.index(components[1].endIndex, offsetBy: -3))
             var monthIndex = -1
             for i in 0..<Date.months.count {
                 let month = Date.months[i]
