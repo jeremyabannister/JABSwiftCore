@@ -92,6 +92,21 @@ extension UIView {
         set { layer.shadowPath = newValue } }
     
     
+    open func freezePresentedShadow () {
+        layer.shadowOpacity = layer.presentation()?.shadowOpacity ?? layer.shadowOpacity
+        layer.shadowRadius = layer.presentation()?.shadowRadius ?? layer.shadowRadius
+        layer.shadowOffset = layer.presentation()?.shadowOffset ?? layer.shadowOffset
+        layer.shadowColor = layer.presentation()?.shadowColor ?? layer.shadowColor
+    }
+    
+    open func applyShadow (_ shadow: (opacity: Float, radius: CGFloat, offset: CGSize, color: UIColor)) {
+        self.shadowOpacity = shadow.opacity
+        self.shadowRadius = shadow.radius
+        self.shadowOffset = shadow.offset
+        self.shadowColor = shadow.color
+    }
+    
+    
     /**
      Prints the view's frame to the console in a nicely formatted way.
      

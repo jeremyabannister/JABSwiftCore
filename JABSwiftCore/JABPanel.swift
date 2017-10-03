@@ -123,7 +123,7 @@ open class JABPanel: JABTouchableView {
     override open func touchDidChange(_ touchManager: JABTouchManager, xDistance: CGFloat, yDistance: CGFloat, xVelocity: CGFloat, yVelocity: CGFloat, methodCallNumber: Int) {
         
         guard let touchRecognizer = touchManager.touchRecognizer else { return }
-        if touchRecognizer.location(in: staticOnScreenView).distanceToPoint(initialTouchLocation) > 7 {
+        if touchRecognizer.location(in: staticOnScreenView).distance(to: initialTouchLocation) > 7 {
             cancelLongPressTimer()
         }
         
@@ -134,7 +134,7 @@ open class JABPanel: JABTouchableView {
         guard let touchRecognizer = touchManager.touchRecognizer else { return }
         if shouldPassOnTouchNotification {
             if bounds.containsPoint(touchRecognizer.location(in: self)) {
-                if initialTouchLocation.distanceToPoint(touchRecognizer.location(in: staticOnScreenView)) < 10 {
+                if initialTouchLocation.distance(to: touchRecognizer.location(in: staticOnScreenView)) < 10 {
                     panelDelegate?.panelWasTapped(self)
                 }
             }

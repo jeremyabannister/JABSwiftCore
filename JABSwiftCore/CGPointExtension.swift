@@ -11,30 +11,22 @@ import Foundation
 public extension CGPoint {
     
     
-    public static func unitVector (for angle: CGFloat, degrees: Bool) -> CGPoint {
-        let conversion = [true: (2*CGFloat.pi)/360.0, false: 1][degrees]!
+    public static func unitVector (for angle: CGFloat, inDegrees: Bool) -> CGPoint {
+        let conversion = [true: (2*CGFloat.pi)/360.0, false: 1][inDegrees]!
         return CGPoint(x: cos(angle*conversion), y: sin(angle*conversion))
     }
     
     
-    public func distanceToPoint(_ point: CGPoint) -> CGFloat {
-        
+    public func distance (to point: CGPoint) -> CGFloat {
         let difference = CGPoint(x: x - point.x, y: y - point.y)
-        
         return CGFloat(sqrt(Double((difference.x * difference.x) + (difference.y * difference.y))))
-        
     }
     
-    public func slopeToPoint(_ point: CGPoint) -> CGFloat? {
-        
-        let rise = point.y - y
+    public func slope (to point: CGPoint) -> CGFloat? {
+        let rise = -(point.y - y)
         let run = point.x - x
-        
-        if run == 0 {
-            return nil
-        } else {
-            return rise/run
-        }
+        if run == 0 { return nil }
+        return rise/run
     }
 }
 
