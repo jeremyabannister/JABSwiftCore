@@ -234,13 +234,3 @@ extension UIView {
     
 }
 
-
-
-extension CABasicAnimation {
-    public convenience init (keyPath: String?, fromValue: Any?, toValue: Any?) {
-        self.init(keyPath: keyPath)
-        self.fromValue = fromValue
-        self.toValue = toValue
-    }
-}
-
