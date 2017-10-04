@@ -9,7 +9,7 @@
 import UIKit
 
 open class JABPaneledScrollView: JABView, JABPanelChangeSubscriber, JABPanelDelegate {
-
+    
     // MARK:
     // MARK: Properties
     // MARK:
@@ -179,8 +179,8 @@ open class JABPaneledScrollView: JABView, JABPanelChangeSubscriber, JABPanelDele
     
     func positionScrollView () {
         
-        if scrollView.frame != bounds {
-            scrollView.frame = bounds
+        if scrollView.site != bounds {
+            scrollView.site = bounds
             drawPanels()
         }
         
@@ -390,24 +390,24 @@ open class JABPaneledScrollView: JABView, JABPanelChangeSubscriber, JABPanelDele
         for i in 0..<columnArray.count {
             let currentPanel = columnArray[i]
             
-            var newFrame = CGRect.zero
+            var newSite = CGRect.zero
             
-            newFrame.origin.x = sideBuffer + (CGFloat(column) * (widthOfPanels + betweenBufferForColumns))
+            newSite.origin.x = sideBuffer + (CGFloat(column) * (widthOfPanels + betweenBufferForColumns))
             
             if i == 0 {
                 if topView != nil {
-                    newFrame.origin.y = (2 * topBuffer) + topView!.height
+                    newSite.origin.y = (2 * topBuffer) + topView!.height
                 } else {
-                    newFrame.origin.y = topBuffer
+                    newSite.origin.y = topBuffer
                 }
             } else {
-                newFrame.origin.y = columnArray[i-1].bottom + betweenBufferForRows
+                newSite.origin.y = columnArray[i-1].bottom + betweenBufferForRows
             }
             
-            newFrame.size.width = widthOfPanels
-            newFrame.size.height = (newFrame.size.width * currentPanel.heightToWidthRatio) + currentPanel.staticAdditionToHeight
+            newSite.size.width = widthOfPanels
+            newSite.size.height = (newSite.size.width * currentPanel.heightToWidthRatio) + currentPanel.staticAdditionToHeight
             
-            currentPanel.frame = newFrame
+            currentPanel.site = newSite
         }
         
     }
@@ -479,3 +479,4 @@ public protocol JABPaneledScrollViewDelegate: class {
     func paneledScrollViewPanelWasTapped (_ paneledScrollView: JABPaneledScrollView, panel: JABPanel, panelIndex: Int)
     func paneledScrollViewPanelWasLongPressed (_ paneledScrollView: JABPaneledScrollView, panel: JABPanel, panelIndex: Int)
 }
+

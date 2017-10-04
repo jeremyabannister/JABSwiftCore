@@ -16,14 +16,13 @@ open class JABButton: JABTouchableView {
     
     // Override
     override open var backgroundColor: UIColor? {
-        get { return background.backgroundColor }
-        set { undimmedBackgroundColor = newValue; configureBackground() }
+        get { return backdrop.backdropColor }
+        set { undimmedBackdropColor = newValue; configureBackdrop() }
     }
     override open var cornerRadius: CGFloat {
-        get { return background.cornerRadius }
-        set { background.cornerRadius = newValue }
+        get { return backdrop.cornerRadius }
+        set { backdrop.cornerRadius = newValue }
     }
-    override open var layer: CALayer { get { return background.layer } }
     
     // MARK: Delegate
     open var buttonDelegate: JABButtonDelegate?
@@ -36,11 +35,11 @@ open class JABButton: JABTouchableView {
     open var dimFraction: CGFloat = 0.8
     
     fileprivate var isPressed = false
-    fileprivate var undimmedBackgroundColor: UIColor?
+    fileprivate var undimmedBackdropColor: UIColor?
     fileprivate var pressDelayTimer: Timer?
     
     // MARK: UI
-    fileprivate let background = UIView()
+    fileprivate let backdrop = UIView()
     
     
     // MARK: Parameters
@@ -74,45 +73,45 @@ open class JABButton: JABTouchableView {
     
     // MARK: All
     override open func addAllUI () {
-        addBackground()
+        addBackdrop()
     }
     
     override open func updateAllUI() {
         
         
-        configureBackground()
-        positionBackground()
+        configureBackdrop()
+        positionBackdrop()
         
     }
     
     
     // MARK: Adding
-    fileprivate func addBackground () {
-        addSubview(background)
+    fileprivate func addBackdrop () {
+        addSubview(backdrop)
     }
     
     
     
-    // MARK: Background
-    fileprivate func configureBackground () {
-        let view = background
+    // MARK: Backdrop
+    fileprivate func configureBackdrop () {
+        let view = backdrop
         if dimsWhenPressed {
-            view.backgroundColor = undimmedBackgroundColor?.dim(1 - (visualPressedExtent * (1 - dimFraction)))
+            view.backdropColor = undimmedBackdropColor?.dim(1 - (visualPressedExtent * (1 - dimFraction)))
         }
-        else { view.backgroundColor = undimmedBackgroundColor }
+        else { view.backdropColor = undimmedBackdropColor }
     }
     
-    fileprivate func positionBackground () {
-        let view = background
-        var newFrame = CGRect.zero
+    fileprivate func positionBackdrop () {
+        let view = backdrop
+        var newSite = CGRect.zero
         
-        newFrame.size.width = width
-        newFrame.size.height = height
+        newSite.size.width = width
+        newSite.size.height = height
         
-        newFrame.origin.x = (width - newFrame.size.width)/2
-        newFrame.origin.y = (height - newFrame.size.height)/2
+        newSite.origin.x = (width - newSite.size.width)/2
+        newSite.origin.y = (height - newSite.size.height)/2
         
-        view.frame = newFrame
+        view.site = newSite
     }
     
     
@@ -123,8 +122,8 @@ open class JABButton: JABTouchableView {
     
     // MARK: Override
     override open func addSubview(_ view: UIView) {
-        if view == background { super.addSubview(view) }
-        else { background.addSubview(view) }
+        if view == backdrop { super.addSubview(view) }
+        else { backdrop.addSubview(view) }
     }
     
     // MARK: Touch
@@ -140,7 +139,7 @@ open class JABButton: JABTouchableView {
         isPressed = true
         visualPressedExtent = 1
         if pressDelay != 0 {
-            animatedUpdate(duration: pressDuration, delay: pressDelay, completion: completion)
+            animatedUpdate(duration: pressDuration, completion: completion)
             pressDelayTimer = Timer.scheduledTimer(timeInterval: pressDelay, target: self, selector: #selector(animateUsingTimer(_:)), userInfo: pressDuration, repeats: false)
         }
         else { animatedUpdate(duration: pressDuration, completion: completion) }

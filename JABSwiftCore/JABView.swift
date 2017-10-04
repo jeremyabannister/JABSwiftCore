@@ -20,11 +20,35 @@ public var defaultAnimationDuration = 0.25
  */
 open class JABView: UIView, GlobalVariablesInitializationNotificationSubscriber {
     
+    // MARK: Static
+    
+    // Animated Update
+    public static var isGeneratingAnimatedUpdate: Bool = false
+    public static var animationDuration: TimeInterval = defaultAnimationDuration
+    public static var animationTimingFunction: CAMediaTimingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
+    
+    // Timing Functions
+    public enum TimingFunction { case easeInOut, easeIn, easeOut, linear, custom(Float, Float, Float, Float) }
+    public static func mediaTimingFunction (for timingFunction: TimingFunction) -> CAMediaTimingFunction {
+        switch timingFunction {
+        case .easeInOut:
+            return CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
+        case .easeIn:
+            return CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseIn)
+        case .easeOut:
+            return CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseOut)
+        case .linear:
+            return CAMediaTimingFunction(name: kCAMediaTimingFunctionLinear)
+        case .custom(let one, let two, let three, let four):
+            return CAMediaTimingFunction(controlPoints: one, two, three, four)
+        }
+    }
     
     
     // MARK:
     // MARK: Properties
     // MARK:
+    
     
     
     // MARK:
@@ -56,7 +80,7 @@ open class JABView: UIView, GlobalVariablesInitializationNotificationSubscriber 
     // MARK:
     // MARK: Methods
     // MARK:
-        
+    
     
     
     // MARK:
@@ -75,12 +99,44 @@ open class JABView: UIView, GlobalVariablesInitializationNotificationSubscriber 
         
     }
     
-    open func animatedUpdate (duration: TimeInterval = defaultAnimationDuration, delay: TimeInterval = 0, options: UIViewAnimationOptions = .curveEaseInOut, completion: @escaping (Bool) -> () = {(completed) in }) {
-        
-        UIView.animate(withDuration: duration, delay: delay, options: options, animations: { () -> Void in
-            self.updateAllUI()
-        }, completion: completion)
+    //    open func animatedUpdate (duration: TimeInterval = defaultAnimationDuration, delay: TimeInterval = 0, options: UIViewAnimationOptions = .curveEaseInOut, completion: @escaping (Bool) -> () = {(completed) in }) {
+    //
+    //        UIView.animate(withDuration: duration, delay: delay, options: options, animations: { () -> Void in
+    //            self.updateAllUI()
+    //        }, completion: completion)
+    //    }
+    
+    private func options (for timingFunction: TimingFunction) -> UIViewAnimationOptions {
+        switch timingFunction {
+        case .linear:
+            return .curveLinear
+        case .easeIn:
+            return .curveEaseIn
+        case .easeOut:
+            return .curveEaseOut
+        default:
+            return .curveEaseInOut
+        }
     }
+    
+    open func animatedUpdate (duration: TimeInterval = defaultAnimationDuration, timingFunction: TimingFunction = .easeInOut, completion: @escaping (Bool) -> () = { (completed) in }) {
+        
+        
+        let oldDuration = JABView.animationDuration
+        let oldTimingFunction = JABView.animationTimingFunction
+        
+        JABView.isGeneratingAnimatedUpdate = true
+        JABView.animationDuration = duration
+        JABView.animationTimingFunction = JABView.mediaTimingFunction(for: timingFunction)
+        
+        self.updateAllUI()
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + duration) { completion(true) }
+        
+        JABView.isGeneratingAnimatedUpdate = false
+        JABView.animationDuration = oldDuration
+        JABView.animationTimingFunction = oldTimingFunction
+    }
+    
     
     
     // MARK:
@@ -93,3 +149,4 @@ open class JABView: UIView, GlobalVariablesInitializationNotificationSubscriber 
     
     
 }
+

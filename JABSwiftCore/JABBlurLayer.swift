@@ -110,20 +110,20 @@ public class JABBlurLayer: JABView {
     
     // MARK: Visual Effect View
     private func configureVisualEffectView () {
-//        let view = visualEffectView
+        //        let view = visualEffectView
     }
     
     private func positionVisualEffectView () {
         let view = visualEffectView
-        var newFrame = CGRect.zero
+        var newSite = CGRect.zero
         
-        newFrame.size.width = width
-        newFrame.size.height = height
+        newSite.size.width = width
+        newSite.size.height = height
         
-        newFrame.origin.x = (width - newFrame.size.width)/2
-        newFrame.origin.y = (height - newFrame.size.height)/2
+        newSite.origin.x = (width - newSite.size.width)/2
+        newSite.origin.y = (height - newSite.size.height)/2
         
-        view.frame = newFrame
+        view.site = newSite
     }
     
     

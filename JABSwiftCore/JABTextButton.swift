@@ -132,17 +132,17 @@ open class JABTextButton: JABButton {
     
     fileprivate func positionLabel () {
         let view = label
-        var newFrame = CGRect.zero
+        var newSite = CGRect.zero
         guard let text = view.text else { return }
         let size = view.font.sizeOfString(text, constrainedToWidth: width - 2*(contentInsetForText ?? 0))
         
-        newFrame.size.width = size.width
-        newFrame.size.height = size.height
+        newSite.size.width = size.width
+        newSite.size.height = size.height
         
-        newFrame.origin.x = (width - newFrame.size.width)/2
-        newFrame.origin.y = (height - newFrame.size.height)/2
+        newSite.origin.x = (width - newSite.size.width)/2
+        newSite.origin.y = (height - newSite.size.height)/2
         
-        view.frame = newFrame
+        view.site = newSite
     }
     
     
@@ -156,3 +156,4 @@ open class JABTextButton: JABButton {
     // MARK:
     
 }
+

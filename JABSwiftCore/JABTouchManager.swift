@@ -273,3 +273,4 @@ public protocol JABTouchManagerDelegate {
     func touchDidCancel (_ touchManager: JABTouchManager, xDistance:CGFloat, yDistance:CGFloat, xVelocity:CGFloat, yVelocity:CGFloat, methodCallNumber:Int)
     
 }
+

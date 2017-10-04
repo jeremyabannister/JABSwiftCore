@@ -51,7 +51,7 @@ open class JABApplicationRoot: JABView, JABTouchableViewDelegate, JABLocationTes
         
         addSubview(notificationLayer)
         notificationLayer.delegate = self
-        notificationLayer.frame = bounds
+        notificationLayer.site = bounds
         undimNotificationLayer()
         
     }
@@ -66,12 +66,12 @@ open class JABApplicationRoot: JABView, JABTouchableViewDelegate, JABLocationTes
     // MARK:
     
     open func dimNotificationLayer () {
-        notificationLayer.backgroundColor = UIColor(white: 0, alpha: 0.4)
+        notificationLayer.backdropColor = UIColor(white: 0, alpha: 0.4)
         notificationLayer.isUserInteractionEnabled = true
     }
     
     open func undimNotificationLayer () {
-        notificationLayer.backgroundColor = UIColor(white: 0, alpha: 0)
+        notificationLayer.backdropColor = UIColor(white: 0, alpha: 0)
         notificationLayer.isUserInteractionEnabled = false
     }
     
@@ -88,7 +88,7 @@ open class JABApplicationRoot: JABView, JABTouchableViewDelegate, JABLocationTes
     
     @objc open func launchLocationTester () {
         
-        locationTester.frame = bounds
+        locationTester.site = bounds
         addSubview(locationTester)
         
     }

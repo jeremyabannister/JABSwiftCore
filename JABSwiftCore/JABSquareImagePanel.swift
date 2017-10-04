@@ -113,7 +113,7 @@ open class JABSquareImagePanel: JABPanel {
     
     func positionImageViewMask () {
         
-        imageViewMask.frame = bounds
+        imageViewMask.site = bounds
         
     }
     
@@ -127,36 +127,36 @@ open class JABSquareImagePanel: JABPanel {
     
     func positionImageView () {
         
-        var newFrame = CGRect.zero
+        var newSite = CGRect.zero
         
         if let verifiedImage = image {
             if verifiedImage.size.width != 0 && verifiedImage.size.height != 0 {
                 if verifiedImage.size.height > verifiedImage.size.width {
                     
-                    newFrame.size.width = width
-                    newFrame.size.height = (verifiedImage.size.height/verifiedImage.size.width) * width
+                    newSite.size.width = width
+                    newSite.size.height = (verifiedImage.size.height/verifiedImage.size.width) * width
                     
-                    newFrame.origin.x = (width - newFrame.size.width)/2
-                    newFrame.origin.y = (height - newFrame.size.height)/2
+                    newSite.origin.x = (width - newSite.size.width)/2
+                    newSite.origin.y = (height - newSite.size.height)/2
                     
-                    imageView.frame = newFrame
+                    imageView.site = newSite
                     
                 } else {
                     
-                    newFrame.size.height = height
-                    newFrame.size.width = (verifiedImage.size.width/verifiedImage.size.height) * height
+                    newSite.size.height = height
+                    newSite.size.width = (verifiedImage.size.width/verifiedImage.size.height) * height
                     
-                    newFrame.origin.x = (width - newFrame.size.width)/2
-                    newFrame.origin.y = (height - newFrame.size.height)/2
+                    newSite.origin.x = (width - newSite.size.width)/2
+                    newSite.origin.y = (height - newSite.size.height)/2
                     
-                    imageView.frame = newFrame
+                    imageView.site = newSite
                     
                 }
             } else {
-                imageView.frame = bounds
+                imageView.site = bounds
             }
         } else {
-            imageView.frame = bounds
+            imageView.site = bounds
         }
         
     }

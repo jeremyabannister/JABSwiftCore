@@ -40,6 +40,10 @@ public extension CGRect {
     
     
     
+    public var bounds: CGRect {
+        get { return CGRect(x: 0, y: 0, width: size.width, height: size.height) } }
+    
+    
     // MARK:
     // MARK: Methods
     // MARK:
@@ -55,3 +59,4 @@ public extension CGRect {
         return CGRect(x: self.x + point.x, y: self.y + point.y, width: self.size.width, height: self.size.height)
     }
 }
+

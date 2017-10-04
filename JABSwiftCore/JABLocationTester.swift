@@ -14,16 +14,6 @@ open class JABLocationTester: JABTouchableView {
     // MARK: Properties
     // MARK:
     
-    // MARK: Override
-    override open var frame: CGRect {
-        didSet {
-            if frame.size.width != oldValue.size.width || frame.size.height != oldValue.size.height {
-                location = CGPoint(x: width/2, y: height/2)
-                updateAllUI()
-            }
-        }
-    }
-    
     // MARK: Delegate
     open var locationTesterDelegate: JABLocationTesterDelegate?
     
@@ -113,21 +103,21 @@ open class JABLocationTester: JABTouchableView {
     // MARK: Horizontal Line
     fileprivate func configureHorizontalLine () {
         
-        horizontalLine.backgroundColor = color
+        horizontalLine.backdropColor = color
         
     }
     
     fileprivate func positionHorizontalLine () {
         
-        var newFrame = CGRect.zero
+        var newSite = CGRect.zero
         
-        newFrame.size.width = width
-        newFrame.size.height = 0.5
+        newSite.size.width = width
+        newSite.size.height = 0.5
         
-        newFrame.origin.x = (width - newFrame.size.width)/2
-        newFrame.origin.y = location.y - (newFrame.size.height/2)
+        newSite.origin.x = (width - newSite.size.width)/2
+        newSite.origin.y = location.y - (newSite.size.height/2)
         
-        horizontalLine.frame = newFrame
+        horizontalLine.site = newSite
         
     }
     
@@ -135,21 +125,21 @@ open class JABLocationTester: JABTouchableView {
     // MARK: Vertical Line
     fileprivate func configureVerticalLine () {
         
-        verticalLine.backgroundColor = color
+        verticalLine.backdropColor = color
         
     }
     
     fileprivate func positionVerticalLine () {
         
-        var newFrame = CGRect.zero
+        var newSite = CGRect.zero
         
-        newFrame.size.width = 0.5
-        newFrame.size.height = height
+        newSite.size.width = 0.5
+        newSite.size.height = height
         
-        newFrame.origin.x = location.x - (newFrame.size.width/2)
-        newFrame.origin.y = (height - newFrame.size.height)/2
+        newSite.origin.x = location.x - (newSite.size.width/2)
+        newSite.origin.y = (height - newSite.size.height)/2
         
-        verticalLine.frame = newFrame
+        verticalLine.site = newSite
         
     }
     

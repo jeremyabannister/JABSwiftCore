@@ -131,7 +131,7 @@ open class JABImageBank: JABView, JABPaneledScrollViewDelegate, JABButtonDelegat
         view.textColor = blackColor
         view.font = UIFont(name: "AvenirNext-DemiBold", size: 24)
         
-        view.backgroundColor = UIColor(white: 0.8, alpha: 1)
+        view.backdropColor = UIColor(white: 0.8, alpha: 1)
         view.shadowRadius = 3
         view.shadowOpacity = 0.3
         view.shadowOffset = CGSize(width: 0, height: 2)

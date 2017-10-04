@@ -132,23 +132,23 @@ open class JABImageButton: JABButton {
         if image.size.width == 0 || image.size.height == 0 || width == 0 || height == 0 { return }
         
         let view = imageView
-        var newFrame = CGRect.zero
+        var newSite = CGRect.zero
         
         let aspectRatio = self.width/self.height
         let imageAspectRatio = image.size.width/image.size.height
         
         if imageAspectRatio > aspectRatio {
-            newFrame.size.width = width - 2*contentInset
-            newFrame.size.height = newFrame.size.width / imageAspectRatio
+            newSite.size.width = width - 2*contentInset
+            newSite.size.height = newSite.size.width / imageAspectRatio
         } else {
-            newFrame.size.height = height - 2*contentInset
-            newFrame.size.width = newFrame.size.height * imageAspectRatio
+            newSite.size.height = height - 2*contentInset
+            newSite.size.width = newSite.size.height * imageAspectRatio
         }
         
-        newFrame.origin.x = (width - newFrame.size.width)/2
-        newFrame.origin.y = (height - newFrame.size.height)/2
+        newSite.origin.x = (width - newSite.size.width)/2
+        newSite.origin.y = (height - newSite.size.height)/2
         
-        view.frame = newFrame
+        view.site = newSite
     }
     
     
@@ -167,24 +167,24 @@ open class JABImageButton: JABButton {
         if pressedImage.size.width == 0 || pressedImage.size.height == 0 || width == 0 || height == 0 { return }
         
         let view = pressedImageView
-        var newFrame = CGRect.zero
+        var newSite = CGRect.zero
         
         let aspectRatio = self.width/self.height
         let imageAspectRatio = pressedImage.size.width/pressedImage.size.height
         let contentInsetForPressedImage = self.contentInsetForPressedImage ?? self.contentInset
         
         if imageAspectRatio > aspectRatio {
-            newFrame.size.width = width - 2*contentInsetForPressedImage
-            newFrame.size.height = newFrame.size.width / imageAspectRatio
+            newSite.size.width = width - 2*contentInsetForPressedImage
+            newSite.size.height = newSite.size.width / imageAspectRatio
         } else {
-            newFrame.size.height = height - 2*contentInsetForPressedImage
-            newFrame.size.width = newFrame.size.height * imageAspectRatio
+            newSite.size.height = height - 2*contentInsetForPressedImage
+            newSite.size.width = newSite.size.height * imageAspectRatio
         }
         
-        newFrame.origin.x = (width - newFrame.size.width)/2
-        newFrame.origin.y = (height - newFrame.size.height)/2
+        newSite.origin.x = (width - newSite.size.width)/2
+        newSite.origin.y = (height - newSite.size.height)/2
         
-        view.frame = newFrame
+        view.site = newSite
     }
     
     
@@ -198,3 +198,4 @@ open class JABImageButton: JABButton {
     // MARK:
     
 }
+

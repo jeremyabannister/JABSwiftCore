@@ -194,7 +194,7 @@ open class JABPanel: JABTouchableView {
         }
         
     }
-
+    
 }
 
 
