@@ -15,7 +15,7 @@ open class JABPaneledScrollView: JABView, JABPanelChangeSubscriber, JABPanelDele
     // MARK:
     
     // MARK: Delegate
-    open var delegate: JABPaneledScrollViewDelegate?
+    weak open var delegate: JABPaneledScrollViewDelegate?
     
     // MARK: State
     open var scrollEnabled = true

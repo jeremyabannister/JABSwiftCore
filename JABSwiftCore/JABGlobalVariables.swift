@@ -18,6 +18,7 @@ public let thresholdDragDistance = CGFloat(90.0)
 public let backPanTouchThreshold = CGFloat(25.0)
 
 public let globalStopwatch = JABStopwatch()
+public var currentDebugView = UIView()
 
 public var rootViewController = UIViewController()
 
@@ -69,3 +70,4 @@ public func indexOfA(_ object: AnyObject, array: [AnyObject]) -> Int? {
 public protocol GlobalVariablesInitializationNotificationSubscriber {
     func globalVariablesWereInitialized ()
 }
+

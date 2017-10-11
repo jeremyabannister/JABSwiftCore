@@ -15,9 +15,9 @@ open class SRTCamera: JABView {
     // MARK:
     
     // MARK: Delegate
-    open var delegate: UIImagePickerControllerDelegate & UINavigationControllerDelegate {
+    weak open var delegate: (UIImagePickerControllerDelegate & UINavigationControllerDelegate)? {
         get {
-            return imagePicker.delegate!
+            return imagePicker.delegate
         }
         set {
             imagePicker.delegate = newValue

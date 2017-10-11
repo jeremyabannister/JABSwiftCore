@@ -40,8 +40,8 @@ public extension CGRect {
     
     
     
-    public var bounds: CGRect {
-        get { return CGRect(x: 0, y: 0, width: size.width, height: size.height) } }
+    public var zeroedOrigin: CGRect {
+        get { return CGRect(origin: .zero, size: size) } }
     
     
     // MARK:

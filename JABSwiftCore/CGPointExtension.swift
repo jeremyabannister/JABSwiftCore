@@ -16,7 +16,6 @@ public extension CGPoint {
         return CGPoint(x: cos(angle*conversion), y: sin(angle*conversion))
     }
     
-    
     public func distance (to point: CGPoint) -> CGFloat {
         let difference = CGPoint(x: x - point.x, y: y - point.y)
         return CGFloat(sqrt(Double((difference.x * difference.x) + (difference.y * difference.y))))
@@ -25,9 +24,21 @@ public extension CGPoint {
     public func slope (to point: CGPoint) -> CGFloat? {
         let rise = -(point.y - y)
         let run = point.x - x
-        if run == 0 { return nil }
+        if run == 0 { if rise == 0 { return 0 } else { return nil } }
         return rise/run
     }
+    
+    public func angle (to point: CGPoint) -> CGFloat {
+        if self == point { return 0 }
+        guard let slope = slope(to: point) else { if point.y < self.y { return (.pi/2).reducedAngle } else { return (-.pi/2).reducedAngle } }
+        if point.x > self.x { return (atan(slope).reducedAngle) } else { return (atan(slope) + .pi).reducedAngle }
+    }
+    /*
+     
+     public func rotated (by angle: CGFloat, around anchorPoint: CGPoint) -> CGPoint {
+     return CGPoint()
+     }
+     */
 }
 
 

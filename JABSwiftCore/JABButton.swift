@@ -16,12 +16,12 @@ open class JABButton: JABTouchableView {
     
     // Override
     override open var backgroundColor: UIColor? {
-        get { return backdrop.backdropColor }
-        set { undimmedBackdropColor = newValue; configureBackdrop() }
+        get { return holder.backdropColor }
+        set { undimmedBackdropColor = newValue; configureHolder() }
     }
     override open var cornerRadius: CGFloat {
-        get { return backdrop.cornerRadius }
-        set { backdrop.cornerRadius = newValue }
+        get { return holder.cornerRadius }
+        set { holder.cornerRadius = newValue }
     }
     
     // MARK: Delegate
@@ -39,7 +39,7 @@ open class JABButton: JABTouchableView {
     fileprivate var pressDelayTimer: Timer?
     
     // MARK: UI
-    fileprivate let backdrop = UIView()
+    fileprivate let holder = UIView()
     
     
     // MARK: Parameters
@@ -73,36 +73,36 @@ open class JABButton: JABTouchableView {
     
     // MARK: All
     override open func addAllUI () {
-        addBackdrop()
+        addHolder()
     }
     
     override open func updateAllUI() {
         
         
-        configureBackdrop()
-        positionBackdrop()
+        configureHolder()
+        positionHolder()
         
     }
     
     
     // MARK: Adding
-    fileprivate func addBackdrop () {
-        addSubview(backdrop)
+    fileprivate func addHolder () {
+        addSubview(holder)
     }
     
     
     
-    // MARK: Backdrop
-    fileprivate func configureBackdrop () {
-        let view = backdrop
+    // MARK: Holder
+    fileprivate func configureHolder () {
+        let view = holder
         if dimsWhenPressed {
             view.backdropColor = undimmedBackdropColor?.dim(1 - (visualPressedExtent * (1 - dimFraction)))
         }
         else { view.backdropColor = undimmedBackdropColor }
     }
     
-    fileprivate func positionBackdrop () {
-        let view = backdrop
+    fileprivate func positionHolder () {
+        let view = holder
         var newSite = CGRect.zero
         
         newSite.size.width = width
@@ -122,8 +122,8 @@ open class JABButton: JABTouchableView {
     
     // MARK: Override
     override open func addSubview(_ view: UIView) {
-        if view == backdrop { super.addSubview(view) }
-        else { backdrop.addSubview(view) }
+        if view == holder { super.addSubview(view) }
+        else { holder.addSubview(view) }
     }
     
     // MARK: Touch

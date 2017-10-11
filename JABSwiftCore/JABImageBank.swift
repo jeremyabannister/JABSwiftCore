@@ -15,7 +15,7 @@ open class JABImageBank: JABView, JABPaneledScrollViewDelegate, JABButtonDelegat
     // MARK:
     
     // MARK: Delegate
-    open var delegate: JABImageBankDelegate?
+    weak open var delegate: JABImageBankDelegate?
     
     // MARK: State
     open var numberOfColumns = 1
@@ -267,7 +267,7 @@ open class JABImageBank: JABView, JABPaneledScrollViewDelegate, JABButtonDelegat
 }
 
 
-public protocol JABImageBankDelegate {
+public protocol JABImageBankDelegate: class {
     func imageBankWantsToDeleteImage (_ imageBank: JABImageBank, image: UIImage, atIndex index: Int)
     
     func imageBankDidSelectCamera (_ imageBank: JABImageBank)
