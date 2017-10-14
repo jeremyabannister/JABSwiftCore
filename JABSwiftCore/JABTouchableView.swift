@@ -21,7 +21,7 @@ open class JABTouchableView: JABView, JABTouchManagerDelegate {
     // MARK:
     // MARK: Touch Recognition System
     // MARK:
-    weak open var touchManager: JABTouchManager?
+    open var touchManager: JABTouchManager?
     open var blockingViews: [UIView] = []
     
     
