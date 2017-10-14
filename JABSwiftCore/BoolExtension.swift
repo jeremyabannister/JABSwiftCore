@@ -9,5 +9,5 @@
 import Foundation
 
 public extension Bool {
-    public func xOr (_ otherBool: Bool) { return (self || otherBool) && !(self && otherBool) }
+    public func xOr (_ otherBool: Bool) -> Bool { return (self || otherBool) && !(self && otherBool) }
 }
