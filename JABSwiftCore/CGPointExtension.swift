@@ -16,6 +16,8 @@ public extension CGPoint {
         return CGPoint(x: cos(angle*conversion), y: sin(angle*conversion))
     }
     
+    public var magnitude: CGFloat { return sqrt(pow(self.x, 2) + pow(self.y, 2)) }
+    
     public func distance (to point: CGPoint) -> CGFloat {
         let difference = CGPoint(x: x - point.x, y: y - point.y)
         return CGFloat(sqrt(Double((difference.x * difference.x) + (difference.y * difference.y))))
@@ -30,15 +32,21 @@ public extension CGPoint {
     
     public func angle (to point: CGPoint) -> CGFloat {
         if self == point { return 0 }
-        guard let slope = slope(to: point) else { if point.y < self.y { return (.pi/2).reducedAngle } else { return (-.pi/2).reducedAngle } }
-        if point.x > self.x { return (atan(slope).reducedAngle) } else { return (atan(slope) + .pi).reducedAngle }
+        guard let slope = slope(to: point) else { if point.y < self.y { return (-.pi/2).reducedAngle } else { return (.pi/2).reducedAngle } }
+        if point.x > self.x { return (-atan(slope).reducedAngle) } else { return (-atan(slope) + .pi).reducedAngle }
     }
-    /*
-     
-     public func rotated (by angle: CGFloat, around anchorPoint: CGPoint) -> CGPoint {
-     return CGPoint()
-     }
-     */
+    
+    public func rotated (by angularDisplacement: CGFloat, around anchorPoint: CGPoint = .zero) -> CGPoint {
+        let distanceToAnchor = self.distance(to: anchorPoint)
+        let currentAngleRelativeToAnchor = self.angle(to: anchorPoint)
+        let newAngleRelativeToAnchor = currentAngleRelativeToAnchor + angularDisplacement
+        return anchorPoint + (distanceToAnchor * CGPoint.unitVector(for: newAngleRelativeToAnchor, inDegrees: false))
+    }
+    
+    public func unitVector (towards point: CGPoint) -> CGPoint {
+        return CGPoint.unitVector(for: angle(to: point), inDegrees: false)
+    }
+    
 }
 
 
