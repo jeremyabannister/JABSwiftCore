@@ -49,6 +49,7 @@
 		87F771EB1B0C1C0E00889827 /* JABPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F771EA1B0C1C0E00889827 /* JABPanel.swift */; };
 		87F771EF1B0C1C6600889827 /* JABPaneledScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F771EE1B0C1C6600889827 /* JABPaneledScrollView.swift */; };
 		87F842EE1F918426009027B9 /* CGContextExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F842ED1F918426009027B9 /* CGContextExtension.swift */; };
+		87F842F01F920388009027B9 /* BoolExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F842EF1F920388009027B9 /* BoolExtension.swift */; };
 		87FB2E2B1B522C27000E09D9 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87FB2E2A1B522C27000E09D9 /* StringExtension.swift */; };
 /* End PBXBuildFile section */
 
@@ -109,6 +110,7 @@
 		87F771EA1B0C1C0E00889827 /* JABPanel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JABPanel.swift; sourceTree = "<group>"; };
 		87F771EE1B0C1C6600889827 /* JABPaneledScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JABPaneledScrollView.swift; sourceTree = "<group>"; };
 		87F842ED1F918426009027B9 /* CGContextExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGContextExtension.swift; sourceTree = "<group>"; };
+		87F842EF1F920388009027B9 /* BoolExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoolExtension.swift; sourceTree = "<group>"; };
 		87FB2E2A1B522C27000E09D9 /* StringExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -435,6 +437,7 @@
 				870DFB821B532A9200BC76D7 /* DoubleExtension.swift */,
 				87B0130C1E5698770000280E /* MutableCollectionExtension.swift */,
 				87B013101E5698D30000280E /* SequenceExtension.swift */,
+				87F842EF1F920388009027B9 /* BoolExtension.swift */,
 			);
 			name = "Class Extensions";
 			sourceTree = "<group>";
@@ -597,6 +600,7 @@
 				8714B2961EA01D8A00B7C5FA /* CGFloatExtension.swift in Sources */,
 				874226F81F84CB3800C44DA5 /* CABasicAnimationExtension.swift in Sources */,
 				874D00001B76C8F8002E1A32 /* MarshalOperator.swift in Sources */,
+				87F842F01F920388009027B9 /* BoolExtension.swift in Sources */,
 				87643AB11EB07A8400D41A60 /* JABBlurLayer.swift in Sources */,
 				870419781BE97635004DD8DF /* JABImageBank.swift in Sources */,
 				87F771EB1B0C1C0E00889827 /* JABPanel.swift in Sources */,
