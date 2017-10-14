@@ -37,10 +37,10 @@ public extension CGPoint {
     }
     
     public func rotated (by angularDisplacement: CGFloat, around anchorPoint: CGPoint = .zero) -> CGPoint {
-        let distanceToAnchor = self.distance(to: anchorPoint)
-        let currentAngleRelativeToAnchor = self.angle(to: anchorPoint)
+        let distanceFromAnchor = anchorPoint.distance(to: self)
+        let currentAngleRelativeToAnchor = anchorPoint.angle(to: self)
         let newAngleRelativeToAnchor = currentAngleRelativeToAnchor + angularDisplacement
-        return anchorPoint + (distanceToAnchor * CGPoint.unitVector(for: newAngleRelativeToAnchor, inDegrees: false))
+        return anchorPoint + (distanceFromAnchor * CGPoint.unitVector(for: newAngleRelativeToAnchor, inDegrees: false))
     }
     
     public func unitVector (towards point: CGPoint) -> CGPoint {
