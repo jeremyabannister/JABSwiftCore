@@ -176,10 +176,13 @@ public extension String {
         }
     }
     
-    public func toDouble() -> Double? {
+    public func toDouble () -> Double? {
         return NumberFormatter().number(from: self)?.doubleValue
     }
     
+    public func toUIColor () -> UIColor {
+        return UIColor(self)
+    }
     
     
     // MARK: Substring
@@ -201,3 +204,4 @@ public extension String {
     
     
 }
+

@@ -12,9 +12,13 @@ public extension UIFont {
     
     public func sizeOfString (_ string: String, constrainedToWidth width: CGFloat) -> CGSize {
         return (string as NSString).boundingRect(with: CGSize(width: Double(width), height: Double.greatestFiniteMagnitude),
-            options: NSStringDrawingOptions.usesLineFragmentOrigin,
-            attributes: [NSAttributedStringKey.font: self],
-            context: nil).size
+                                                 options: NSStringDrawingOptions.usesLineFragmentOrigin,
+                                                 attributes: [NSAttributedStringKey.font: self],
+                                                 context: nil).size
     }
     
+    public static func == (_ lhs: UIFont, rhs: UIFont) -> Bool {
+        return lhs.familyName == rhs.familyName && lhs.fontName == rhs.fontName && lhs.pointSize == rhs.pointSize
+    }
 }
+

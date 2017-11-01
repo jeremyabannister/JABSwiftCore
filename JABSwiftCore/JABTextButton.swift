@@ -18,14 +18,15 @@ open class JABTextButton: JABButton {
     
     // MARK: State
     open var text = ""
-    open var textAlignment = NSTextAlignment.center
-    open var font = UIFont(name: "HelveticaNeue-Medium", size: 12)
+    open var textColor: UIColor { get { return undimmedTextStyle?.textColor ?? .black } set { textStyle = textStyle?.colored(with: newValue) } }
+    open var textAlignment: NSTextAlignment { get { return undimmedTextStyle?.textAlignment ?? .center } set { textStyle = textStyle?.withTextAlignment(newValue) } }
+    open var font: UIFont? { get { return undimmedTextStyle?.font } set { textStyle = textStyle?.withFont(newValue) } }
     open var numberOfLines: Int?
     
-    fileprivate var undimmedTextColor: UIColor?
-    open var textColor: UIColor? {
-        get { return label.textColor }
-        set { undimmedTextColor = newValue }
+    fileprivate var undimmedTextStyle: TextStyle?
+    open var textStyle: TextStyle? {
+        get { return label.textStyle }
+        set { undimmedTextStyle = newValue }
     }
     
     open var contentInsetForText: CGFloat?
@@ -119,14 +120,12 @@ open class JABTextButton: JABButton {
         let view = label
         
         view.text = text
-        view.textAlignment = textAlignment
-        view.font = font
         if numberOfLines != nil { view.numberOfLines = numberOfLines! }
         
         if textDimsWhenPressed {
-            view.textColor = undimmedTextColor?.dim(1 - (visualPressedExtent * (1 - (textDimFraction ?? dimFraction))))
+            view.textStyle = undimmedTextStyle?.dim(1 - (visualPressedExtent * (1 - (textDimFraction ?? dimFraction))))
         }
-        else { view.textColor = undimmedTextColor }
+        else { view.textStyle = undimmedTextStyle }
         
     }
     

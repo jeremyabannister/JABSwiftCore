@@ -44,6 +44,10 @@ public extension CGRect {
         get { return CGRect(origin: .zero, size: size) } }
     
     
+    
+    public var description: String { return "(\(x), \(y), \(width), \(height)" }
+    
+    
     // MARK:
     // MARK: Methods
     // MARK:

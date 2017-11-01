@@ -11,12 +11,14 @@ import Foundation
 public extension CGPoint {
     
     
+    public var description: String { return "(\(x), \(y)" }
+    
+    public var magnitude: CGFloat { return sqrt(pow(self.x, 2) + pow(self.y, 2)) }
+    
     public static func unitVector (for angle: CGFloat, inDegrees: Bool) -> CGPoint {
         let conversion = [true: (2*CGFloat.pi)/360.0, false: 1][inDegrees]!
         return CGPoint(x: cos(angle*conversion), y: sin(angle*conversion))
     }
-    
-    public var magnitude: CGFloat { return sqrt(pow(self.x, 2) + pow(self.y, 2)) }
     
     public func distance (to point: CGPoint) -> CGFloat {
         let difference = CGPoint(x: x - point.x, y: y - point.y)
