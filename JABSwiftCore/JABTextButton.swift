@@ -132,8 +132,7 @@ open class JABTextButton: JABButton {
     fileprivate func positionLabel () {
         let view = label
         var newSite = CGRect.zero
-        guard let text = view.text else { return }
-        let size = view.font.sizeOfString(text, constrainedToWidth: width - 2*(contentInsetForText ?? 0))
+        guard let size = view.size(constrainedToWidth: width - 2*(contentInsetForText ?? 0)) else { return }
         
         newSite.size.width = size.width
         newSite.size.height = size.height

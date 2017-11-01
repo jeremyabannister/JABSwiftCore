@@ -10,10 +10,14 @@ import Foundation
 
 public extension UIFont {
     
-    public func sizeOfString (_ string: String, constrainedToWidth width: CGFloat) -> CGSize {
+    public func sizeOfString (_ string: String, constrainedToWidth width: CGFloat, characterSpacing: CGFloat? = nil, paragraphStyle: NSMutableParagraphStyle? = nil) -> CGSize {
+        var attributes: [NSAttributedStringKey: Any] = [.font: self]
+        if let characterSpacing = characterSpacing { attributes[.kern] = characterSpacing }
+        if let paragraphStyle = paragraphStyle { attributes[.paragraphStyle] = paragraphStyle }
+        
         return (string as NSString).boundingRect(with: CGSize(width: Double(width), height: Double.greatestFiniteMagnitude),
                                                  options: NSStringDrawingOptions.usesLineFragmentOrigin,
-                                                 attributes: [NSAttributedStringKey.font: self],
+                                                 attributes: attributes,
                                                  context: nil).size
     }
     
