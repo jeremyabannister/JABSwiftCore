@@ -184,6 +184,10 @@ public extension String {
         return UIColor(self)
     }
     
+    public func attributed (with textStyle: TextStyle?) -> NSMutableAttributedString {
+        return NSMutableAttributedString(string: self, attributes: [NSAttributedStringKey.foregroundColor: (textStyle?.textColor ?? .black) as Any, NSAttributedStringKey.font: textStyle?.font ?? UIFont(), NSAttributedStringKey.kern: textStyle?.characterSpacing ?? 1])
+    }
+    
     
     // MARK: Substring
     public func decapitate () -> Substring {

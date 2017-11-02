@@ -13,6 +13,7 @@
 		870DFB831B532A9200BC76D7 /* DoubleExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870DFB821B532A9200BC76D7 /* DoubleExtension.swift */; };
 		871280701B4C5D410005716F /* NSDateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8712806F1B4C5D410005716F /* NSDateExtension.swift */; };
 		87128B671AFDDC1C00D1F34A /* UIFontExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87128B661AFDDC1B00D1F34A /* UIFontExtension.swift */; };
+		8712AF821FAB0FCD005DAB84 /* UITextFieldExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8712AF811FAB0FCD005DAB84 /* UITextFieldExtension.swift */; };
 		8714B2961EA01D8A00B7C5FA /* CGFloatExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8714B2951EA01D8A00B7C5FA /* CGFloatExtension.swift */; };
 		8721FF2B1B6ECE37000EB3CB /* JABLocationTester.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8721FF2A1B6ECE37000EB3CB /* JABLocationTester.swift */; };
 		872B6A011BE1A9B600916EE8 /* SRTCamera.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872B6A001BE1A9B600916EE8 /* SRTCamera.swift */; };
@@ -71,6 +72,7 @@
 		870DFB821B532A9200BC76D7 /* DoubleExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoubleExtension.swift; sourceTree = "<group>"; };
 		8712806F1B4C5D410005716F /* NSDateExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSDateExtension.swift; sourceTree = "<group>"; };
 		87128B661AFDDC1B00D1F34A /* UIFontExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIFontExtension.swift; sourceTree = "<group>"; };
+		8712AF811FAB0FCD005DAB84 /* UITextFieldExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextFieldExtension.swift; sourceTree = "<group>"; };
 		8714B2951EA01D8A00B7C5FA /* CGFloatExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CGFloatExtension.swift; sourceTree = "<group>"; };
 		8721FF2A1B6ECE37000EB3CB /* JABLocationTester.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JABLocationTester.swift; sourceTree = "<group>"; };
 		872B6A001BE1A9B600916EE8 /* SRTCamera.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SRTCamera.swift; sourceTree = "<group>"; };
@@ -440,6 +442,7 @@
 				87128B661AFDDC1B00D1F34A /* UIFontExtension.swift */,
 				8701987A1AE61FCA0073BFD5 /* UIImageExtension.swift */,
 				8795452D1FA9AEA500A11939 /* UILabelExtension.swift */,
+				8712AF811FAB0FCD005DAB84 /* UITextFieldExtension.swift */,
 				87F4FD3D1AE421A300953E38 /* UIViewExtension.swift */,
 			);
 			name = "Class Extensions";
@@ -594,6 +597,7 @@
 				87128B671AFDDC1C00D1F34A /* UIFontExtension.swift in Sources */,
 				87643AB31EB07B4600D41A60 /* JABStopwatch.swift in Sources */,
 				875444D41AE1D02C00659E6B /* JABGlobalVariables.swift in Sources */,
+				8712AF821FAB0FCD005DAB84 /* UITextFieldExtension.swift in Sources */,
 				87C21BBC1AEF131300FCE515 /* CGPointExtension.swift in Sources */,
 				875444DC1AE1D05800659E6B /* JABTouchManager.swift in Sources */,
 				875444E01AE1D06500659E6B /* JABApplicationRoot.swift in Sources */,

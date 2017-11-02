@@ -101,3 +101,4 @@ public struct TextStyle {
     
     public func dim (_ fraction: CGFloat) -> TextStyle { return self.colored(with: self.textColor.dim(fraction)) }
 }
+
