@@ -62,5 +62,14 @@ public extension CGRect {
     public func translated (by point: CGPoint) -> CGRect {
         return CGRect(x: self.x + point.x, y: self.y + point.y, width: self.size.width, height: self.size.height)
     }
+    
+    public static func ~= (_ lhs: CGRect, _ rhs: CGRect) -> Bool {
+        let epsilon: CGFloat = 0.001
+        if abs(lhs.origin.x - rhs.origin.x) > epsilon { return false }
+        if abs(lhs.origin.y - rhs.origin.y) > epsilon { return false }
+        if abs(lhs.size.width - rhs.size.width) > epsilon { return false }
+        if abs(lhs.size.height - rhs.size.height) > epsilon { return false }
+        return true
+    }
 }
 

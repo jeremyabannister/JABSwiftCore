@@ -15,7 +15,7 @@ extension UIView {
     open var site: CGRect {
         get { return frame }
         set {
-            if site == newValue { return }
+            if site ~= newValue { return }
             // Turns out the bounds origin is not always (0, 0), for example in the case of a scrolled UITableView
             let newBounds = CGRect(origin: layer.bounds.origin, size: newValue.size)
             let newPosition = newValue.origin + CGPoint(x: newValue.size.width/2, y: newValue.size.height/2)
@@ -81,7 +81,7 @@ extension UIView {
     /** A shortcut to the `cornerRadius` of the view's layer */
     @objc open var cornerRadius: CGFloat {
         get { return layer.cornerRadius }
-        set { if cornerRadius == newValue { return }; animate(newValue, for: .cornerRadius); layer.cornerRadius = newValue } }
+        set { if cornerRadius ~= newValue { return }; animate(newValue, for: .cornerRadius); layer.cornerRadius = newValue } }
     /// Shadow
     open var shadow: Shadow {
         get { return Shadow(opacity: layer.shadowOpacity, radius: layer.shadowRadius, offset: layer.shadowOffset, color: UIColor(cgColor: layer.shadowColor ?? UIColor.black.cgColor)) }
@@ -137,7 +137,6 @@ extension UIView {
     // Animation
     private enum AnimatableProperty: String { case bounds, position, backgroundColor, opacity, cornerRadius, shadowOpacity, shadowRadius, shadowOffset, shadowColor }
     private func animate (_ newValue: Any?, for property: AnimatableProperty) {
-        //        if self is UITableView && property == .bounds
         if !JABView.isGeneratingAnimatedUpdate { return }
         let animation = CABasicAnimation(keyPath: property.rawValue, fromValue: fromValue(for: property), toValue: newValue)
         animation.duration = JABView.animationDuration
@@ -262,3 +261,4 @@ public struct Shadow {
     
     public static func == (lhs: Shadow, rhs: Shadow) -> Bool { return (lhs.opacity == rhs.opacity) && (lhs.radius == rhs.radius) && (lhs.offset == rhs.offset) && (lhs.color == rhs.color) }
 }
+

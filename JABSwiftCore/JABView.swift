@@ -99,13 +99,6 @@ open class JABView: UIView, GlobalVariablesInitializationNotificationSubscriber 
         
     }
     
-    //    open func animatedUpdate (duration: TimeInterval = defaultAnimationDuration, delay: TimeInterval = 0, options: UIViewAnimationOptions = .curveEaseInOut, completion: @escaping (Bool) -> () = {(completed) in }) {
-    //
-    //        UIView.animate(withDuration: duration, delay: delay, options: options, animations: { () -> Void in
-    //            self.updateAllUI()
-    //        }, completion: completion)
-    //    }
-    
     private func options (for timingFunction: TimingFunction) -> UIViewAnimationOptions {
         switch timingFunction {
         case .linear:
@@ -120,7 +113,6 @@ open class JABView: UIView, GlobalVariablesInitializationNotificationSubscriber 
     }
     
     open func animatedUpdate (duration: TimeInterval = defaultAnimationDuration, timingFunction: TimingFunction = .easeInOut, completion: @escaping (Bool) -> () = { (completed) in }) {
-        
         
         let oldDuration = JABView.animationDuration
         let oldTimingFunction = JABView.animationTimingFunction

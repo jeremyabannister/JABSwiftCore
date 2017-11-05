@@ -23,7 +23,7 @@ public extension String {
     // MARK: Subscript
     
     subscript (i: Int) -> Character {
-        return self[self.characters.index(self.startIndex, offsetBy: i)]
+        return self[self.index(self.startIndex, offsetBy: i)]
     }
     
     
@@ -31,10 +31,10 @@ public extension String {
     // MARK: Is Valid
     public func isValidCombinationOfCharacterSet (_ characterSet: [Character]) -> Bool {
         
-        if self.characters.count == 0 {
+        if self.count == 0 {
             return true
         } else {
-            for i in 0..<self.characters.count {
+            for i in 0..<self.count {
                 var validCharacter = false
                 for character in characterSet {
                     if self[i] == character {
@@ -55,7 +55,7 @@ public extension String {
     }
     
     public func isValidInteger () -> Bool {
-        if self.characters.count > 0 {
+        if self.count > 0 {
             if self[0] == "-" {
                 return String(decapitate()).isValidWholeNumber()
             }
@@ -84,13 +84,13 @@ public extension String {
     public func isValidDollarAmount () -> Bool {
         
         var testSubject = self
-        if testSubject.characters.count > 0 {
+        if testSubject.count > 0 {
             if testSubject[0] == "-" {
                 testSubject = String(testSubject.decapitate())
             }
         }
         
-        if testSubject.characters.count > 0 {
+        if testSubject.count > 0 {
             if testSubject[0] == "$" {
                 testSubject = String(testSubject.decapitate())
             } else {
@@ -100,7 +100,7 @@ public extension String {
             return false
         }
         
-        if testSubject.characters.count > 0 {
+        if testSubject.count > 0 {
             if testSubject[0] == "-" {
                 return false
             } else {
@@ -140,14 +140,14 @@ public extension String {
             var testSubject = self
             var negative = false
             
-            if testSubject.characters.count > 0 {
+            if testSubject.count > 0 {
                 if testSubject[0] == "-" {
                     negative = true
                     testSubject = String(testSubject.decapitate())
                 }
             }
             
-            if testSubject.characters.count > 0 {
+            if testSubject.count > 0 {
                 if testSubject[0] == "$" {
                     testSubject = String(testSubject.decapitate())
                 } else {
@@ -156,7 +156,7 @@ public extension String {
                 }
             }
             
-            if testSubject.characters.count > 0 {
+            if testSubject.count > 0 {
                 if let doubleAmount = testSubject.toDouble() {
                     if negative {
                         return -doubleAmount
@@ -185,13 +185,13 @@ public extension String {
     }
     
     public func attributed (with textStyle: TextStyle?) -> NSMutableAttributedString {
-        return NSMutableAttributedString(string: self, attributes: [NSAttributedStringKey.foregroundColor: (textStyle?.textColor ?? .black) as Any, NSAttributedStringKey.font: textStyle?.font ?? UIFont(), NSAttributedStringKey.kern: textStyle?.characterSpacing ?? 1])
+        return NSMutableAttributedString(string: self, attributes: [NSAttributedStringKey.foregroundColor: (textStyle?.textColor ?? .black) as Any, NSAttributedStringKey.font: (textStyle?.font ?? UIFont()) as Any, NSAttributedStringKey.kern: textStyle?.characterSpacing ?? 1])
     }
     
     
     // MARK: Substring
     public func decapitate () -> Substring {
-        if self.characters.count > 0 {
+        if self.count > 0 {
             return self[index(after: startIndex)...]
         }
         return ""
