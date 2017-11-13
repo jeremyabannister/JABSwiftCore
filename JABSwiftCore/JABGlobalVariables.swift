@@ -11,7 +11,7 @@ import UIKit
 public var globalVariablesInitialized = false
 public var globalVariableInitializationNotificationSubscribers = [GlobalVariablesInitializationNotificationSubscriber]()
 public var iPad = false
-public let heightOfStatusBar = CGFloat(20.0)
+public var heightOfStatusBar = UIApplication.shared.statusBarFrame.size.height
 public var staticOnScreenView: UIView?
 public let partialSlideFraction = CGFloat(0.3)
 public let thresholdDragDistance = CGFloat(90.0)
@@ -21,23 +21,6 @@ public let globalStopwatch = JABStopwatch()
 public var currentDebugView = UIView()
 
 public var rootViewController = UIViewController()
-
-public let redColor = UIColor.red
-public let blueColor = UIColor.blue
-public let greenColor = UIColor.green
-public let yellowColor = UIColor.yellow
-public let purpleColor = UIColor.purple
-public let orangeColor = UIColor.orange
-public let cyanColor = UIColor.cyan
-public let whiteColor = UIColor.white
-public let blackColor = UIColor.black
-public let lightGrayColor = UIColor.lightGray
-public let darkGrayColor = UIColor.darkGray
-public let clearColor = UIColor.clear
-
-
-// MATH
-public let pi = 3.14159
 
 
 

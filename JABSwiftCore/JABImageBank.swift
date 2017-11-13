@@ -128,7 +128,7 @@ open class JABImageBank: JABView, JABPaneledScrollViewDelegate, JABButtonDelegat
         
         view.text = "+"
         view.textAlignment = .center
-        view.textColor = blackColor
+        view.textColor = .black
         view.font = UIFont(name: "AvenirNext-DemiBold", size: 24)
         
         view.backdropColor = UIColor(white: 0.8, alpha: 1)

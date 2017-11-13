@@ -19,7 +19,7 @@ open class JABLocationTester: JABTouchableView {
     
     // MARK: State
     // Public
-    open var color = blackColor
+    open var color: UIColor = .black
     
     // Private
     fileprivate var location = CGPoint()

@@ -109,7 +109,7 @@ extension UIView {
         set { if shadowOffset == newValue { return }; animate(newValue, for: .shadowOffset); layer.shadowOffset = newValue } }
     /** A shortcut to the `shadowColor` of the view's layer */
     open var shadowColor: UIColor? {
-        get { return UIColor(cgColor: layer.shadowColor ?? blackColor.cgColor) }
+        get { return UIColor(cgColor: layer.shadowColor ?? UIColor.black.cgColor) }
         set { layer.shadowColor = newValue?.cgColor } }
     /** A shortcut to the `shadowPath` of the view's layer */
     open var shadowPath: CGPath? {
