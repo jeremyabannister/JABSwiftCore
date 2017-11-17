@@ -15,7 +15,7 @@ open class JABButton: JABTouchableView {
     // MARK:
     
     // Override
-    override open var backgroundColor: UIColor? {
+    override open var backdropColor: UIColor? {
         get { return holder.backdropColor }
         set { undimmedBackdropColor = newValue; configureHolder() }
     }

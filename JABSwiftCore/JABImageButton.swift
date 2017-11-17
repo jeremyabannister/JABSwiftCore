@@ -17,6 +17,8 @@ open class JABImageButton: JABButton {
     // MARK: Delegate
     
     // MARK: State
+    public enum MorphState { case image, hidden }
+    open private(set) var morphState: MorphState
     open var image: UIImage?
     open var tintColorForImage: UIColor?
     open var contentInset: CGFloat = 0
@@ -46,11 +48,13 @@ open class JABImageButton: JABButton {
     // MARK: Init
     // MARK:
     
-    public init () {
+    public init (morphState: MorphState = .image) {
+        self.morphState = morphState
         super.init(frame: CGRect.zero)
     }
     
     required public init?(coder aDecoder: NSCoder) {
+        self.morphState = .image
         super.init(coder: aDecoder)
         print("Should not be initializing from coder \(self)")
     }
@@ -145,6 +149,8 @@ open class JABImageButton: JABButton {
             newSite.size.width = newSite.size.height * imageAspectRatio
         }
         
+        if morphState == .hidden { newSite.size.height = 0.0001; newSite.size.width = newSite.size.height * imageAspectRatio }
+        
         newSite.origin.x = (width - newSite.size.width)/2
         newSite.origin.y = (height - newSite.size.height)/2
         
@@ -181,6 +187,8 @@ open class JABImageButton: JABButton {
             newSite.size.width = newSite.size.height * imageAspectRatio
         }
         
+        if morphState == .hidden { newSite.size.height = 0.0001; newSite.size.width = newSite.size.height * imageAspectRatio }
+        
         newSite.origin.x = (width - newSite.size.width)/2
         newSite.origin.y = (height - newSite.size.height)/2
         
@@ -191,6 +199,13 @@ open class JABImageButton: JABButton {
     // MARK:
     // MARK: Actions
     // MARK:
+    
+    // MARK: Morph State
+    open func morph (to morphState: MorphState, animationDuration: TimeInterval = defaultAnimationDuration, completion: @escaping (Bool) -> () = { (completed) in }) {
+        if self.morphState == morphState { return }
+        self.morphState = morphState
+        if animationDuration == 0 { updateAllUI(); completion(true) } else { animatedUpdate(duration: animationDuration, completion: completion) }
+    }
     
     
     // MARK:

@@ -12,7 +12,7 @@ import UIKit
 extension UIView {
     
     /// This is just the frame, but by using a different name I can monitor all frame changes within my app which is essential to my custom animation system
-    open var site: CGRect {
+    @objc open var site: CGRect {
         get { return frame }
         set {
             if site ~= newValue { return }
@@ -24,9 +24,9 @@ extension UIView {
             frame = newValue
         } }
     
-    open var backdropColor: UIColor? {
+    @objc open var backdropColor: UIColor? {
         get { return backgroundColor }
-        set { if self is JABButton { print("**** WARNING: DO NOT USE THE BACKDROP PROPERTY OF JABBUTTON, USE THE BACKGROUND PROPERTY INSTEAD SO THAT IT CAN BE FORWARDED TO ITS HOLDER") }; if backdropColor == newValue { return }; animate(newValue?.cgColor, for: .backgroundColor); layer.backgroundColor = newValue?.cgColor } }
+        set { if backdropColor == newValue { return }; animate(newValue?.cgColor, for: .backgroundColor); layer.backgroundColor = newValue?.cgColor } }
     
     ///A shortcut to the view's `frame.origin.x`
     open var x: CGFloat {
