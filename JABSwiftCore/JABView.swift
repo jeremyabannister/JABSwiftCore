@@ -99,21 +99,7 @@ open class JABView: UIView, GlobalVariablesInitializationNotificationSubscriber 
         
     }
     
-    private func options (for timingFunction: TimingFunction) -> UIViewAnimationOptions {
-        switch timingFunction {
-        case .linear:
-            return .curveLinear
-        case .easeIn:
-            return .curveEaseIn
-        case .easeOut:
-            return .curveEaseOut
-        default:
-            return .curveEaseInOut
-        }
-    }
-    
-    open func animatedUpdate (duration: TimeInterval = defaultAnimationDuration, timingFunction: TimingFunction = .easeInOut, completion: @escaping (Bool) -> () = { (completed) in }) {
-        
+    open func animate (_ updateCode: () -> (), duration: TimeInterval = defaultAnimationDuration, timingFunction: TimingFunction = .easeInOut, completion: @escaping (Bool) -> () = { (completed) in }) {
         let oldDuration = JABView.animationDuration
         let oldTimingFunction = JABView.animationTimingFunction
         
@@ -121,12 +107,17 @@ open class JABView: UIView, GlobalVariablesInitializationNotificationSubscriber 
         JABView.animationDuration = duration
         JABView.animationTimingFunction = JABView.mediaTimingFunction(for: timingFunction)
         
-        self.updateAllUI()
+        updateCode()
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + duration) { completion(true) }
         
         JABView.isGeneratingAnimatedUpdate = false
         JABView.animationDuration = oldDuration
         JABView.animationTimingFunction = oldTimingFunction
+    }
+    
+    
+    open func animatedUpdate (duration: TimeInterval = defaultAnimationDuration, timingFunction: TimingFunction = .easeInOut, completion: @escaping (Bool) -> () = { (completed) in }) {
+        animate({ self.updateAllUI() }, duration: duration, timingFunction: timingFunction, completion: completion)
     }
     
     
