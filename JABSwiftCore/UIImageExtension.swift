@@ -15,12 +15,7 @@ public extension UIImage {
     
     
     // MARK: Coloring
-    public func imageTintedWithColor(_ color: UIColor?) -> UIImage {
-        // This method is designed for use with template images, i.e. solid-coloured mask-like images.
-        return imageTintedWithColor(color, fraction: 0.0) // default to a fully tinted mask of the image.
-    }
-    
-    public func imageTintedWithColor(_ color: UIColor?, fraction: CGFloat) -> UIImage {
+    public func imageTintedWithColor(_ color: UIColor?, fraction: CGFloat = 0) -> UIImage {
         
         if color == nil { return self }
         // Construct new image the same size as this one.

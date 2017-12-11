@@ -42,7 +42,7 @@ open class JABVersionNumber: NSObject, Comparable, NSCoding {
         
         super.init()
         guard let string = string else { return nil }
-        if !string.isValidVersionNumber() { return nil }
+        if !string.isVersionNumber { return nil }
         
         let components = string.components(separatedBy: ".")
         for component in components { if let number = Int(component) { numbers.append(number) } }

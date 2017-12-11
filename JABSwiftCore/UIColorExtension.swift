@@ -11,7 +11,7 @@ import UIKit
 
 public extension UIColor {
     
-    public convenience init (_ hex: String) {
+    public convenience init (hex: String) {
         var cString:String = hex.trimmingCharacters(in: .whitespacesAndNewlines).uppercased()
         if (cString.hasPrefix("#")) { cString.remove(at: cString.startIndex) }
         if ((cString.count) != 6) { self.init(white: (128.0/255.0), alpha: 1); return }

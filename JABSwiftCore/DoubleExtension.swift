@@ -28,4 +28,9 @@ public extension Double {
             return "$".appendingFormat("%.2f", self)
         }
     }
+    
+    public func flooredToDecimalPlaces (_ numberOfDecimalPlaces: Int) -> Double {
+        return floor(self * pow(10, Double(numberOfDecimalPlaces)))/pow(10, Double(numberOfDecimalPlaces))
+    }
 }
+
