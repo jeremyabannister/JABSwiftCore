@@ -45,8 +45,6 @@ public extension CGRect {
     
     
     
-    public var description: String { return "(\(x), \(y), \(width), \(height)" }
-    
     
     // MARK:
     // MARK: Methods
@@ -73,3 +71,7 @@ public extension CGRect {
     }
 }
 
+
+extension CGRect: CustomStringConvertible {
+    public var description: String { return "(\(x), \(y), \(width), \(height))" }
+}

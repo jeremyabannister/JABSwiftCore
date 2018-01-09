@@ -99,7 +99,7 @@ open class JABView: UIView, GlobalVariablesInitializationNotificationSubscriber 
         
     }
     
-    open func animate (_ runUpdateCode: () -> (), duration: TimeInterval = defaultAnimationDuration, timingFunction: TimingFunction = .easeInOut, completion: @escaping (Bool) -> () = { (completed) in }) {
+    open func animate (_ updateCode: () -> (), duration: TimeInterval = defaultAnimationDuration, timingFunction: TimingFunction = .easeInOut, completion: @escaping (Bool) -> () = { (completed) in }) {
         let oldDuration = JABView.animationDuration
         let oldTimingFunction = JABView.animationTimingFunction
         
@@ -107,7 +107,7 @@ open class JABView: UIView, GlobalVariablesInitializationNotificationSubscriber 
         JABView.animationDuration = duration
         JABView.animationTimingFunction = JABView.mediaTimingFunction(for: timingFunction)
         
-        runUpdateCode()
+        updateCode()
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + duration) { completion(true) }
         
         JABView.isGeneratingAnimatedUpdate = false

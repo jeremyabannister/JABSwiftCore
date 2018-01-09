@@ -17,7 +17,7 @@ open class JABTextButton: JABButton {
     // MARK: Delegate
     
     // MARK: State
-    open var text = ""
+    open var text: String
     open var textColor: UIColor { get { return undimmedTextStyle?.textColor ?? .black } set { textStyle = textStyle?.colored(with: newValue) } }
     open var textAlignment: NSTextAlignment { get { return undimmedTextStyle?.textAlignment ?? .center } set { textStyle = textStyle?.withTextAlignment(newValue) } }
     open var font: UIFont? { get { return undimmedTextStyle?.font } set { textStyle = textStyle?.withFont(newValue) } }
@@ -53,11 +53,13 @@ open class JABTextButton: JABButton {
     // MARK: Init
     // MARK:
     
-    public init () {
-        super.init(frame: CGRect.zero)
+    public init (text: String = "") {
+        self.text = text
+        super.init()
     }
     
     required public init?(coder aDecoder: NSCoder) {
+        self.text = ""
         super.init(coder: aDecoder)
         print("Should not be initializing from coder \(self)")
     }

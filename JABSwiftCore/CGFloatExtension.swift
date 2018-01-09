@@ -20,7 +20,8 @@ public extension CGFloat {
         if abs(lhs - rhs) > epsilon { return false }
         return true
     }
+    
+    public func bounded (by lowerBound: CGFloat?, _ upperBound: CGFloat?) -> CGFloat {
+        return (self < lowerBound ?? self) ? (lowerBound ?? self) : ((self > upperBound ?? self) ? (upperBound ?? self) : self)
+    }
 }
-
-
-

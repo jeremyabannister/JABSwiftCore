@@ -118,9 +118,12 @@ public extension String {
     // ---------------
     public func decapitated () -> Substring {
         if count == 0 { return "" }
-        return self[1...] ?? ""
+        return self[1...]
     }
     
+    public func removing (_ substring: String) -> String {
+        return self.components(separatedBy: substring).joined()
+    }
     
     // ---------------
     // MARK: Ranges

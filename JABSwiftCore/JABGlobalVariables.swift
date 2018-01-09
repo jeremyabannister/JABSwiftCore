@@ -39,15 +39,7 @@ public func initializeGlobalParameters () {
 }
 
 
-public func indexOfA(_ object: AnyObject, array: [AnyObject]) -> Int? {
-    for i in 0..<array.count {
-        if array[i] === object {
-            return i
-        }
-    }
-    return nil
-}
-
+func max<T: Comparable> (of value1: T, _ value2: T) -> T { return value1 > value2 ? value1 : value2 }
 
 
 public protocol GlobalVariablesInitializationNotificationSubscriber {

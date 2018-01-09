@@ -11,6 +11,7 @@
 		870419781BE97635004DD8DF /* JABImageBank.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870419771BE97635004DD8DF /* JABImageBank.swift */; };
 		8705209D1AEF8799008C9555 /* ArrayExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8705209C1AEF8799008C9555 /* ArrayExtension.swift */; };
 		870DFB831B532A9200BC76D7 /* DoubleExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870DFB821B532A9200BC76D7 /* DoubleExtension.swift */; };
+		8712689A1FE0792C00199663 /* RangeExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 871268991FE0792C00199663 /* RangeExtension.swift */; };
 		871280701B4C5D410005716F /* NSDateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8712806F1B4C5D410005716F /* NSDateExtension.swift */; };
 		87128B671AFDDC1C00D1F34A /* UIFontExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87128B661AFDDC1B00D1F34A /* UIFontExtension.swift */; };
 		8712AF821FAB0FCD005DAB84 /* UITextFieldExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8712AF811FAB0FCD005DAB84 /* UITextFieldExtension.swift */; };
@@ -31,6 +32,7 @@
 		875444DC1AE1D05800659E6B /* JABTouchManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 875444DB1AE1D05800659E6B /* JABTouchManager.swift */; };
 		875444DE1AE1D05E00659E6B /* JABButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 875444DD1AE1D05E00659E6B /* JABButton.swift */; };
 		875444E01AE1D06500659E6B /* JABApplicationRoot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 875444DF1AE1D06500659E6B /* JABApplicationRoot.swift */; };
+		875C9A361FFF54BC00C336B0 /* IntExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 875C9A351FFF54BC00C336B0 /* IntExtension.swift */; };
 		87643AB11EB07A8400D41A60 /* JABBlurLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87643AB01EB07A8400D41A60 /* JABBlurLayer.swift */; };
 		87643AB31EB07B4600D41A60 /* JABStopwatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87643AB21EB07B4600D41A60 /* JABStopwatch.swift */; };
 		8765CE941F3FA74000E3D062 /* JABImageButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8765CE931F3FA74000E3D062 /* JABImageButton.swift */; };
@@ -71,6 +73,7 @@
 		870419771BE97635004DD8DF /* JABImageBank.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JABImageBank.swift; sourceTree = "<group>"; };
 		8705209C1AEF8799008C9555 /* ArrayExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayExtension.swift; sourceTree = "<group>"; };
 		870DFB821B532A9200BC76D7 /* DoubleExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoubleExtension.swift; sourceTree = "<group>"; };
+		871268991FE0792C00199663 /* RangeExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RangeExtension.swift; sourceTree = "<group>"; };
 		8712806F1B4C5D410005716F /* NSDateExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSDateExtension.swift; sourceTree = "<group>"; };
 		87128B661AFDDC1B00D1F34A /* UIFontExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIFontExtension.swift; sourceTree = "<group>"; };
 		8712AF811FAB0FCD005DAB84 /* UITextFieldExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextFieldExtension.swift; sourceTree = "<group>"; };
@@ -94,6 +97,7 @@
 		875444DB1AE1D05800659E6B /* JABTouchManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JABTouchManager.swift; sourceTree = "<group>"; };
 		875444DD1AE1D05E00659E6B /* JABButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JABButton.swift; sourceTree = "<group>"; };
 		875444DF1AE1D06500659E6B /* JABApplicationRoot.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JABApplicationRoot.swift; sourceTree = "<group>"; };
+		875C9A351FFF54BC00C336B0 /* IntExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntExtension.swift; sourceTree = "<group>"; };
 		87643AB01EB07A8400D41A60 /* JABBlurLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JABBlurLayer.swift; sourceTree = "<group>"; };
 		87643AB21EB07B4600D41A60 /* JABStopwatch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JABStopwatch.swift; sourceTree = "<group>"; };
 		8765CE931F3FA74000E3D062 /* JABImageButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JABImageButton.swift; sourceTree = "<group>"; };
@@ -437,8 +441,10 @@
 				87F4FD401AE421ED00953E38 /* CGRectExtension.swift */,
 				8772C9E21FD12CCD000D32DE /* DictionaryExtension.swift */,
 				870DFB821B532A9200BC76D7 /* DoubleExtension.swift */,
+				875C9A351FFF54BC00C336B0 /* IntExtension.swift */,
 				87B0130C1E5698770000280E /* MutableCollectionExtension.swift */,
 				8712806F1B4C5D410005716F /* NSDateExtension.swift */,
+				871268991FE0792C00199663 /* RangeExtension.swift */,
 				87B013101E5698D30000280E /* SequenceExtension.swift */,
 				87FB2E2A1B522C27000E09D9 /* StringExtension.swift */,
 				87F4FD421AE4222A00953E38 /* UIColorExtension.swift */,
@@ -596,7 +602,9 @@
 				87F422DC1AFDB62A00C564D9 /* Size.swift in Sources */,
 				87B013111E5698D30000280E /* SequenceExtension.swift in Sources */,
 				8721FF2B1B6ECE37000EB3CB /* JABLocationTester.swift in Sources */,
+				875C9A361FFF54BC00C336B0 /* IntExtension.swift in Sources */,
 				875444DA1AE1D04F00659E6B /* JABTouchableView.swift in Sources */,
+				8712689A1FE0792C00199663 /* RangeExtension.swift in Sources */,
 				87128B671AFDDC1C00D1F34A /* UIFontExtension.swift in Sources */,
 				87643AB31EB07B4600D41A60 /* JABStopwatch.swift in Sources */,
 				875444D41AE1D02C00659E6B /* JABGlobalVariables.swift in Sources */,

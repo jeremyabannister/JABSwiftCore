@@ -11,9 +11,9 @@ import Foundation
 
 extension Array {
     
-    // --------------
+    // -----------
     // MARK: JSON
-    // --------------
+    // -----------
     public var jsonString: String? {
         do {
             let contactsAsJSONData = try JSONSerialization.data(withJSONObject: self, options: JSONSerialization.WritingOptions.init(rawValue: 0))
@@ -41,3 +41,5 @@ extension Array where Element == CGFloat {
     public var average: CGFloat { if count == 0 { return 0 }; return sum/CGFloat(count) }
     public var sum: CGFloat { var total: CGFloat = 0; for number in self { total += number }; return total }
 }
+
+
