@@ -19,9 +19,9 @@ open class JABButton: JABTouchableView {
         get { return holder.backdropColor }
         set { undimmedBackdropColor = newValue; configureHolder() }
     }
-    override open var cornerRadius: CGFloat {
-        get { return holder.cornerRadius }
-        set { holder.cornerRadius = newValue }
+    override open var cornerRounding: CGFloat {
+        get { return holder.cornerRounding }
+        set { holder.cornerRounding = newValue }
     }
     
     // MARK: Delegate

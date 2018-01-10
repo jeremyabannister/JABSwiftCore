@@ -78,10 +78,10 @@ extension UIView {
     open var opacity: Float {
         get { return layer.opacity }
         set { if opacity == newValue { return }; animate(newValue, for: .opacity); layer.opacity = newValue  } }
-    /** A shortcut to the `cornerRadius` of the view's layer */
-    @objc open var cornerRadius: CGFloat {
+    /** A shortcut to the `cornerRadius` of the view's layer. The reason for the different name is to allow compatibility with existing code bases which have already added the `cornerRadius` property to UIView via an extension. */
+    @objc open var cornerRounding: CGFloat {
         get { return layer.cornerRadius }
-        set { if cornerRadius ~= newValue { return }; animate(newValue, for: .cornerRadius); layer.cornerRadius = newValue } }
+        set { if cornerRounding ~= newValue { return }; animate(newValue, for: .cornerRadius); layer.cornerRadius = newValue } }
     /// Shadow
     open var shadow: Shadow {
         get { return Shadow(opacity: layer.shadowOpacity, radius: layer.shadowRadius, offset: layer.shadowOffset, color: UIColor(cgColor: layer.shadowColor ?? UIColor.black.cgColor)) }
@@ -139,7 +139,7 @@ extension UIView {
     private func animate (_ newValue: Any?, for property: AnimatableProperty) {
         if !JABView.isGeneratingAnimatedUpdate { return }
         let animation = CABasicAnimation(keyPath: property.rawValue, fromValue: fromValue(for: property), toValue: newValue)
-        animation.duration = JABView.animationDuration
+        animation.duration = JABView.animateDuration
         animation.timingFunction = JABView.animationTimingFunction
         self.layer.removeAnimation(forKey: property.rawValue)
         self.layer.add(animation, forKey: property.rawValue)

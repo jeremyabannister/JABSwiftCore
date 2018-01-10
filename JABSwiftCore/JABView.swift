@@ -24,7 +24,8 @@ open class JABView: UIView, GlobalVariablesInitializationNotificationSubscriber 
     
     // Animated Update
     public static var isGeneratingAnimatedUpdate: Bool = false
-    public static var animationDuration: TimeInterval = defaultAnimationDuration
+    /// This unfortunately cannot be named "animationDuration" because it conflicts with an Objective-C setter on UIView
+    public static var animateDuration: TimeInterval = defaultAnimationDuration
     public static var animationTimingFunction: CAMediaTimingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
     
     // Timing Functions
@@ -100,18 +101,18 @@ open class JABView: UIView, GlobalVariablesInitializationNotificationSubscriber 
     }
     
     open func animate (_ updateCode: () -> (), duration: TimeInterval = defaultAnimationDuration, timingFunction: TimingFunction = .easeInOut, completion: @escaping (Bool) -> () = { (completed) in }) {
-        let oldDuration = JABView.animationDuration
+        let oldDuration = JABView.animateDuration
         let oldTimingFunction = JABView.animationTimingFunction
         
         JABView.isGeneratingAnimatedUpdate = true
-        JABView.animationDuration = duration
+        JABView.animateDuration = duration
         JABView.animationTimingFunction = JABView.mediaTimingFunction(for: timingFunction)
         
         updateCode()
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + duration) { completion(true) }
         
         JABView.isGeneratingAnimatedUpdate = false
-        JABView.animationDuration = oldDuration
+        JABView.animateDuration = oldDuration
         JABView.animationTimingFunction = oldTimingFunction
     }
     
