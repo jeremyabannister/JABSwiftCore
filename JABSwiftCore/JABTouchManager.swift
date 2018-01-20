@@ -20,7 +20,6 @@ open class JABTouchManager: NSObject, UIGestureRecognizerDelegate {
   weak open var delegate: JABTouchManagerDelegate?
   
   // MARK: State
-  open var touchDomain: UIView
   open var touchRecognizer: UILongPressGestureRecognizer?
   
   var initialTouchLocation = CGPoint() // Stores location from touchDidBegin
@@ -38,9 +37,6 @@ open class JABTouchManager: NSObject, UIGestureRecognizerDelegate {
   
   
   public init(touchDomain: UIView) {
-    
-    self.touchDomain = touchDomain
-    
     super.init()
     
     touchRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(JABTouchManager.touchDetected(_:)))
