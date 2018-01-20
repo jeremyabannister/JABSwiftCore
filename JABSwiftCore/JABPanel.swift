@@ -15,7 +15,7 @@ open class JABPanel: JABTouchableView {
     // MARK:
     
     // MARK: Delegate
-    open var panelDelegate: JABPanelDelegate?
+    weak open var panelDelegate: JABPanelDelegate?
     
     // MARK: Subscribers
     var subscribers = [JABPanelChangeSubscriber]()
@@ -53,8 +53,8 @@ open class JABPanel: JABTouchableView {
     // MARK: Init
     // MARK:
     
-    override public init (frame: CGRect = CGRect.zero, shouldAddAllUI: Bool = true) {
-        super.init(frame: frame, shouldAddAllUI: shouldAddAllUI)
+    override public init () {
+        super.init()
         clipsToBounds = true
     }
     

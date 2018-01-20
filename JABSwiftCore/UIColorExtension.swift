@@ -23,18 +23,14 @@ public extension UIColor {
     public func dim (_ fraction: CGFloat) -> UIColor {
         
         // Force the fraction to be between 0 and 1
-        var modifiedFraction = fraction
-        if modifiedFraction > 1 {
-            modifiedFraction = 1
-        } else if modifiedFraction < 0 {
-            modifiedFraction = 0
-        }
+        let modifiedFraction = fraction.bounded(by: 0, 1)
         
         let redComponent = components.red
         let greenComponent = components.green
         let blueComponent = components.blue
         let alpha = components.alpha
         
+        if alpha == 0 { return UIColor(red: redComponent, green: greenComponent, blue: blueComponent, alpha: (1 - modifiedFraction)) }
         return UIColor(red: redComponent * modifiedFraction, green: greenComponent * modifiedFraction, blue: blueComponent * modifiedFraction, alpha: alpha)
     }
     

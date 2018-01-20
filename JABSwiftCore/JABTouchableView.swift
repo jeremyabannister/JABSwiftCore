@@ -9,110 +9,123 @@
 import UIKit
 
 open class JABTouchableView: JABView, JABTouchManagerDelegate {
+  
+  // ----------------------------------------------------------------------
+  // MARK: Properties
+  // ----------------------------------------------------------------------
+  
+  // ---------------
+  // MARK: Delegate
+  // ---------------
+  weak open var delegate: JABTouchableViewDelegate?
+  
+  // ------------
+  // MARK: State
+  // ------------
+  open var touchManager: JABTouchManager?
+  
+  // ------------------
+  // MARK: UI Elements
+  // ------------------
+  
+  // --------------------
+  // MARK: UI Parameters
+  // --------------------
+  
+  
+  
+  
+  
+  // ----------------------------------------------------------------------
+  // MARK: Methods
+  // ----------------------------------------------------------------------
+  
+  
+  // -----------
+  // MARK: Init
+  // -----------
+  public init () {
+    super.init()
+    touchManager = JABTouchManager(touchDomain: self)
+    touchManager?.delegate = self
+  }
+  
+  required public init?(coder aDecoder: NSCoder) {
+    super.init(coder: aDecoder)
+    print("Should not be initializing from coder \(self)")
+  }
+  
+  
+  // --------------------
+  // MARK: UI Parameters
+  // --------------------
+  override open func updateParameters() {
+    super.updateParameters()
     
-    // MARK:
-    // MARK: Properties
-    // MARK:
+  }
+  
+  // ----------------------
+  // MARK: All UI Elements
+  // ----------------------
+  override open func addAllUI() {
+    super.addAllUI()
     
-    // MARK: Delegate
-    open var delegate: JABTouchableViewDelegate?
+  }
+  
+  override open func updateAllUI() {
     
+    super.updateAllUI()
+    updateParameters()
     
-    // MARK:
-    // MARK: Touch Recognition System
-    // MARK:
-    open var touchManager: JABTouchManager?
-    open var blockingViews: [UIView] = []
-    
-    
-    // **********************************************************************************************************************
-    
-    
-    // MARK:
-    // MARK: Methods
-    // MARK:
-    
-    // MARK:
-    // MARK: Init
-    // MARK:
-    
-    override public init (frame: CGRect = CGRect.zero, shouldAddAllUI: Bool = true) {
-        super.init(frame: frame, shouldAddAllUI: shouldAddAllUI)
-        createTouchRecognitionSystem()
-    }
-    
-    required public init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-    }
-    
-    // MARK:
-    // MARK: Actions
-    // MARK:
-    
-    open func createTouchRecognitionSystem () {
-        
-        touchManager = JABTouchManager(touchDomain: self)
-        touchManager?.delegate = self
-        
-    }
-    
-    open func blockWithView(_ blockingView: UIView) {
-        
-        if !blockingViews.contains(blockingView) {
-            blockingViews.append(blockingView)
-        }
-        
-    }
-    
-    
-    
-    open func unblockWithView(_ blockingView: UIView) {
-        
-        if blockingViews.contains(blockingView) {
-            Toolkit.removeObject(blockingView, fromArray: &blockingViews)
-        }
-    }
-    
-    
-    
-    
-    // MARK:
-    // MARK: Delegate Methods
-    // MARK:
-    
-    // MARK: Touch Manager
-    open func touchDidBegin(_ touchManager: JABTouchManager) {
-        delegate?.touchableViewTouchDidBegin(self)
-    }
-    
-    open func touchDidChange(_ touchManager: JABTouchManager, xDistance: CGFloat, yDistance: CGFloat, xVelocity: CGFloat, yVelocity: CGFloat, methodCallNumber: Int) {
-        
-        delegate?.touchableViewTouchDidChange(self, xDistance: xDistance, yDistance: yDistance, xVelocity: xVelocity, yVelocity: yVelocity, methodCallNumber: methodCallNumber)
-    }
-    
-    open func touchDidEnd(_ touchManager: JABTouchManager, xDistance: CGFloat, yDistance: CGFloat, xVelocity: CGFloat, yVelocity: CGFloat, methodCallNumber: Int) {
-        delegate?.touchableViewTouchDidEnd(self, xDistance: xDistance, yDistance: yDistance, xVelocity: xVelocity, yVelocity: yVelocity, methodCallNumber: methodCallNumber)
-    }
-    
-    open func touchDidCancel(_ touchManager: JABTouchManager, xDistance: CGFloat, yDistance: CGFloat, xVelocity: CGFloat, yVelocity: CGFloat, methodCallNumber: Int) {
-        delegate?.touchableViewTouchDidCancel(self, xDistance: xDistance, yDistance: yDistance, xVelocity: xVelocity, yVelocity: yVelocity, methodCallNumber: methodCallNumber)
-    }
-    
-    
-    
-    
-    
+  }
+  
+  
+  // ----------------------
+  // MARK: Adding Subviews
+  // ----------------------
+  
+  
+  // ----------------------------------
+  // MARK: UI Element -
+  // ----------------------------------
+  
+  
+  // ----------------------------------------------------------------------
+  // MARK: Actions
+  // ----------------------------------------------------------------------
+  
+  
+  // ----------------------------------------------------------------------
+  // MARK: Delegate Methods
+  // ----------------------------------------------------------------------
+  
+  // ------------------------------
+  // MARK: JABTouchManagerDelegate
+  // ------------------------------
+  open func touchDidBegin(_ touchManager: JABTouchManager) {
+    delegate?.touchableViewTouchDidBegin(self)
+  }
+  
+  open func touchDidChange(_ touchManager: JABTouchManager, xDistance: CGFloat, yDistance: CGFloat, xVelocity: CGFloat, yVelocity: CGFloat, methodCallNumber: Int) {
+    delegate?.touchableViewTouchDidChange(self, xDistance: xDistance, yDistance: yDistance, xVelocity: xVelocity, yVelocity: yVelocity, methodCallNumber: methodCallNumber)
+  }
+  
+  open func touchDidEnd(_ touchManager: JABTouchManager, xDistance: CGFloat, yDistance: CGFloat, xVelocity: CGFloat, yVelocity: CGFloat, methodCallNumber: Int) {
+    delegate?.touchableViewTouchDidEnd(self, xDistance: xDistance, yDistance: yDistance, xVelocity: xVelocity, yVelocity: yVelocity, methodCallNumber: methodCallNumber)
+  }
+  
+  open func touchDidCancel(_ touchManager: JABTouchManager, xDistance: CGFloat, yDistance: CGFloat, xVelocity: CGFloat, yVelocity: CGFloat, methodCallNumber: Int) {
+    delegate?.touchableViewTouchDidCancel(self, xDistance: xDistance, yDistance: yDistance, xVelocity: xVelocity, yVelocity: yVelocity, methodCallNumber: methodCallNumber)
+  }
+  
+  
 }
 
 
-
-public protocol JABTouchableViewDelegate {
-    
-    func touchableViewTouchDidBegin(_ touchableView: JABTouchableView)
-    func touchableViewTouchDidChange(_ touchableView: JABTouchableView, xDistance: CGFloat, yDistance: CGFloat, xVelocity: CGFloat, yVelocity: CGFloat, methodCallNumber: Int)
-    func touchableViewTouchDidEnd(_ touchableView: JABTouchableView, xDistance: CGFloat, yDistance: CGFloat, xVelocity: CGFloat, yVelocity: CGFloat, methodCallNumber: Int)
-    func touchableViewTouchDidCancel(_ touchableView: JABTouchableView, xDistance: CGFloat, yDistance: CGFloat, xVelocity: CGFloat, yVelocity: CGFloat, methodCallNumber: Int)
-    
-    
+public protocol JABTouchableViewDelegate: class {
+  func touchableViewTouchDidBegin(_ touchableView: JABTouchableView)
+  func touchableViewTouchDidChange(_ touchableView: JABTouchableView, xDistance: CGFloat, yDistance: CGFloat, xVelocity: CGFloat, yVelocity: CGFloat, methodCallNumber: Int)
+  func touchableViewTouchDidEnd(_ touchableView: JABTouchableView, xDistance: CGFloat, yDistance: CGFloat, xVelocity: CGFloat, yVelocity: CGFloat, methodCallNumber: Int)
+  func touchableViewTouchDidCancel(_ touchableView: JABTouchableView, xDistance: CGFloat, yDistance: CGFloat, xVelocity: CGFloat, yVelocity: CGFloat, methodCallNumber: Int)
 }
 
