@@ -8,7 +8,7 @@
 
 import Foundation
 
-public extension CGContext {
+extension CGContext {
     public func addLine (to point: CGPoint, softenedByRadius cornerRadius: CGFloat, endingInDirectionOf nextPoint: CGPoint, clockwise: Bool) {
         let numerator = (point.unitVector(towards: nextPoint).rotated(by: -.pi/2) - point.unitVector(towards: currentPointOfPath).rotated(by: .pi/2)).magnitude
         let denominator = (point.unitVector(towards: currentPointOfPath) - point.unitVector(towards: nextPoint)).magnitude

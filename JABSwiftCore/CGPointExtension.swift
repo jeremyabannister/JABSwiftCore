@@ -10,14 +10,14 @@ import Foundation
 
 public extension CGPoint {
   
-  
+  public init <T: FloatingPoint> (x: T, y: T) {
+    self.init(x: x.asCGFloat, y: y.asCGFloat)
+  }
   public var description: String { return "(\(x), \(y)" }
-  
   public var magnitude: CGFloat { return sqrt(pow(self.x, 2) + pow(self.y, 2)) }
-  
-  public static func unitVector (angle: CGFloat, inDegrees: Bool = false) -> CGPoint {
-    let conversion = [true: (2*CGFloat.pi)/360.0, false: 1][inDegrees]!
-    return CGPoint(x: cos(angle*conversion), y: sin(angle*conversion))
+  public static func unitVector <Angle: FloatingPoint> (angle: Angle, inDegrees: Bool = false) -> CGPoint {
+    let radians = inDegrees ? angle.radians : angle
+    return CGPoint(x: cos(radians.asDouble), y: sin(radians.asDouble))
   }
   
   public func distance (to point: CGPoint) -> CGFloat {
@@ -34,8 +34,10 @@ public extension CGPoint {
   
   public func angle (to point: CGPoint) -> CGFloat {
     if self == point { return 0 }
-    guard let slope = slope(to: point) else { if point.y < self.y { return (-.pi/2).reducedAngle } else { return (.pi/2).reducedAngle } }
-    if point.x > self.x { return (-atan(slope).reducedAngle) } else { return (-atan(slope) + .pi).reducedAngle }
+    guard let slope = slope(to: point) else {
+      if point.y < self.y { return (-.pi/2).reducedRadians } else { return (.pi/2).reducedRadians }
+    }
+    if point.x > self.x { return -atan(slope).reducedRadians } else { return (-atan(slope) + .pi).reducedRadians }
   }
   
   public func rotated (by angularDisplacement: CGFloat, around anchorPoint: CGPoint = .zero) -> CGPoint {
@@ -47,6 +49,10 @@ public extension CGPoint {
   
   public func unitVector (towards point: CGPoint) -> CGPoint {
     return CGPoint.unitVector(angle: self.angle(to: point), inDegrees: false)
+  }
+  
+  public func dotted (with other: CGPoint) -> CGFloat {
+    return (self.x * other.x) + (self.y * other.y)
   }
   
 }
