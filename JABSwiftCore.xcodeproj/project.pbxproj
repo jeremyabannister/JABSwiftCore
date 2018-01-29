@@ -45,6 +45,7 @@
 		87D1EA39201C1862007FB2AD /* CLLocationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D1EA38201C1862007FB2AD /* CLLocationExtension.swift */; };
 		87D1EA3B201C4042007FB2AD /* FloatingPointExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D1EA3A201C4042007FB2AD /* FloatingPointExtension.swift */; };
 		87D71C261B8BD988004E7D05 /* JABVersionNumber.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D71C251B8BD988004E7D05 /* JABVersionNumber.swift */; };
+		87DEDF79201EC9A7004A8757 /* DataExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87DEDF78201EC9A7004A8757 /* DataExtension.swift */; };
 		87ED41DA1B1593F600B57E7B /* JABSquareImagePanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87ED41D91B1593F600B57E7B /* JABSquareImagePanel.swift */; };
 		87EE71A91AE562EF00526770 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87EE71A81AE562EF00526770 /* QuartzCore.framework */; };
 		87EF09DD1AFCA27100BE92A4 /* PhysicalObjectProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87EF09DC1AFCA27000BE92A4 /* PhysicalObjectProtocol.swift */; };
@@ -113,6 +114,7 @@
 		87D1EA3A201C4042007FB2AD /* FloatingPointExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingPointExtension.swift; sourceTree = "<group>"; };
 		87D71C251B8BD988004E7D05 /* JABVersionNumber.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JABVersionNumber.swift; sourceTree = "<group>"; };
 		87D997A01AF1640A0047483E /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		87DEDF78201EC9A7004A8757 /* DataExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataExtension.swift; sourceTree = "<group>"; };
 		87ED41D91B1593F600B57E7B /* JABSquareImagePanel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JABSquareImagePanel.swift; sourceTree = "<group>"; };
 		87EE71A81AE562EF00526770 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		87EF09DC1AFCA27000BE92A4 /* PhysicalObjectProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhysicalObjectProtocol.swift; sourceTree = "<group>"; };
@@ -444,6 +446,7 @@
 				87F4FD401AE421ED00953E38 /* CGRectExtension.swift */,
 				87D1EA38201C1862007FB2AD /* CLLocationExtension.swift */,
 				87D1EA36201C1820007FB2AD /* CLLocationCoordinate2DExtension.swift */,
+				87DEDF78201EC9A7004A8757 /* DataExtension.swift */,
 				8772C9E21FD12CCD000D32DE /* DictionaryExtension.swift */,
 				870DFB821B532A9200BC76D7 /* DoubleExtension.swift */,
 				87D1EA3A201C4042007FB2AD /* FloatingPointExtension.swift */,
@@ -639,6 +642,7 @@
 				873BFA6E1B11AAA300E677F5 /* JABImagePanel.swift in Sources */,
 				87F4FD411AE421ED00953E38 /* CGRectExtension.swift in Sources */,
 				87F4FD431AE4222A00953E38 /* UIColorExtension.swift in Sources */,
+				87DEDF79201EC9A7004A8757 /* DataExtension.swift in Sources */,
 				8765CE941F3FA74000E3D062 /* JABImageButton.swift in Sources */,
 				87D71C261B8BD988004E7D05 /* JABVersionNumber.swift in Sources */,
 				87F4FD3E1AE421A300953E38 /* UIViewExtension.swift in Sources */,
