@@ -55,6 +55,11 @@ public extension CGPoint {
     return (self.x * other.x) + (self.y * other.y)
   }
   
+  
+  // ---------------
+  // MARK: Print
+  // ---------------
+  public func print () { Swift.print(self.description) }
 }
 
 

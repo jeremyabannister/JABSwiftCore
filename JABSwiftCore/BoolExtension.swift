@@ -9,6 +9,11 @@
 import Foundation
 
 public extension Bool {
-    public init? (_ string: String) { if ["true", "false"].contains(string.lowercased()) { self = (string.lowercased() == "true") } else { return nil } }
-    public func xOr (_ otherBool: Bool) -> Bool { return (self || otherBool) && !(self && otherBool) }
+  public init? (_ string: String) { if ["true", "false"].contains(string.lowercased()) { self = (string.lowercased() == "true") } else { return nil } }
+  public func xOr (_ otherBool: Bool) -> Bool { return (self || otherBool) && !(self && otherBool) }
+  
+  // ---------------
+  // MARK: Print
+  // ---------------
+  public func print () { Swift.print(self) }
 }

@@ -69,6 +69,11 @@ public extension CGRect {
         if abs(lhs.size.height - rhs.size.height) > epsilon { return false }
         return true
     }
+  
+  // ---------------
+  // MARK: Print
+  // ---------------
+  public func print () { Swift.print(self.description) }
 }
 
 

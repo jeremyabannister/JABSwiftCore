@@ -36,6 +36,12 @@ extension Array {
     guard let index = index, self.count > index else { return }
     self.remove(at: index)
   }
+  
+  
+  // ---------------
+  // MARK: Print
+  // ---------------
+  public func print () { Swift.print(self) }
 }
 
 

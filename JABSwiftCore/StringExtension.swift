@@ -125,6 +125,8 @@ public extension String {
     return self.components(separatedBy: substring).joined()
   }
   
+  public var words: [String] { return self.split(separator: " ").map({ String($0) }) }
+  
   // ---------------
   // MARK: Ranges
   // ---------------
@@ -168,7 +170,11 @@ public extension String {
     guard let data = NSData(contentsOf: fileURL) as Data? else { return nil }
     return String(data: data, encoding: .utf8)
   }
-    
-    
+  
+  
+  // ---------------
+  // MARK: Print
+  // ---------------
+  public func print () { Swift.print(self) }
 }
 

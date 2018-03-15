@@ -11,4 +11,9 @@ import CoreLocation
 
 extension CLLocation {
   public func midPoint (to other: CLLocation) -> CLLocation { return CLLocation(latitude: self.coordinate.midPoint(to: other.coordinate).latitude, longitude: self.coordinate.midPoint(to: other.coordinate).longitude) }
+  
+  // ---------------
+  // MARK: Print
+  // ---------------
+  public func print () { Swift.print(self) }
 }

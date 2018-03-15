@@ -27,4 +27,9 @@ public extension Int {
     }
     return cycledSelf
   }
+  
+  // ---------------
+  // MARK: Print
+  // ---------------
+  public func print () { Swift.print(self) }
 }

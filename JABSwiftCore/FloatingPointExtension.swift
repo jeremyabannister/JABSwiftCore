@@ -35,4 +35,10 @@ public extension FloatingPoint {
   public func flooredToDecimalPlaces (_ numberOfDecimalPlaces: Int) -> Self {
     return floor(self.asDouble * pow(10, Double(numberOfDecimalPlaces)))/pow(10, Double(numberOfDecimalPlaces)) as? Self ?? 0
   }
+  
+  
+  // ---------------
+  // MARK: Print
+  // ---------------
+  public func print () { Swift.print(self) }
 }

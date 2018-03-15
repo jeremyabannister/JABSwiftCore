@@ -15,5 +15,10 @@ public extension Double {
     else if self < 0 { return "-$".appendingFormat("%.2f", -self) }
     else { return "$".appendingFormat("%.2f", self) }
   }
+  
+  // ---------------
+  // MARK: Print
+  // ---------------
+  public func print () { Swift.print(self) }
 }
 

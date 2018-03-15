@@ -20,4 +20,9 @@ extension CLLocationCoordinate2D {
     let x = cos(self.latitude.radians) * sin(other.latitude.radians) - sin(self.latitude.radians) * cos(other.latitude.radians) * cos(dLongitude)
     return atan2(y, x).degrees
   }
+  
+  // ---------------
+  // MARK: Print
+  // ---------------
+  public func print () { Swift.print(self) }
 }
