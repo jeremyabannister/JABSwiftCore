@@ -45,7 +45,6 @@ open class JABApplicationRoot: JABView, JABTouchableViewDelegate, JABLocationTes
         super.init(frame: frame, shouldAddAllUI: shouldAddAllUI)
         
         staticOnScreenView = self
-        initializeGlobalParameters()
         
         locationTester.locationTesterDelegate = self
         

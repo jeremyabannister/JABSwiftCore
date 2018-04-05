@@ -46,20 +46,31 @@ extension Array {
 
 
 // Numeric Arrays
-extension Array where Element == Int {
-  public var average: Double { if count == 0 { return 0 }; return Double(sum)/Double(count) }
-  public var sum: Int { var total: Int = 0; for number in self { total += number }; return total }
-}
-extension Array where Element == Float {
-  public var average: Float { if count == 0 { return 0 }; return sum/Float(count) }
-  public var sum: Float { var total: Float = 0; for number in self { total += number }; return total }
-}
 extension Array where Element == Double {
-  public var average: Double { if count == 0 { return 0 }; return sum/Double(count) }
   public var sum: Double { var total: Double = 0; for number in self { total += number }; return total }
-}
-extension Array where Element == CGFloat {
-  public var average: CGFloat { if count == 0 { return 0 }; return sum/CGFloat(count) }
-  public var sum: CGFloat { var total: CGFloat = 0; for number in self { total += number }; return total }
+  public var average: Double { if count == 0 { return 0 }; return sum/Double(count) }
+  public var variance: Double { let average = self.average; return self.map({ pow($0 - average, 2) }).average }
+  public var standardDeviation: Double { return sqrt(self.variance) }
 }
 
+extension Array where Element == Int {
+  public var asDoubles: [Double] { return self.map({ Double($0) }) }
+  public var sum: Int { return Int(self.asDoubles.sum) }
+  public var average: Double { return self.asDoubles.average }
+  public var variance: Double { return self.asDoubles.variance }
+  public var standardDeviation: Double { return self.asDoubles.standardDeviation }
+}
+extension Array where Element == Float {
+  public var asDoubles: [Double] { return self.map({ Double($0) }) }
+  public var sum: Float { return Float(self.asDoubles.sum) }
+  public var average: Float { return Float(self.asDoubles.average) }
+  public var variance: Float { return Float(self.asDoubles.variance) }
+  public var standardDeviation: Float { return Float(self.asDoubles.standardDeviation) }
+}
+extension Array where Element == CGFloat {
+  public var asDoubles: [Double] { return self.map({ Double($0) }) }
+  public var sum: CGFloat { return CGFloat(self.asDoubles.sum) }
+  public var average: CGFloat { return CGFloat(self.asDoubles.average) }
+  public var variance: CGFloat { return CGFloat(self.asDoubles.variance) }
+  public var standardDeviation: CGFloat { return CGFloat(self.asDoubles.standardDeviation) }
+}

@@ -54,21 +54,11 @@ public class JABBlurLayer: JABView {
         print("Should not be initializing from coder \(self)")
     }
     
-    override public func globalVariablesWereInitialized() {
-        
-        updateParameters()
-        
-    }
     
     
     // MARK: Parameters
     override public func updateParameters() {
-        
-        
-        if iPad {
-            
-        }
-        
+      
     }
     
     

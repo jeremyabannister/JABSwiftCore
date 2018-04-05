@@ -65,20 +65,11 @@ open class JABTextButton: JABButton {
     print("Should not be initializing from coder \(self)")
   }
   
-  override open func globalVariablesWereInitialized() {
-    
-    updateParameters()
-    
-  }
   
   
   // MARK: Parameters
   override open func updateParameters() {
     super.updateParameters()
-    
-    if iPad {
-      
-    }
     
   }
   

@@ -16,13 +16,8 @@ open class SRTCamera: JABView {
     
     // MARK: Delegate
     weak open var delegate: (UIImagePickerControllerDelegate & UINavigationControllerDelegate)? {
-        get {
-            return imagePicker.delegate
-        }
-        set {
-            imagePicker.delegate = newValue
-        }
-    }
+        get { return imagePicker.delegate }
+        set { imagePicker.delegate = newValue } }
     
     
     // MARK: State
@@ -55,22 +50,10 @@ open class SRTCamera: JABView {
         print("Should not be initializing from coder \(self)")
     }
     
-    override open func globalVariablesWereInitialized() {
-        
-        updateParameters()
-        
-    }
-    
     
     // MARK: Parameters
     override open func updateParameters() {
-        
-        
-        if iPad {
-            
-        }
-        
-        
+      
     }
     
     

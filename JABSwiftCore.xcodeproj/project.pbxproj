@@ -44,7 +44,10 @@
 		87D1EA37201C1820007FB2AD /* CLLocationCoordinate2DExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D1EA36201C1820007FB2AD /* CLLocationCoordinate2DExtension.swift */; };
 		87D1EA39201C1862007FB2AD /* CLLocationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D1EA38201C1862007FB2AD /* CLLocationExtension.swift */; };
 		87D1EA3B201C4042007FB2AD /* FloatingPointExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D1EA3A201C4042007FB2AD /* FloatingPointExtension.swift */; };
+		87D48AB3206F6B3800A08F8D /* Collection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D48AB2206F6B3800A08F8D /* Collection.swift */; };
 		87D71C261B8BD988004E7D05 /* JABVersionNumber.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D71C251B8BD988004E7D05 /* JABVersionNumber.swift */; };
+		87D99B1A205E216A005E098F /* UITextViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D99B19205E216A005E098F /* UITextViewExtension.swift */; };
+		87D99B23206967DB005E098F /* ComparableExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D99B22206967DB005E098F /* ComparableExtension.swift */; };
 		87DEDF79201EC9A7004A8757 /* DataExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87DEDF78201EC9A7004A8757 /* DataExtension.swift */; };
 		87ED41DA1B1593F600B57E7B /* JABSquareImagePanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87ED41D91B1593F600B57E7B /* JABSquareImagePanel.swift */; };
 		87EE71A91AE562EF00526770 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87EE71A81AE562EF00526770 /* QuartzCore.framework */; };
@@ -112,8 +115,11 @@
 		87D1EA36201C1820007FB2AD /* CLLocationCoordinate2DExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLLocationCoordinate2DExtension.swift; sourceTree = "<group>"; };
 		87D1EA38201C1862007FB2AD /* CLLocationExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLLocationExtension.swift; sourceTree = "<group>"; };
 		87D1EA3A201C4042007FB2AD /* FloatingPointExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingPointExtension.swift; sourceTree = "<group>"; };
+		87D48AB2206F6B3800A08F8D /* Collection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Collection.swift; sourceTree = "<group>"; };
 		87D71C251B8BD988004E7D05 /* JABVersionNumber.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JABVersionNumber.swift; sourceTree = "<group>"; };
 		87D997A01AF1640A0047483E /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		87D99B19205E216A005E098F /* UITextViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextViewExtension.swift; sourceTree = "<group>"; };
+		87D99B22206967DB005E098F /* ComparableExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComparableExtension.swift; sourceTree = "<group>"; };
 		87DEDF78201EC9A7004A8757 /* DataExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataExtension.swift; sourceTree = "<group>"; };
 		87ED41D91B1593F600B57E7B /* JABSquareImagePanel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JABSquareImagePanel.swift; sourceTree = "<group>"; };
 		87EE71A81AE562EF00526770 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -446,6 +452,8 @@
 				87F4FD401AE421ED00953E38 /* CGRectExtension.swift */,
 				87D1EA38201C1862007FB2AD /* CLLocationExtension.swift */,
 				87D1EA36201C1820007FB2AD /* CLLocationCoordinate2DExtension.swift */,
+				87D48AB2206F6B3800A08F8D /* Collection.swift */,
+				87D99B22206967DB005E098F /* ComparableExtension.swift */,
 				87DEDF78201EC9A7004A8757 /* DataExtension.swift */,
 				8772C9E21FD12CCD000D32DE /* DictionaryExtension.swift */,
 				870DFB821B532A9200BC76D7 /* DoubleExtension.swift */,
@@ -461,6 +469,7 @@
 				8701987A1AE61FCA0073BFD5 /* UIImageExtension.swift */,
 				8795452D1FA9AEA500A11939 /* UILabelExtension.swift */,
 				8712AF811FAB0FCD005DAB84 /* UITextFieldExtension.swift */,
+				87D99B19205E216A005E098F /* UITextViewExtension.swift */,
 				87F4FD3D1AE421A300953E38 /* UIViewExtension.swift */,
 			);
 			name = "Class Extensions";
@@ -621,6 +630,7 @@
 				87C21BBC1AEF131300FCE515 /* CGPointExtension.swift in Sources */,
 				87D1EA39201C1862007FB2AD /* CLLocationExtension.swift in Sources */,
 				875444DC1AE1D05800659E6B /* JABTouchManager.swift in Sources */,
+				87D99B1A205E216A005E098F /* UITextViewExtension.swift in Sources */,
 				875444E01AE1D06500659E6B /* JABApplicationRoot.swift in Sources */,
 				8795452E1FA9AEA600A11939 /* UILabelExtension.swift in Sources */,
 				871280701B4C5D410005716F /* NSDateExtension.swift in Sources */,
@@ -636,6 +646,7 @@
 				8701987B1AE61FCA0073BFD5 /* UIImageExtension.swift in Sources */,
 				8772C9E31FD12CCD000D32DE /* DictionaryExtension.swift in Sources */,
 				87F422D81AFDB1C600C564D9 /* Vector.swift in Sources */,
+				87D48AB3206F6B3800A08F8D /* Collection.swift in Sources */,
 				875444D31AE1D02C00659E6B /* Toolkit.swift in Sources */,
 				87D1EA37201C1820007FB2AD /* CLLocationCoordinate2DExtension.swift in Sources */,
 				875444D71AE1D03E00659E6B /* JABView.swift in Sources */,
@@ -650,6 +661,7 @@
 				8765CE961F3FA85A00E3D062 /* JABTextButton.swift in Sources */,
 				875444DE1AE1D05E00659E6B /* JABButton.swift in Sources */,
 				87FB2E2B1B522C27000E09D9 /* StringExtension.swift in Sources */,
+				87D99B23206967DB005E098F /* ComparableExtension.swift in Sources */,
 				8705209D1AEF8799008C9555 /* ArrayExtension.swift in Sources */,
 				87D1EA3B201C4042007FB2AD /* FloatingPointExtension.swift in Sources */,
 				87F842EE1F918426009027B9 /* CGContextExtension.swift in Sources */,

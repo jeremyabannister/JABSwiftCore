@@ -18,7 +18,7 @@ public var defaultAnimationDuration = 0.25
  
  1. The second distinguishing feature of JABView is the method `updateAllUI()` (and its animated counterpart, `animatedUpdate()`). This method is intended to be overridden by the subclass. Its job is to update all of the visual elements owned by this JABView to their correct state, according to all the variables which track the state of the app.
  */
-open class JABView: UIView, GlobalVariablesInitializationNotificationSubscriber {
+open class JABView: UIView {
     
     // MARK: Static
     
@@ -60,12 +60,6 @@ open class JABView: UIView, GlobalVariablesInitializationNotificationSubscriber 
         
         super.init(frame: frame)
         
-        if !globalVariablesInitialized {
-            globalVariableInitializationNotificationSubscribers.append(self)
-        } else {
-            globalVariablesWereInitialized()
-        }
-        
         if shouldAddAllUI { addAllUI() }
     }
     
@@ -74,9 +68,6 @@ open class JABView: UIView, GlobalVariablesInitializationNotificationSubscriber 
         super.init(coder: aDecoder)
     }
     
-    open func globalVariablesWereInitialized() {
-        
-    }
     
     // MARK:
     // MARK: Methods
