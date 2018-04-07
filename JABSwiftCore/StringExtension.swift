@@ -109,7 +109,8 @@ public extension String {
     return UIColor(hex: self)
   }
   public func attributed (with textStyle: TextStyle?) -> NSMutableAttributedString {
-    return NSMutableAttributedString(string: self, attributes: [NSAttributedStringKey.foregroundColor: (textStyle?.textColor ?? .black) as Any, NSAttributedStringKey.font: (textStyle?.font ?? UIFont()) as Any, NSAttributedStringKey.kern: textStyle?.characterSpacing ?? 1])
+    let attributes: [NSAttributedStringKey: Any] = [.foregroundColor: (textStyle?.textColor ?? .black) as Any, .font: (textStyle?.font ?? UIFont()) as Any, .kern: textStyle?.characterSpacing ?? 1]
+    return NSMutableAttributedString(string: self, attributes: attributes)
   }
   
   
