@@ -8,10 +8,8 @@
 
 import UIKit
 
-protocol JABInterfaceSet {
+public protocol JABInterfaceSet {
   var elements: [InterfaceElement] { get }
 }
 
-protocol InterfaceElement { var addableViews: [UIView] { get } }
-extension UIView: InterfaceElement { var addableViews: [UIView] { return [self] } }
-extension Array: InterfaceElement where Element == UIView { var addableViews: [UIView] { return self } }
+public protocol InterfaceElement { var addableViews: [UIView] { get } }

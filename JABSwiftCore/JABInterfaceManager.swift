@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol JABInterfaceManager {
+public protocol JABInterfaceManager {
   var superview: UIView? { get set }
   mutating func setSuperview (_ superview: UIView?)
   
@@ -16,7 +16,7 @@ protocol JABInterfaceManager {
   func addInterfaceSet ()
   func updateInterfaceSet ()
 }
-extension JABInterfaceManager {
+public extension JABInterfaceManager {
   var width: CGFloat { return superview?.width ?? 0 }
   var height: CGFloat { return superview?.height ?? 0 }
   

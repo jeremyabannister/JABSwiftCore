@@ -8,10 +8,10 @@
 
 import Foundation
 
-protocol JABInterfaceNode {
+public protocol JABInterfaceNode {
   var interfaceManagers: [JABInterfaceManager] { get }
 }
-extension JABInterfaceNode {
+public extension JABInterfaceNode {
   func addUI () { interfaceManagers.forEach({ $0.addInterfaceSet() }) }
   func updateUI () { interfaceManagers.forEach({ $0.updateInterfaceSet() }) }
 }
