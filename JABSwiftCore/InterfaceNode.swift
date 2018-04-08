@@ -1,5 +1,5 @@
 //
-//  JABInterfaceNode.swift
+//  InterfaceNode.swift
 //  JABSwiftCore
 //
 //  Created by Jeremy Bannister on 4/7/18.
@@ -8,10 +8,10 @@
 
 import Foundation
 
-public protocol JABInterfaceNode {
-  var interfaceManagers: [JABInterfaceManager] { get }
+public protocol InterfaceNode {
+  var interfaceManagers: [InterfaceManager] { get }
 }
-public extension JABInterfaceNode {
+public extension InterfaceNode {
   func addUI () { interfaceManagers.forEach({ $0.addInterfaceSet() }) }
   func updateUI () { interfaceManagers.forEach({ $0.updateInterfaceSet() }) }
 }

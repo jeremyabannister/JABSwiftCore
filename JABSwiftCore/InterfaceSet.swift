@@ -1,5 +1,5 @@
 //
-//  JABInterfaceSet.swift
+//  InterfaceSet.swift
 //  JABSwiftCore
 //
 //  Created by Jeremy Bannister on 4/7/18.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-public protocol JABInterfaceSet {
+public protocol InterfaceSet {
   var elements: [InterfaceElement] { get }
 }
 
