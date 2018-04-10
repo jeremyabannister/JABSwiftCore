@@ -95,4 +95,14 @@ public extension UITextField {
       self.leftViewMode = .always
     }
   }
+  
+  var rightInset: CGFloat {
+    get { return self.rightView?.width ?? 0 }
+    set {
+      let rightView = UIView()
+      rightView.frame = CGRect(x: 0, y: 0, width: newValue, height: height)
+      self.rightView = rightView
+      self.rightViewMode = .always
+    }
+  }
 }
