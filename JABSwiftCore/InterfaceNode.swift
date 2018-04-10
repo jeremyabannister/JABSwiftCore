@@ -12,6 +12,6 @@ public protocol InterfaceNode {
   var interfaceManagers: [InterfaceProtocol] { get }
 }
 public extension InterfaceNode {
-  func addUI () { interfaceManagers.forEach({ $0.addInterfaceSet() }) }
-  func updateUI () { interfaceManagers.forEach({ $0.updateInterfaceSet() }) }
+  func addUI () { interfaceManagers.forEach({ $0.addInterfaceElements() }) }
+  func updateUI () { interfaceManagers.forEach({ $0.updateInterfaceElements() }) }
 }
