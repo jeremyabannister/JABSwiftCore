@@ -12,7 +12,7 @@ public protocol InterfaceProtocol {
   var superview: UIView? { get set }
   mutating func setSuperview (_ superview: UIView?)
   
-  var interfaceSet: InterfaceSetProtocol { get }
+  var interfaceSet: InterfaceSet { get }
   func addInterfaceSet ()
   func updateInterfaceSet ()
 }

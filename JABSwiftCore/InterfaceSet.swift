@@ -8,7 +8,7 @@
 
 import UIKit
 
-public protocol InterfaceSetProtocol {
+public protocol InterfaceSet {
   var elements: [InterfaceElement] { get }
 }
 public protocol InterfaceElement {
