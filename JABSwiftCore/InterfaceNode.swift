@@ -9,7 +9,7 @@
 import Foundation
 
 public protocol InterfaceNode {
-  var interfaceManagers: [InterfaceManager] { get }
+  var interfaceManagers: [InterfaceProtocol] { get }
 }
 public extension InterfaceNode {
   func addUI () { interfaceManagers.forEach({ $0.addInterfaceSet() }) }

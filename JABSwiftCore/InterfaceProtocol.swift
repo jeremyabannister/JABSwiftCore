@@ -1,5 +1,5 @@
 //
-//  InterfaceManager.swift
+//  InterfaceProtocol.swift
 //  JABSwiftCore
 //
 //  Created by Jeremy Bannister on 4/7/18.
@@ -8,15 +8,15 @@
 
 import UIKit
 
-public protocol InterfaceManager {
+public protocol InterfaceProtocol {
   var superview: UIView? { get set }
   mutating func setSuperview (_ superview: UIView?)
   
-  var interfaceSet: InterfaceSet { get }
+  var interfaceSet: InterfaceSetProtocol { get }
   func addInterfaceSet ()
   func updateInterfaceSet ()
 }
-public extension InterfaceManager {
+public extension InterfaceProtocol {
   var width: CGFloat { return superview?.width ?? 0 }
   var height: CGFloat { return superview?.height ?? 0 }
   

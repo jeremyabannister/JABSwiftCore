@@ -83,3 +83,16 @@ public extension UITextField {
         self.typingAttributes = attributes
     }
 }
+
+
+public extension UITextField {
+  var leftInset: CGFloat {
+    get { return self.leftView?.width ?? 0 }
+    set {
+      let leftView = UIView()
+      leftView.frame = CGRect(x: 0, y: 0, width: newValue, height: height)
+      self.leftView = leftView
+      self.leftViewMode = .always
+    }
+  }
+}

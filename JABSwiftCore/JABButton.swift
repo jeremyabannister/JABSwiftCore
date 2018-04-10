@@ -202,3 +202,7 @@ public protocol JABButtonDelegate: class {
   func buttonWasUntouched(_ button: JABButton, wasTriggered: Bool)
 }
 
+public extension JABButtonDelegate {
+  func buttonWasTouched (_ button: JABButton) { }
+  func buttonWasUntouched (_ button: JABButton, wasTriggered: Bool) { }
+}
