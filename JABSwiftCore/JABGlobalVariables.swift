@@ -21,3 +21,4 @@ public var rootViewController = UIViewController()
 
 
 public func max<T: Comparable> (of value1: T, _ value2: T) -> T { return value1 > value2 ? value1 : value2 }
+public func min<T: Comparable> (of value1: T, _ value2: T) -> T { return value1 < value2 ? value1 : value2 }

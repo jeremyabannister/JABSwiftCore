@@ -57,6 +57,18 @@ public extension CGRect {
     return CGRect(x: self.x + point.x, y: self.y + point.y, width: self.size.width, height: self.size.height)
   }
   
+  public static func rect (encompassing rect1: CGRect, and rect2: CGRect) -> CGRect {
+    let x = min(of: rect1.x, rect2.x)
+    let y = min(of: rect1.y, rect2.y)
+    let width = max(of: rect1.right, rect2.right) - x
+    let height = max(of: rect1.bottom, rect2.bottom) - y
+    return CGRect(x: x, y: y, width: width, height: height)
+  }
+  
+  public func rect (encompassing rect: CGRect) -> CGRect {
+    return CGRect.rect(encompassing: self, and: rect)
+  }
+  
   public static func ~= (_ lhs: CGRect, _ rhs: CGRect) -> Bool {
     let epsilon: CGFloat = 0.001
     if abs(lhs.origin.x - rhs.origin.x) > epsilon { return false }
