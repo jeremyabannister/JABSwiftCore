@@ -8,9 +8,9 @@
 
 import UIKit
 
-public protocol InterfaceProtocol {
+public protocol InterfaceProtocol: class {
   var superview: UIView? { get set }
-  mutating func setSuperview (_ superview: UIView?)
+  func setSuperview (_ superview: UIView?)
   
   var interfaceElements: [InterfaceElement] { get }
   func addInterfaceElements ()
@@ -22,7 +22,7 @@ public extension InterfaceProtocol {
   
   func addInterfaceElements () { interfaceElements.forEach({ addInterfaceElement($0) }) }
   func updateInheritedInterface () { }
-  mutating func setSuperview (_ superview: UIView?) { self.superview = superview }
+  func setSuperview (_ superview: UIView?) { self.superview = superview }
   func addInterfaceElement (_ interfaceElement: InterfaceElement) { interfaceElement.addableViews.forEach({ superview?.addSubview($0) }) }
 }
 
