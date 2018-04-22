@@ -9,9 +9,9 @@
 import Foundation
 
 public protocol InterfaceNode {
-  var interface: [InterfaceProtocol] { get }
+  var interfaces: [InterfaceProtocol] { get }
 }
 public extension InterfaceNode {
-  func addUI () { interface.forEach({ $0.addInterfaceElements() }) }
-  func updateUI () { interface.forEach({ $0.updateInterfaceElements() }) }
+  func addUI () { interfaces.forEach({ $0.addInterfaceElements() }) }
+  func updateUI () { interfaces.forEach({ $0.updateInterfaceElements() }) }
 }
