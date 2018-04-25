@@ -17,6 +17,7 @@
 		8712AF821FAB0FCD005DAB84 /* UITextFieldExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8712AF811FAB0FCD005DAB84 /* UITextFieldExtension.swift */; };
 		8721FF2B1B6ECE37000EB3CB /* JABLocationTester.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8721FF2A1B6ECE37000EB3CB /* JABLocationTester.swift */; };
 		872B6A011BE1A9B600916EE8 /* SRTCamera.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872B6A001BE1A9B600916EE8 /* SRTCamera.swift */; };
+		873441D52090627C001FE70E /* NSObjectExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873441D42090627C001FE70E /* NSObjectExtension.swift */; };
 		87389F781D4719D500F0116B /* black.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 87389F771D4719D500F0116B /* black.jpg */; };
 		873BFA6E1B11AAA300E677F5 /* JABImagePanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873BFA6D1B11AAA200E677F5 /* JABImagePanel.swift */; };
 		874226F81F84CB3800C44DA5 /* CABasicAnimationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874226F71F84CB3800C44DA5 /* CABasicAnimationExtension.swift */; };
@@ -35,6 +36,7 @@
 		875444DC1AE1D05800659E6B /* JABTouchManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 875444DB1AE1D05800659E6B /* JABTouchManager.swift */; };
 		875444DE1AE1D05E00659E6B /* JABButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 875444DD1AE1D05E00659E6B /* JABButton.swift */; };
 		875444E01AE1D06500659E6B /* JABApplicationRoot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 875444DF1AE1D06500659E6B /* JABApplicationRoot.swift */; };
+		875AAFEF20909256005E0B85 /* TimingFunction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 875AAFEE20909256005E0B85 /* TimingFunction.swift */; };
 		875C9A361FFF54BC00C336B0 /* IntExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 875C9A351FFF54BC00C336B0 /* IntExtension.swift */; };
 		87643AB11EB07A8400D41A60 /* JABBlurLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87643AB01EB07A8400D41A60 /* JABBlurLayer.swift */; };
 		87643AB31EB07B4600D41A60 /* JABStopwatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87643AB21EB07B4600D41A60 /* JABStopwatch.swift */; };
@@ -89,6 +91,7 @@
 		8712AF811FAB0FCD005DAB84 /* UITextFieldExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextFieldExtension.swift; sourceTree = "<group>"; };
 		8721FF2A1B6ECE37000EB3CB /* JABLocationTester.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JABLocationTester.swift; sourceTree = "<group>"; };
 		872B6A001BE1A9B600916EE8 /* SRTCamera.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SRTCamera.swift; sourceTree = "<group>"; };
+		873441D42090627C001FE70E /* NSObjectExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSObjectExtension.swift; sourceTree = "<group>"; };
 		87389F771D4719D500F0116B /* black.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = black.jpg; sourceTree = "<group>"; };
 		873BFA6D1B11AAA200E677F5 /* JABImagePanel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JABImagePanel.swift; sourceTree = "<group>"; };
 		874226F71F84CB3800C44DA5 /* CABasicAnimationExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CABasicAnimationExtension.swift; sourceTree = "<group>"; };
@@ -110,6 +113,7 @@
 		875444DB1AE1D05800659E6B /* JABTouchManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JABTouchManager.swift; sourceTree = "<group>"; };
 		875444DD1AE1D05E00659E6B /* JABButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JABButton.swift; sourceTree = "<group>"; };
 		875444DF1AE1D06500659E6B /* JABApplicationRoot.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JABApplicationRoot.swift; sourceTree = "<group>"; };
+		875AAFEE20909256005E0B85 /* TimingFunction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimingFunction.swift; sourceTree = "<group>"; };
 		875C9A351FFF54BC00C336B0 /* IntExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntExtension.swift; sourceTree = "<group>"; };
 		87643AB01EB07A8400D41A60 /* JABBlurLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JABBlurLayer.swift; sourceTree = "<group>"; };
 		87643AB21EB07B4600D41A60 /* JABStopwatch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JABStopwatch.swift; sourceTree = "<group>"; };
@@ -227,6 +231,7 @@
 				874E95562079DED80042FA2C /* InterfaceNode.swift */,
 				874E95582079DEF20042FA2C /* InterfaceProtocol.swift */,
 				874E955A2079DF190042FA2C /* InterfaceSet.swift */,
+				875AAFEE20909256005E0B85 /* TimingFunction.swift */,
 			);
 			name = "Interface Protocols";
 			sourceTree = "<group>";
@@ -489,6 +494,7 @@
 				875C9A351FFF54BC00C336B0 /* IntExtension.swift */,
 				87B0130C1E5698770000280E /* MutableCollectionExtension.swift */,
 				8712806F1B4C5D410005716F /* NSDateExtension.swift */,
+				873441D42090627C001FE70E /* NSObjectExtension.swift */,
 				871268991FE0792C00199663 /* RangeExtension.swift */,
 				87B013101E5698D30000280E /* SequenceExtension.swift */,
 				87FB2E2A1B522C27000E09D9 /* StringExtension.swift */,
@@ -664,6 +670,7 @@
 				875444E01AE1D06500659E6B /* JABApplicationRoot.swift in Sources */,
 				874E9585207C97C00042FA2C /* JABPassthroughView.swift in Sources */,
 				874E955B2079DF190042FA2C /* InterfaceSet.swift in Sources */,
+				875AAFEF20909256005E0B85 /* TimingFunction.swift in Sources */,
 				8795452E1FA9AEA600A11939 /* UILabelExtension.swift in Sources */,
 				871280701B4C5D410005716F /* NSDateExtension.swift in Sources */,
 				87EF09DD1AFCA27100BE92A4 /* PhysicalObjectProtocol.swift in Sources */,
@@ -679,6 +686,7 @@
 				8772C9E31FD12CCD000D32DE /* DictionaryExtension.swift in Sources */,
 				87F422D81AFDB1C600C564D9 /* Vector.swift in Sources */,
 				87D48AB3206F6B3800A08F8D /* Collection.swift in Sources */,
+				873441D52090627C001FE70E /* NSObjectExtension.swift in Sources */,
 				875444D31AE1D02C00659E6B /* Toolkit.swift in Sources */,
 				87D1EA37201C1820007FB2AD /* CLLocationCoordinate2DExtension.swift in Sources */,
 				875444D71AE1D03E00659E6B /* JABView.swift in Sources */,

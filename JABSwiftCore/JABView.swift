@@ -19,109 +19,92 @@ public var defaultAnimationDuration = 0.25
  1. The second distinguishing feature of JABView is the method `updateAllUI()` (and its animated counterpart, `animatedUpdate()`). This method is intended to be overridden by the subclass. Its job is to update all of the visual elements owned by this JABView to their correct state, according to all the variables which track the state of the app.
  */
 open class JABView: UIView {
+  
+  // MARK: Static
+  
+  // Animated Update
+  public static var isGeneratingAnimatedUpdate: Bool = false
+  /// This unfortunately cannot be named "animationDuration" because it conflicts with an Objective-C setter on UIView
+  public static var animateDuration: TimeInterval = defaultAnimationDuration
+  public static var animationTimingFunction: TimingFunction = .easeInOut
+  
+  
+  // MARK:
+  // MARK: Properties
+  // MARK:
+  
+  
+  
+  // MARK:
+  // MARK: Init
+  // MARK:
+  
+  public init (frame: CGRect = CGRect.zero, shouldAddAllUI: Bool = true) {
     
-    // MARK: Static
+    super.init(frame: frame)
     
-    // Animated Update
-    public static var isGeneratingAnimatedUpdate: Bool = false
-    /// This unfortunately cannot be named "animationDuration" because it conflicts with an Objective-C setter on UIView
-    public static var animateDuration: TimeInterval = defaultAnimationDuration
-    public static var animationTimingFunction: CAMediaTimingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
+    if shouldAddAllUI { addAllUI() }
+  }
+  
+  
+  required public init?(coder aDecoder: NSCoder) {
+    super.init(coder: aDecoder)
+  }
+  
+  
+  // MARK:
+  // MARK: Methods
+  // MARK:
+  
+  
+  
+  // MARK:
+  // MARK: UI
+  // MARK:
+  
+  open func addAllUI () {
     
-    // Timing Functions
-    public enum TimingFunction { case easeInOut, easeIn, easeOut, linear, custom(Float, Float, Float, Float) }
-    public static func mediaTimingFunction (for timingFunction: TimingFunction) -> CAMediaTimingFunction {
-        switch timingFunction {
-        case .easeInOut:
-            return CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
-        case .easeIn:
-            return CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseIn)
-        case .easeOut:
-            return CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseOut)
-        case .linear:
-            return CAMediaTimingFunction(name: kCAMediaTimingFunctionLinear)
-        case .custom(let one, let two, let three, let four):
-            return CAMediaTimingFunction(controlPoints: one, two, three, four)
-        }
-    }
+  }
+  
+  open func updateAllUI () {
     
+  }
+  
+  open func updateParameters () {
     
-    // MARK:
-    // MARK: Properties
-    // MARK:
+  }
+  
+  open func animate (_ updateCode: () -> (), duration: TimeInterval = defaultAnimationDuration, timingFunction: TimingFunction = .easeInOut, completion: @escaping (Bool) -> () = { (completed) in }) {
+    let oldDuration = JABView.animateDuration
+    let oldTimingFunction = JABView.animationTimingFunction
     
+    JABView.isGeneratingAnimatedUpdate = true
+    JABView.animateDuration = duration
+    JABView.animationTimingFunction = timingFunction
     
+    updateCode()
+    DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + duration) { completion(true) }
     
-    // MARK:
-    // MARK: Init
-    // MARK:
+    JABView.isGeneratingAnimatedUpdate = false
+    JABView.animateDuration = oldDuration
+    JABView.animationTimingFunction = oldTimingFunction
+  }
+  
+  
+  open func animatedUpdate (duration: TimeInterval = defaultAnimationDuration, timingFunction: TimingFunction = .easeInOut, completion: @escaping (Bool) -> () = { (completed) in }) {
+    animate({ self.updateAllUI() }, duration: duration, timingFunction: timingFunction, completion: completion)
+  }
+  
+  
+  
+  // MARK:
+  // MARK: Keyboard
+  // MARK:
+  
+  open func closeAllKeyboards () {
     
-    public init (frame: CGRect = CGRect.zero, shouldAddAllUI: Bool = true) {
-        
-        super.init(frame: frame)
-        
-        if shouldAddAllUI { addAllUI() }
-    }
-    
-    
-    required public init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-    }
-    
-    
-    // MARK:
-    // MARK: Methods
-    // MARK:
-    
-    
-    
-    // MARK:
-    // MARK: UI
-    // MARK:
-    
-    open func addAllUI () {
-        
-    }
-    
-    open func updateAllUI () {
-        
-    }
-    
-    open func updateParameters () {
-        
-    }
-    
-    open func animate (_ updateCode: () -> (), duration: TimeInterval = defaultAnimationDuration, timingFunction: TimingFunction = .easeInOut, completion: @escaping (Bool) -> () = { (completed) in }) {
-        let oldDuration = JABView.animateDuration
-        let oldTimingFunction = JABView.animationTimingFunction
-        
-        JABView.isGeneratingAnimatedUpdate = true
-        JABView.animateDuration = duration
-        JABView.animationTimingFunction = JABView.mediaTimingFunction(for: timingFunction)
-        
-        updateCode()
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + duration) { completion(true) }
-        
-        JABView.isGeneratingAnimatedUpdate = false
-        JABView.animateDuration = oldDuration
-        JABView.animationTimingFunction = oldTimingFunction
-    }
-    
-    
-    open func animatedUpdate (duration: TimeInterval = defaultAnimationDuration, timingFunction: TimingFunction = .easeInOut, completion: @escaping (Bool) -> () = { (completed) in }) {
-        animate({ self.updateAllUI() }, duration: duration, timingFunction: timingFunction, completion: completion)
-    }
-    
-    
-    
-    // MARK:
-    // MARK: Keyboard
-    // MARK:
-    
-    open func closeAllKeyboards () {
-        
-    }
-    
-    
+  }
+  
+  
 }
 

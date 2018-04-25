@@ -9,8 +9,8 @@
 import UIKit
 
 public protocol InterfaceSet {
-  var elements: [InterfaceElement] { get }
+  var elements: [InterfaceElementOld] { get }
 }
-public protocol InterfaceElement {
+public protocol InterfaceElementOld {
   var addableViews: [UIView] { get }
 }

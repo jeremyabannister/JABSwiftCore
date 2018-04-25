@@ -19,14 +19,14 @@ extension UIView {
       // Turns out the bounds origin is not always (0, 0), for example in the case of a scrolled UITableView
       let newBounds = CGRect(origin: layer.bounds.origin, size: newValue.size)
       let newPosition = newValue.origin + CGPoint(x: newValue.size.width/2, y: newValue.size.height/2)
-      animate(toValue: newBounds, forProperty: .bounds)
-      animate(toValue: newPosition, forProperty: .position)
+      animate(to: newBounds, forProperty: .bounds)
+      animate(to: newPosition, forProperty: .position)
       frame = newValue
     } }
   
   @objc open var backdropColor: UIColor? {
     get { return backgroundColor }
-    set { if backdropColor == newValue { return }; animate(toValue: newValue?.cgColor, forProperty: .backgroundColor); layer.backgroundColor = newValue?.cgColor } }
+    set { if backdropColor == newValue { return }; animate(to: newValue?.cgColor, forProperty: .backgroundColor); layer.backgroundColor = newValue?.cgColor } }
   
   ///A shortcut to the view's `frame.origin.x`
   open var x: CGFloat {
@@ -85,19 +85,19 @@ extension UIView {
   /** A shortcut to the `opacity` of the view's layer */
   open var opacity: Float {
     get { return layer.opacity }
-    set { if opacity == newValue { return }; animate(toValue: newValue, forProperty: .opacity); layer.opacity = newValue  } }
+    set { if opacity == newValue { return }; animate(to: newValue, forProperty: .opacity); layer.opacity = newValue  } }
   /** A shortcut to the `cornerRadius` of the view's layer. The reason for the different name is to allow compatibility with existing code bases which have already added the `cornerRadius` property to UIView via an extension. */
   @objc open var cornerRounding: CGFloat {
     get { return layer.cornerRadius }
-    set { if cornerRounding ~= newValue { return }; animate(toValue: newValue, forProperty: .cornerRadius); layer.cornerRadius = newValue } }
+    set { if cornerRounding ~= newValue { return }; animate(to: newValue, forProperty: .cornerRadius); layer.cornerRadius = newValue } }
   /// Shadow
   open var shadow: Shadow {
     get { return Shadow(opacity: layer.shadowOpacity, radius: layer.shadowRadius, offset: layer.shadowOffset, color: UIColor(cgColor: layer.shadowColor ?? UIColor.black.cgColor)) }
     set {
-      if shadow.opacity != newValue.opacity { animate(toValue: newValue.opacity, forProperty: .shadowOpacity); layer.shadowOpacity = newValue.opacity }
-      if shadow.radius != newValue.radius { animate(toValue: newValue.radius, forProperty: .shadowRadius); layer.shadowRadius = newValue.radius }
-      if shadow.offset != newValue.offset { animate(toValue: newValue.offset, forProperty: .shadowOffset); layer.shadowOffset = newValue.offset }
-      if shadow.color != newValue.color { animate(toValue: newValue.color.cgColor, forProperty: .shadowColor); layer.shadowColor = newValue.color.cgColor }
+      if shadow.opacity != newValue.opacity { animate(to: newValue.opacity, forProperty: .shadowOpacity); layer.shadowOpacity = newValue.opacity }
+      if shadow.radius != newValue.radius { animate(to: newValue.radius, forProperty: .shadowRadius); layer.shadowRadius = newValue.radius }
+      if shadow.offset != newValue.offset { animate(to: newValue.offset, forProperty: .shadowOffset); layer.shadowOffset = newValue.offset }
+      if shadow.color != newValue.color { animate(to: newValue.color.cgColor, forProperty: .shadowColor); layer.shadowColor = newValue.color.cgColor }
     } }
   /** A shortcut to the `masksToBounds` of the view's layer */
   open var masksToBounds: Bool {
@@ -106,15 +106,15 @@ extension UIView {
   /** A shortcut to the `shadowOpacity` of the view's layer */
   open var shadowOpacity: Float {
     get { return layer.shadowOpacity }
-    set { if shadowOpacity == newValue { return }; animate(toValue: newValue, forProperty: .shadowOpacity); layer.shadowOpacity = newValue } }
+    set { if shadowOpacity == newValue { return }; animate(to: newValue, forProperty: .shadowOpacity); layer.shadowOpacity = newValue } }
   /** A shortcut to the `shadowRadius` of the view's layer */
   open var shadowRadius: CGFloat {
     get { return layer.shadowRadius }
-    set { if shadowRadius == newValue { return }; animate(toValue: newValue, forProperty: .shadowRadius); layer.shadowRadius = newValue } }
+    set { if shadowRadius == newValue { return }; animate(to: newValue, forProperty: .shadowRadius); layer.shadowRadius = newValue } }
   /** A shortcut to the `shadowOffset` of the view's layer */
   open var shadowOffset: CGSize {
     get { return layer.shadowOffset }
-    set { if shadowOffset == newValue { return }; animate(toValue: newValue, forProperty: .shadowOffset); layer.shadowOffset = newValue } }
+    set { if shadowOffset == newValue { return }; animate(to: newValue, forProperty: .shadowOffset); layer.shadowOffset = newValue } }
   /** A shortcut to the `shadowColor` of the view's layer */
   open var shadowColor: UIColor? {
     get { return UIColor(cgColor: layer.shadowColor ?? UIColor.black.cgColor) }
@@ -143,38 +143,43 @@ extension UIView {
   
   
   // Animation
-  private enum AnimatableProperty: String { case bounds, position, backgroundColor, opacity, cornerRadius, shadowOpacity, shadowRadius, shadowOffset, shadowColor }
-  private func animate (toValue newValue: Any?, forProperty property: AnimatableProperty) {
-    if !JABView.isGeneratingAnimatedUpdate { return }
-    let animation = CABasicAnimation(keyPath: property.rawValue, fromValue: fromValue(for: property), toValue: newValue)
-    animation.duration = JABView.animateDuration
-    animation.timingFunction = JABView.animationTimingFunction
+  private enum AnimatableProperty: String {
+    case bounds, position, backgroundColor, opacity, cornerRadius, shadowOpacity, shadowRadius, shadowOffset, shadowColor
+  }
+  private func animate (to newValue: Any?, forProperty property: AnimatableProperty) {
+    if shouldAnimateChangesLookupTable[self.objectIdentifier] != true && !JABView.isGeneratingAnimatedUpdate { return }
+    let animationParameters = animationParametersLookupTable[self.objectIdentifier] ?? AnimationParameters(duration: JABView.animateDuration, timingFunction: JABView.animationTimingFunction, completion: nil)
+    let animation = CABasicAnimation(keyPath: property.rawValue, fromValue: currentlyPresentedValue(for: property), toValue: newValue)
+    animation.duration = animationParameters.duration
+    animation.timingFunction = animationParameters.timingFunction.mediaTimingFunction
     self.layer.removeAnimation(forKey: property.rawValue)
     self.layer.add(animation, forKey: property.rawValue)
   }
-  private func fromValue (for property: AnimatableProperty) -> Any? {
+  private func currentlyPresentedValue (for property: AnimatableProperty) -> Any? {
     let shouldDeriveFromPresentationLayer = self.layer.animation(forKey: property.rawValue) != nil
     switch property {
-      case .bounds:
-        return shouldDeriveFromPresentationLayer ? layer.presentation()?.bounds ?? layer.bounds : layer.bounds
-      case .position:
-        return shouldDeriveFromPresentationLayer ? layer.presentation()?.position ?? layer.position : layer.position
-      case .backgroundColor:
-        return shouldDeriveFromPresentationLayer ? layer.presentation()?.backgroundColor ?? layer.backgroundColor : layer.backgroundColor
-      case .opacity:
-        return shouldDeriveFromPresentationLayer ? layer.presentation()?.opacity ?? layer.opacity : layer.opacity
-      case .cornerRadius:
-        return shouldDeriveFromPresentationLayer ? layer.presentation()?.cornerRadius ?? layer.cornerRadius : layer.cornerRadius
-      case .shadowOpacity:
-        return shouldDeriveFromPresentationLayer ? layer.presentation()?.shadowOpacity ?? layer.shadowOpacity : layer.shadowOpacity
-      case .shadowRadius:
-        return shouldDeriveFromPresentationLayer ? layer.presentation()?.shadowRadius ?? layer.shadowRadius : layer.shadowRadius
-      case .shadowOffset:
-        return shouldDeriveFromPresentationLayer ? layer.presentation()?.shadowOffset ?? layer.shadowOffset : layer.shadowOffset
-      case .shadowColor:
-        return shouldDeriveFromPresentationLayer ? layer.presentation()?.shadowColor ?? layer.shadowColor : layer.shadowColor
+    case .bounds:
+      return [true: layer.presentation()?.bounds ?? layer.bounds, false: layer.bounds][shouldDeriveFromPresentationLayer]!
+    case .position:
+      return [true: layer.presentation()?.position ?? layer.position, false: layer.position][shouldDeriveFromPresentationLayer]!
+    case .backgroundColor:
+      return [true: layer.presentation()?.backgroundColor ?? layer.backgroundColor, false: layer.backgroundColor][shouldDeriveFromPresentationLayer]!
+    case .opacity:
+      return [true: layer.presentation()?.opacity ?? layer.opacity, false: layer.opacity][shouldDeriveFromPresentationLayer]!
+    case .cornerRadius:
+      return [true: layer.presentation()?.cornerRadius ?? layer.cornerRadius, false: layer.cornerRadius][shouldDeriveFromPresentationLayer]!
+    case .shadowOpacity:
+      return [true: layer.presentation()?.shadowOpacity ?? layer.shadowOpacity, false: layer.shadowOpacity][shouldDeriveFromPresentationLayer]!
+    case .shadowRadius:
+      return [true: layer.presentation()?.shadowRadius ?? layer.shadowRadius, false: layer.shadowRadius][shouldDeriveFromPresentationLayer]!
+    case .shadowOffset:
+      return [true: layer.presentation()?.shadowOffset ?? layer.shadowOffset, false: layer.shadowOffset][shouldDeriveFromPresentationLayer]!
+    case .shadowColor:
+      return [true: layer.presentation()?.shadowColor ?? layer.shadowColor, false: layer.shadowColor][shouldDeriveFromPresentationLayer]!
     }
   }
+  
+  
 }
 
 
@@ -224,4 +229,3 @@ public struct Shadow {
   
   public static func == (lhs: Shadow, rhs: Shadow) -> Bool { return (lhs.opacity == rhs.opacity) && (lhs.radius == rhs.radius) && (lhs.offset == rhs.offset) && (lhs.color == rhs.color) }
 }
-
