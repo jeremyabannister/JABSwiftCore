@@ -28,9 +28,12 @@ open class JABImageButton: JABButton {
   open var tintColorForPressedImage: UIColor?
   open var contentInsetForPressedImage: CGFloat?
   
+  // Interface Elements
+  override open var interfaceElements: [InterfaceElement] { return super.interfaceElements + [imageView, pressedImageView] }
+  
   // MARK: UI
-  fileprivate let imageView = UIImageView()
-  fileprivate let pressedImageView = UIImageView()
+  private let imageView = UIImageView()
+  private let pressedImageView = UIImageView()
   
   // MARK: Parameters
   
@@ -54,20 +57,10 @@ open class JABImageButton: JABButton {
     self.contentInset = contentInset
     self.morphState = morphState
     super.init()
+    addUI()
   }
+  required public init?(coder aDecoder: NSCoder) { fatalError() }
   
-  required public init?(coder aDecoder: NSCoder) {
-    self.morphState = .image
-    super.init(coder: aDecoder)
-    print("Should not be initializing from coder \(self)")
-  }
-  
-  
-  // MARK: Parameters
-  override open func updateParameters() {
-    super.updateParameters()
-    
-  }
   
   
   
@@ -79,18 +72,16 @@ open class JABImageButton: JABButton {
   
   
   // MARK: All
-  override open func addAllUI() {
-    super.addAllUI()
+  override open func addUI() {
+    super.addUI()
     
-    addImageView()
-    addPressedImageView()
-    
+    addSubview(imageView)
+    addSubview(pressedImageView)
   }
   
-  override open func updateAllUI() {
+  override open func updateUI() {
     
-    super.updateAllUI()
-    updateParameters()
+    super.updateUI()
     
     
     configureImageView()
@@ -101,15 +92,6 @@ open class JABImageButton: JABButton {
     
   }
   
-  
-  // MARK: Adding
-  fileprivate func addImageView () {
-    addSubview(imageView)
-  }
-  
-  fileprivate func addPressedImageView () {
-    addSubview(pressedImageView)
-  }
   
   
   
@@ -197,7 +179,12 @@ open class JABImageButton: JABButton {
   open func morph (to morphState: MorphState, animationDuration: TimeInterval = defaultAnimationDuration, completion: @escaping (Bool) -> () = { (completed) in }) {
     if self.morphState == morphState { return }
     self.morphState = morphState
-    if animationDuration == 0 { updateAllUI(); completion(true) } else { animatedUpdate(duration: animationDuration, completion: completion) }
+    if animationDuration == 0 {
+      updateUI()
+      completion(true)
+    } else {
+      animatedUpdate(duration: animationDuration, completion: completion)
+    }
   }
   
   

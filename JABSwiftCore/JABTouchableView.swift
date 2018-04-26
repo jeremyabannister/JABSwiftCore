@@ -8,7 +8,7 @@
 
 import UIKit
 
-open class JABTouchableView: JABView, JABTouchManagerDelegate {
+open class JABTouchableView: UIView, JABTouchManagerDelegate {
   
   // ----------------------------------------------------------------------
   // MARK: Properties
@@ -45,39 +45,12 @@ open class JABTouchableView: JABView, JABTouchManagerDelegate {
   // MARK: Init
   // -----------
   public init () {
-    super.init()
+    super.init(frame: .zero)
     touchManager = JABTouchManager(touchDomain: self)
     touchManager?.delegate = self
   }
   
-  required public init?(coder aDecoder: NSCoder) {
-    super.init(coder: aDecoder)
-    print("Should not be initializing from coder \(self)")
-  }
-  
-  
-  // --------------------
-  // MARK: UI Parameters
-  // --------------------
-  override open func updateParameters() {
-    super.updateParameters()
-    
-  }
-  
-  // ----------------------
-  // MARK: All UI Elements
-  // ----------------------
-  override open func addAllUI() {
-    super.addAllUI()
-    
-  }
-  
-  override open func updateAllUI() {
-    
-    super.updateAllUI()
-    updateParameters()
-    
-  }
+  required public init?(coder aDecoder: NSCoder) { fatalError() }
   
   
   // ----------------------

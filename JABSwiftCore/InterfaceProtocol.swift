@@ -29,7 +29,8 @@ public extension InterfaceProtocol {
 
 
 
-
+extension UIView: InterfaceElement { }
+extension CALayer: InterfaceElement { }
 
 
 public struct AnimationParameters {
@@ -51,7 +52,17 @@ public extension InterfaceElement where Self: NSObject {
 
 public protocol Interface: InterfaceElement {
   var interfaceElements: [InterfaceElement] { get }
+  func addUI ()
   func updateUI ()
+}
+
+public extension Interface where Self: UIView {
+  func addUI () {
+    for interfaceElement in interfaceElements {
+      if let subview = interfaceElement as? UIView { addSubview(subview) }
+      else if let sublayer = interfaceElement as? CALayer { layer.addSublayer(sublayer) }
+    }
+  }
 }
 
 public protocol AnimatableInterface: Interface { }
@@ -84,4 +95,31 @@ public extension AnimatableInterface {
       ($0 as? AnimatableInterface)?.turnOffAnimationMode()
     })
   }
+}
+
+public extension Array where Element: InterfaceElement {
+  public var asInterfaceElements: [InterfaceElement] { return self as [InterfaceElement] }
+}
+
+public func test () {
+  //  func animate (_ updateCode: () -> (), duration: TimeInterval = defaultAnimationDuration, timingFunction: TimingFunction = .easeInOut, completion: @escaping (Bool) -> () = { (completed) in }) {
+  //    let oldDuration = JABView.animateDuration
+  //    let oldTimingFunction = JABView.animationTimingFunction
+  //
+  //    JABView.isGeneratingAnimatedUpdate = true
+  //    JABView.animateDuration = duration
+  //    JABView.animationTimingFunction = timingFunction
+  //
+  //    updateCode()
+  //    DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + duration) { completion(true) }
+  //
+  //    JABView.isGeneratingAnimatedUpdate = false
+  //    JABView.animateDuration = oldDuration
+  //    JABView.animationTimingFunction = oldTimingFunction
+  //  }
+  //
+  //
+  //  func animatedUpdate (duration: TimeInterval = defaultAnimationDuration, timingFunction: TimingFunction = .easeInOut, completion: @escaping (Bool) -> () = { (completed) in }) {
+  //    animate({ self.updateAllUI() }, duration: duration, timingFunction: timingFunction, completion: completion)
+  //  }
 }

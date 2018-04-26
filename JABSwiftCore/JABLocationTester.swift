@@ -8,7 +8,7 @@
 
 import UIKit
 
-open class JABLocationTester: JABTouchableView {
+open class JABLocationTester: JABTouchableView, AnimatableInterface {
   
   // MARK:
   // MARK: Properties
@@ -24,6 +24,9 @@ open class JABLocationTester: JABTouchableView {
   // Private
   fileprivate var location = CGPoint()
   fileprivate var mediaTimeOfLastTap = CACurrentMediaTime()
+  
+  // Interface Elements
+  open var interfaceElements: [InterfaceElement] { return [horizontalLine, verticalLine] }
   
   // MARK: UI
   fileprivate let horizontalLine = UIView()
@@ -45,12 +48,10 @@ open class JABLocationTester: JABTouchableView {
   
   override public init () {
     super.init()
+    addUI()
   }
   
-  required public init?(coder aDecoder: NSCoder) {
-    super.init(coder: aDecoder)
-    print("Should not be initializing from coder \(self)")
-  }
+  required public init?(coder aDecoder: NSCoder) { fatalError() }
   
   
   // MARK:
@@ -59,14 +60,14 @@ open class JABLocationTester: JABTouchableView {
   
   
   // MARK: All
-  override open func addAllUI() {
+  open func addUI() {
     
     addHorizontalLine()
     addVerticalLine()
     
   }
   
-  override open func updateAllUI() {
+  open func updateUI() {
     
     configureHorizontalLine()
     positionHorizontalLine()
@@ -157,7 +158,7 @@ open class JABLocationTester: JABTouchableView {
     guard let touchRecognizer = touchManager.touchRecognizer else { return }
     location = touchRecognizer.location(in: self)
     print("(\(location.x), \(location.y))")
-    updateAllUI()
+    updateUI()
     
   }
   
@@ -166,7 +167,7 @@ open class JABLocationTester: JABTouchableView {
     guard let touchRecognizer = touchManager.touchRecognizer else { return }
     location = touchRecognizer.location(in: self)
     print("(\(location.x), \(location.y))")
-    updateAllUI()
+    updateUI()
     
     
     if CACurrentMediaTime() - mediaTimeOfLastTap < 0.2 {
@@ -182,7 +183,7 @@ open class JABLocationTester: JABTouchableView {
     guard let touchRecognizer = touchManager.touchRecognizer else { return }
     location = touchRecognizer.location(in: self)
     print("(\(location.x), \(location.y))")
-    updateAllUI()
+    updateUI()
     
   }
   

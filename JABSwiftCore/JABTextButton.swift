@@ -34,8 +34,11 @@ open class JABTextButton: JABButton {
   open var textDimsWhenPressed = false
   open var textDimFraction: CGFloat?
   
+  // Interface Elements
+  override open var interfaceElements: [InterfaceElement] { return super.interfaceElements + [label] }
+  
   // MARK: UI
-  fileprivate let label = UILabel()
+  private let label = UILabel()
   
   // MARK: Parameters
   
@@ -57,22 +60,9 @@ open class JABTextButton: JABButton {
   public init (text: String = "") {
     self.text = text
     super.init()
+    addUI()
   }
-  
-  required public init?(coder aDecoder: NSCoder) {
-    self.text = ""
-    super.init(coder: aDecoder)
-    print("Should not be initializing from coder \(self)")
-  }
-  
-  
-  
-  // MARK: Parameters
-  override open func updateParameters() {
-    super.updateParameters()
-    
-  }
-  
+  required public init?(coder aDecoder: NSCoder) { fatalError() }
   
   
   
@@ -83,28 +73,19 @@ open class JABTextButton: JABButton {
   
   
   // MARK: All
-  override open func addAllUI() {
-    super.addAllUI()
+  override open func addUI() {
+    super.addUI()
     
-    addLabel()
-    
+    addSubview(label)
   }
   
-  override open func updateAllUI() {
+  override open func updateUI() {
     
-    super.updateAllUI()
-    updateParameters()
-    
+    super.updateUI()
     
     configureLabel()
     positionLabel()
     
-  }
-  
-  
-  // MARK: Adding
-  fileprivate func addLabel () {
-    addSubview(label)
   }
   
   

@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		8701987B1AE61FCA0073BFD5 /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8701987A1AE61FCA0073BFD5 /* UIImageExtension.swift */; };
-		870419781BE97635004DD8DF /* JABImageBank.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870419771BE97635004DD8DF /* JABImageBank.swift */; };
 		8705209D1AEF8799008C9555 /* ArrayExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8705209C1AEF8799008C9555 /* ArrayExtension.swift */; };
 		870DFB831B532A9200BC76D7 /* DoubleExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870DFB821B532A9200BC76D7 /* DoubleExtension.swift */; };
 		8712689A1FE0792C00199663 /* RangeExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 871268991FE0792C00199663 /* RangeExtension.swift */; };
@@ -19,7 +18,6 @@
 		872B6A011BE1A9B600916EE8 /* SRTCamera.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872B6A001BE1A9B600916EE8 /* SRTCamera.swift */; };
 		873441D52090627C001FE70E /* NSObjectExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873441D42090627C001FE70E /* NSObjectExtension.swift */; };
 		87389F781D4719D500F0116B /* black.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 87389F771D4719D500F0116B /* black.jpg */; };
-		873BFA6E1B11AAA300E677F5 /* JABImagePanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873BFA6D1B11AAA200E677F5 /* JABImagePanel.swift */; };
 		874226F81F84CB3800C44DA5 /* CABasicAnimationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874226F71F84CB3800C44DA5 /* CABasicAnimationExtension.swift */; };
 		874D00001B76C8F8002E1A32 /* MarshalOperator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874DFFFF1B76C8F8002E1A32 /* MarshalOperator.swift */; };
 		874E95572079DED80042FA2C /* InterfaceNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874E95562079DED80042FA2C /* InterfaceNode.swift */; };
@@ -55,7 +53,6 @@
 		87D99B1A205E216A005E098F /* UITextViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D99B19205E216A005E098F /* UITextViewExtension.swift */; };
 		87D99B23206967DB005E098F /* ComparableExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D99B22206967DB005E098F /* ComparableExtension.swift */; };
 		87DEDF79201EC9A7004A8757 /* DataExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87DEDF78201EC9A7004A8757 /* DataExtension.swift */; };
-		87ED41DA1B1593F600B57E7B /* JABSquareImagePanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87ED41D91B1593F600B57E7B /* JABSquareImagePanel.swift */; };
 		87EE71A91AE562EF00526770 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87EE71A81AE562EF00526770 /* QuartzCore.framework */; };
 		87EF09DD1AFCA27100BE92A4 /* PhysicalObjectProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87EF09DC1AFCA27000BE92A4 /* PhysicalObjectProtocol.swift */; };
 		87F422D81AFDB1C600C564D9 /* Vector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F422D71AFDB1C600C564D9 /* Vector.swift */; };
@@ -63,8 +60,6 @@
 		87F4FD3E1AE421A300953E38 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F4FD3D1AE421A300953E38 /* UIViewExtension.swift */; };
 		87F4FD411AE421ED00953E38 /* CGRectExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F4FD401AE421ED00953E38 /* CGRectExtension.swift */; };
 		87F4FD431AE4222A00953E38 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F4FD421AE4222A00953E38 /* UIColorExtension.swift */; };
-		87F771EB1B0C1C0E00889827 /* JABPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F771EA1B0C1C0E00889827 /* JABPanel.swift */; };
-		87F771EF1B0C1C6600889827 /* JABPaneledScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F771EE1B0C1C6600889827 /* JABPaneledScrollView.swift */; };
 		87F842EE1F918426009027B9 /* CGContextExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F842ED1F918426009027B9 /* CGContextExtension.swift */; };
 		87F842F01F920388009027B9 /* BoolExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F842EF1F920388009027B9 /* BoolExtension.swift */; };
 		87FB2E2B1B522C27000E09D9 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87FB2E2A1B522C27000E09D9 /* StringExtension.swift */; };
@@ -82,7 +77,6 @@
 
 /* Begin PBXFileReference section */
 		8701987A1AE61FCA0073BFD5 /* UIImageExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageExtension.swift; sourceTree = "<group>"; };
-		870419771BE97635004DD8DF /* JABImageBank.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JABImageBank.swift; sourceTree = "<group>"; };
 		8705209C1AEF8799008C9555 /* ArrayExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayExtension.swift; sourceTree = "<group>"; };
 		870DFB821B532A9200BC76D7 /* DoubleExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoubleExtension.swift; sourceTree = "<group>"; };
 		871268991FE0792C00199663 /* RangeExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RangeExtension.swift; sourceTree = "<group>"; };
@@ -93,7 +87,6 @@
 		872B6A001BE1A9B600916EE8 /* SRTCamera.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SRTCamera.swift; sourceTree = "<group>"; };
 		873441D42090627C001FE70E /* NSObjectExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSObjectExtension.swift; sourceTree = "<group>"; };
 		87389F771D4719D500F0116B /* black.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = black.jpg; sourceTree = "<group>"; };
-		873BFA6D1B11AAA200E677F5 /* JABImagePanel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JABImagePanel.swift; sourceTree = "<group>"; };
 		874226F71F84CB3800C44DA5 /* CABasicAnimationExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CABasicAnimationExtension.swift; sourceTree = "<group>"; };
 		874DFFFF1B76C8F8002E1A32 /* MarshalOperator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarshalOperator.swift; sourceTree = "<group>"; };
 		874E95562079DED80042FA2C /* InterfaceNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterfaceNode.swift; sourceTree = "<group>"; };
@@ -133,7 +126,6 @@
 		87D99B19205E216A005E098F /* UITextViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextViewExtension.swift; sourceTree = "<group>"; };
 		87D99B22206967DB005E098F /* ComparableExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComparableExtension.swift; sourceTree = "<group>"; };
 		87DEDF78201EC9A7004A8757 /* DataExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataExtension.swift; sourceTree = "<group>"; };
-		87ED41D91B1593F600B57E7B /* JABSquareImagePanel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JABSquareImagePanel.swift; sourceTree = "<group>"; };
 		87EE71A81AE562EF00526770 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		87EF09DC1AFCA27000BE92A4 /* PhysicalObjectProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhysicalObjectProtocol.swift; sourceTree = "<group>"; };
 		87F422D71AFDB1C600C564D9 /* Vector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Vector.swift; sourceTree = "<group>"; };
@@ -141,8 +133,6 @@
 		87F4FD3D1AE421A300953E38 /* UIViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		87F4FD401AE421ED00953E38 /* CGRectExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CGRectExtension.swift; sourceTree = "<group>"; };
 		87F4FD421AE4222A00953E38 /* UIColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
-		87F771EA1B0C1C0E00889827 /* JABPanel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JABPanel.swift; sourceTree = "<group>"; };
-		87F771EE1B0C1C6600889827 /* JABPaneledScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JABPaneledScrollView.swift; sourceTree = "<group>"; };
 		87F842ED1F918426009027B9 /* CGContextExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGContextExtension.swift; sourceTree = "<group>"; };
 		87F842EF1F920388009027B9 /* BoolExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoolExtension.swift; sourceTree = "<group>"; };
 		87FB2E2A1B522C27000E09D9 /* StringExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
@@ -176,14 +166,6 @@
 			name = Camera;
 			sourceTree = "<group>";
 		};
-		870419791BE97638004DD8DF /* Image Bank */ = {
-			isa = PBXGroup;
-			children = (
-				870419771BE97635004DD8DF /* JABImageBank.swift */,
-			);
-			name = "Image Bank";
-			sourceTree = "<group>";
-		};
 		8721FF2C1B6ECE54000EB3CB /* Location Tester */ = {
 			isa = PBXGroup;
 			children = (
@@ -198,23 +180,6 @@
 				8721FF2C1B6ECE54000EB3CB /* Location Tester */,
 			);
 			name = Components;
-			sourceTree = "<group>";
-		};
-		873BFA6F1B11AAAA00E677F5 /* Image Panel */ = {
-			isa = PBXGroup;
-			children = (
-				873BFA6D1B11AAA200E677F5 /* JABImagePanel.swift */,
-			);
-			name = "Image Panel";
-			sourceTree = "<group>";
-		};
-		873BFA701B11AAB000E677F5 /* Subclasses */ = {
-			isa = PBXGroup;
-			children = (
-				873BFA6F1B11AAAA00E677F5 /* Image Panel */,
-				87ED41DB1B15940200B57E7B /* Square Image Panel */,
-			);
-			name = Subclasses;
 			sourceTree = "<group>";
 		};
 		874D00011B76C8FB002E1A32 /* Operators */ = {
@@ -333,9 +298,7 @@
 				875444E61AE1D09500659E6B /* Touchable View */,
 				875444E71AE1D09A00659E6B /* Application Root */,
 				87643AAF1EB07A6C00D41A60 /* Blur Layer */,
-				87F771F01B0C1C6B00889827 /* PaneledScrollView */,
 				870419761BE5501D004DD8DF /* Camera */,
-				870419791BE97638004DD8DF /* Image Bank */,
 			);
 			name = Subclasses;
 			sourceTree = "<group>";
@@ -425,14 +388,6 @@
 			name = "Comp Sci";
 			sourceTree = "<group>";
 		};
-		87ED41DB1B15940200B57E7B /* Square Image Panel */ = {
-			isa = PBXGroup;
-			children = (
-				87ED41D91B1593F600B57E7B /* JABSquareImagePanel.swift */,
-			);
-			name = "Square Image Panel";
-			sourceTree = "<group>";
-		};
 		87F422D51AFDB1A000C564D9 /* Physics */ = {
 			isa = PBXGroup;
 			children = (
@@ -507,32 +462,6 @@
 				87F4FD3D1AE421A300953E38 /* UIViewExtension.swift */,
 			);
 			name = "Class Extensions";
-			sourceTree = "<group>";
-		};
-		87F771EC1B0C1C1800889827 /* Panel */ = {
-			isa = PBXGroup;
-			children = (
-				87F771EA1B0C1C0E00889827 /* JABPanel.swift */,
-				873BFA701B11AAB000E677F5 /* Subclasses */,
-			);
-			name = Panel;
-			sourceTree = "<group>";
-		};
-		87F771ED1B0C1C2800889827 /* Components */ = {
-			isa = PBXGroup;
-			children = (
-				87F771EC1B0C1C1800889827 /* Panel */,
-			);
-			name = Components;
-			sourceTree = "<group>";
-		};
-		87F771F01B0C1C6B00889827 /* PaneledScrollView */ = {
-			isa = PBXGroup;
-			children = (
-				87F771EE1B0C1C6600889827 /* JABPaneledScrollView.swift */,
-				87F771ED1B0C1C2800889827 /* Components */,
-			);
-			name = PaneledScrollView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -651,7 +580,6 @@
 			files = (
 				870DFB831B532A9200BC76D7 /* DoubleExtension.swift in Sources */,
 				874E95592079DEF20042FA2C /* InterfaceProtocol.swift in Sources */,
-				87ED41DA1B1593F600B57E7B /* JABSquareImagePanel.swift in Sources */,
 				87F422DC1AFDB62A00C564D9 /* Size.swift in Sources */,
 				87B013111E5698D30000280E /* SequenceExtension.swift in Sources */,
 				8721FF2B1B6ECE37000EB3CB /* JABLocationTester.swift in Sources */,
@@ -679,9 +607,6 @@
 				874D00001B76C8F8002E1A32 /* MarshalOperator.swift in Sources */,
 				87F842F01F920388009027B9 /* BoolExtension.swift in Sources */,
 				87643AB11EB07A8400D41A60 /* JABBlurLayer.swift in Sources */,
-				870419781BE97635004DD8DF /* JABImageBank.swift in Sources */,
-				87F771EB1B0C1C0E00889827 /* JABPanel.swift in Sources */,
-				87F771EF1B0C1C6600889827 /* JABPaneledScrollView.swift in Sources */,
 				8701987B1AE61FCA0073BFD5 /* UIImageExtension.swift in Sources */,
 				8772C9E31FD12CCD000D32DE /* DictionaryExtension.swift in Sources */,
 				87F422D81AFDB1C600C564D9 /* Vector.swift in Sources */,
@@ -690,7 +615,6 @@
 				875444D31AE1D02C00659E6B /* Toolkit.swift in Sources */,
 				87D1EA37201C1820007FB2AD /* CLLocationCoordinate2DExtension.swift in Sources */,
 				875444D71AE1D03E00659E6B /* JABView.swift in Sources */,
-				873BFA6E1B11AAA300E677F5 /* JABImagePanel.swift in Sources */,
 				87F4FD411AE421ED00953E38 /* CGRectExtension.swift in Sources */,
 				87F4FD431AE4222A00953E38 /* UIColorExtension.swift in Sources */,
 				87DEDF79201EC9A7004A8757 /* DataExtension.swift in Sources */,

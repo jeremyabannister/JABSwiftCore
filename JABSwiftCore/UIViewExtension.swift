@@ -229,3 +229,45 @@ public struct Shadow {
   
   public static func == (lhs: Shadow, rhs: Shadow) -> Bool { return (lhs.opacity == rhs.opacity) && (lhs.radius == rhs.radius) && (lhs.offset == rhs.offset) && (lhs.color == rhs.color) }
 }
+
+
+public class JABAnimationParameters {
+  var duration: TimeInterval? = nil
+  var timingFunction: TimingFunction? = nil
+  var completion: (() -> ())? = nil
+}
+
+fileprivate var animationParametersKey = "AnimationParametersKey"
+
+extension UIView {
+  var animationParameters: JABAnimationParameters {
+    get { return (retrieveObject(forKey: &animationParametersKey) as? JABAnimationParameters) ?? JABAnimationParameters() }
+    set { storeObject(newValue, forKey: &animationParametersKey) }
+  }
+  
+  func setAnimationDuration (_ animationDuration: TimeInterval?) {
+    let newAnimationParameters = animationParameters
+    newAnimationParameters.duration = animationDuration
+    animationParameters = newAnimationParameters
+  }
+  
+  func setTimingFunction (_ timingFunction: TimingFunction?) {
+    let newAnimationParameters = animationParameters
+    newAnimationParameters.timingFunction = timingFunction
+    animationParameters = newAnimationParameters
+  }
+  
+  func setAnimationCompletion (_ completion: (() -> ())?) {
+    let newAnimationParameters = animationParameters
+    newAnimationParameters.completion = completion
+    animationParameters = newAnimationParameters
+  }
+}
+
+
+
+public extension UIView {
+  public func addSubviews (_ subviews: [UIView]) {
+    subviews.forEach({ addSubview($0) })
+  }
+}

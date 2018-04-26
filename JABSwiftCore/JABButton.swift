@@ -8,7 +8,7 @@
 
 import UIKit
 
-open class JABButton: JABTouchableView {
+open class JABButton: JABTouchableView, AnimatableInterface {
   
   // MARK:
   // MARK: Properties
@@ -39,6 +39,8 @@ open class JABButton: JABTouchableView {
   fileprivate var undimmedBackdropColor: UIColor? = .clear
   fileprivate var pressDelayTimer: Timer?
   
+  open var interfaceElements: [InterfaceElement] { return [holder] }
+  
   // MARK: UI
   fileprivate let holder = UIView()
   
@@ -60,6 +62,7 @@ open class JABButton: JABTouchableView {
   
   override public init () {
     super.init()
+    addUI()
   }
   
   required public init?(coder aDecoder: NSCoder) {
@@ -73,12 +76,11 @@ open class JABButton: JABTouchableView {
   // MARK:
   
   // MARK: All
-  override open func addAllUI () {
+  open func addUI () {
     addHolder()
   }
   
-  override open func updateAllUI() {
-    
+  open func updateUI() {
     
     configureHolder()
     positionHolder()
@@ -157,7 +159,7 @@ open class JABButton: JABTouchableView {
   // MARK: Visual
   open func updateVisualPressedExtent (to newVisualPressedExtent: CGFloat, animated: Bool = false) {
     visualPressedExtent = newVisualPressedExtent
-    if animated { animatedUpdate() } else { updateAllUI() }
+    if animated { animatedUpdate() } else { updateUI() }
   }
   
   // MARK: Timer
