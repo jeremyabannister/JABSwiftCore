@@ -34,9 +34,9 @@ extension CALayer: InterfaceElement { }
 
 
 public struct AnimationParameters {
-  var duration: TimeInterval
-  var timingFunction: TimingFunction
-  var completion: ((Bool) -> ())?
+  public var duration: TimeInterval
+  public var timingFunction: TimingFunction
+  public var completion: ((Bool) -> ())?
 }
 public var shouldAnimateChangesLookupTable: [ObjectIdentifier: Bool] = [:]
 public var animationParametersLookupTable: [ObjectIdentifier: AnimationParameters] = [:]
