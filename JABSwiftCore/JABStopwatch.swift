@@ -41,7 +41,7 @@ public class JABStopwatch: NSObject {
         
     }
     
-    required public init(coder aDecoder: NSCoder) {
+    public required init(coder aDecoder: NSCoder) {
         
         super.init()
         

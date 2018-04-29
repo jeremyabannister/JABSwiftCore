@@ -51,7 +51,7 @@ public extension InterfaceElement where Self: NSObject {
 }
 
 public protocol Interface: InterfaceElement {
-  var interfaceElements: [InterfaceElement] { get }
+  var interfaceElements: [InterfaceElement?] { get }
   func addUI ()
   func updateUI ()
 }
@@ -83,16 +83,18 @@ public extension AnimatableInterface {
   
   public func turnOnAnimationMode (withParameters parameters: AnimationParameters) {
     interfaceElements.forEach({
-      shouldAnimateChangesLookupTable[$0.uniqueIdentifier] = true
-      animationParametersLookupTable[$0.uniqueIdentifier] = parameters
-      ($0 as? AnimatableInterface)?.turnOnAnimationMode(withParameters: parameters)
+      guard let element = $0 else { return }
+      shouldAnimateChangesLookupTable[element.uniqueIdentifier] = true
+      animationParametersLookupTable[element.uniqueIdentifier] = parameters
+      (element as? AnimatableInterface)?.turnOnAnimationMode(withParameters: parameters)
     })
   }
   
   public func turnOffAnimationMode () {
     interfaceElements.forEach({
-      shouldAnimateChangesLookupTable[$0.uniqueIdentifier] = false
-      ($0 as? AnimatableInterface)?.turnOffAnimationMode()
+      guard let element = $0 else { return }
+      shouldAnimateChangesLookupTable[element.uniqueIdentifier] = false
+      (element as? AnimatableInterface)?.turnOffAnimationMode()
     })
   }
 }

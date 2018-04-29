@@ -39,7 +39,7 @@ open class JABButton: JABTouchableView, AnimatableInterface {
   fileprivate var undimmedBackdropColor: UIColor? = .clear
   fileprivate var pressDelayTimer: Timer?
   
-  open var interfaceElements: [InterfaceElement] { return [holder] }
+  open var interfaceElements: [InterfaceElement?] { return [holder] }
   
   // MARK: UI
   fileprivate let holder = UIView()
@@ -65,7 +65,7 @@ open class JABButton: JABTouchableView, AnimatableInterface {
     addUI()
   }
   
-  required public init?(coder aDecoder: NSCoder) {
+  public required init?(coder aDecoder: NSCoder) {
     super.init(coder: aDecoder)
   }
   

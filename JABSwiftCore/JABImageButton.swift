@@ -29,7 +29,7 @@ open class JABImageButton: JABButton {
   open var contentInsetForPressedImage: CGFloat?
   
   // Interface Elements
-  override open var interfaceElements: [InterfaceElement] { return super.interfaceElements + [imageView, pressedImageView] }
+  override open var interfaceElements: [InterfaceElement?] { return super.interfaceElements + [imageView, pressedImageView] }
   
   // MARK: UI
   private let imageView = UIImageView()
@@ -59,7 +59,7 @@ open class JABImageButton: JABButton {
     super.init()
     addUI()
   }
-  required public init?(coder aDecoder: NSCoder) { fatalError() }
+  public required init?(coder aDecoder: NSCoder) { return nil }
   
   
   

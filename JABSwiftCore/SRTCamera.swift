@@ -45,7 +45,7 @@ open class SRTCamera: JABView {
         updateAllUI()
     }
     
-    required public init?(coder aDecoder: NSCoder) {
+    public required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         print("Should not be initializing from coder \(self)")
     }

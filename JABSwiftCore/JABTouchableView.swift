@@ -50,7 +50,7 @@ open class JABTouchableView: UIView, JABTouchManagerDelegate {
     touchManager?.delegate = self
   }
   
-  required public init?(coder aDecoder: NSCoder) { fatalError() }
+  public required init?(coder aDecoder: NSCoder) { return nil }
   
   
   // ----------------------

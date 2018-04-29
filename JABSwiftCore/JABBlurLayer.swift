@@ -49,7 +49,7 @@ public class JABBlurLayer: JABView {
         super.init(frame: CGRect.zero)
     }
     
-    required public init?(coder aDecoder: NSCoder) {
+    public required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         print("Should not be initializing from coder \(self)")
     }

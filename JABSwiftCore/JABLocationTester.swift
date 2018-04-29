@@ -26,7 +26,7 @@ open class JABLocationTester: JABTouchableView, AnimatableInterface {
   fileprivate var mediaTimeOfLastTap = CACurrentMediaTime()
   
   // Interface Elements
-  open var interfaceElements: [InterfaceElement] { return [horizontalLine, verticalLine] }
+  open var interfaceElements: [InterfaceElement?] { return [horizontalLine, verticalLine] }
   
   // MARK: UI
   fileprivate let horizontalLine = UIView()
@@ -51,7 +51,7 @@ open class JABLocationTester: JABTouchableView, AnimatableInterface {
     addUI()
   }
   
-  required public init?(coder aDecoder: NSCoder) { fatalError() }
+  public required init?(coder aDecoder: NSCoder) { return nil }
   
   
   // MARK:

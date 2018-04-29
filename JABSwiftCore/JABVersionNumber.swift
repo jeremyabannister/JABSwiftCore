@@ -54,7 +54,7 @@ open class JABVersionNumber: NSObject, Comparable, NSCoding {
     // MARK: NSCoding
     // MARK:
     
-    required public init(coder aDecoder: NSCoder) {
+    public required init(coder aDecoder: NSCoder) {
         if let numbers = aDecoder.decodeObject(forKey: "numbers") as? [Int] { self.numbers = numbers }
         else { self.numbers = [Int]() }
     }

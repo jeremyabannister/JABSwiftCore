@@ -35,7 +35,7 @@ open class JABTextButton: JABButton {
   open var textDimFraction: CGFloat?
   
   // Interface Elements
-  override open var interfaceElements: [InterfaceElement] { return super.interfaceElements + [label] }
+  override open var interfaceElements: [InterfaceElement?] { return super.interfaceElements + [label] }
   
   // MARK: UI
   private let label = UILabel()
@@ -62,7 +62,7 @@ open class JABTextButton: JABButton {
     super.init()
     addUI()
   }
-  required public init?(coder aDecoder: NSCoder) { fatalError() }
+  public required init?(coder aDecoder: NSCoder) { return nil }
   
   
   
