@@ -62,7 +62,7 @@ open class JABTextButton: JABButton {
     super.init()
     addUI()
   }
-  public required init?(coder aDecoder: NSCoder) { return nil }
+  public required init? (coder aDecoder: NSCoder) { return nil }
   
   
   

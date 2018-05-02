@@ -9,121 +9,121 @@
 import Foundation
 
 open class JABApplicationRoot: JABView, JABTouchableViewDelegate, JABLocationTesterDelegate {
+  
+  
+  
+  // MARK:
+  // MARK: Properties
+  // MARK:
+  
+  // MARK: State
+  
+  // MARK: UI
+  open var notificationLayer = JABTouchableView()
+  fileprivate let locationTester = JABLocationTester()
+  
+  
+  // MARK:
+  // MARK: Methods
+  // MARK:
+  
+  // MARK:
+  // MARK: Override
+  // MARK:
+  
+  override open func addSubview(_ view: UIView) {
+    super.addSubview(view)
+    bringSubview(toFront: notificationLayer)
+  }
+  
+  
+  // MARK:
+  // MARK: Init
+  // MARK:
+  
+  public override init (frame: CGRect = CGRect.zero, shouldAddAllUI: Bool = true) {
+    super.init(frame: frame, shouldAddAllUI: shouldAddAllUI)
     
+    staticOnScreenView = self
     
+    locationTester.locationTesterDelegate = self
     
-    // MARK:
-    // MARK: Properties
-    // MARK:
+    addSubview(notificationLayer)
+    notificationLayer.delegate = self
+    notificationLayer.site = bounds
+    undimNotificationLayer()
     
-    // MARK: State
+  }
+  
+  public required init? (coder aDecoder: NSCoder) {
+    super.init(coder: aDecoder)
+  }
+  
+  
+  // MARK:
+  // MARK: Notifications
+  // MARK:
+  
+  open func dimNotificationLayer () {
+    notificationLayer.backdropColor = UIColor(white: 0, alpha: 0.4)
+    notificationLayer.isUserInteractionEnabled = true
+  }
+  
+  open func undimNotificationLayer () {
+    notificationLayer.backdropColor = UIColor(white: 0, alpha: 0)
+    notificationLayer.isUserInteractionEnabled = false
+  }
+  
+  
+  // MARK:
+  // MARK: Debug
+  // MARK:
+  
+  open func launchLocationTesterAfterDelay (_ delay: TimeInterval) {
     
-    // MARK: UI
-    open var notificationLayer = JABTouchableView()
-    fileprivate let locationTester = JABLocationTester()
+    Timer.scheduledTimer(timeInterval: delay, target: self, selector: #selector(JABApplicationRoot.launchLocationTester), userInfo: nil, repeats: false)
     
+  }
+  
+  @objc open func launchLocationTester () {
     
-    // MARK:
-    // MARK: Methods
-    // MARK:
+    locationTester.site = bounds
+    addSubview(locationTester)
     
-    // MARK:
-    // MARK: Override
-    // MARK:
+  }
+  
+  open func cancelLocationTester () {
     
-    override open func addSubview(_ view: UIView) {
-        super.addSubview(view)
-        bringSubview(toFront: notificationLayer)
-    }
-
+    locationTester.removeFromSuperview()
     
-    // MARK:
-    // MARK: Init
-    // MARK:
+  }
+  
+  
+  // MARK:
+  // MARK: Delegate Methods
+  // MARK:
+  
+  // MARK: Touchable View
+  open func touchableViewTouchDidBegin(_ touchableView: JABTouchableView) {
     
-    public override init (frame: CGRect = CGRect.zero, shouldAddAllUI: Bool = true) {
-        super.init(frame: frame, shouldAddAllUI: shouldAddAllUI)
-        
-        staticOnScreenView = self
-        
-        locationTester.locationTesterDelegate = self
-        
-        addSubview(notificationLayer)
-        notificationLayer.delegate = self
-        notificationLayer.site = bounds
-        undimNotificationLayer()
-        
-    }
+  }
+  
+  open func touchableViewTouchDidChange(_ touchableView: JABTouchableView, xDistance: CGFloat, yDistance: CGFloat, xVelocity: CGFloat, yVelocity: CGFloat, methodCallNumber: Int) {
     
-    public required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-    }
+  }
+  
+  open func touchableViewTouchDidEnd(_ touchableView: JABTouchableView, xDistance: CGFloat, yDistance: CGFloat, xVelocity: CGFloat, yVelocity: CGFloat, methodCallNumber: Int) {
     
+  }
+  
+  open func touchableViewTouchDidCancel(_ touchableView: JABTouchableView, xDistance: CGFloat, yDistance: CGFloat, xVelocity: CGFloat, yVelocity: CGFloat, methodCallNumber: Int) {
     
-    // MARK:
-    // MARK: Notifications
-    // MARK:
-    
-    open func dimNotificationLayer () {
-        notificationLayer.backdropColor = UIColor(white: 0, alpha: 0.4)
-        notificationLayer.isUserInteractionEnabled = true
-    }
-    
-    open func undimNotificationLayer () {
-        notificationLayer.backdropColor = UIColor(white: 0, alpha: 0)
-        notificationLayer.isUserInteractionEnabled = false
-    }
-    
-    
-    // MARK:
-    // MARK: Debug
-    // MARK:
-    
-    open func launchLocationTesterAfterDelay (_ delay: TimeInterval) {
-        
-        Timer.scheduledTimer(timeInterval: delay, target: self, selector: #selector(JABApplicationRoot.launchLocationTester), userInfo: nil, repeats: false)
-        
-    }
-    
-    @objc open func launchLocationTester () {
-        
-        locationTester.site = bounds
-        addSubview(locationTester)
-        
-    }
-    
-    open func cancelLocationTester () {
-        
-        locationTester.removeFromSuperview()
-        
-    }
-    
-    
-    // MARK:
-    // MARK: Delegate Methods
-    // MARK:
-    
-    // MARK: Touchable View
-    open func touchableViewTouchDidBegin(_ touchableView: JABTouchableView) {
-        
-    }
-    
-    open func touchableViewTouchDidChange(_ touchableView: JABTouchableView, xDistance: CGFloat, yDistance: CGFloat, xVelocity: CGFloat, yVelocity: CGFloat, methodCallNumber: Int) {
-        
-    }
-    
-    open func touchableViewTouchDidEnd(_ touchableView: JABTouchableView, xDistance: CGFloat, yDistance: CGFloat, xVelocity: CGFloat, yVelocity: CGFloat, methodCallNumber: Int) {
-        
-    }
-    
-    open func touchableViewTouchDidCancel(_ touchableView: JABTouchableView, xDistance: CGFloat, yDistance: CGFloat, xVelocity: CGFloat, yVelocity: CGFloat, methodCallNumber: Int) {
-        
-    }
-    
-    // MARK: Location Tester
-    open func locationTesterDelegateDidCancel() {
-        cancelLocationTester()
-    }
-    
-    
+  }
+  
+  // MARK: Location Tester
+  open func locationTesterDelegateDidCancel() {
+    cancelLocationTester()
+  }
+  
+  
 }

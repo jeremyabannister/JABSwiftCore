@@ -100,7 +100,7 @@ public extension AnimatableInterface {
 }
 
 public extension Array where Element: InterfaceElement {
-  public var asInterfaceElements: [InterfaceElement] { return self as [InterfaceElement] }
+  public var asInterfaceElements: [InterfaceElement?] { return self as [InterfaceElement?] }
 }
 
 public func test () {

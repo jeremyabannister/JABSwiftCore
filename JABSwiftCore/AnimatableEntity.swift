@@ -34,4 +34,3 @@ extension UIView: AnimatableEntity { }
 extension CALayer: AnimatableEntity {
   public var layer: CALayer { return self }
 }
-

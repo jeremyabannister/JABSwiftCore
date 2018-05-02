@@ -65,7 +65,7 @@ open class JABButton: JABTouchableView, AnimatableInterface {
     addUI()
   }
   
-  public required init?(coder aDecoder: NSCoder) {
+  public required init? (coder aDecoder: NSCoder) {
     super.init(coder: aDecoder)
   }
   
