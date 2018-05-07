@@ -60,3 +60,9 @@ public extension UIColor {
   }
 }
 
+public extension UIColor {
+  public convenience init?(cgColor: CGColor?) {
+    guard let cgColor = cgColor else { return nil }
+    self.init(cgColor: cgColor)
+  }
+}

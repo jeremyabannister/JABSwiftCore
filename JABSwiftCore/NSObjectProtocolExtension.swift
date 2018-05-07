@@ -1,12 +1,12 @@
 //
-//  NSObjectExtension.swift
+//  NSObjectProtocolExtension.swift
 //  JABSwiftCore
 //
 //  Created by Jeremy Bannister on 4/25/18.
 //  Copyright © 2018 Jeremy Bannister. All rights reserved.
 //
 
-public extension NSObject {
+public extension NSObjectProtocol {
   func storeObject (_ object: AnyObject, forKey key: inout String) {
     objc_setAssociatedObject(self, &key, object, .OBJC_ASSOCIATION_RETAIN)
   }
@@ -15,6 +15,6 @@ public extension NSObject {
   }
 }
 
-public extension NSObject {
+public extension NSObjectProtocol {
   var objectIdentifier: ObjectIdentifier { return ObjectIdentifier(self) }
 }

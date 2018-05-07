@@ -15,11 +15,11 @@ open class JABButton: JABTouchableView, AnimatableInterface {
   // MARK:
   
   // Override
-  override open var backdropColor: UIColor? {
+  open var backdropColor: UIColor? {
     get { return holder.backdropColor }
     set { undimmedBackdropColor = newValue ?? .clear; configureHolder() }
   }
-  override open var cornerRounding: CGFloat {
+  open var cornerRounding: CGFloat {
     get { return holder.cornerRounding }
     set { holder.cornerRounding = newValue }
   }

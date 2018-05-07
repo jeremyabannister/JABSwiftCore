@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		8701987B1AE61FCA0073BFD5 /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8701987A1AE61FCA0073BFD5 /* UIImageExtension.swift */; };
+		8704B9F020A001DE009AF20B /* AnimationParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8704B9EF20A001DE009AF20B /* AnimationParameters.swift */; };
+		8704B9F220A00218009AF20B /* GlobalAnimationState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8704B9F120A00218009AF20B /* GlobalAnimationState.swift */; };
+		8704B9F420A0025D009AF20B /* Interface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8704B9F320A0025D009AF20B /* Interface.swift */; };
+		8704B9F620A002AE009AF20B /* AnimatableInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8704B9F520A002AE009AF20B /* AnimatableInterface.swift */; };
+		8704B9FB20A00A08009AF20B /* Deprecated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8704B9FA20A00A08009AF20B /* Deprecated.swift */; };
 		8705209D1AEF8799008C9555 /* ArrayExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8705209C1AEF8799008C9555 /* ArrayExtension.swift */; };
 		870DFB831B532A9200BC76D7 /* DoubleExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870DFB821B532A9200BC76D7 /* DoubleExtension.swift */; };
 		8712689A1FE0792C00199663 /* RangeExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 871268991FE0792C00199663 /* RangeExtension.swift */; };
@@ -16,13 +21,10 @@
 		8712AF821FAB0FCD005DAB84 /* UITextFieldExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8712AF811FAB0FCD005DAB84 /* UITextFieldExtension.swift */; };
 		8721FF2B1B6ECE37000EB3CB /* JABLocationTester.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8721FF2A1B6ECE37000EB3CB /* JABLocationTester.swift */; };
 		872B6A011BE1A9B600916EE8 /* SRTCamera.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872B6A001BE1A9B600916EE8 /* SRTCamera.swift */; };
-		873441D52090627C001FE70E /* NSObjectExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873441D42090627C001FE70E /* NSObjectExtension.swift */; };
+		873441D52090627C001FE70E /* NSObjectProtocolExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873441D42090627C001FE70E /* NSObjectProtocolExtension.swift */; };
 		87389F781D4719D500F0116B /* black.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 87389F771D4719D500F0116B /* black.jpg */; };
 		874226F81F84CB3800C44DA5 /* CABasicAnimationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874226F71F84CB3800C44DA5 /* CABasicAnimationExtension.swift */; };
 		874D00001B76C8F8002E1A32 /* MarshalOperator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874DFFFF1B76C8F8002E1A32 /* MarshalOperator.swift */; };
-		874E95572079DED80042FA2C /* InterfaceNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874E95562079DED80042FA2C /* InterfaceNode.swift */; };
-		874E95592079DEF20042FA2C /* InterfaceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874E95582079DEF20042FA2C /* InterfaceProtocol.swift */; };
-		874E955B2079DF190042FA2C /* InterfaceSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874E955A2079DF190042FA2C /* InterfaceSet.swift */; };
 		874E9585207C97C00042FA2C /* JABPassthroughView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874E9584207C97C00042FA2C /* JABPassthroughView.swift */; };
 		875444BB1AE1D01C00659E6B /* JABSwiftCore.h in Headers */ = {isa = PBXBuildFile; fileRef = 875444BA1AE1D01C00659E6B /* JABSwiftCore.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		875444C11AE1D01C00659E6B /* JABSwiftCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 875444B51AE1D01C00659E6B /* JABSwiftCore.framework */; };
@@ -35,9 +37,8 @@
 		875444DE1AE1D05E00659E6B /* JABButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 875444DD1AE1D05E00659E6B /* JABButton.swift */; };
 		875444E01AE1D06500659E6B /* JABApplicationRoot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 875444DF1AE1D06500659E6B /* JABApplicationRoot.swift */; };
 		875AAFEF20909256005E0B85 /* TimingFunction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 875AAFEE20909256005E0B85 /* TimingFunction.swift */; };
-		875AAFF12092B02B005E0B85 /* AnimatableEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 875AAFF02092B02B005E0B85 /* AnimatableEntity.swift */; };
+		875AAFF12092B02B005E0B85 /* InterfaceElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 875AAFF02092B02B005E0B85 /* InterfaceElement.swift */; };
 		875AAFF32092B778005E0B85 /* Shadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 875AAFF22092B778005E0B85 /* Shadow.swift */; };
-		875AAFF5209548B9005E0B85 /* CALayerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 875AAFF4209548B9005E0B85 /* CALayerExtension.swift */; };
 		875C9A361FFF54BC00C336B0 /* IntExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 875C9A351FFF54BC00C336B0 /* IntExtension.swift */; };
 		87643AB11EB07A8400D41A60 /* JABBlurLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87643AB01EB07A8400D41A60 /* JABBlurLayer.swift */; };
 		87643AB31EB07B4600D41A60 /* JABStopwatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87643AB21EB07B4600D41A60 /* JABStopwatch.swift */; };
@@ -80,6 +81,11 @@
 
 /* Begin PBXFileReference section */
 		8701987A1AE61FCA0073BFD5 /* UIImageExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageExtension.swift; sourceTree = "<group>"; };
+		8704B9EF20A001DE009AF20B /* AnimationParameters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationParameters.swift; sourceTree = "<group>"; };
+		8704B9F120A00218009AF20B /* GlobalAnimationState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalAnimationState.swift; sourceTree = "<group>"; };
+		8704B9F320A0025D009AF20B /* Interface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Interface.swift; sourceTree = "<group>"; };
+		8704B9F520A002AE009AF20B /* AnimatableInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatableInterface.swift; sourceTree = "<group>"; };
+		8704B9FA20A00A08009AF20B /* Deprecated.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Deprecated.swift; sourceTree = "<group>"; };
 		8705209C1AEF8799008C9555 /* ArrayExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayExtension.swift; sourceTree = "<group>"; };
 		870DFB821B532A9200BC76D7 /* DoubleExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoubleExtension.swift; sourceTree = "<group>"; };
 		871268991FE0792C00199663 /* RangeExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RangeExtension.swift; sourceTree = "<group>"; };
@@ -88,13 +94,10 @@
 		8712AF811FAB0FCD005DAB84 /* UITextFieldExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextFieldExtension.swift; sourceTree = "<group>"; };
 		8721FF2A1B6ECE37000EB3CB /* JABLocationTester.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JABLocationTester.swift; sourceTree = "<group>"; };
 		872B6A001BE1A9B600916EE8 /* SRTCamera.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SRTCamera.swift; sourceTree = "<group>"; };
-		873441D42090627C001FE70E /* NSObjectExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSObjectExtension.swift; sourceTree = "<group>"; };
+		873441D42090627C001FE70E /* NSObjectProtocolExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSObjectProtocolExtension.swift; sourceTree = "<group>"; };
 		87389F771D4719D500F0116B /* black.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = black.jpg; sourceTree = "<group>"; };
 		874226F71F84CB3800C44DA5 /* CABasicAnimationExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CABasicAnimationExtension.swift; sourceTree = "<group>"; };
 		874DFFFF1B76C8F8002E1A32 /* MarshalOperator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarshalOperator.swift; sourceTree = "<group>"; };
-		874E95562079DED80042FA2C /* InterfaceNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterfaceNode.swift; sourceTree = "<group>"; };
-		874E95582079DEF20042FA2C /* InterfaceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterfaceProtocol.swift; sourceTree = "<group>"; };
-		874E955A2079DF190042FA2C /* InterfaceSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterfaceSet.swift; sourceTree = "<group>"; };
 		874E9584207C97C00042FA2C /* JABPassthroughView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JABPassthroughView.swift; sourceTree = "<group>"; };
 		875444B51AE1D01C00659E6B /* JABSwiftCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = JABSwiftCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		875444B91AE1D01C00659E6B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -110,9 +113,8 @@
 		875444DD1AE1D05E00659E6B /* JABButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JABButton.swift; sourceTree = "<group>"; };
 		875444DF1AE1D06500659E6B /* JABApplicationRoot.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JABApplicationRoot.swift; sourceTree = "<group>"; };
 		875AAFEE20909256005E0B85 /* TimingFunction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimingFunction.swift; sourceTree = "<group>"; };
-		875AAFF02092B02B005E0B85 /* AnimatableEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatableEntity.swift; sourceTree = "<group>"; };
+		875AAFF02092B02B005E0B85 /* InterfaceElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterfaceElement.swift; sourceTree = "<group>"; };
 		875AAFF22092B778005E0B85 /* Shadow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shadow.swift; sourceTree = "<group>"; };
-		875AAFF4209548B9005E0B85 /* CALayerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CALayerExtension.swift; sourceTree = "<group>"; };
 		875C9A351FFF54BC00C336B0 /* IntExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntExtension.swift; sourceTree = "<group>"; };
 		87643AB01EB07A8400D41A60 /* JABBlurLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JABBlurLayer.swift; sourceTree = "<group>"; };
 		87643AB21EB07B4600D41A60 /* JABStopwatch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JABStopwatch.swift; sourceTree = "<group>"; };
@@ -172,6 +174,45 @@
 			name = Camera;
 			sourceTree = "<group>";
 		};
+		8704B9EE20A001B5009AF20B /* Animation Framework */ = {
+			isa = PBXGroup;
+			children = (
+				8704B9F820A00331009AF20B /* Protocols */,
+				8704B9F720A0032B009AF20B /* Model */,
+				8704B9F920A009F4009AF20B /* Deprecated */,
+			);
+			name = "Animation Framework";
+			sourceTree = "<group>";
+		};
+		8704B9F720A0032B009AF20B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				8704B9F120A00218009AF20B /* GlobalAnimationState.swift */,
+				875AAFF22092B778005E0B85 /* Shadow.swift */,
+				875AAFEE20909256005E0B85 /* TimingFunction.swift */,
+				8704B9EF20A001DE009AF20B /* AnimationParameters.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		8704B9F820A00331009AF20B /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				8704B9F520A002AE009AF20B /* AnimatableInterface.swift */,
+				8704B9F320A0025D009AF20B /* Interface.swift */,
+				875AAFF02092B02B005E0B85 /* InterfaceElement.swift */,
+			);
+			name = Protocols;
+			sourceTree = "<group>";
+		};
+		8704B9F920A009F4009AF20B /* Deprecated */ = {
+			isa = PBXGroup;
+			children = (
+				8704B9FA20A00A08009AF20B /* Deprecated.swift */,
+			);
+			name = Deprecated;
+			sourceTree = "<group>";
+		};
 		8721FF2C1B6ECE54000EB3CB /* Location Tester */ = {
 			isa = PBXGroup;
 			children = (
@@ -194,19 +235,6 @@
 				874DFFFF1B76C8F8002E1A32 /* MarshalOperator.swift */,
 			);
 			name = Operators;
-			sourceTree = "<group>";
-		};
-		874E95552079DEB00042FA2C /* Interface Protocols */ = {
-			isa = PBXGroup;
-			children = (
-				874E95562079DED80042FA2C /* InterfaceNode.swift */,
-				874E95582079DEF20042FA2C /* InterfaceProtocol.swift */,
-				874E955A2079DF190042FA2C /* InterfaceSet.swift */,
-				875AAFEE20909256005E0B85 /* TimingFunction.swift */,
-				875AAFF02092B02B005E0B85 /* AnimatableEntity.swift */,
-				875AAFF22092B778005E0B85 /* Shadow.swift */,
-			);
-			name = "Interface Protocols";
 			sourceTree = "<group>";
 		};
 		874E9583207C97B20042FA2C /* UIView Subclasses */ = {
@@ -284,7 +312,7 @@
 				875444D11AE1D02C00659E6B /* Toolkit.swift */,
 				87643AB21EB07B4600D41A60 /* JABStopwatch.swift */,
 				875444D21AE1D02C00659E6B /* JABGlobalVariables.swift */,
-				874E95552079DEB00042FA2C /* Interface Protocols */,
+				8704B9EE20A001B5009AF20B /* Animation Framework */,
 				87F4FD3F1AE421B100953E38 /* Class Extensions */,
 				874D00011B76C8FB002E1A32 /* Operators */,
 			);
@@ -443,7 +471,6 @@
 				8705209C1AEF8799008C9555 /* ArrayExtension.swift */,
 				87F842EF1F920388009027B9 /* BoolExtension.swift */,
 				874226F71F84CB3800C44DA5 /* CABasicAnimationExtension.swift */,
-				875AAFF4209548B9005E0B85 /* CALayerExtension.swift */,
 				87F842ED1F918426009027B9 /* CGContextExtension.swift */,
 				87C21BBB1AEF131300FCE515 /* CGPointExtension.swift */,
 				87F4FD401AE421ED00953E38 /* CGRectExtension.swift */,
@@ -458,7 +485,7 @@
 				875C9A351FFF54BC00C336B0 /* IntExtension.swift */,
 				87B0130C1E5698770000280E /* MutableCollectionExtension.swift */,
 				8712806F1B4C5D410005716F /* NSDateExtension.swift */,
-				873441D42090627C001FE70E /* NSObjectExtension.swift */,
+				873441D42090627C001FE70E /* NSObjectProtocolExtension.swift */,
 				871268991FE0792C00199663 /* RangeExtension.swift */,
 				87B013101E5698D30000280E /* SequenceExtension.swift */,
 				87FB2E2A1B522C27000E09D9 /* StringExtension.swift */,
@@ -588,7 +615,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				870DFB831B532A9200BC76D7 /* DoubleExtension.swift in Sources */,
-				874E95592079DEF20042FA2C /* InterfaceProtocol.swift in Sources */,
 				87F422DC1AFDB62A00C564D9 /* Size.swift in Sources */,
 				87B013111E5698D30000280E /* SequenceExtension.swift in Sources */,
 				8721FF2B1B6ECE37000EB3CB /* JABLocationTester.swift in Sources */,
@@ -597,7 +623,6 @@
 				8712689A1FE0792C00199663 /* RangeExtension.swift in Sources */,
 				87128B671AFDDC1C00D1F34A /* UIFontExtension.swift in Sources */,
 				87643AB31EB07B4600D41A60 /* JABStopwatch.swift in Sources */,
-				874E95572079DED80042FA2C /* InterfaceNode.swift in Sources */,
 				875444D41AE1D02C00659E6B /* JABGlobalVariables.swift in Sources */,
 				8712AF821FAB0FCD005DAB84 /* UITextFieldExtension.swift in Sources */,
 				87C21BBC1AEF131300FCE515 /* CGPointExtension.swift in Sources */,
@@ -606,25 +631,27 @@
 				87D99B1A205E216A005E098F /* UITextViewExtension.swift in Sources */,
 				875444E01AE1D06500659E6B /* JABApplicationRoot.swift in Sources */,
 				874E9585207C97C00042FA2C /* JABPassthroughView.swift in Sources */,
-				874E955B2079DF190042FA2C /* InterfaceSet.swift in Sources */,
 				875AAFEF20909256005E0B85 /* TimingFunction.swift in Sources */,
 				8795452E1FA9AEA600A11939 /* UILabelExtension.swift in Sources */,
 				871280701B4C5D410005716F /* NSDateExtension.swift in Sources */,
 				87EF09DD1AFCA27100BE92A4 /* PhysicalObjectProtocol.swift in Sources */,
 				872B6A011BE1A9B600916EE8 /* SRTCamera.swift in Sources */,
+				8704B9F620A002AE009AF20B /* AnimatableInterface.swift in Sources */,
 				874226F81F84CB3800C44DA5 /* CABasicAnimationExtension.swift in Sources */,
 				874D00001B76C8F8002E1A32 /* MarshalOperator.swift in Sources */,
 				87F842F01F920388009027B9 /* BoolExtension.swift in Sources */,
 				87643AB11EB07A8400D41A60 /* JABBlurLayer.swift in Sources */,
 				8701987B1AE61FCA0073BFD5 /* UIImageExtension.swift in Sources */,
+				8704B9FB20A00A08009AF20B /* Deprecated.swift in Sources */,
 				8772C9E31FD12CCD000D32DE /* DictionaryExtension.swift in Sources */,
+				8704B9F020A001DE009AF20B /* AnimationParameters.swift in Sources */,
 				87F422D81AFDB1C600C564D9 /* Vector.swift in Sources */,
 				87D48AB3206F6B3800A08F8D /* Collection.swift in Sources */,
 				875AAFF32092B778005E0B85 /* Shadow.swift in Sources */,
-				873441D52090627C001FE70E /* NSObjectExtension.swift in Sources */,
+				873441D52090627C001FE70E /* NSObjectProtocolExtension.swift in Sources */,
 				875444D31AE1D02C00659E6B /* Toolkit.swift in Sources */,
 				87D1EA37201C1820007FB2AD /* CLLocationCoordinate2DExtension.swift in Sources */,
-				875AAFF12092B02B005E0B85 /* AnimatableEntity.swift in Sources */,
+				875AAFF12092B02B005E0B85 /* InterfaceElement.swift in Sources */,
 				875444D71AE1D03E00659E6B /* JABView.swift in Sources */,
 				87F4FD411AE421ED00953E38 /* CGRectExtension.swift in Sources */,
 				87F4FD431AE4222A00953E38 /* UIColorExtension.swift in Sources */,
@@ -633,14 +660,15 @@
 				87D71C261B8BD988004E7D05 /* JABVersionNumber.swift in Sources */,
 				87F4FD3E1AE421A300953E38 /* UIViewExtension.swift in Sources */,
 				87B0130D1E5698770000280E /* MutableCollectionExtension.swift in Sources */,
+				8704B9F420A0025D009AF20B /* Interface.swift in Sources */,
 				8765CE961F3FA85A00E3D062 /* JABTextButton.swift in Sources */,
 				875444DE1AE1D05E00659E6B /* JABButton.swift in Sources */,
 				87FB2E2B1B522C27000E09D9 /* StringExtension.swift in Sources */,
 				87D99B23206967DB005E098F /* ComparableExtension.swift in Sources */,
 				8705209D1AEF8799008C9555 /* ArrayExtension.swift in Sources */,
-				875AAFF5209548B9005E0B85 /* CALayerExtension.swift in Sources */,
 				87D1EA3B201C4042007FB2AD /* FloatingPointExtension.swift in Sources */,
 				87F842EE1F918426009027B9 /* CGContextExtension.swift in Sources */,
+				8704B9F220A00218009AF20B /* GlobalAnimationState.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -6,8 +6,6 @@
 //  Copyright © 2018 Jeremy Bannister. All rights reserved.
 //
 
-import Foundation
-
 public struct Shadow {
   public let opacity: Float
   public let radius: CGFloat
