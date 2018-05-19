@@ -24,6 +24,7 @@
 		873441D52090627C001FE70E /* NSObjectProtocolExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873441D42090627C001FE70E /* NSObjectProtocolExtension.swift */; };
 		87389F781D4719D500F0116B /* black.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 87389F771D4719D500F0116B /* black.jpg */; };
 		874226F81F84CB3800C44DA5 /* CABasicAnimationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874226F71F84CB3800C44DA5 /* CABasicAnimationExtension.swift */; };
+		8749C9E820B0334F00066E17 /* CGColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8749C9E720B0334F00066E17 /* CGColorExtension.swift */; };
 		874D00001B76C8F8002E1A32 /* MarshalOperator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874DFFFF1B76C8F8002E1A32 /* MarshalOperator.swift */; };
 		874E9585207C97C00042FA2C /* JABPassthroughView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874E9584207C97C00042FA2C /* JABPassthroughView.swift */; };
 		875444BB1AE1D01C00659E6B /* JABSwiftCore.h in Headers */ = {isa = PBXBuildFile; fileRef = 875444BA1AE1D01C00659E6B /* JABSwiftCore.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -97,6 +98,7 @@
 		873441D42090627C001FE70E /* NSObjectProtocolExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSObjectProtocolExtension.swift; sourceTree = "<group>"; };
 		87389F771D4719D500F0116B /* black.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = black.jpg; sourceTree = "<group>"; };
 		874226F71F84CB3800C44DA5 /* CABasicAnimationExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CABasicAnimationExtension.swift; sourceTree = "<group>"; };
+		8749C9E720B0334F00066E17 /* CGColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGColorExtension.swift; sourceTree = "<group>"; };
 		874DFFFF1B76C8F8002E1A32 /* MarshalOperator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarshalOperator.swift; sourceTree = "<group>"; };
 		874E9584207C97C00042FA2C /* JABPassthroughView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JABPassthroughView.swift; sourceTree = "<group>"; };
 		875444B51AE1D01C00659E6B /* JABSwiftCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = JABSwiftCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -471,6 +473,7 @@
 				8705209C1AEF8799008C9555 /* ArrayExtension.swift */,
 				87F842EF1F920388009027B9 /* BoolExtension.swift */,
 				874226F71F84CB3800C44DA5 /* CABasicAnimationExtension.swift */,
+				8749C9E720B0334F00066E17 /* CGColorExtension.swift */,
 				87F842ED1F918426009027B9 /* CGContextExtension.swift */,
 				87C21BBB1AEF131300FCE515 /* CGPointExtension.swift */,
 				87F4FD401AE421ED00953E38 /* CGRectExtension.swift */,
@@ -629,6 +632,7 @@
 				87D1EA39201C1862007FB2AD /* CLLocationExtension.swift in Sources */,
 				875444DC1AE1D05800659E6B /* JABTouchManager.swift in Sources */,
 				87D99B1A205E216A005E098F /* UITextViewExtension.swift in Sources */,
+				8749C9E820B0334F00066E17 /* CGColorExtension.swift in Sources */,
 				875444E01AE1D06500659E6B /* JABApplicationRoot.swift in Sources */,
 				874E9585207C97C00042FA2C /* JABPassthroughView.swift in Sources */,
 				875AAFEF20909256005E0B85 /* TimingFunction.swift in Sources */,
