@@ -66,3 +66,14 @@ public extension UIColor {
     self.init(cgColor: cgColor)
   }
 }
+
+public extension UIColor {
+  public convenience init (color: Color) {
+    self.init(red: CGFloat(color.red), green: CGFloat(color.green), blue: CGFloat(color.blue), alpha: CGFloat(color.alpha))
+  }
+}
+
+public extension UIColor {
+  public var color: Color { return Color(components.red.asDouble, components.green.asDouble, components.blue.asDouble, components.alpha.asDouble) }
+}
+

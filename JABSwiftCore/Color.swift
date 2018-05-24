@@ -26,6 +26,8 @@ public extension Color {
   public static let green = Color(0, 255, 0, 1)
   public static let blue = Color(0, 0, 255, 1)
   public static let clear = Color(0, 0, 0, 0)
+  public static let white = Color(1, 1, 1, 1)
+  public static let black = Color(0, 0, 0, 1)
 }
 
 // MARK: - Hashable

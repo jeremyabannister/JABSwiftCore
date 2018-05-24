@@ -29,6 +29,8 @@
 		873F97E720B697AE00978F38 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873F97E620B697AE00978F38 /* Color.swift */; };
 		873F97EB20B6982B00978F38 /* ViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873F97EA20B6982B00978F38 /* ViewProtocol.swift */; };
 		873F97ED20B6984700978F38 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873F97EC20B6984700978F38 /* View.swift */; };
+		873F97EF20B6B3AB00978F38 /* CALayerExpressible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873F97EE20B6B3AB00978F38 /* CALayerExpressible.swift */; };
+		873F97F120B6B9E400978F38 /* UIBezierPathExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873F97F020B6B9E400978F38 /* UIBezierPathExtension.swift */; };
 		874226F81F84CB3800C44DA5 /* CABasicAnimationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874226F71F84CB3800C44DA5 /* CABasicAnimationExtension.swift */; };
 		8749C9E820B0334F00066E17 /* CGColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8749C9E720B0334F00066E17 /* CGColorExtension.swift */; };
 		874D00001B76C8F8002E1A32 /* MarshalOperator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874DFFFF1B76C8F8002E1A32 /* MarshalOperator.swift */; };
@@ -109,6 +111,8 @@
 		873F97E620B697AE00978F38 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		873F97EA20B6982B00978F38 /* ViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewProtocol.swift; sourceTree = "<group>"; };
 		873F97EC20B6984700978F38 /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
+		873F97EE20B6B3AB00978F38 /* CALayerExpressible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CALayerExpressible.swift; sourceTree = "<group>"; };
+		873F97F020B6B9E400978F38 /* UIBezierPathExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIBezierPathExtension.swift; sourceTree = "<group>"; };
 		874226F71F84CB3800C44DA5 /* CABasicAnimationExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CABasicAnimationExtension.swift; sourceTree = "<group>"; };
 		8749C9E720B0334F00066E17 /* CGColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGColorExtension.swift; sourceTree = "<group>"; };
 		874DFFFF1B76C8F8002E1A32 /* MarshalOperator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarshalOperator.swift; sourceTree = "<group>"; };
@@ -266,8 +270,9 @@
 		873F97E920B697ED00978F38 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				873F97EA20B6982B00978F38 /* ViewProtocol.swift */,
 				873F97EC20B6984700978F38 /* View.swift */,
+				873F97EA20B6982B00978F38 /* ViewProtocol.swift */,
+				873F97EE20B6B3AB00978F38 /* CALayerExpressible.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -534,6 +539,7 @@
 				871268991FE0792C00199663 /* RangeExtension.swift */,
 				87B013101E5698D30000280E /* SequenceExtension.swift */,
 				87FB2E2A1B522C27000E09D9 /* StringExtension.swift */,
+				873F97F020B6B9E400978F38 /* UIBezierPathExtension.swift */,
 				87F4FD421AE4222A00953E38 /* UIColorExtension.swift */,
 				87128B661AFDDC1B00D1F34A /* UIFontExtension.swift */,
 				8701987A1AE61FCA0073BFD5 /* UIImageExtension.swift */,
@@ -674,6 +680,7 @@
 				87C21BBC1AEF131300FCE515 /* CGPointExtension.swift in Sources */,
 				87D1EA39201C1862007FB2AD /* CLLocationExtension.swift in Sources */,
 				875444DC1AE1D05800659E6B /* JABTouchManager.swift in Sources */,
+				873F97EF20B6B3AB00978F38 /* CALayerExpressible.swift in Sources */,
 				87D99B1A205E216A005E098F /* UITextViewExtension.swift in Sources */,
 				8749C9E820B0334F00066E17 /* CGColorExtension.swift in Sources */,
 				875444E01AE1D06500659E6B /* JABApplicationRoot.swift in Sources */,
@@ -721,6 +728,7 @@
 				87D1EA3B201C4042007FB2AD /* FloatingPointExtension.swift in Sources */,
 				87F842EE1F918426009027B9 /* CGContextExtension.swift in Sources */,
 				8704B9F220A00218009AF20B /* GlobalAnimationState.swift in Sources */,
+				873F97F120B6B9E400978F38 /* UIBezierPathExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -9,6 +9,11 @@
 public struct Size {
   var width: Double
   var height: Double
+  
+  public init (width: Double, height: Double) {
+    self.width = width
+    self.height = height
+  }
 }
 
 // MARK: - Init

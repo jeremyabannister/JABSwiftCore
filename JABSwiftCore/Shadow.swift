@@ -7,22 +7,28 @@
 //
 
 public struct Shadow {
-  public let opacity: Float
-  public let radius: CGFloat
-  public let offset: CGSize
-  public let color: UIColor
+  public let opacity: Double
+  public let radius: Double
+  public let offset: Size
+  public let color: Color
   
-  public init (opacity: Float, radius: CGFloat, offset: CGSize, color: UIColor) {
+  public init (opacity: Double, radius: Double, offset: Size, color: Color) {
     self.opacity = opacity
     self.radius = radius
     self.offset = offset
     self.color = color
   }
+}
+
+// MARK: - Static Members
+public extension Shadow {
   public static var none: Shadow { return Shadow(opacity: 0, radius: 0, offset: .zero, color: .black) }
 }
 
-extension Shadow: Equatable {
+// MARK: - Hashable
+extension Shadow: Hashable {
   public static func == (lhs: Shadow, rhs: Shadow) -> Bool {
     return (lhs.opacity == rhs.opacity) && (lhs.radius == rhs.radius) && (lhs.offset == rhs.offset) && (lhs.color == rhs.color)
   }
+  public var hashValue: Int { return opacity.hashValue ^ radius.hashValue ^ offset.hashValue ^ color.hashValue }
 }

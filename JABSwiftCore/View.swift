@@ -6,7 +6,7 @@
 //  Copyright © 2018 Jeremy Bannister. All rights reserved.
 //
 
-public class View: ViewProtocol {
+public class View {
   public var frame: Rect = .zero
   public var backgroundColor: Color = .clear
   public var cornerRadius: Double = 0
@@ -35,3 +35,4 @@ public extension View {
     
   }
 }
+
