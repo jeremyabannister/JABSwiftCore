@@ -15,7 +15,7 @@ public protocol PhysicalObject {
     var isBeingHeld: Bool { get set }
     
     var position: Vector { get set }
-    var dimensions: Size { get set }
+    var dimensions: Size3D { get set }
     var velocity: Vector { get set }
     var mass: CGFloat { get set }
     var charge: CGFloat { get set }

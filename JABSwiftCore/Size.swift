@@ -2,52 +2,29 @@
 //  Size.swift
 //  JABSwiftCore
 //
-//  Created by Jeremy Bannister on 5/8/15.
-//  Copyright (c) 2015 Jeremy Bannister. All rights reserved.
+//  Created by Jeremy Bannister on 5/23/18.
+//  Copyright © 2018 Jeremy Bannister. All rights reserved.
 //
 
-import UIKit
+public struct Size {
+  var width: Double
+  var height: Double
+}
 
-open class Size {
-    
-    
-    // MARK: Properties
-    
-    open var width = CGFloat(0) {
-        didSet {
-            if width < 0 {
-                width = 0
-            }
-        }
-    }
-    
-    open var height = CGFloat(0) {
-        didSet {
-            if height < 0 {
-                height = 0
-            }
-        }
-    }
-    
-    open var depth = CGFloat(0) {
-        didSet {
-            if depth < 0 {
-                depth = 0
-            }
-        }
-    }
-    
-    
-    
-    // MARK: Init
-    public init (width: CGFloat, height: CGFloat, depth: CGFloat) {
-        self.width = width
-        self.height = height
-        self.depth = depth
-    }
-    
-    public convenience init () {
-        self.init(width: 0, height: 0, depth: 0)
-    }
-    
+// MARK: - Init
+public extension Size {
+  public init (_ width: Double, _ height: Double) {
+    self.init(width: width, height: height)
+  }
+}
+
+// MARK: - Static Members
+public extension Size {
+  public static let zero = Size(0, 0)
+}
+
+// MARK: - Hashable
+extension Size: Hashable {
+  public static func == (lhs: Size, rhs: Size) -> Bool { return lhs.width == rhs.width && lhs.height == rhs.height }
+  public var hashValue: Int { return width.hashValue ^ height.hashValue }
 }
