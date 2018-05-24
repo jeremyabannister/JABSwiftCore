@@ -83,6 +83,12 @@ public extension InterfaceElement {
   public var bottom: CGFloat { return top + height }
 }
 
+public extension InterfaceElement {
+  public var frame_: CGRect {
+    get { return site }
+    set { site = newValue}
+  }
+}
 
 public extension InterfaceElement {
   public var site: CGRect {
