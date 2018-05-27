@@ -8,7 +8,7 @@
 
 import UIKit
 
-open class JABLocationTester: JABTouchableView, AnimatableInterface {
+open class JABLocationTester: JABTouchableView, AnimatableInterfaceForUIView {
   
   // MARK:
   // MARK: Properties

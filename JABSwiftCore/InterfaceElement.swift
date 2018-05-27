@@ -1,19 +1,19 @@
 //
-//  AnimatableEntity.swift
+//  InterfaceElement.swift
 //  JABSwiftCore
 //
 //  Created by Jeremy Bannister on 4/26/18.
 //  Copyright © 2018 Jeremy Bannister. All rights reserved.
 //
 
-public protocol InterfaceElement: NSObjectProtocol {
+public protocol InterfaceElement: UniquelyIdentifiableObject {
   var layera: CALayer { get }
 }
 
 public extension InterfaceElement {
   public func animate (to newValue: Any?, forProperty propertyString: String) {
-    if GlobalAnimationState.shouldAnimateChangesLookupTable[self.objectIdentifier] != true { return }
-    guard let animationParameters = GlobalAnimationState.animationParametersLookupTable[self.objectIdentifier] else { return }
+    if GlobalAnimationState.shouldAnimateChangesLookupTable[self.uniqueIdentifier] != true { return }
+    guard let animationParameters = GlobalAnimationState.animationParametersLookupTable[self.uniqueIdentifier] else { return }
     let animation = CABasicAnimation(keyPath: propertyString, fromValue: currentlyPresentedValue(forProperty: propertyString), toValue: newValue)
     animation.duration = animationParameters.duration
     animation.timingFunction = animationParameters.timingFunction.mediaTimingFunction

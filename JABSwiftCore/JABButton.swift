@@ -8,7 +8,7 @@
 
 import UIKit
 
-open class JABButton: JABTouchableView, AnimatableInterface {
+open class JABButton: JABTouchableView, AnimatableInterfaceForUIView {
   
   // MARK:
   // MARK: Properties

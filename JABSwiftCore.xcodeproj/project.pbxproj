@@ -27,10 +27,13 @@
 		873F97E320B6977400978F38 /* Size.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873F97E220B6977400978F38 /* Size.swift */; };
 		873F97E520B6978700978F38 /* Rect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873F97E420B6978700978F38 /* Rect.swift */; };
 		873F97E720B697AE00978F38 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873F97E620B697AE00978F38 /* Color.swift */; };
-		873F97EB20B6982B00978F38 /* ViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873F97EA20B6982B00978F38 /* ViewProtocol.swift */; };
+		873F97EB20B6982B00978F38 /* VisualOutlet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873F97EA20B6982B00978F38 /* VisualOutlet.swift */; };
 		873F97ED20B6984700978F38 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873F97EC20B6984700978F38 /* View.swift */; };
 		873F97EF20B6B3AB00978F38 /* CALayerExpressible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873F97EE20B6B3AB00978F38 /* CALayerExpressible.swift */; };
 		873F97F120B6B9E400978F38 /* UIBezierPathExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873F97F020B6B9E400978F38 /* UIBezierPathExtension.swift */; };
+		873F97F420B6C3C900978F38 /* UniquelyIdentifiableObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873F97F320B6C3C900978F38 /* UniquelyIdentifiableObject.swift */; };
+		873F97F720BA8DBC00978F38 /* iOSSpecificConversions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873F97F620BA8DBC00978F38 /* iOSSpecificConversions.swift */; };
+		873F97F920BA8DEF00978F38 /* SinglePropertyAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873F97F820BA8DEF00978F38 /* SinglePropertyAnimation.swift */; };
 		874226F81F84CB3800C44DA5 /* CABasicAnimationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874226F71F84CB3800C44DA5 /* CABasicAnimationExtension.swift */; };
 		8749C9E820B0334F00066E17 /* CGColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8749C9E720B0334F00066E17 /* CGColorExtension.swift */; };
 		874D00001B76C8F8002E1A32 /* MarshalOperator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874DFFFF1B76C8F8002E1A32 /* MarshalOperator.swift */; };
@@ -109,10 +112,13 @@
 		873F97E220B6977400978F38 /* Size.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Size.swift; sourceTree = "<group>"; };
 		873F97E420B6978700978F38 /* Rect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rect.swift; sourceTree = "<group>"; };
 		873F97E620B697AE00978F38 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
-		873F97EA20B6982B00978F38 /* ViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewProtocol.swift; sourceTree = "<group>"; };
+		873F97EA20B6982B00978F38 /* VisualOutlet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisualOutlet.swift; sourceTree = "<group>"; };
 		873F97EC20B6984700978F38 /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
 		873F97EE20B6B3AB00978F38 /* CALayerExpressible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CALayerExpressible.swift; sourceTree = "<group>"; };
 		873F97F020B6B9E400978F38 /* UIBezierPathExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIBezierPathExtension.swift; sourceTree = "<group>"; };
+		873F97F320B6C3C900978F38 /* UniquelyIdentifiableObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UniquelyIdentifiableObject.swift; sourceTree = "<group>"; };
+		873F97F620BA8DBC00978F38 /* iOSSpecificConversions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSSpecificConversions.swift; sourceTree = "<group>"; };
+		873F97F820BA8DEF00978F38 /* SinglePropertyAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SinglePropertyAnimation.swift; sourceTree = "<group>"; };
 		874226F71F84CB3800C44DA5 /* CABasicAnimationExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CABasicAnimationExtension.swift; sourceTree = "<group>"; };
 		8749C9E720B0334F00066E17 /* CGColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGColorExtension.swift; sourceTree = "<group>"; };
 		874DFFFF1B76C8F8002E1A32 /* MarshalOperator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarshalOperator.swift; sourceTree = "<group>"; };
@@ -206,8 +212,6 @@
 			isa = PBXGroup;
 			children = (
 				8704B9F120A00218009AF20B /* GlobalAnimationState.swift */,
-				875AAFEE20909256005E0B85 /* TimingFunction.swift */,
-				8704B9EF20A001DE009AF20B /* AnimationParameters.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -246,7 +250,7 @@
 			name = Components;
 			sourceTree = "<group>";
 		};
-		873F97DF20B696B800978F38 /* UI Data Types */ = {
+		873F97DF20B696B800978F38 /* Data Types */ = {
 			isa = PBXGroup;
 			children = (
 				873F97E020B696F500978F38 /* Point.swift */,
@@ -254,14 +258,17 @@
 				873F97E420B6978700978F38 /* Rect.swift */,
 				873F97E620B697AE00978F38 /* Color.swift */,
 				875AAFF22092B778005E0B85 /* Shadow.swift */,
+				873F97F820BA8DEF00978F38 /* SinglePropertyAnimation.swift */,
+				8704B9EF20A001DE009AF20B /* AnimationParameters.swift */,
+				875AAFEE20909256005E0B85 /* TimingFunction.swift */,
 			);
-			name = "UI Data Types";
+			name = "Data Types";
 			sourceTree = "<group>";
 		};
 		873F97E820B697CF00978F38 /* UI Core */ = {
 			isa = PBXGroup;
 			children = (
-				873F97DF20B696B800978F38 /* UI Data Types */,
+				873F97DF20B696B800978F38 /* Data Types */,
 				873F97E920B697ED00978F38 /* View */,
 			);
 			name = "UI Core";
@@ -270,11 +277,21 @@
 		873F97E920B697ED00978F38 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				873F97F320B6C3C900978F38 /* UniquelyIdentifiableObject.swift */,
 				873F97EC20B6984700978F38 /* View.swift */,
-				873F97EA20B6982B00978F38 /* ViewProtocol.swift */,
+				873F97EA20B6982B00978F38 /* VisualOutlet.swift */,
 				873F97EE20B6B3AB00978F38 /* CALayerExpressible.swift */,
 			);
 			name = View;
+			sourceTree = "<group>";
+		};
+		873F97F520BA8D9E00978F38 /* New */ = {
+			isa = PBXGroup;
+			children = (
+				873F97E820B697CF00978F38 /* UI Core */,
+				873F97F620BA8DBC00978F38 /* iOSSpecificConversions.swift */,
+			);
+			name = New;
 			sourceTree = "<group>";
 		};
 		874D00011B76C8FB002E1A32 /* Operators */ = {
@@ -317,7 +334,7 @@
 			isa = PBXGroup;
 			children = (
 				875444BA1AE1D01C00659E6B /* JABSwiftCore.h */,
-				873F97E820B697CF00978F38 /* UI Core */,
+				873F97F520BA8D9E00978F38 /* New */,
 				875444D51AE1D03000659E6B /* General */,
 				87D71C281B8BD999004E7D05 /* Comp Sci */,
 				87F422D51AFDB1A000C564D9 /* Physics */,
@@ -690,16 +707,19 @@
 				871280701B4C5D410005716F /* NSDateExtension.swift in Sources */,
 				87EF09DD1AFCA27100BE92A4 /* PhysicalObjectProtocol.swift in Sources */,
 				872B6A011BE1A9B600916EE8 /* SRTCamera.swift in Sources */,
+				873F97F920BA8DEF00978F38 /* SinglePropertyAnimation.swift in Sources */,
 				8704B9F620A002AE009AF20B /* AnimatableInterface.swift in Sources */,
+				873F97F720BA8DBC00978F38 /* iOSSpecificConversions.swift in Sources */,
 				874226F81F84CB3800C44DA5 /* CABasicAnimationExtension.swift in Sources */,
 				874D00001B76C8F8002E1A32 /* MarshalOperator.swift in Sources */,
 				87F842F01F920388009027B9 /* BoolExtension.swift in Sources */,
 				87643AB11EB07A8400D41A60 /* JABBlurLayer.swift in Sources */,
 				8701987B1AE61FCA0073BFD5 /* UIImageExtension.swift in Sources */,
+				873F97F420B6C3C900978F38 /* UniquelyIdentifiableObject.swift in Sources */,
 				8704B9FB20A00A08009AF20B /* Deprecated.swift in Sources */,
 				8772C9E31FD12CCD000D32DE /* DictionaryExtension.swift in Sources */,
 				8704B9F020A001DE009AF20B /* AnimationParameters.swift in Sources */,
-				873F97EB20B6982B00978F38 /* ViewProtocol.swift in Sources */,
+				873F97EB20B6982B00978F38 /* VisualOutlet.swift in Sources */,
 				87F422D81AFDB1C600C564D9 /* Vector.swift in Sources */,
 				87D48AB3206F6B3800A08F8D /* Collection.swift in Sources */,
 				875AAFF32092B778005E0B85 /* Shadow.swift in Sources */,

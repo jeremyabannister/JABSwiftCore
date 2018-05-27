@@ -1,5 +1,5 @@
 //
-//  UIView+VisualOutlet.swift
+//  CALayerExpressible.swift
 //  JABSwiftCore
 //
 //  Created by Jeremy Bannister on 5/24/18.
@@ -30,7 +30,41 @@ extension CALayerExpressible {
   }
 }
 
-extension UIView: CALayerExpressible { }
+public extension CALayerExpressible {
+  public func bringSubview (toFront subview: VisualOutlet?) {
+    self.addSubview(subview)
+  }
+}
+
+public extension CALayerExpressible {
+  public var presentedSelf: VisualOutlet {
+    return layer.presentation() ?? layer
+  }
+  public func value <T> (forKey key: String) -> T? {
+    return layer.value(forKey: key) as? T
+  }
+  public func add <PropertyType> (_ animation: SinglePropertyAnimation<PropertyType>, forKey key: String) {
+    layer.add(CABasicAnimation(singlePropertyAnimation: animation), forKey: key)
+  }
+  public func removeAnimation (forKey key: String) {
+    layer.removeAnimation(forKey: key)
+  }
+}
+
+
+
+
+
+extension UIView: CALayerExpressible {
+  public func addSubview (_ view: VisualOutlet?) {
+    if let view = view as? UIView { addSubview(view) } // Since view is now a UIView, the proper addSubview(_:) will be called
+    if let layer = view as? CALayer { layer.addSublayer(layer) }
+  }
+}
 extension CALayer: CALayerExpressible {
   public var layer: CALayer { return self }
+  public func addSubview (_ view: VisualOutlet?) {
+    guard let layer = (view as? CALayerExpressible)?.layer else { return }
+    layer.addSublayer(layer)
+  }
 }
