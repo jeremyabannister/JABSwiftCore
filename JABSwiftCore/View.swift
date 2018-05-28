@@ -9,31 +9,37 @@
 // MARK: - Initial Declaration
 open class View : UniquelyIdentifiableObject {
   // Outlet
-  public let outlet: VisualOutlet
+  public let outlet: VisualOutlet?
   
   // Animatable Properties
   public var frame: Rect = .zero {
     willSet {
       animate(to: newValue, forKeyPath: "frame")
-      outlet.setFrame(newValue)
+      outlet?.setFrame(newValue)
     }
   }
   public var backgroundColor: Color = .clear {
     willSet {
       animate(to: newValue, forKeyPath: "backgroundColor")
-      outlet.setBackgroundColor(newValue)
+      outlet?.setBackgroundColor(newValue)
+    }
+  }
+  public var opacity: Double = 0 {
+    willSet {
+      animate(to: newValue, forKeyPath: "opacity")
+      outlet?.setOpacity(newValue)
     }
   }
   public var cornerRadius: Double = 0 {
     willSet {
       animate(to: newValue, forKeyPath: "cornerRadius")
-      outlet.setCornerRadius(newValue)
+      outlet?.setCornerRadius(newValue)
     }
   }
   public var shadow: Shadow = .none {
     willSet {
       animate(to: newValue, forKeyPath: "shadow")
-      outlet.setShadow(newValue)
+      outlet?.setShadow(newValue)
     }
   }
   
@@ -42,20 +48,21 @@ open class View : UniquelyIdentifiableObject {
   internal var animationParameters: AnimationParameters?
   
   // Non-Animatable Properties
-  public var clipsToBounds = false
+  public var isUserInteractionEnabled = true { willSet { outlet?.setIsUserInteractionEnabled(newValue) } }
+  public var clipsToBounds = false { willSet { outlet?.setClipsToBounds(newValue) } }
   
   // Init
-  public init (outlet: VisualOutlet) {
+  public init (outlet: VisualOutlet? = nil) {
     self.outlet = outlet
   }
   
   // Overridable Methods
   open func addSubview (_ view: View) {
-    outlet.addSubview(view.outlet)
+    outlet?.addSubview(view.outlet)
   }
   
   open func bringSubview (toFront subview: View) {
-    outlet.bringSubview(toFront: subview.outlet)
+    outlet?.bringSubview(toFront: subview.outlet)
   }
 }
 
@@ -96,9 +103,9 @@ public extension View {
 private extension View {
   func animate <PropertyType> (to newValue: PropertyType, forKeyPath keyPath: String) {
     guard shouldAnimatedChanges, let animationParameters = animationParameters else { return }
-    let fromValue = outlet.presentedSelf.value(forKey: keyPath) ?? newValue
+    let fromValue = outlet?.presentedSelf.value(forKey: keyPath) ?? newValue
     let animation = SinglePropertyAnimation(keyPath: keyPath, fromValue: fromValue, toValue: newValue, animationParameters: animationParameters)
-    outlet.removeAnimation(forKey: keyPath)
-    outlet.add(animation, forKey: keyPath)
+    outlet?.removeAnimation(forKey: keyPath)
+    outlet?.add(animation, forKey: keyPath)
   }
 }

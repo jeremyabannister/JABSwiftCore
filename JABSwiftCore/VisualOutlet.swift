@@ -9,8 +9,12 @@
 public protocol VisualOutlet: UniquelyIdentifiableObject {
   func setFrame (_ frame: Rect)
   func setBackgroundColor (_ backgroundColor: Color)
+  func setOpacity (_ opacity: Double)
   func setCornerRadius (_ cornerRadius: Double)
   func setShadow (_ shadow: Shadow)
+  
+  func setIsUserInteractionEnabled (_ isUserInteractionEnabled: Bool)
+  func setClipsToBounds (_ clipsToBounds: Bool)
   
   func addSubview (_ view: VisualOutlet?)
   func bringSubview (toFront subview: VisualOutlet?)

@@ -19,6 +19,9 @@ extension CALayerExpressible {
   public func setBackgroundColor (_ backgroundColor: Color) {
     layer.backgroundColor = UIColor(red: CGFloat(backgroundColor.red), green: CGFloat(backgroundColor.green), blue: CGFloat(backgroundColor.blue), alpha: CGFloat(backgroundColor.alpha)).cgColor
   }
+  public func setOpacity (_ opacity: Double) {
+    layer.opacity = Float(opacity)
+  }
   public func setCornerRadius (_ cornerRadius: Double) {
     layer.cornerRadius = CGFloat(cornerRadius)
   }
@@ -27,6 +30,16 @@ extension CALayerExpressible {
     layer.shadowRadius = CGFloat(shadow.radius)
     layer.shadowOffset = CGSize(width: shadow.offset.width, height: shadow.offset.height)
     layer.shadowColor = UIColor(color: shadow.color).cgColor
+  }
+}
+
+public extension CALayerExpressible {
+  public func setIsUserInteractionEnabled (_ isUserInteractionEnabled: Bool) {
+    (self as? UIView)?.isUserInteractionEnabled = isUserInteractionEnabled
+  }
+  
+  public func setClipsToBounds (_ clipsToBounds: Bool) {
+    layer.masksToBounds = clipsToBounds
   }
 }
 
