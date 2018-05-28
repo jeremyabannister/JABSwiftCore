@@ -32,7 +32,7 @@ public extension UIColor {
   public convenience init (_ color: Color) {
     self.init(red: CGFloat(color.red), green: CGFloat(color.green), blue: CGFloat(color.blue), alpha: CGFloat(color.alpha))
   }
-  public var asColor: Color { return Color(components.red.asDouble, components.green.asDouble, components.blue.asDouble, components.alpha.asDouble) }
+  public var asColor: Color { return Color(red: components.red.asDouble, green: components.green.asDouble, blue: components.blue.asDouble, alpha: components.alpha.asDouble) }
 }
 
 public extension CABasicAnimation {
