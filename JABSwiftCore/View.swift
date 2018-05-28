@@ -52,8 +52,12 @@ open class View : UniquelyIdentifiableObject {
   public var clipsToBounds = false { willSet { outlet?.setClipsToBounds(newValue) } }
   
   // Init
-  public init (outlet: VisualOutlet? = nil) {
+  public init (outlet: VisualOutlet?) {
     self.outlet = outlet
+  }
+  
+  public init () {
+    self.outlet = VisualOutletFactory.createNewOutlet()
   }
   
   // Overridable Methods
@@ -97,6 +101,11 @@ public extension View {
     get { return frame.size }
     set { frame.size = newValue }
   }
+  
+  public var left: Double { return x }
+  public var right: Double { return x + width }
+  public var top: Double { return y }
+  public var bottom: Double { return y + height }
 }
 
 // MARK: - Animation

@@ -34,6 +34,7 @@
 		873F97F420B6C3C900978F38 /* UniquelyIdentifiableObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873F97F320B6C3C900978F38 /* UniquelyIdentifiableObject.swift */; };
 		873F97F720BA8DBC00978F38 /* iOSSpecificConversions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873F97F620BA8DBC00978F38 /* iOSSpecificConversions.swift */; };
 		873F97F920BA8DEF00978F38 /* SinglePropertyAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873F97F820BA8DEF00978F38 /* SinglePropertyAnimation.swift */; };
+		873F97FD20BBF24D00978F38 /* VisualOutletFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873F97FC20BBF24D00978F38 /* VisualOutletFactory.swift */; };
 		874226F81F84CB3800C44DA5 /* CABasicAnimationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874226F71F84CB3800C44DA5 /* CABasicAnimationExtension.swift */; };
 		8749C9E820B0334F00066E17 /* CGColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8749C9E720B0334F00066E17 /* CGColorExtension.swift */; };
 		874D00001B76C8F8002E1A32 /* MarshalOperator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874DFFFF1B76C8F8002E1A32 /* MarshalOperator.swift */; };
@@ -119,6 +120,7 @@
 		873F97F320B6C3C900978F38 /* UniquelyIdentifiableObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UniquelyIdentifiableObject.swift; sourceTree = "<group>"; };
 		873F97F620BA8DBC00978F38 /* iOSSpecificConversions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSSpecificConversions.swift; sourceTree = "<group>"; };
 		873F97F820BA8DEF00978F38 /* SinglePropertyAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SinglePropertyAnimation.swift; sourceTree = "<group>"; };
+		873F97FC20BBF24D00978F38 /* VisualOutletFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisualOutletFactory.swift; sourceTree = "<group>"; };
 		874226F71F84CB3800C44DA5 /* CABasicAnimationExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CABasicAnimationExtension.swift; sourceTree = "<group>"; };
 		8749C9E720B0334F00066E17 /* CGColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGColorExtension.swift; sourceTree = "<group>"; };
 		874DFFFF1B76C8F8002E1A32 /* MarshalOperator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarshalOperator.swift; sourceTree = "<group>"; };
@@ -281,6 +283,7 @@
 				873F97EC20B6984700978F38 /* View.swift */,
 				873F97EA20B6982B00978F38 /* VisualOutlet.swift */,
 				873F97EE20B6B3AB00978F38 /* CALayerExpressible.swift */,
+				873F97FC20BBF24D00978F38 /* VisualOutletFactory.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -727,6 +730,7 @@
 				875444D31AE1D02C00659E6B /* Toolkit.swift in Sources */,
 				87D1EA37201C1820007FB2AD /* CLLocationCoordinate2DExtension.swift in Sources */,
 				875AAFF12092B02B005E0B85 /* InterfaceElement.swift in Sources */,
+				873F97FD20BBF24D00978F38 /* VisualOutletFactory.swift in Sources */,
 				873F97E320B6977400978F38 /* Size.swift in Sources */,
 				875444D71AE1D03E00659E6B /* JABView.swift in Sources */,
 				87F4FD411AE421ED00953E38 /* CGRectExtension.swift in Sources */,

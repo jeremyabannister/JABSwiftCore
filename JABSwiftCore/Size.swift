@@ -7,8 +7,8 @@
 //
 
 public struct Size {
-  var width: Double
-  var height: Double
+  public var width: Double
+  public var height: Double
   
   public init (width: Double, height: Double) {
     self.width = width
