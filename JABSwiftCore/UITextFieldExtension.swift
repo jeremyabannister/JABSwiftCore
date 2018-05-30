@@ -19,9 +19,9 @@ fileprivate var UITextFieldPlaceholderCharacterSpacingAssociationKey: UInt8 = 0
 fileprivate var UITextFieldPlaceholderParagraphStyleAssociationKey: UInt8 = 0
 
 public extension UITextField {
-    public var textStyle: TextStyle? {
+    public var textStyle: TextStyleForUILabel? {
         get {
-            var storedTextStyle = objc_getAssociatedObject(self, &UITextFieldTextStyleAssociationKey) as? TextStyle
+            var storedTextStyle = objc_getAssociatedObject(self, &UITextFieldTextStyleAssociationKey) as? TextStyleForUILabel
             storedTextStyle?.textColor = self.textColor ?? .black
             storedTextStyle?.font = self.font
             storedTextStyle?.textAlignment = self.textAlignment
@@ -37,8 +37,8 @@ public extension UITextField {
         }
     }
     
-    public var placeholderTextStyle: TextStyle? {
-        get { return objc_getAssociatedObject(self, &UITextFieldPlaceholderTextStyleAssociationKey) as? TextStyle }
+    public var placeholderTextStyle: TextStyleForUILabel? {
+        get { return objc_getAssociatedObject(self, &UITextFieldPlaceholderTextStyleAssociationKey) as? TextStyleForUILabel }
         set {
             self.attributedPlaceholder = self.placeholder?.attributed(with: newValue)
             objc_setAssociatedObject(self, &UITextFieldPlaceholderTextStyleAssociationKey, newValue, .OBJC_ASSOCIATION_RETAIN)

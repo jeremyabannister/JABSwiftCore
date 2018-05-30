@@ -8,6 +8,13 @@
 
 import UIKit
 
+public extension CGFloat {
+  public init? (_ value: Double?) {
+    guard let value = value else { return nil }
+    self.init(value)
+  }
+}
+
 public extension CGPoint {
   public init (_ point: Point) {
     self.init(x: point.x, y: point.y)
@@ -19,6 +26,7 @@ public extension CGSize {
   public init (_ size: Size) {
     self.init(width: CGFloat(size.width), height: CGFloat(size.height))
   }
+  public var asSize: Size { return Size(width: width.asDouble, height: height.asDouble) }
 }
 
 public extension CGRect {
@@ -33,6 +41,13 @@ public extension UIColor {
     self.init(red: CGFloat(color.red), green: CGFloat(color.green), blue: CGFloat(color.blue), alpha: CGFloat(color.alpha))
   }
   public var asColor: Color { return Color(red: components.red.asDouble, green: components.green.asDouble, blue: components.blue.asDouble, alpha: components.alpha.asDouble) }
+}
+
+public extension UIFont {
+  public convenience init? (_ font: Font?) {
+    guard let font = font else { return nil }
+    self.init(name: font.fontNameString, size: CGFloat(font.size))
+  }
 }
 
 public extension CABasicAnimation {

@@ -7,7 +7,7 @@
 //
 
 // MARK: - Initial Declaration
-open class View : UniquelyIdentifiableObject {
+open class View: UniquelyIdentifiableObject {
   // Outlet
   public let outlet: VisualOutlet?
   

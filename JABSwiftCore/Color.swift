@@ -30,6 +30,16 @@ public extension Color {
   public static let black = Color(0, 0, 0, 1)
 }
 
+// MARK: - Dim
+public extension Color {
+  public func dimmed (to fraction: Double) -> Color {
+    let modifiedFraction = fraction.bounded(by: 0, 1)
+    
+    if alpha == 0 { return Color(red: red, green: green, blue: blue, alpha: (1 - modifiedFraction)) }
+    return Color(red: red * modifiedFraction, green: green * modifiedFraction, blue: blue * modifiedFraction, alpha: alpha)
+  }
+}
+
 // MARK: - Hashable
 extension Color: Hashable {
   public static func == (lhs: Color, rhs: Color) -> Bool {

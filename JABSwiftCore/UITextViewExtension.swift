@@ -19,9 +19,9 @@ fileprivate var UITextViewPlaceholderCharacterSpacingAssociationKey: UInt8 = 0
 fileprivate var UITextViewPlaceholderParagraphStyleAssociationKey: UInt8 = 0
 
 public extension UITextView {
-  public var textStyle: TextStyle? {
+  public var textStyle: TextStyleForUILabel? {
     get {
-      var storedTextStyle = objc_getAssociatedObject(self, &UITextViewTextStyleAssociationKey) as? TextStyle
+      var storedTextStyle = objc_getAssociatedObject(self, &UITextViewTextStyleAssociationKey) as? TextStyleForUILabel
       storedTextStyle?.textColor = self.textColor ?? .black
       storedTextStyle?.font = self.font
       storedTextStyle?.textAlignment = self.textAlignment

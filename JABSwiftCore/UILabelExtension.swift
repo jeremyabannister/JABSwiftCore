@@ -14,9 +14,9 @@ fileprivate var UILabelParagraphStyleAssociationKey: UInt8 = 0
 fileprivate var UILabelCharacterSpacingAssociationKey: UInt8 = 0
 
 public extension UILabel {
-    public var textStyle: TextStyle? {
+    public var textStyle: TextStyleForUILabel? {
         get {
-            var storedTextStyle = objc_getAssociatedObject(self, &UILabelTextStyleAssociationKey) as? TextStyle
+            var storedTextStyle = objc_getAssociatedObject(self, &UILabelTextStyleAssociationKey) as? TextStyleForUILabel
             storedTextStyle?.textColor = self.textColor
             storedTextStyle?.font = self.font
             storedTextStyle?.textAlignment = self.textAlignment
@@ -79,26 +79,4 @@ public extension UILabel {
     }
 }
 
-
-
-
-public struct TextStyle {
-    public var textColor: UIColor = .black
-    public var font: UIFont?
-    public var textAlignment: NSTextAlignment
-    public var characterSpacing: CGFloat?
-    public init (textColor: UIColor?, font: UIFont?, textAlignment: NSTextAlignment, characterSpacing: CGFloat? = nil) {
-        if let textColor = textColor { self.textColor = textColor }
-        self.font = font
-        self.textAlignment = textAlignment
-        if let characterSpacing = characterSpacing { self.characterSpacing = characterSpacing }
-    }
-    public func colored (with newTextColor: UIColor) -> TextStyle { return TextStyle(textColor: newTextColor, font: self.font, textAlignment: self.textAlignment, characterSpacing: self.characterSpacing) }
-    public func withFont (_ newFont: UIFont?) -> TextStyle { return TextStyle(textColor: self.textColor, font: newFont, textAlignment: self.textAlignment, characterSpacing: self.characterSpacing) }
-    public func withTextAlignment (_ newTextAlignment: NSTextAlignment) -> TextStyle { return TextStyle(textColor: self.textColor, font: self.font, textAlignment: newTextAlignment, characterSpacing: self.characterSpacing) }
-    public func withCharacterSpacing (_ newCharacterSpacing: CGFloat?) -> TextStyle { return TextStyle(textColor: self.textColor, font: self.font, textAlignment: self.textAlignment, characterSpacing: newCharacterSpacing) }
-    
-    
-    public func dim (_ fraction: CGFloat) -> TextStyle { return self.colored(with: self.textColor.dim(fraction)) }
-}
 

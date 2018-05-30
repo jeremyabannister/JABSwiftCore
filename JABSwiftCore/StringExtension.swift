@@ -108,7 +108,7 @@ public extension String {
     if !isHexCode { return nil }
     return UIColor(hex: self)
   }
-  public func attributed (with textStyle: TextStyle?) -> NSMutableAttributedString {
+  public func attributed (with textStyle: TextStyleForUILabel?) -> NSMutableAttributedString {
     let attributes: [NSAttributedStringKey: Any] = [.foregroundColor: (textStyle?.textColor ?? .black) as Any, .font: (textStyle?.font ?? UIFont()) as Any, .kern: textStyle?.characterSpacing ?? 1]
     return NSMutableAttributedString(string: self, attributes: attributes)
   }

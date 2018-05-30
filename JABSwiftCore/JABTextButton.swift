@@ -24,8 +24,8 @@ open class JABTextButton: JABButton {
   open var numberOfLines: Int?
   override open var topOfContent: CGFloat { return self.top + label.top }
   
-  fileprivate var undimmedTextStyle: TextStyle?
-  open var textStyle: TextStyle? {
+  fileprivate var undimmedTextStyle: TextStyleForUILabel?
+  open var textStyle: TextStyleForUILabel? {
     get { return label.textStyle }
     set { undimmedTextStyle = newValue }
   }
