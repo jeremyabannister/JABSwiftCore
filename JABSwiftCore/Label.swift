@@ -26,3 +26,21 @@ open class Label: View {
     super.init(outlet: self.textOutlet)
   }
 }
+
+public extension Label {
+  public var font: Font {
+    get { return textStyle.font }
+    set { textStyle.font = newValue } }
+  
+  public var textColor: Color {
+    get { return textStyle.textColor }
+    set { textStyle.textColor = newValue } }
+  
+  public var textAlignment: TextAlignment {
+    get { return textStyle.textAlignment }
+    set { textStyle.textAlignment = newValue } }
+  
+  public var characterSpacing: Double {
+    get { return textStyle.characterSpacing }
+    set { textStyle.characterSpacing = newValue } }
+}
