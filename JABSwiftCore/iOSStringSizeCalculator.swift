@@ -10,7 +10,7 @@ import UIKit
 
 public class iOSStringSizeCalculator: StringSizeCalculator {
   public func size (of string: String, constrainedToWidth width: Double?, usingFont font: Font) -> Size {
-    var attributes: [NSAttributedStringKey: Any] = [.font: UIFont(font)]
+    var attributes: [NSAttributedStringKey: Any] = [.font: UIFont(font) as Any]
     attributes[.kern] = font.characterSpacing
     let paragraphStyle = NSMutableParagraphStyle()
     paragraphStyle.lineHeightMultiple = CGFloat(font.lineHeightMultiple)
