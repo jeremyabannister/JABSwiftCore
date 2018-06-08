@@ -48,6 +48,9 @@ public extension UIFont {
     guard let font = font else { return nil }
     self.init(name: font.fontNameString, size: CGFloat(font.size))
   }
+  public var asFont: Font {
+    return Font(size: pointSize.asDouble, family: .other(fontName), weight: .normal)
+  }
 }
 
 public extension CABasicAnimation {
@@ -56,5 +59,25 @@ public extension CABasicAnimation {
     self.fromValue = singlePropertyAnimation.fromValue
     self.toValue = singlePropertyAnimation.toValue
     self.duration = singlePropertyAnimation.animationParameters.duration
+  }
+}
+
+public extension NSTextAlignment {
+  public init (_ textAlignment: TextAlignment) {
+    switch textAlignment {
+      case .left: self = .left
+      case .right: self = .right
+      case .center: self = .center
+      case .justified: self = .justified
+    }
+  }
+  public var asTextAlignment: TextAlignment {
+    switch self {
+      case .left: return .left
+      case .right: return .right
+      case .center: return .center
+      case .justified: return .justified
+      default: return .left
+    }
   }
 }

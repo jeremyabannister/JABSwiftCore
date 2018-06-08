@@ -118,3 +118,13 @@ private extension View {
     outlet?.add(animation, forKey: keyPath)
   }
 }
+
+// MARK: - Debug
+public extension View {
+  public func red () { backgroundColor = .red }
+  public func green () { backgroundColor = .green }
+  public func blue () { backgroundColor = .blue }
+  public func clear () { backgroundColor = .clear }
+  public func white () { backgroundColor = .white }
+  public func black () { backgroundColor = .black }
+}

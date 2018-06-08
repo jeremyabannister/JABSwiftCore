@@ -8,24 +8,31 @@
 
 // MARK: - Initial Declaration
 public struct TextStyle {
+  public var font: Font
   public var textColor: Color = .black
-  public var font: Font?
-  public var textAlignment: NSTextAlignment
-  public var characterSpacing: Double?
-  public init (textColor: Color?, font: Font?, textAlignment: NSTextAlignment, characterSpacing: Double? = nil) {
-    if let textColor = textColor { self.textColor = textColor }
+  public var textAlignment: TextAlignment
+  public var characterSpacing: Double
+  
+  public init (font: Font, textColor: Color, textAlignment: TextAlignment = .center, characterSpacing: Double = 1) {
     self.font = font
+    self.textColor = textColor
     self.textAlignment = textAlignment
-    if let characterSpacing = characterSpacing { self.characterSpacing = characterSpacing }
+    self.characterSpacing = characterSpacing
   }
-  public func colored (with newTextColor: Color) -> TextStyle { return TextStyle(textColor: newTextColor, font: self.font, textAlignment: self.textAlignment, characterSpacing: self.characterSpacing) }
-  public func withFont (_ newFont: Font?) -> TextStyle { return TextStyle(textColor: self.textColor, font: newFont, textAlignment: self.textAlignment, characterSpacing: self.characterSpacing) }
-  public func withTextAlignment (_ newTextAlignment: NSTextAlignment) -> TextStyle { return TextStyle(textColor: self.textColor, font: self.font, textAlignment: newTextAlignment, characterSpacing: self.characterSpacing) }
-  public func withCharacterSpacing (_ newCharacterSpacing: Double?) -> TextStyle { return TextStyle(textColor: self.textColor, font: self.font, textAlignment: self.textAlignment, characterSpacing: newCharacterSpacing) }
+  public func colored (with newTextColor: Color) -> TextStyle { return TextStyle(font: self.font, textColor: newTextColor, textAlignment: self.textAlignment, characterSpacing: self.characterSpacing) }
+  public func withFont (_ newFont: Font) -> TextStyle { return TextStyle(font: newFont, textColor: self.textColor, textAlignment: self.textAlignment, characterSpacing: self.characterSpacing) }
+  public func withTextAlignment (_ newTextAlignment: TextAlignment) -> TextStyle { return TextStyle(font: self.font, textColor: self.textColor, textAlignment: newTextAlignment, characterSpacing: self.characterSpacing) }
+  public func withCharacterSpacing (_ newCharacterSpacing: Double) -> TextStyle { return TextStyle(font: self.font, textColor: self.textColor, textAlignment: self.textAlignment, characterSpacing: newCharacterSpacing) }
   
   
   public func dimmed (to fraction: Double) -> TextStyle { return self.colored(with: self.textColor.dimmed(to: fraction)) }
 }
+
+public extension TextStyle {
+  public static let `default`: TextStyle = TextStyle(font: .default, textColor: .black)
+}
+
+
 
 
 public struct TextStyleForUILabel {
@@ -43,7 +50,7 @@ public struct TextStyleForUILabel {
     guard let textStyle = textStyle else { return nil }
     textColor = UIColor(textStyle.textColor)
     font = UIFont(textStyle.font)
-    textAlignment = textStyle.textAlignment
+    textAlignment = NSTextAlignment(textStyle.textAlignment)
     characterSpacing = CGFloat(textStyle.characterSpacing)
   }
   
@@ -55,4 +62,7 @@ public struct TextStyleForUILabel {
   
   
   public func dim (_ fraction: CGFloat) -> TextStyleForUILabel { return self.colored(with: self.textColor.dim(fraction)) }
+  
+  
+  public var asTextStyle: TextStyle { return TextStyle(font: font?.asFont ?? .default, textColor: textColor.asColor, textAlignment: textAlignment.asTextAlignment, characterSpacing: characterSpacing?.asDouble ?? 1) }
 }

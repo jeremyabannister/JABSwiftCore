@@ -13,18 +13,16 @@ open class Label: View {
   
   // Non-Animatable Properties
   public var text: String = "" { willSet { textOutlet?.setText(newValue) } }
-  public var textStyle: TextStyle? { willSet { textOutlet?.setTextStyle(newValue) } }
+  public var textStyle: TextStyle = .default { willSet { textOutlet?.setTextStyle(newValue) } }
   
   // Init
-  public init (outlet: VisualOutlet?, textOutlet: TextVisualOutlet?) {
+  public init (textOutlet: TextVisualOutlet?) {
     self.textOutlet = textOutlet
-    super.init(outlet: outlet)
-    outlet?.addSubview(textOutlet)
+    super.init(outlet: textOutlet)
   }
   
   public override init () {
     self.textOutlet = TextVisualOutletFactory.createNewTextOutlet()
-    super.init()
-    outlet?.addSubview(textOutlet)
+    super.init(outlet: self.textOutlet)
   }
 }
