@@ -15,7 +15,6 @@ open class JABTouchManager: NSObject, UIGestureRecognizerDelegate {
   // MARK: Properties
   // MARK:
   
-  
   // MARK: Delegate
   weak open var delegate: JABTouchManagerDelegate?
   
@@ -259,6 +258,5 @@ public protocol JABTouchManagerDelegate: class {
   func touchDidChange (_ touchManager: JABTouchManager, xDistance:CGFloat, yDistance:CGFloat, xVelocity:CGFloat, yVelocity:CGFloat, methodCallNumber:Int)
   func touchDidEnd (_ touchManager: JABTouchManager, xDistance:CGFloat, yDistance:CGFloat, xVelocity:CGFloat, yVelocity:CGFloat, methodCallNumber:Int)
   func touchDidCancel (_ touchManager: JABTouchManager, xDistance:CGFloat, yDistance:CGFloat, xVelocity:CGFloat, yVelocity:CGFloat, methodCallNumber:Int)
-  
 }
 

@@ -40,6 +40,12 @@
 		873F97FD20BBF24D00978F38 /* VisualOutletFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873F97FC20BBF24D00978F38 /* VisualOutletFactory.swift */; };
 		874226F81F84CB3800C44DA5 /* CABasicAnimationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874226F71F84CB3800C44DA5 /* CABasicAnimationExtension.swift */; };
 		8745E86320CA796800F46260 /* iOSStringSizeCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8745E86220CA796800F46260 /* iOSStringSizeCalculator.swift */; };
+		8745E86520CBB02D00F46260 /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8745E86420CBB02D00F46260 /* Button.swift */; };
+		8745E86720CBB06300F46260 /* TouchableVisualOutlet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8745E86620CBB06300F46260 /* TouchableVisualOutlet.swift */; };
+		8745E86920CBB0DE00F46260 /* TouchableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8745E86820CBB0DE00F46260 /* TouchableView.swift */; };
+		8745E86B20CBB11C00F46260 /* TouchableVisualOutletFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8745E86A20CBB11C00F46260 /* TouchableVisualOutletFactory.swift */; };
+		8745E86D20CBB15600F46260 /* iOSTouchableVisualOutlet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8745E86C20CBB15600F46260 /* iOSTouchableVisualOutlet.swift */; };
+		8745E87020CCBEE800F46260 /* TouchEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8745E86F20CCBEE800F46260 /* TouchEvent.swift */; };
 		8749C9E820B0334F00066E17 /* CGColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8749C9E720B0334F00066E17 /* CGColorExtension.swift */; };
 		874D00001B76C8F8002E1A32 /* MarshalOperator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874DFFFF1B76C8F8002E1A32 /* MarshalOperator.swift */; };
 		874E9585207C97C00042FA2C /* JABPassthroughView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874E9584207C97C00042FA2C /* JABPassthroughView.swift */; };
@@ -62,6 +68,7 @@
 		8765CE941F3FA74000E3D062 /* JABImageButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8765CE931F3FA74000E3D062 /* JABImageButton.swift */; };
 		8765CE961F3FA85A00E3D062 /* JABTextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8765CE951F3FA85A00E3D062 /* JABTextButton.swift */; };
 		8772C9E31FD12CCD000D32DE /* DictionaryExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8772C9E21FD12CCD000D32DE /* DictionaryExtension.swift */; };
+		877FE9A920CD242500483831 /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = 877FE9A820CD242500483831 /* Global.swift */; };
 		8795452E1FA9AEA600A11939 /* UILabelExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8795452D1FA9AEA500A11939 /* UILabelExtension.swift */; };
 		87AFE0AD20CA757F00A3879A /* TextAlignment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87AFE0AC20CA757F00A3879A /* TextAlignment.swift */; };
 		87AFE0B020CA76DE00A3879A /* PlatformTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87AFE0AF20CA76DE00A3879A /* PlatformTools.swift */; };
@@ -137,6 +144,12 @@
 		873F97FC20BBF24D00978F38 /* VisualOutletFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisualOutletFactory.swift; sourceTree = "<group>"; };
 		874226F71F84CB3800C44DA5 /* CABasicAnimationExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CABasicAnimationExtension.swift; sourceTree = "<group>"; };
 		8745E86220CA796800F46260 /* iOSStringSizeCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSStringSizeCalculator.swift; sourceTree = "<group>"; };
+		8745E86420CBB02D00F46260 /* Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
+		8745E86620CBB06300F46260 /* TouchableVisualOutlet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TouchableVisualOutlet.swift; sourceTree = "<group>"; };
+		8745E86820CBB0DE00F46260 /* TouchableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TouchableView.swift; sourceTree = "<group>"; };
+		8745E86A20CBB11C00F46260 /* TouchableVisualOutletFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TouchableVisualOutletFactory.swift; sourceTree = "<group>"; };
+		8745E86C20CBB15600F46260 /* iOSTouchableVisualOutlet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSTouchableVisualOutlet.swift; sourceTree = "<group>"; };
+		8745E86F20CCBEE800F46260 /* TouchEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TouchEvent.swift; sourceTree = "<group>"; };
 		8749C9E720B0334F00066E17 /* CGColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGColorExtension.swift; sourceTree = "<group>"; };
 		874DFFFF1B76C8F8002E1A32 /* MarshalOperator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarshalOperator.swift; sourceTree = "<group>"; };
 		874E9584207C97C00042FA2C /* JABPassthroughView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JABPassthroughView.swift; sourceTree = "<group>"; };
@@ -162,6 +175,7 @@
 		8765CE931F3FA74000E3D062 /* JABImageButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JABImageButton.swift; sourceTree = "<group>"; };
 		8765CE951F3FA85A00E3D062 /* JABTextButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JABTextButton.swift; sourceTree = "<group>"; };
 		8772C9E21FD12CCD000D32DE /* DictionaryExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryExtension.swift; sourceTree = "<group>"; };
+		877FE9A820CD242500483831 /* Global.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Global.swift; sourceTree = "<group>"; };
 		8795452D1FA9AEA500A11939 /* UILabelExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabelExtension.swift; sourceTree = "<group>"; };
 		87AFE0AC20CA757F00A3879A /* TextAlignment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextAlignment.swift; sourceTree = "<group>"; };
 		87AFE0AF20CA76DE00A3879A /* PlatformTools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlatformTools.swift; sourceTree = "<group>"; };
@@ -330,6 +344,7 @@
 				871BABA020BD46930065AB54 /* Shadow */,
 				871BAB9D20BD46810065AB54 /* Text */,
 				871BAB9E20BD46870065AB54 /* Animation */,
+				8745E86E20CCBED900F46260 /* Touch */,
 			);
 			name = "Data Types";
 			sourceTree = "<group>";
@@ -337,6 +352,7 @@
 		873F97E820B697CF00978F38 /* UI Core */ = {
 			isa = PBXGroup;
 			children = (
+				8745E87120CD23F400F46260 /* Global */,
 				873F97DF20B696B800978F38 /* Data Types */,
 				873F97E920B697ED00978F38 /* View */,
 				87E3244D20BD43C300DD5747 /* Outlet Protocols */,
@@ -351,6 +367,8 @@
 			children = (
 				873F97EC20B6984700978F38 /* View.swift */,
 				87E3245320BD448B00DD5747 /* Label.swift */,
+				8745E86820CBB0DE00F46260 /* TouchableView.swift */,
+				8745E86420CBB02D00F46260 /* Button.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -358,6 +376,7 @@
 		873F97F520BA8D9E00978F38 /* New */ = {
 			isa = PBXGroup;
 			children = (
+				877FE9AA20CE4A8A00483831 /* Standard Library Extensions */,
 				873F97E820B697CF00978F38 /* UI Core */,
 				87AFE0B420CA773000A3879A /* Platforms */,
 			);
@@ -375,6 +394,22 @@
 				875444D81AE1D04000659E6B /* JABView */,
 			);
 			name = Old;
+			sourceTree = "<group>";
+		};
+		8745E86E20CCBED900F46260 /* Touch */ = {
+			isa = PBXGroup;
+			children = (
+				8745E86F20CCBEE800F46260 /* TouchEvent.swift */,
+			);
+			name = Touch;
+			sourceTree = "<group>";
+		};
+		8745E87120CD23F400F46260 /* Global */ = {
+			isa = PBXGroup;
+			children = (
+				877FE9A820CD242500483831 /* Global.swift */,
+			);
+			name = Global;
 			sourceTree = "<group>";
 		};
 		874D00011B76C8FB002E1A32 /* Operators */ = {
@@ -552,6 +587,14 @@
 			name = Subclasses;
 			sourceTree = "<group>";
 		};
+		877FE9AA20CE4A8A00483831 /* Standard Library Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				8705209C1AEF8799008C9555 /* ArrayExtension.swift */,
+			);
+			name = "Standard Library Extensions";
+			sourceTree = "<group>";
+		};
 		87AFE0AE20CA76B900A3879A /* Platform Tools */ = {
 			isa = PBXGroup;
 			children = (
@@ -582,6 +625,7 @@
 			children = (
 				873F97F620BA8DBC00978F38 /* iOSTypeConversions.swift */,
 				8745E86220CA796800F46260 /* iOSStringSizeCalculator.swift */,
+				8745E86C20CBB15600F46260 /* iOSTouchableVisualOutlet.swift */,
 			);
 			name = iOS;
 			sourceTree = "<group>";
@@ -609,6 +653,7 @@
 				873F97EE20B6B3AB00978F38 /* CALayerExpressible.swift */,
 				873F97EA20B6982B00978F38 /* VisualOutlet.swift */,
 				87E3245120BD442000DD5747 /* TextVisualOutlet.swift */,
+				8745E86620CBB06300F46260 /* TouchableVisualOutlet.swift */,
 			);
 			name = "Outlet Protocols";
 			sourceTree = "<group>";
@@ -618,6 +663,7 @@
 			children = (
 				873F97FC20BBF24D00978F38 /* VisualOutletFactory.swift */,
 				87E3244E20BD43DF00DD5747 /* TextVisualOutletFactory.swift */,
+				8745E86A20CBB11C00F46260 /* TouchableVisualOutletFactory.swift */,
 			);
 			name = "Outlet Factories";
 			sourceTree = "<group>";
@@ -666,7 +712,6 @@
 		87F4FD3F1AE421B100953E38 /* Class Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				8705209C1AEF8799008C9555 /* ArrayExtension.swift */,
 				87F842EF1F920388009027B9 /* BoolExtension.swift */,
 				874226F71F84CB3800C44DA5 /* CABasicAnimationExtension.swift */,
 				8749C9E720B0334F00066E17 /* CGColorExtension.swift */,
@@ -818,6 +863,7 @@
 				870DFB831B532A9200BC76D7 /* DoubleExtension.swift in Sources */,
 				87F422DC1AFDB62A00C564D9 /* Size3D.swift in Sources */,
 				8745E86320CA796800F46260 /* iOSStringSizeCalculator.swift in Sources */,
+				877FE9A920CD242500483831 /* Global.swift in Sources */,
 				87B013111E5698D30000280E /* SequenceExtension.swift in Sources */,
 				8721FF2B1B6ECE37000EB3CB /* JABLocationTester.swift in Sources */,
 				87E3245420BD448B00DD5747 /* Label.swift in Sources */,
@@ -834,6 +880,7 @@
 				87D1EA39201C1862007FB2AD /* CLLocationExtension.swift in Sources */,
 				875444DC1AE1D05800659E6B /* JABTouchManager.swift in Sources */,
 				873F97EF20B6B3AB00978F38 /* CALayerExpressible.swift in Sources */,
+				8745E86920CBB0DE00F46260 /* TouchableView.swift in Sources */,
 				87D99B1A205E216A005E098F /* UITextViewExtension.swift in Sources */,
 				8749C9E820B0334F00066E17 /* CGColorExtension.swift in Sources */,
 				875444E01AE1D06500659E6B /* JABApplicationRoot.swift in Sources */,
@@ -849,6 +896,7 @@
 				874226F81F84CB3800C44DA5 /* CABasicAnimationExtension.swift in Sources */,
 				874D00001B76C8F8002E1A32 /* MarshalOperator.swift in Sources */,
 				87F842F01F920388009027B9 /* BoolExtension.swift in Sources */,
+				8745E86520CBB02D00F46260 /* Button.swift in Sources */,
 				87643AB11EB07A8400D41A60 /* JABBlurLayer.swift in Sources */,
 				8701987B1AE61FCA0073BFD5 /* UIImageExtension.swift in Sources */,
 				873F97F420B6C3C900978F38 /* UniquelyIdentifiableObject.swift in Sources */,
@@ -864,11 +912,13 @@
 				873441D52090627C001FE70E /* NSObjectProtocolExtension.swift in Sources */,
 				875444D31AE1D02C00659E6B /* Toolkit.swift in Sources */,
 				87D1EA37201C1820007FB2AD /* CLLocationCoordinate2DExtension.swift in Sources */,
+				8745E86B20CBB11C00F46260 /* TouchableVisualOutletFactory.swift in Sources */,
 				875AAFF12092B02B005E0B85 /* InterfaceElement.swift in Sources */,
 				873F97FD20BBF24D00978F38 /* VisualOutletFactory.swift in Sources */,
 				873F97E320B6977400978F38 /* Size.swift in Sources */,
 				875444D71AE1D03E00659E6B /* JABView.swift in Sources */,
 				87F4FD411AE421ED00953E38 /* CGRectExtension.swift in Sources */,
+				8745E87020CCBEE800F46260 /* TouchEvent.swift in Sources */,
 				87F4FD431AE4222A00953E38 /* UIColorExtension.swift in Sources */,
 				87AFE0B020CA76DE00A3879A /* PlatformTools.swift in Sources */,
 				87DEDF79201EC9A7004A8757 /* DataExtension.swift in Sources */,
@@ -886,12 +936,14 @@
 				873F97E720B697AE00978F38 /* Color.swift in Sources */,
 				871BAB9B20BD465F0065AB54 /* Font.swift in Sources */,
 				87FB2E2B1B522C27000E09D9 /* StringExtension.swift in Sources */,
+				8745E86720CBB06300F46260 /* TouchableVisualOutlet.swift in Sources */,
 				87D99B23206967DB005E098F /* ComparableExtension.swift in Sources */,
 				8705209D1AEF8799008C9555 /* ArrayExtension.swift in Sources */,
 				873F97ED20B6984700978F38 /* View.swift in Sources */,
 				87D1EA3B201C4042007FB2AD /* FloatingPointExtension.swift in Sources */,
 				87F842EE1F918426009027B9 /* CGContextExtension.swift in Sources */,
 				8704B9F220A00218009AF20B /* GlobalAnimationState.swift in Sources */,
+				8745E86D20CBB15600F46260 /* iOSTouchableVisualOutlet.swift in Sources */,
 				873F97F120B6B9E400978F38 /* UIBezierPathExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
