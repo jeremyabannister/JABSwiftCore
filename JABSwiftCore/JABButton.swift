@@ -36,7 +36,7 @@ open class JABButton: JABTouchableView, AnimatableInterfaceForUIView {
   open var topOfContent: CGFloat { return self.top }
   
   fileprivate var isPressed = false
-  fileprivate var undimmedBackdropColor: UIColor? = .clear
+  fileprivate var undimmedBackdropColor: UIColor = .clear
   fileprivate var pressDelayTimer: Timer?
   
   open var interfaceElements: [InterfaceElement?] { return [holder] }
@@ -98,7 +98,7 @@ open class JABButton: JABTouchableView, AnimatableInterfaceForUIView {
   // MARK: Holder
   fileprivate func configureHolder () {
     let view = holder
-    if dimsWhenPressed { view.backdropColor = undimmedBackdropColor?.dim(1 - (visualPressedExtent * (1 - dimFraction))) }
+    if dimsWhenPressed { view.backdropColor = undimmedBackdropColor.dim(1 - (visualPressedExtent * (1 - dimFraction))) }
     else { view.backdropColor = undimmedBackdropColor }
   }
   

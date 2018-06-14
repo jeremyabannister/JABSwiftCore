@@ -8,6 +8,9 @@
 
 // MARK: - Initial Declaration
 open class View: UniquelyIdentifiableObject {
+  // Root View
+  public static var rootView: View?
+  
   // Outlet
   public let outlet: VisualOutlet?
   
@@ -48,30 +51,65 @@ open class View: UniquelyIdentifiableObject {
   internal var animationParameters: AnimationParameters?
   
   // Non-Animatable Properties
+  public private(set) var superview: View?
+  public private(set) var subviews: [View] = []
   public var isUserInteractionEnabled = true { willSet { outlet?.setIsUserInteractionEnabled(newValue) } }
   public var clipsToBounds = false { willSet { outlet?.setClipsToBounds(newValue) } }
   
   // Init
   public init (outlet: VisualOutlet?) {
     self.outlet = outlet
+    commonInit()
   }
   
   public init () {
     self.outlet = VisualOutletFactory.createNewOutlet()
+    commonInit()
   }
   
+  // MARK: - Overridable Methods
   // Overridable Methods
   open func addSubview (_ view: View) {
+    if self.isDescendentView(of: view) { printWarning(.addedSuperviewToSubview); return }
+    view.removeFromSuperview()
+    view.superview = self
+    subviews.append(view)
     outlet?.addSubview(view.outlet)
   }
   
   open func bringSubview (toFront subview: View) {
     outlet?.bringSubview(toFront: subview.outlet)
   }
+  
+  open func commonInit () {
+    (self as? Interface)?.addUI() // This kind of coupling feels wrong, but is extremely useful as it removes
+  }
+}
+
+// MARK: - Non-Overridable Methods
+extension View {
+  public var originOnScreen: Point? {
+    if self == View.rootView { return .zero }
+    guard let superviewOrigin = superview?.originOnScreen else { return nil }
+    return superviewOrigin + self.origin
+  }
+  
+  public func isDescendentView (of view: View) -> Bool {
+    if self == View.rootView { return false }
+    return superview?.isDescendentView(of: view) ?? false
+  }
+  
+  public func removeFromSuperview () {
+    guard let superview = superview else { return }
+    guard let index = superview.subviews.index(of: self) else { return }
+    superview.subviews.remove(at: index)
+    self.superview = nil
+    outlet?.removeFromSuperview()
+  }
 }
 
 // MARK: - Shortcuts
-public extension View {
+extension View {
   public var x: Double {
     get { return frame.origin.x }
     set { frame.origin.x = newValue }
@@ -119,12 +157,30 @@ private extension View {
   }
 }
 
-// MARK: - Debug
-public extension View {
+// MARK: - Debug Coloring
+extension View {
   public func red () { backgroundColor = .red }
   public func green () { backgroundColor = .green }
   public func blue () { backgroundColor = .blue }
   public func clear () { backgroundColor = .clear }
   public func white () { backgroundColor = .white }
   public func black () { backgroundColor = .black }
+}
+
+// MARK: - Debug Logging
+private extension View {
+  enum Warning: String {
+    case addedSuperviewToSubview = "API MISUSE - Do not try to add a superview as a subview of one of its own subviews (or further descendent views)"
+  }
+  
+  func printWarning (_ warning: Warning) {
+    print("WARNING: " + warning.rawValue)
+  }
+}
+
+// MARK: - Equatable
+extension View: Equatable {
+  public static func == (lhs: View, rhs: View) -> Bool {
+    return lhs.isEqual(to: rhs)
+  }
 }

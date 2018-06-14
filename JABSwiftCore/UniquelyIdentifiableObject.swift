@@ -10,8 +10,11 @@ public protocol UniquelyIdentifiableObject: AnyObject {
   var uniqueIdentifier: ObjectIdentifier { get }
 }
 
-public extension UniquelyIdentifiableObject {
+extension UniquelyIdentifiableObject {
   public var uniqueIdentifier: ObjectIdentifier {
     return ObjectIdentifier(self)
+  }
+  public func isEqual (to object: UniquelyIdentifiableObject) -> Bool {
+    return self.uniqueIdentifier == object.uniqueIdentifier
   }
 }

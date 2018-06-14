@@ -49,6 +49,8 @@
 		8749C9E820B0334F00066E17 /* CGColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8749C9E720B0334F00066E17 /* CGColorExtension.swift */; };
 		874D00001B76C8F8002E1A32 /* MarshalOperator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874DFFFF1B76C8F8002E1A32 /* MarshalOperator.swift */; };
 		874E9585207C97C00042FA2C /* JABPassthroughView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874E9584207C97C00042FA2C /* JABPassthroughView.swift */; };
+		875068A220D0FB3E0041B135 /* AnimatableInterfaceForUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 875068A120D0FB3E0041B135 /* AnimatableInterfaceForUIView.swift */; };
+		875068A420D0FB5B0041B135 /* InterfaceForUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 875068A320D0FB5A0041B135 /* InterfaceForUIView.swift */; };
 		875444BB1AE1D01C00659E6B /* JABSwiftCore.h in Headers */ = {isa = PBXBuildFile; fileRef = 875444BA1AE1D01C00659E6B /* JABSwiftCore.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		875444C11AE1D01C00659E6B /* JABSwiftCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 875444B51AE1D01C00659E6B /* JABSwiftCore.framework */; };
 		875444C81AE1D01C00659E6B /* JABSwiftCoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 875444C71AE1D01C00659E6B /* JABSwiftCoreTests.swift */; };
@@ -153,6 +155,8 @@
 		8749C9E720B0334F00066E17 /* CGColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGColorExtension.swift; sourceTree = "<group>"; };
 		874DFFFF1B76C8F8002E1A32 /* MarshalOperator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarshalOperator.swift; sourceTree = "<group>"; };
 		874E9584207C97C00042FA2C /* JABPassthroughView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JABPassthroughView.swift; sourceTree = "<group>"; };
+		875068A120D0FB3E0041B135 /* AnimatableInterfaceForUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatableInterfaceForUIView.swift; sourceTree = "<group>"; };
+		875068A320D0FB5A0041B135 /* InterfaceForUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterfaceForUIView.swift; sourceTree = "<group>"; };
 		875444B51AE1D01C00659E6B /* JABSwiftCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = JABSwiftCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		875444B91AE1D01C00659E6B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		875444BA1AE1D01C00659E6B /* JABSwiftCore.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JABSwiftCore.h; sourceTree = "<group>"; };
@@ -257,8 +261,8 @@
 		8704B9F820A00331009AF20B /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
-				8704B9F520A002AE009AF20B /* AnimatableInterface.swift */,
-				8704B9F320A0025D009AF20B /* Interface.swift */,
+				875068A120D0FB3E0041B135 /* AnimatableInterfaceForUIView.swift */,
+				875068A320D0FB5A0041B135 /* InterfaceForUIView.swift */,
 				875AAFF02092B02B005E0B85 /* InterfaceElement.swift */,
 			);
 			name = Protocols;
@@ -355,6 +359,7 @@
 				8745E87120CD23F400F46260 /* Global */,
 				873F97DF20B696B800978F38 /* Data Types */,
 				873F97E920B697ED00978F38 /* View */,
+				875068A020D0FB150041B135 /* Interface Protocols */,
 				87E3244D20BD43C300DD5747 /* Outlet Protocols */,
 				87E3245020BD43E300DD5747 /* Outlet Factories */,
 				87AFE0AE20CA76B900A3879A /* Platform Tools */,
@@ -365,6 +370,7 @@
 		873F97E920B697ED00978F38 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				873F97F320B6C3C900978F38 /* UniquelyIdentifiableObject.swift */,
 				873F97EC20B6984700978F38 /* View.swift */,
 				87E3245320BD448B00DD5747 /* Label.swift */,
 				8745E86820CBB0DE00F46260 /* TouchableView.swift */,
@@ -426,6 +432,15 @@
 				874E9584207C97C00042FA2C /* JABPassthroughView.swift */,
 			);
 			name = "UIView Subclasses";
+			sourceTree = "<group>";
+		};
+		875068A020D0FB150041B135 /* Interface Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				8704B9F520A002AE009AF20B /* AnimatableInterface.swift */,
+				8704B9F320A0025D009AF20B /* Interface.swift */,
+			);
+			name = "Interface Protocols";
 			sourceTree = "<group>";
 		};
 		875444AB1AE1D01C00659E6B = {
@@ -591,6 +606,7 @@
 			isa = PBXGroup;
 			children = (
 				8705209C1AEF8799008C9555 /* ArrayExtension.swift */,
+				87D99B22206967DB005E098F /* ComparableExtension.swift */,
 			);
 			name = "Standard Library Extensions";
 			sourceTree = "<group>";
@@ -623,6 +639,7 @@
 		87AFE0B520CA773A00A3879A /* iOS */ = {
 			isa = PBXGroup;
 			children = (
+				873F97EE20B6B3AB00978F38 /* CALayerExpressible.swift */,
 				873F97F620BA8DBC00978F38 /* iOSTypeConversions.swift */,
 				8745E86220CA796800F46260 /* iOSStringSizeCalculator.swift */,
 				8745E86C20CBB15600F46260 /* iOSTouchableVisualOutlet.swift */,
@@ -649,8 +666,6 @@
 		87E3244D20BD43C300DD5747 /* Outlet Protocols */ = {
 			isa = PBXGroup;
 			children = (
-				873F97F320B6C3C900978F38 /* UniquelyIdentifiableObject.swift */,
-				873F97EE20B6B3AB00978F38 /* CALayerExpressible.swift */,
 				873F97EA20B6982B00978F38 /* VisualOutlet.swift */,
 				87E3245120BD442000DD5747 /* TextVisualOutlet.swift */,
 				8745E86620CBB06300F46260 /* TouchableVisualOutlet.swift */,
@@ -721,7 +736,6 @@
 				87D1EA38201C1862007FB2AD /* CLLocationExtension.swift */,
 				87D1EA36201C1820007FB2AD /* CLLocationCoordinate2DExtension.swift */,
 				87D48AB2206F6B3800A08F8D /* Collection.swift */,
-				87D99B22206967DB005E098F /* ComparableExtension.swift */,
 				87DEDF78201EC9A7004A8757 /* DataExtension.swift */,
 				8772C9E21FD12CCD000D32DE /* DictionaryExtension.swift */,
 				870DFB821B532A9200BC76D7 /* DoubleExtension.swift */,
@@ -863,6 +877,7 @@
 				870DFB831B532A9200BC76D7 /* DoubleExtension.swift in Sources */,
 				87F422DC1AFDB62A00C564D9 /* Size3D.swift in Sources */,
 				8745E86320CA796800F46260 /* iOSStringSizeCalculator.swift in Sources */,
+				875068A420D0FB5B0041B135 /* InterfaceForUIView.swift in Sources */,
 				877FE9A920CD242500483831 /* Global.swift in Sources */,
 				87B013111E5698D30000280E /* SequenceExtension.swift in Sources */,
 				8721FF2B1B6ECE37000EB3CB /* JABLocationTester.swift in Sources */,
@@ -913,6 +928,7 @@
 				875444D31AE1D02C00659E6B /* Toolkit.swift in Sources */,
 				87D1EA37201C1820007FB2AD /* CLLocationCoordinate2DExtension.swift in Sources */,
 				8745E86B20CBB11C00F46260 /* TouchableVisualOutletFactory.swift in Sources */,
+				875068A220D0FB3E0041B135 /* AnimatableInterfaceForUIView.swift in Sources */,
 				875AAFF12092B02B005E0B85 /* InterfaceElement.swift in Sources */,
 				873F97FD20BBF24D00978F38 /* VisualOutletFactory.swift in Sources */,
 				873F97E320B6977400978F38 /* Size.swift in Sources */,

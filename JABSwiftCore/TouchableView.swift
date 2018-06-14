@@ -70,11 +70,11 @@ private extension TouchableView {
     
     if touchState == .began {
       touchEvent = TouchEvent(state: .began,
+                              index: 0,
                               locationOnScreen: location,
                               locationDelta: .zero,
                               instantaneousVelocity: .zero,
-                              averagedVelocity: .zero,
-                              eventIndex: 0)
+                              averagedVelocity: .zero)
       callbackForWhenTouchBegins?(touchEvent)
       return
     }
@@ -86,11 +86,11 @@ private extension TouchableView {
     let numberToAverage = 5
     let averagedVelocity = touchEventHistory.last(numberToAverage - 1).map({ $0.touchEvent.instantaneousVelocity }).appending(instantaneousVelocity).average
     touchEvent = TouchEvent(state: touchState,
+                            index: touchEventHistory.count,
                             locationOnScreen: location,
                             locationDelta: locationDelta,
                             instantaneousVelocity: instantaneousVelocity,
-                            averagedVelocity: averagedVelocity,
-                            eventIndex: touchEventHistory.count)
+                            averagedVelocity: averagedVelocity)
     
     if touchState == .changed { callbackForWhenTouchChanges?(touchEvent) }
     else if touchState == .ended { callbackForWhenTouchEnds?(touchEvent) }

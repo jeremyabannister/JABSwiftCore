@@ -40,6 +40,33 @@ public extension Color {
   }
 }
 
+// MARK: - Chainable Setters
+public extension Color {
+  func withRed (_ newValue: Double) -> Color {
+    var copy = self
+    copy.red = newValue
+    return copy
+  }
+  
+  func withGreen (_ newValue: Double) -> Color {
+    var copy = self
+    copy.green = newValue
+    return copy
+  }
+  
+  func withBlue (_ newValue: Double) -> Color {
+    var copy = self
+    copy.blue = newValue
+    return copy
+  }
+  
+  func withAlpha (_ newValue: Double) -> Color {
+    var copy = self
+    copy.alpha = newValue
+    return copy
+  }
+}
+
 // MARK: - Hashable
 extension Color: Hashable {
   public static func == (lhs: Color, rhs: Color) -> Bool {

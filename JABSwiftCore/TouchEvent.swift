@@ -9,11 +9,11 @@
 public struct TouchEvent {
   public enum State { case began, changed, ended, cancelled }
   public let state: State
+  public let index: Int
   public let locationOnScreen: Point
   public let locationDelta: Point
   public let instantaneousVelocity: Point
   public let averagedVelocity: Point
-  public let eventIndex: Int
   
-  public static let dummy: TouchEvent = TouchEvent(state: .began, locationOnScreen: .zero, locationDelta: .zero, instantaneousVelocity: .zero, averagedVelocity: .zero, eventIndex: 0)
+  public static let dummy: TouchEvent = TouchEvent(state: .began, index: 0, locationOnScreen: .zero, locationDelta: .zero, instantaneousVelocity: .zero, averagedVelocity: .zero)
 }

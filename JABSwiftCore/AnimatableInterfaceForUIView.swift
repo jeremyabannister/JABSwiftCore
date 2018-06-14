@@ -1,14 +1,14 @@
 //
-//  AnimatableInterface.swift
+//  AnimatableInterfaceForUIView.swift
 //  JABSwiftCore
 //
-//  Created by Jeremy Bannister on 5/6/18.
+//  Created by Jeremy Bannister on 6/13/18.
 //  Copyright © 2018 Jeremy Bannister. All rights reserved.
 //
 
-public protocol AnimatableInterface: Interface { }
+public protocol AnimatableInterfaceForUIView: InterfaceForUIView { }
 
-public extension AnimatableInterface {
+public extension AnimatableInterfaceForUIView {
   public func animate (_ updateCode: () -> (), duration: TimeInterval = defaultAnimationDuration, timingFunction: TimingFunction = .easeInOut, completion: ((Bool) -> ())? = nil) {
     let animationParameters = AnimationParameters(duration: duration, timingFunction: timingFunction, completion: completion)
     
@@ -27,7 +27,7 @@ public extension AnimatableInterface {
       guard let element = $0 else { return }
       GlobalAnimationState.shouldAnimateChangesLookupTable[element.uniqueIdentifier] = true
       GlobalAnimationState.animationParametersLookupTable[element.uniqueIdentifier] = parameters
-      (element as? AnimatableInterface)?.turnOnAnimationMode(withParameters: parameters)
+      (element as? AnimatableInterfaceForUIView)?.turnOnAnimationMode(withParameters: parameters)
     })
   }
   
@@ -35,8 +35,7 @@ public extension AnimatableInterface {
     interfaceElements.forEach({
       guard let element = $0 else { return }
       GlobalAnimationState.shouldAnimateChangesLookupTable[element.uniqueIdentifier] = false
-      (element as? AnimatableInterface)?.turnOffAnimationMode()
+      (element as? AnimatableInterfaceForUIView)?.turnOffAnimationMode()
     })
   }
 }
-

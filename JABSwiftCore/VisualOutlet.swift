@@ -18,6 +18,7 @@ public protocol VisualOutlet: UniquelyIdentifiableObject {
   
   func addSubview (_ view: VisualOutlet?)
   func bringSubview (toFront subview: VisualOutlet?)
+  func removeFromSuperview ()
   
   var presentedSelf: VisualOutlet { get }
   func value <T> (forKey key: String) -> T?
