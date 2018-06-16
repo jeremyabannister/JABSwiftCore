@@ -104,7 +104,7 @@ extension View {
     guard let index = superview.subviews.index(of: self) else { return }
     superview.subviews.remove(at: index)
     self.superview = nil
-    outlet?.removeFromSuperview()
+    outlet?.removeFromSuperview(dummyArgumentToPreventAbortTrap6CompilerError: true)
   }
 }
 

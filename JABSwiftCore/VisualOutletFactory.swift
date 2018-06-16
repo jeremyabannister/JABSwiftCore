@@ -28,7 +28,4 @@ extension CALayer: CALayerExpressible {
     guard let layer = (view as? CALayerExpressible)?.layer else { return }
     layer.addSublayer(layer)
   }
-  public func removeFromSuperview () {
-    self.removeFromSuperlayer()
-  }
 }

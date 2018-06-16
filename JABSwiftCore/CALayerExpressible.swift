@@ -47,6 +47,11 @@ public extension CALayerExpressible {
   public func bringSubview (toFront subview: VisualOutlet?) {
     self.addSubview(subview)
   }
+  
+  public func removeFromSuperview (dummyArgumentToPreventAbortTrap6CompilerError: Bool) {
+    (self as? UIView)?.removeFromSuperview()
+    (self as? CALayer)?.removeFromSuperlayer()
+  }
 }
 
 public extension CALayerExpressible {
