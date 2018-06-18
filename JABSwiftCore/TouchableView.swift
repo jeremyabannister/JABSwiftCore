@@ -6,6 +6,26 @@
 //  Copyright © 2018 Jeremy Bannister. All rights reserved.
 //
 
+// MARK: - Public API
+public extension TouchableView {
+  func whenTouchBegins (_ callback: @escaping (TouchEvent)->()) {
+    callbackForWhenTouchBegins = callback
+  }
+  func whenTouchChanges (_ callback: @escaping (TouchEvent)->()) {
+    callbackForWhenTouchChanges = callback
+  }
+  func whenTouchEnds (_ callback: @escaping (TouchEvent)->()) {
+    callbackForWhenTouchEnds = callback
+  }
+  func whenTouchCancels (_ callback: @escaping (TouchEvent)->()) {
+    callbackForWhenTouchCancels = callback
+  }
+  
+  func cancelTouch () {
+    touchableOutlet?.cancelTouch()
+  }
+}
+
 // MARK: - Initial Declaration
 open class TouchableView: View {
   // Outlet
@@ -23,39 +43,19 @@ open class TouchableView: View {
   // Init
   public init (touchableOutlet: TouchableVisualOutlet?) {
     self.touchableOutlet = touchableOutlet
-    super.init(outlet: touchableOutlet)
-    setupTouchCallback()
+    super.init(outlet: self.touchableOutlet)
   }
   
   public override init () {
     self.touchableOutlet = TouchableVisualOutletFactory.createNewTouchableOutlet()
     super.init(outlet: self.touchableOutlet)
-    setupTouchCallback()
   }
-}
-
-// MARK: - Setup
-private extension TouchableView {
-  func setupTouchCallback () {
+  
+  override open func commonInit () {
+    super.commonInit()
     touchableOutlet?.whenNewTouchLocationOccurs({ (location, touchState) in
       self.handleNewTouchLocation(location: location, touchState: touchState)
     })
-  }
-}
-
-// MARK: - Event Listeners
-public extension TouchableView {
-  func whenTouchBegins (_ callback: @escaping (TouchEvent)->()) {
-    callbackForWhenTouchBegins = callback
-  }
-  func whenTouchChanges (_ callback: @escaping (TouchEvent)->()) {
-    callbackForWhenTouchChanges = callback
-  }
-  func whenTouchEnds (_ callback: @escaping (TouchEvent)->()) {
-    callbackForWhenTouchEnds = callback
-  }
-  func whenTouchCancels (_ callback: @escaping (TouchEvent)->()) {
-    callbackForWhenTouchCancels = callback
   }
 }
 

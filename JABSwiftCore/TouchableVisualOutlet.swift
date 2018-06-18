@@ -8,4 +8,5 @@
 
 public protocol TouchableVisualOutlet: VisualOutlet {
   func whenNewTouchLocationOccurs (_ callback: @escaping (Point, TouchEvent.State)->())
+  func cancelTouch ()
 }

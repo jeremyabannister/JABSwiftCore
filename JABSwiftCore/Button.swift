@@ -15,6 +15,10 @@ extension Button {
   public func whenButtonIsUntouched (callback: @escaping (Button, Bool)->()) {
     callbackForWhenButtonIsUntouched = callback
   }
+  
+  public func simulatePress () {
+    beginTouch { (_) in self.endTouch(wasTriggered: true) }
+  }
 }
 
 // MARK: - Class Declaration
@@ -44,17 +48,17 @@ open class Button: TouchableView {
   open var dimsWhenPressed = false
   open var dimFraction: Double = 0.8
   
-  // Private
-  private var isPressed = false
-  private var normalBackgroundColor: Color = .clear
-//  private var 
-  
-  // UI
-  private let background = View()
-  
   // Event Callbacks
   private var callbackForWhenButtonIsTouched: ((Button)->())?
   private var callbackForWhenButtonIsUntouched: ((Button, Bool)->())?
+  
+  // Private
+  private var isPressed = false
+  private var normalBackgroundColor: Color = .clear
+  private var pressDelayTimer: Timer?
+  
+  // UI
+  private let background = View()
   
   // Init
   override open func commonInit () {
@@ -65,13 +69,16 @@ open class Button: TouchableView {
     }
     
     whenTouchChanges { [weak self] (touchEvent) in
+      self?.changeTouch(touchEvent: touchEvent)
+    }
+    
+    whenTouchEnds { [weak self] (touchEvent) in
       guard let `self` = self else { return }
-      let wasPressed = self.isPressed
-      self.isPressed = self.frame.withOrigin(self.originOnScreen)?.contains(touchEvent.locationOnScreen) ?? false
-      if self.isPressed != wasPressed {
-        self.visualPressedExtent = self.isPressed ? 1 : 0
-        self.animatedUpdate(duration: self.pressDuration)
-      }
+      self.endTouch(wasTriggered: self.isPressed)
+    }
+    
+    whenTouchCancels { [weak self] (touchEvent) in
+      self?.endTouch(wasTriggered: false)
     }
   }
 }
@@ -115,14 +122,21 @@ private extension Button {
     isPressed = true
     visualPressedExtent = 1
     if pressDelay != 0 {
-      animatedUpdate(duration: pressDuration, completion: completion)
-      DispatchQueue.main.asyncAfter(deadline: .now() + pressDelay) {
-        if !self.isPressed { return }
+      pressDelayTimer = Timer.scheduledTimer(withTimeInterval: pressDelay, repeats: false) { _ in
         self.animatedUpdate(duration: self.pressDuration, completion: completion)
       }
     }
     else { animatedUpdate(duration: pressDuration, completion: completion) }
     callbackForWhenButtonIsTouched?(self)
+  }
+  
+  func changeTouch (touchEvent: TouchEvent) {
+    let wasPressed = self.isPressed
+    self.isPressed = self.frame.withOrigin(self.originOnScreen)?.contains(touchEvent.locationOnScreen) ?? false
+    if self.isPressed != wasPressed {
+      self.visualPressedExtent = self.isPressed ? 1 : 0
+      self.animatedUpdate(duration: self.pressDuration)
+    }
   }
   
   func endTouch (wasTriggered: Bool) {
