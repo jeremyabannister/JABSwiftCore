@@ -8,17 +8,17 @@
 
 // MARK: - Public API
 public extension TouchableView {
-  func whenTouchBegins (_ callback: @escaping (TouchEvent)->()) {
-    callbackForWhenTouchBegins = callback
+  func whenTouchBegins (callback: @escaping (TouchEvent)->()) {
+    callbacksForWhenTouchBegins.append(callback)
   }
-  func whenTouchChanges (_ callback: @escaping (TouchEvent)->()) {
-    callbackForWhenTouchChanges = callback
+  func whenTouchChanges (callback: @escaping (TouchEvent)->()) {
+    callbacksForWhenTouchChanges.append(callback)
   }
-  func whenTouchEnds (_ callback: @escaping (TouchEvent)->()) {
-    callbackForWhenTouchEnds = callback
+  func whenTouchEnds (callback: @escaping (TouchEvent)->()) {
+    callbacksForWhenTouchEnds.append(callback)
   }
-  func whenTouchCancels (_ callback: @escaping (TouchEvent)->()) {
-    callbackForWhenTouchCancels = callback
+  func whenTouchCancels (callback: @escaping (TouchEvent)->()) {
+    callbacksForWhenTouchCancels.append(callback)
   }
   
   func cancelTouch () {
@@ -32,10 +32,10 @@ open class TouchableView: View {
   public let touchableOutlet: TouchableVisualOutlet?
   
   // Event Callbacks
-  private var callbackForWhenTouchBegins: ((TouchEvent)->())?
-  private var callbackForWhenTouchChanges: ((TouchEvent)->())?
-  private var callbackForWhenTouchEnds: ((TouchEvent)->())?
-  private var callbackForWhenTouchCancels: ((TouchEvent)->())?
+  private var callbacksForWhenTouchBegins: [(TouchEvent)->()] = []
+  private var callbacksForWhenTouchChanges: [(TouchEvent)->()] = []
+  private var callbacksForWhenTouchEnds: [(TouchEvent)->()] = []
+  private var callbacksForWhenTouchCancels: [(TouchEvent)->()] = []
   
   // Touch Tracking
   private var touchEventHistory: [(touchEvent: TouchEvent, mediaTime: Double)] = []
@@ -75,7 +75,7 @@ private extension TouchableView {
                               locationDelta: .zero,
                               instantaneousVelocity: .zero,
                               averagedVelocity: .zero)
-      callbackForWhenTouchBegins?(touchEvent)
+      callbacksForWhenTouchBegins.forEach({ $0(touchEvent) })
       return
     }
     
@@ -92,8 +92,8 @@ private extension TouchableView {
                             instantaneousVelocity: instantaneousVelocity,
                             averagedVelocity: averagedVelocity)
     
-    if touchState == .changed { callbackForWhenTouchChanges?(touchEvent) }
-    else if touchState == .ended { callbackForWhenTouchEnds?(touchEvent) }
-    else if touchState == .cancelled { callbackForWhenTouchCancels?(touchEvent) }
+    if touchState == .changed { callbacksForWhenTouchChanges.forEach({ $0(touchEvent) }) }
+    else if touchState == .ended { callbacksForWhenTouchEnds.forEach({ $0(touchEvent) }) }
+    else if touchState == .cancelled { callbacksForWhenTouchCancels.forEach({ $0(touchEvent) }) }
   }
 }

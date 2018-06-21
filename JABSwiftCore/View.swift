@@ -82,7 +82,7 @@ open class View: UniquelyIdentifiableObject {
   }
   
   open func commonInit () {
-    (self as? Interface)?.addUI() // This kind of coupling feels wrong, but is extremely useful as it removes
+    (self as? Interface)?.addUI() // This kind of coupling feels wrong, but is extremely useful as it removes the need for every interface to call addUI in init
   }
 }
 

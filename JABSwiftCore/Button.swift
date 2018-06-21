@@ -9,11 +9,11 @@
 // MARK: - Public API
 extension Button {
   public func whenButtonIsTouched (callback: @escaping (Button)->()) {
-    callbackForWhenButtonIsTouched = callback
+    callbacksForWhenButtonIsTouched.append(callback)
   }
   
   public func whenButtonIsUntouched (callback: @escaping (Button, Bool)->()) {
-    callbackForWhenButtonIsUntouched = callback
+    callbacksForWhenButtonIsUntouched.append(callback)
   }
   
   public func simulatePress () {
@@ -49,8 +49,8 @@ open class Button: TouchableView {
   open var dimFraction: Double = 0.8
   
   // Event Callbacks
-  private var callbackForWhenButtonIsTouched: ((Button)->())?
-  private var callbackForWhenButtonIsUntouched: ((Button, Bool)->())?
+  private var callbacksForWhenButtonIsTouched: [(Button)->()] = []
+  private var callbacksForWhenButtonIsUntouched: [(Button, Bool)->()] = []
   
   // Private
   private var isPressed = false
@@ -58,7 +58,7 @@ open class Button: TouchableView {
   private var pressDelayTimer: Timer?
   
   // UI
-  private let background = View()
+  private let background = PassthroughView()
   
   // Init
   override open func commonInit () {
@@ -127,7 +127,7 @@ private extension Button {
       }
     }
     else { animatedUpdate(duration: pressDuration, completion: completion) }
-    callbackForWhenButtonIsTouched?(self)
+    callbacksForWhenButtonIsTouched.forEach({ $0(self) })
   }
   
   func changeTouch (touchEvent: TouchEvent) {
@@ -143,7 +143,7 @@ private extension Button {
     isPressed = false
     visualPressedExtent = 0
     animatedUpdate(duration: pressDuration)
-    callbackForWhenButtonIsUntouched?(self, wasTriggered)
+    callbacksForWhenButtonIsUntouched.forEach({ $0(self, wasTriggered) })
   }
   
   func updateVisualPressedExtent (to newValue: Double, animated: Bool = false) {

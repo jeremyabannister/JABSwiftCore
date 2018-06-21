@@ -87,3 +87,10 @@ public extension Array where Element == CGFloat {
   public var variance: CGFloat { return CGFloat(self.asDoubles.variance) }
   public var standardDeviation: CGFloat { return CGFloat(self.asDoubles.standardDeviation) }
 }
+
+// MARK: - Array of Commands
+extension Array where Element == ()->() {
+  public func executeAll () {
+    self.forEach({ $0() })
+  }
+}

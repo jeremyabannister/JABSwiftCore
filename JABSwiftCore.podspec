@@ -8,6 +8,6 @@ Pod::Spec.new do |spec|
   spec.source       = { :git => 'https://github.com/jeremyabannister/JABSwiftCore.git'}
   spec.source_files = 'JABSwiftCore/**/*.{swift}'
   spec.framework    = 'SystemConfiguration'
-  spec.ios.deployment_target = '8.0'
+  spec.ios.deployment_target = '10.0'
   spec.requires_arc = true
 end

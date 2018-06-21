@@ -10,7 +10,9 @@ import UIKit
 
 public class TouchableVisualOutletFactory {
   private init () { }
-  public static func createNewTouchableOutlet () -> TouchableVisualOutlet { return iOSTouchableVisualOutlet() }
+  public static func createNewTouchableOutlet () -> TouchableVisualOutlet {
+    return iOSTouchableVisualOutlet()
+  }
 }
 
 extension iOSTouchableVisualOutlet: TouchableVisualOutlet {
